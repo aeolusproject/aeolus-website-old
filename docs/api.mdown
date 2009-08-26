@@ -30,7 +30,7 @@ of the current revision, the only required representation is
 XML.  Clients wishing to receive XML representations must
 specify the HTTP `Accept` header as `text/xml`.
 
-### Authentication
+## Authentication
 
 The Deltacloud API uses HTTP authentication methods for
 authenticating a given client.  There is no explicit
@@ -38,7 +38,7 @@ _login_ action required.  If authentication is required,
 an HTTP status of 401 will be returned to challenge
 for credentials.
 
-### Primary Entry Point
+## Primary Entry Point
 
 Any Deltacloud implementor _must_ provide exactly
 one well-known URL as an entry-point. For example,
@@ -64,14 +64,84 @@ specified.
       <link href='http://fancycloudprovider.com/api/storage/snapshots' rel='storage_snapshots' />
     </api>
 
-### Resources
+## Resources
 
 From the primary entry-point, a client may follow the URL provided for
 a collection to retrieve the resources within that collection.  The collection
 representation will include the full representations of the items within it,
 along with links to retrieve each item individually.
 
-#### Images
+### Flavors
+
+Within a cloud provider a _flavor_ represents a configuration of resources upon
+which a machine may be deployed. A flavor defines aspects such as local disk storage,
+available RAM, and architecture.  A future revision of the Deltacloud API will
+include more aspects, including number and speed of CPUs available.  Each provider
+is free to define as many (or as few) flavors as desired.
+
+    <flavors>
+      <flavor href="http://fancycloudprovider.com/api/flavors/m1-small">
+        <id>m1-small</id>
+        <architecture>i386</architecture>
+        <memory>1.7</memory>
+        <storage>160</storage>
+      </flavor>
+      <flavor href="http://fancycloudprovider.com/api/flavors/m1-large">
+        <id>m1-large</id>
+        <architecture>x86_64</architecture>
+        <memory>7.5</memory>
+        <storage>850</storage>
+      </flavor>
+    </flavors>
+
+Each `<flavor>` block shall contain an `href` attribute providing a URL to manipulate a
+specific flavor, along with elements for each attribute of a flavor. 
+
+- **`id`**            A unique identifier for the flavor
+- **`architecture`**  The architecture
+  - i386
+  - x86_64
+- **`memory`**        The amount of RAM, in gigabytes.
+- **`storage`**       The amount of local disk storage, in gigabytes.
+
+At this time, flavor resources are immutable and read-only.  In a future revision
+they may be mutable.
+
+### Realms
+
+Within a cloud provider a _realm_ represents a boundary containing resources. The
+exact definition of a realm is left to the cloud provider.  In some cases, a realm 
+may represent different datacenters, different continents, or different pools of
+resources within a single datacenter. A cloud provider may insist that resources
+must all exist within a single realm in order to cooperate.  For instance, storage
+volumes may only be allowed to be mounted to instances within the same realm.  
+
+    <realms>
+      <realm href="http://fancycloudprovider.com/api/realms/us">
+        <id>us</id>
+        <name>United States</name>
+        <state>AVAILABLE</state>
+        <limit/>
+      </realm>
+      <realm href="http://fancycloudprovider.com/api/realms/eu">
+        <id>eu</id>
+        <name>Europe</name>
+        <state>AVAILABLE</state>
+        <limit/>
+      </realm>
+    </realms>
+
+Each `<realm>` block shall contain an `href` attribute providing a URL to manipulate a
+specific realm, along with elements for each attribute of a realm.
+
+- **`id`**          A unique identifier for the realm
+- **`name`**        A short label
+- **`state`**       Indicator of the current state of a realm
+  - AVAILABLE
+  - UNAVAILABLE
+- **`limit`**       Limits applicable for the _current requester_
+
+### Images
 
 An _image_ is a platonic form of a machine. Images are not directly
 executable, but are a template for creating actual instances of
@@ -124,7 +194,7 @@ These attributes include
 At this time, image resources are immutable and read-only.  In a future revision
 they will be mutable.
 
-#### Instances
+### Instances
 
 An _instance_ is a concrete machine realized from an _image_.  The images
 collection may be obtained by following the link from the primary entry-point.
@@ -164,7 +234,7 @@ Simple attributes include
 - **`owner_id`**     An opaque identifier which indicates the owner of an instance
 - **`name`**         An _optional_ short label describing the instance
 - **`image`**        Provides a link to the platonic image from which the instance is based
-- **`flavor`**       Provides a link to flavor of virtual hardware in use by the instance
+- **`flavor`**       Provides a link to flavor of virtual hardware in use by the instance 
 - **`realm`**        Provides a link to the realm where the instance is deployed
 - **`state`**        Indicator of the instance's current state
   - `PENDING`
@@ -191,7 +261,24 @@ Representative actions include
 Not all actions may be valid at all times for all instances.  To invoke an 
 action, a client must perform an HTTP `POST` to the URL indicated.
 
-#### Flavors
+#### Creating a new Instance
 
-#### Realms
+Per usual REST architectural style, new instances are created by issuing
+an HTTP `POST` to the instances collection as defined through the 
+primary entry-point URL. Data should be sent in `application/x-www-form-urlencoded`
+format.
+
+To create a new instance, only one parameter is required
+
+- **`image_id`**   The identifier (not URL) of the image from which to base the instance
+
+Optional parameters may also be provided
+
+- **`realm_id`**   The realm in which to launch the instance
+- **`flavor_id`**  The machine flavor upon which to launch the instance
+
+If `realm_id` or `flavor_id` are not specified, the provider _must_ select 
+reasonable defaults.  The architecture of the selected flavor _must_ match the 
+architecture of the specified image.
+
 

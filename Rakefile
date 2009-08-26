@@ -1,7 +1,7 @@
 
 docs_dir   = File.dirname(__FILE__) + '/docs'
 images_dir = File.dirname(__FILE__) + '/images'
-css_dir    = File.dirname(__FILE__) + '/css'
+styles_dir = File.dirname(__FILE__) + '/styles'
 output_dir = File.dirname(__FILE__) + '/output'
 bin_dir    = File.dirname(__FILE__) + '/bin'
 skin       = File.dirname(__FILE__) + '/skin/skin.html.tmpl'
@@ -18,7 +18,7 @@ task :default do
     end
   end
   FileUtils.cp_r( images_dir, output_dir )
-  FileUtils.cp( Dir[ "#{css_dir}/*.css" ], output_dir )
+  FileUtils.cp_r( styles_dir, output_dir )
 end
 
 task :clean do
