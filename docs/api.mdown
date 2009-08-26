@@ -1,0 +1,27 @@
+DeltaCloud API
+==============
+
+The DeltaCloud API is built as a service-based REST API. 
+You do not directly link a DeltaCloud library into your
+program to use it. Instead, you speak the DeltaCloud 
+over HTTP to a server which implements the API.
+
+Of course, at this point in time, no cloud provider
+natively speaks the DeltaCloud API. To accomodate
+the native APIs used by the various cloud providers,
+the DeltaCloud project also provides a _framework_
+and a set of _drivers_ that work with the framework.
+
+By running a framework & driver combination on some
+host, your application can use the DeltaCloud API,
+and the driver is responsible for translating these
+calls into each provider's own API.
+
+REST
+----
+
+The DeltaCloud API is a RESTful API, using HATEOAS
+architectural style. The API requires no client-side
+URL construction.  Access is based entirely off a 
+single entry-point resource.  This allows other implementors
+to structure their URL space however they like.
