@@ -1,30 +1,30 @@
-# DeltaCloud API
+# Deltacloud API
 
-The DeltaCloud API is built as a service-based REST API. 
-You do not directly link a DeltaCloud library into your
-program to use it. Instead, you speak the DeltaCloud 
+The Deltacloud API is built as a service-based REST API. 
+You do not directly link a Deltacloud library into your
+program to use it. Instead, you speak the Deltacloud 
 over HTTP to a server which implements the API.
 
 Of course, at this point in time, no cloud provider
-natively speaks the DeltaCloud API. To accomodate
+natively speaks the Deltacloud API. To accomodate
 the native APIs used by the various cloud providers,
-the DeltaCloud project also provides a _framework_
+the Deltacloud project also provides a _framework_
 and a set of _drivers_ that work with the framework.
 
 By running a framework & driver combination on some
-host, your application can use the DeltaCloud API,
+host, your application can use the Deltacloud API,
 and the driver is responsible for translating these
 calls into each provider's own API.
 
 ## REST
 
-The DeltaCloud API is a RESTful API, using HATEOAS
+The Deltacloud API is a RESTful API, using HATEOAS
 architectural style. The API requires no client-side
 URL construction.  Access is based entirely off a 
 single entry-point resource.  This allows other implementors
 to structure their URL space however they like.
 
-Additionally, the DeltaCloud API uses _content negotiation_
+Additionally, the Deltacloud API uses _content negotiation_
 to determine the format of the returned representation. As
 of the current revision, the only required representation is
 XML.  Clients wishing to receive XML representations must
@@ -32,15 +32,15 @@ specify the HTTP `Accept` header as `text/xml`.
 
 ### Authentication
 
-The DeltaCloud API uses HTTP authentication methods for
+The Deltacloud API uses HTTP authentication methods for
 authenticating a given client.  There is no explicit
 _login_ action required.  If authentication is required,
-the appropriate HTTP status will be returned to challenge
+an HTTP status of 401 will be returned to challenge
 for credentials.
 
 ### Primary Entry Point
 
-Any DeltaCloud implementor _must_ provide exactly
+Any Deltacloud implementor _must_ provide exactly
 one well-known URL as an entry-point. For example,
 `http://fancycloudprovider.com/api`.
 
@@ -54,7 +54,7 @@ to the collection (which _may_ exist on different servers)
 and a `rel` attribute to denote which collection is being
 specified.
 
-    <api driver='mock' version='1.0'>
+    <api driver='ec2' version='1.0'>
       <link href='http://fancycloudprovider.com/api/flavors' rel='flavors' />
       <link href='http://fancycloudprovider.com/api/instance-states' rel='instance_states' />
       <link href='http://fancycloudprovider.com/api/realms' rel='realms' />
@@ -80,7 +80,6 @@ machines.
 The instances collection will return a set of all images available to
 the current user.
 
-
     <images>
       <image href="http://fancycloudprovider.com/api/images/img1">
         <id>img1</id>
@@ -98,17 +97,99 @@ the current user.
       </image>
       <image href="http://fancycloudprovider.com/api/images/img3">
         <id>img3</id>
-        <owner_id>mockuser</owner_id>
+        <owner_id>ted</owner_id>
         <name></name>
         <description>JBoss</description>
         <architecture>i386</architecture>
       </image>
     </images>
 
+Each `<image>` block _shall_ contain an `href` attribute providing
+a URL to manipulate a specific image, along with elements for each 
+attribute of an image.  Each element, including those for optional 
+attributes must be present.  Optional attributes may be specified
+as a element with empty content.
 
+These attributes include
 
+- **`id`**            A unique identifier for the image
+- **`owner_id`**      An opaque identifier which indicates the owner of an image
+- **`name`**          An _optional_ short label describing the image
+- **`description`**   An _optional_ description describing the image more fully
+- **`architecture`**  A description of the machine architecture of the image
+  which may contain values such as:
+  - `i386`
+  - `x86_64`
+
+At this time, image resources are immutable and read-only.  In a future revision
+they will be mutable.
 
 #### Instances
+
+An _instance_ is a concrete machine realized from an _image_.  The images
+collection may be obtained by following the link from the primary entry-point.
+
+    <instances>
+      <instance href="http://fancycloudprovider.com/api/instances/inst1">
+        <id>inst1</id>
+        <owner_id>larry</owner_id>
+        <name>Production JBoss Instance</name>
+        <image href="http://fancycloudprovider.com/api/images/img3"/>
+        <flavor href="http://fancycloudprovider.com/api/flavors/m1-small"/>
+        <realm href="http://fancycloudprovider.com/api/realms/us"/>
+    
+        <state>RUNNING</state>
+        <actions>
+          <link rel="reboot" href="http://fancycloudprovider.com/api/instances/inst1/reboot"/>
+          <link rel="stop" href="http://fancycloudprovider.com/api/instances/inst1/stop"/>
+        </actions>
+        <public-addresses>
+          <address>inst1.larry.fancycloudprovider.com</address>
+        </public-addresses>
+    
+        <private-addresses>
+          <address>inst1.larry.internal</address>
+        </private-addresses>
+      </instance>
+    </instances>
+
+Each `<instance>` block shall contain an href attribute providing a URL to manipulate a 
+specific instance, along with elements for each attribute of an instance. Each element, 
+including those for optional attributes must be present. Optional attributes may be 
+specified as a element with empty content.
+
+Simple attributes include
+
+- **`id`**           A unique identifier for the instance
+- **`owner_id`**     An opaque identifier which indicates the owner of an instance
+- **`name`**         An _optional_ short label describing the instance
+- **`image`**        Provides a link to the platonic image from which the instance is based
+- **`flavor`**       Provides a link to flavor of virtual hardware in use by the instance
+- **`realm`**        Provides a link to the realm where the instance is deployed
+- **`state`**        Indicator of the instance's current state
+  - `PENDING`
+  - `STOPPED`
+  - `RUNNING`
+
+Multiple-valued attributes include
+
+- **`public-addresses`**  Publicly routable IP addresses or names for the instance
+- **`private-addresses`**  Private network IP addresses or names for the instance
+
+In addition to the abovementioned attributes, each `<instance>` may contain an
+`<actions>` block specifying valid actions for the instance, along with the URL 
+which may be used to perform the action.  Each action is specified by a `<link>`
+with an `href` attribute providing the URL, and a `rel` attribute providing 
+a key to determine what the action will do.
+
+Representative actions include
+
+- `reboot`
+- `start`
+- `stop`
+
+Not all actions may be valid at all times for all instances.  To invoke an 
+action, a client must perform an HTTP `POST` to the URL indicated.
 
 #### Flavors
 

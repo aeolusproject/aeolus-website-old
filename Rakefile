@@ -1,18 +1,24 @@
 
 docs_dir   = File.dirname(__FILE__) + '/docs'
 images_dir = File.dirname(__FILE__) + '/images'
+css_dir    = File.dirname(__FILE__) + '/css'
 output_dir = File.dirname(__FILE__) + '/output'
 bin_dir    = File.dirname(__FILE__) + '/bin'
+skin       = File.dirname(__FILE__) + '/skin/skin.html.tmpl'
 markdown   = bin_dir + '/Markdown.pl'
 
 task :default do
   FileUtils.mkdir_p( output_dir )
   Dir.chdir( docs_dir ) do
     Dir[ '*.mdown' ].each do |doc|
-      `#{markdown} #{doc} > #{output_dir}/#{File.basename( doc, '.mdown')}.html`
+      html = `#{markdown} #{doc}`
+      output = File.read( skin ) 
+      output.sub!( /\$REPLACE\$/, html )
+      File.open( "#{output_dir}/#{File.basename(doc, '.mdown')}.html", 'w' ) {|f| f << output }
     end
   end
   FileUtils.cp_r( images_dir, output_dir )
+  FileUtils.cp( Dir[ "#{css_dir}/*.css" ], output_dir )
 end
 
 task :clean do
