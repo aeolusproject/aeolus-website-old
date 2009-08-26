@@ -1,5 +1,4 @@
-DeltaCloud API
-==============
+# DeltaCloud API
 
 The DeltaCloud API is built as a service-based REST API. 
 You do not directly link a DeltaCloud library into your
@@ -17,11 +16,101 @@ host, your application can use the DeltaCloud API,
 and the driver is responsible for translating these
 calls into each provider's own API.
 
-REST
-----
+## REST
 
 The DeltaCloud API is a RESTful API, using HATEOAS
 architectural style. The API requires no client-side
 URL construction.  Access is based entirely off a 
 single entry-point resource.  This allows other implementors
 to structure their URL space however they like.
+
+Additionally, the DeltaCloud API uses _content negotiation_
+to determine the format of the returned representation. As
+of the current revision, the only required representation is
+XML.  Clients wishing to receive XML representations must
+specify the HTTP `Accept` header as `text/xml`.
+
+### Authentication
+
+The DeltaCloud API uses HTTP authentication methods for
+authenticating a given client.  There is no explicit
+_login_ action required.  If authentication is required,
+the appropriate HTTP status will be returned to challenge
+for credentials.
+
+### Primary Entry Point
+
+Any DeltaCloud implementor _must_ provide exactly
+one well-known URL as an entry-point. For example,
+`http://fancycloudprovider.com/api`.
+
+The result of this entry-point is a set of entry-points
+into other collections, such as _images_, _instances_,
+_flavors_ and _realms_, among others.
+
+Each collection is defined by a `<link>` tag with an
+`href` attribute which includes the fully-qualified URL
+to the collection (which _may_ exist on different servers)
+and a `rel` attribute to denote which collection is being
+specified.
+
+    <api driver='mock' version='1.0'>
+      <link href='http://fancycloudprovider.com/api/flavors' rel='flavors' />
+      <link href='http://fancycloudprovider.com/api/instance-states' rel='instance_states' />
+      <link href='http://fancycloudprovider.com/api/realms' rel='realms' />
+      <link href='http://fancycloudprovider.com/api/images' rel='images' />
+      <link href='http://fancycloudprovider.com/api/instances' rel='instances' />
+      <link href='http://fancycloudprovider.com/api/storage/volumes' rel='storage_volumes' />
+      <link href='http://fancycloudprovider.com/api/storage/snapshots' rel='storage_snapshots' />
+    </api>
+
+### Resources
+
+From the primary entry-point, a client may follow the URL provided for
+a collection to retrieve the resources within that collection.  The collection
+representation will include the full representations of the items within it,
+along with links to retrieve each item individually.
+
+#### Images
+
+An _image_ is a platonic form of a machine. Images are not directly
+executable, but are a template for creating actual instances of
+machines.
+
+The instances collection will return a set of all images available to
+the current user.
+
+
+    <images>
+      <image href="http://fancycloudprovider.com/api/images/img1">
+        <id>img1</id>
+        <owner_id>fedoraproject</owner_id>
+        <name></name>
+        <description>Fedora 10</description>
+        <architecture>x86_64</architecture>
+      </image>
+      <image href="http://fancycloudprovider.com/api/images/img2">
+        <id>img2</id>
+        <owner_id>fedoraproject</owner_id>
+        <name></name>
+        <description>Fedora 10</description>
+        <architecture>i386</architecture>
+      </image>
+      <image href="http://fancycloudprovider.com/api/images/img3">
+        <id>img3</id>
+        <owner_id>mockuser</owner_id>
+        <name></name>
+        <description>JBoss</description>
+        <architecture>i386</architecture>
+      </image>
+    </images>
+
+
+
+
+#### Instances
+
+#### Flavors
+
+#### Realms
+
