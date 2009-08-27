@@ -40,7 +40,6 @@ end
 
 def make_anchor(text)
   anchor = text.downcase.gsub( /\s/, '_' )
-  puts "in #{text} out #{anchor}"
   anchor
 end
 
@@ -55,8 +54,8 @@ task :default do
       File.open( "#{output_dir}/#{File.basename(doc, '.mdown')}.html", 'w' ) {|f| f << output }
     end
   end
-  FileUtils.cp_r( images_dir, output_dir )
   FileUtils.cp_r( styles_dir, output_dir )
+  FileUtils.cp_r( Dir["#{images_dir}/*"], "#{output_dir}/styles"  )
 end
 
 task :clean do

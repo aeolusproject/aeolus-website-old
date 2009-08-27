@@ -1,4 +1,4 @@
-[basic-relationships]: images/basic-relationships.png
+[basic-relationships]: styles/basic-relationships.png
 
 # Deltacloud API
 

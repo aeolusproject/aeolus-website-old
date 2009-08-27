@@ -1,4 +1,4 @@
-[framework]: images/framework.png
+[framework]: styles/framework.png
 
 # Deltacloud Framework (Ruby)
 
