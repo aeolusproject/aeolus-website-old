@@ -4,8 +4,8 @@
 
 The Deltacloud API is built as a service-based REST API. 
 You do not directly link a Deltacloud library into your
-program to use it. Instead, you speak the Deltacloud 
-over HTTP to a server which implements the API.
+program to use it. Instead, a client speaks the Deltacloud 
+API over HTTP to a server which implements the REST interface.
 
 Of course, at this point in time, no cloud provider
 natively speaks the Deltacloud API. To accomodate

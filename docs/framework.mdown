@@ -94,7 +94,7 @@ Attributes are
 - **`image_id`** - References an image by identifier
 - **`flavor_id`** - References a flavor image by identifier
 - **`realm_id`** - References a realm by identifier
-- **`state`** - One of `PENDING`, `STOPPED`, `RUNNING`
+- **`state`** - One of `PENDING`, `RUNNING`, 'SHUTTING_DOWN', 'STOPPED'
 - **`actions`** - Array of applicable actions
 - **`public_addresses`** - Array of IP addresses or hostnames as text
 - **`private_addresses`** - Array of IP addresses or hostnames as text
@@ -174,6 +174,73 @@ hash.  If the `opts` hash is present and contains an `:id` key, the results
 should be filtered by the value associated with the key.
 
 #### `create_instance(credentials, image_id, opts)`
+
+The `create_instance(...)` method should create within the cloud, a new
+running instance based from an image identifier.  The method should return
+an `Instance` object representing the newly-created instance.
+
+The `image_id` parameter must be non-nil.  The `opts` has may contain keys
+for `flavor_id` and `realm_id`.  If they are present, they should be used
+for the creation of the instance.  If they are not present, reasonable
+defaults should be used. In the case of flavor, one compatible with the
+image should be used as the default.  
+
 #### `reboot_instance(credentials, id)`
+
+The `reboot_instance(...)` method should trigger a running instance to be
+rebooted.  This method has no return value.
+
 #### `stop_instance(credentials, id)`
+
+The `stop_instance(...)` method should trigger a running instance to be
+stopped.  This method has no return value.  A cloud provider may allow
+restarting an instance, or may not.
+
 #### `destroy_instance(credentials, id)`
+
+The `destroy_instance(...)` method should remove the instance from the
+cloud provider, stopping it if necessary first.
+
+
+#### `instance_states()`
+
+The `instance_states()` method should return an complex array/hash
+structure representing the finite-state-machine for instances.
+Each state an instance may be in should be an element in the returned array.
+Each state itself is also an array with 2 member.  The first member is the
+name of the state, and the second member is a hash indicating valid transitions.
+
+The general format for the entire FSM structure is
+
+    [
+      [ :origin_state1, {
+        :destination_state1=>:action1, 
+        :destination_state2=>:action2, 
+      } ],
+      [ :origin_state2, {
+        :destination_state3=>:action3, 
+        :destination_state4=>:action4, 
+      } ],
+    ]
+
+Valid states are
+
+- **`:begin`**
+- **`:pending`**
+- **`:running`**
+- **`:shutting_down`**
+- **`:stopped`**
+- **`:end`**
+
+The `:begin` state is the state an instance is in immediate before
+being created.  The `:end` state is the state an instance is in immediately
+after being destroyed.
+
+Valid transition actions are
+
+- **`:stop`**
+- **`:start`**
+- **`:reboot`**
+
+Additionally, to indicate a transition that may occur _without_ an
+action being triggered, the action **`:_auto_` may be used.
