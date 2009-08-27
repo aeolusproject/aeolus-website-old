@@ -1,0 +1,179 @@
+[framework]: images/framework.png
+
+# Deltacloud Framework (Ruby)
+
+The _Deltacloud Framework_ is provided to assist in creating 
+intermediary drivers which speak the Deltacloud REST API on 
+the front while communicating with cloud providers using
+their own native APIs on the back.
+
+![Deltacloud framework][framework]
+
+The Deltacloud Framework handles all aspects of the REST
+API, while allowing driver implementors to focus on the 
+specific cloud provider native API.
+
+The framework is implemented as a Ruby-on-Rails application.
+Drivers may be implemented in as little as one Ruby class
+and plugged into the framework for deployment.
+
+## Driver SPI
+
+### Credentials
+
+The framework will collect credentials when the driver indicates
+they are required by throwing a `DeltaCloud::AuthException`.  Each
+driver method takes a credentials hash as the first parameter,
+but unless the client has provided credentials, this hash will be empty.
+
+    def images(credentials, opts)
+      if ( credentials[:name].nil? )
+        throw DeltaCloud::AuthException.new
+      end
+      unless ( credentials_valid?( credentials ) )
+        throw DeltaCloud::AuthException.new
+      end
+
+      # do work
+
+    end
+
+### Object models used by drivers
+
+To assist driver authors, the framework provides a handful of
+model classes, representing each resource available through
+the Deltacloud API.  Please see the [API reference](api.html) for details
+about each model.  All of these model objects may be initialized
+with a hash.  Every instance _must_ be assigned an `id` in addition
+to other attributes it may have.  Unless otherwise noted, attributes
+are text.
+
+For example
+
+    Flavor.new( 
+      :architecture=>'x86_64',
+      :memory=>4,
+      :storage=>650,
+    )
+
+#### `Flavor` (`app/models/flavor.rb`)
+
+Attributes are
+
+- **`id`**
+- **`architecture`**
+- **`memory`** - Decimal, gigabytes
+- **`storage`** - Decimal, gigabytes
+
+#### `Realm` (`app/models/realm.rb`)
+
+Attributes are
+
+- **`id`**
+- **`name`**
+- **`state`**
+- **`limit`**
+
+#### `Image` (`app/models/image.rb`)
+
+Attributes are
+
+- **`id`**
+- **`name`**
+- **`architecture`**
+- **`owner_id`**
+- **`description`**
+
+#### `Instance` (`app/models/instance.rb`)
+
+Attributes are
+
+- **`id`**
+- **`name`**
+- **`owner_id`** - Opaque, external reference
+- **`image_id`** - References an image by identifier
+- **`flavor_id`** - References a flavor image by identifier
+- **`realm_id`** - References a realm by identifier
+- **`state`** - One of `PENDING`, `STOPPED`, `RUNNING`
+- **`actions`** - Array of applicable actions
+- **`public_addresses`** - Array of IP addresses or hostnames as text
+- **`private_addresses`** - Array of IP addresses or hostnames as text
+
+### Driver methods
+
+The primary methods a driver class must implement are
+
+- `flavors(credentials, opts=nil)`
+- `images(credentials, opts=nil )`
+- `realms(credentials, opts=nil)`
+- `instances(credentials, opts=nil)`
+- `create_instance(credentials, image_id, opts)`
+- `reboot_instance(credentials, id)`
+- `stop_instance(credentials, id)`
+- `destroy_instance(credentials, id)`
+
+Generally, the `BaseDriver` handles singular cases while the
+specific provider driver must implement only the plural cases,
+along with specific action methods against resources.
+
+Additionally, to assist clients in determining what actions
+may be available without making additional requests, the following
+must be implemented.
+
+While the `credentials` hash is passed as the first parameter to each
+method, it _may_ be empty until the driver throws at least one
+`DeltaCloud::AuthException`. This exception will indicate to the 
+framework that a normal HTTP authentication challenge should be
+issued to the client.  Depending on the underlying provider the driver
+is connecting to, the credentials may not be required for some methods.
+
+Some methods also allow an optional `opts` hash, which may be `nil` or
+empty if not used for a particular invocation.  The `BaseDriver` provides
+a method `filter_on(...)` which may be used to safely filter collections.
+The `filter_on(..)` method will be demonstrated below.
+
+- `instance_states()`
+
+Each method will be described in more detail below.
+
+#### `flavors(credentials, opts=nil)`
+
+The `flavors(...)` method should return an array of `Flavor` objects.
+The `opts` hash, if present, must be inspected for `:id` and `:architecture`
+keys.  If these keys are present, the results should be filtered by the value
+associated with each key.  The `filter_on(...)` method is useful in this case.
+
+For example
+
+    def flavors(credentials, opts=nil)
+      flavors = fetch_all_flavors()
+      flavors = filter_on( flavors, :id, opts )
+      flavors = filter_on( flavors, :architecture, opts )
+      return flavors
+    end
+
+#### `realms(credentials, opts=nil)`
+
+The `realms(...)` method should return an array of `Realm` objects.
+
+#### `images(credentials, opts=nil )`
+
+The `images(...)` method should return an array of `Image` objects
+visible and accessible to the current user, as defined by the `credentials`
+hash.
+
+The `opts` hash, if present, must be inspected for `:id`, `:owner_id`
+and `:architecture` keys.  If these keys are present, the results should be filtered 
+by the value assocaited with each key.
+
+#### `instances(credentials, opts=nil)`
+
+The `instances(...)` method should return an array of `Instance` objects
+visible and accessible to the current user, as defined bv the `credentials`
+hash.  If the `opts` hash is present and contains an `:id` key, the results
+should be filtered by the value associated with the key.
+
+#### `create_instance(credentials, image_id, opts)`
+#### `reboot_instance(credentials, id)`
+#### `stop_instance(credentials, id)`
+#### `destroy_instance(credentials, id)`

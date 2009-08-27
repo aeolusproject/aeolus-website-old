@@ -1,3 +1,5 @@
+[basic-relationships]: images/basic-relationships.png
+
 # Deltacloud API
 
 The Deltacloud API is built as a service-based REST API. 
@@ -60,8 +62,6 @@ specified.
       <link href='http://fancycloudprovider.com/api/realms' rel='realms' />
       <link href='http://fancycloudprovider.com/api/images' rel='images' />
       <link href='http://fancycloudprovider.com/api/instances' rel='instances' />
-      <link href='http://fancycloudprovider.com/api/storage/volumes' rel='storage_volumes' />
-      <link href='http://fancycloudprovider.com/api/storage/snapshots' rel='storage_snapshots' />
     </api>
 
 ## Resources
@@ -70,6 +70,8 @@ From the primary entry-point, a client may follow the URL provided for
 a collection to retrieve the resources within that collection.  The collection
 representation will include the full representations of the items within it,
 along with links to retrieve each item individually.
+
+![Basic relationships][basic-relationships]
 
 ### Flavors
 
@@ -276,9 +278,12 @@ Optional parameters may also be provided
 
 - **`realm_id`**   The realm in which to launch the instance
 - **`flavor_id`**  The machine flavor upon which to launch the instance
+- **`name`**       A short label to identify the instance
 
 If `realm_id` or `flavor_id` are not specified, the provider _must_ select 
 reasonable defaults.  The architecture of the selected flavor _must_ match the 
 architecture of the specified image.
 
-
+After `POST`ing the data, the server _shall_ return a representation of
+the newly-created instance's XML, including a URL to retrieve the instance
+in the future.
