@@ -1,0 +1,44 @@
+# Deltacloud Drivers
+
+The Deltacloud project current delivers two functional drivers, plus
+a mock driver for testing without a cloud provider.
+
+- Amazon EC2
+- Red Hat Enterprise Virtualization Manager (RHEV-M)
+
+## Setting up the code
+
+To set up a given driver, currently, you must checkout the code
+for both the [framework](framework.html) and the drivers you wish to use.
+
+Check out the repositories side-by-side
+
+    deltacloud/
+      deltacloud-framework/
+      deltacloud-driver-ec/
+      deltacloud-driver-rhevm/
+      deltacloud-driver-mock/
+
+## Launch the framework
+
+To launch the framework, you must tell it which driver to use.  This can
+be accomplished either through editing the `config/environment.rb` of the framework,
+or by setting the `$DRIVER` environment variable.
+
+If adjusting `config/environment.rb` the `DEFAULT_DRIVER` variable should be set
+
+    DEFAULT_DRIVER=:rhevm
+
+Even if set, it may still be overwritten by the `$DRIVER` environment variable
+which takes precendence.
+
+Once configured, simply launch `script/server` for the framework.
+
+    $ ./script/server
+
+(Or using the `$DRIVER` variable)
+
+    $ DRIVER=ec2 ./script/server
+
+
+

@@ -3,7 +3,7 @@
 # Deltacloud Framework (Ruby)
 
 The _Deltacloud Framework_ is provided to assist in creating 
-intermediary drivers which speak the Deltacloud REST API on 
+intermediary [drivers](drivers.html) which speak the [Deltacloud REST API](api.html) on 
 the front while communicating with cloud providers using
 their own native APIs on the back.
 
