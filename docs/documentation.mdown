@@ -1,0 +1,9 @@
+
+# Documentation
+
+The Deltacloud documentation is broken into 4 parts
+
+- [REST API definition](api.html)
+- [Ruby client](client-ruby.html)
+- [Currently-supported drivers](drivers.html)
+- [Framework for writing additional drivers](framework.html)
