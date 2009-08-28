@@ -40,5 +40,14 @@ Once configured, simply launch `script/server` for the framework.
 
     $ DRIVER=ec2 ./script/server
 
+### EC2 Driver
 
+When using the driver for Amazon EC2, the credentials passed in
+response to the HTTP 401 authentication challenge should be your
+*access_key* and *secret_access_key*
+
+These credentials may be found on the [Access Identifiers](http://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key)
+page at Amazon AWS.
+
+### RHEV-M Driver
 
