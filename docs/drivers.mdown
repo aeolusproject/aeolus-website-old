@@ -51,3 +51,15 @@ page at Amazon AWS.
 
 ### RHEV-M Driver
 
+The RHEV-M driver needs to be installed on a Windows machine which has the RHEV-M
+Powershell API installed and configured. Assuming the directory structure above is
+followed, you should copy the file 
+deltacloud/deltacloud-driver-rhevm/config/rhevm_config.yaml.EXAMPLE to be
+rhevm_config.yaml and edit the file woith the domain you are logging into.
+The username and pasword is provided via the API.
+
+The actual RHEVM instance you are connecting to is controlled by
+the RHEVM.dll.config file which is referenced from the profile.ps1
+file located in My Documents/WindowsPowershell directory
+
+
