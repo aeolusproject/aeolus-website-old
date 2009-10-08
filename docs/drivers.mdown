@@ -14,10 +14,11 @@ for both the [framework](framework.html) and the drivers you wish to use.
 Check out the repositories side-by-side
 
     deltacloud/
-      deltacloud-framework/
-      deltacloud-driver-ec/
-      deltacloud-driver-rhevm/
-      deltacloud-driver-mock/
+      framework/
+      driver-ec/
+      driver-rhevm/
+      driver-mock/
+      driver-rackspace/
 
 ## Launch the framework
 
@@ -61,5 +62,11 @@ The username and pasword is provided via the API.
 The actual RHEVM instance you are connecting to is controlled by
 the RHEVM.dll.config file which is referenced from the profile.ps1
 file located in My Documents/WindowsPowershell directory
+
+
+### Rackspace Driver
+
+When using the Rackspace-cloud driver (Rackspace cloud used to be called "Mosso") - the password in a HTTP 401 challenge should be your API key, NOT your rackspace account password.
+(you can get the API-key, or generate a new one, from the rackspace console). 
 
 
