@@ -11,6 +11,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="shortcut icon" href="./styles/favicon.ico" type="image/x-icon">
   <link rel="StyleSheet" type="text/css" href="./styles/default.css" title="Main style">
+
   <link rel="Alternate StyleSheet" type="text/css" href="./styles/default-debug.css" title="Debug main style">
 
 </head>
@@ -19,16 +20,21 @@
 <body>
   <div id="header">
   	<div class="container">
-    <div id="headerLogo"class="container"><a id="logo" href="./index.html">  </a></div>
-  	</div>
+    	<div id="headerLogo" style="cursor: pointer;" onclick="location.href='index.html';">
+    	<h1>Deltacloud - Many clouds. One API. No problem.</h1>
+    	</div>
+
+	</div>
   </div>
 
     <div id="navigation">
 
     <div id="menu" class="container">
       <ul class="l0">
-		<li><a class="inactive" title="oVirt Home" href="./index.html">Home</a></li>
+		<li><a class="inactive" title="Deltacloud Home" href="./index.html">Home</a></li>
+		<li><a class="inactive" title="Tools" href="./tools.html">Tools</a></li>			
 		<li><a class="inactive" title="Get the latest releases" href="./download.html">Download</a></li>
+
 		<li><a class="inactive" title="Information about design/development process" href="./contribute.html">Contribute</a></li>
 		<li><a class="active" title="Project documentation" href="./documentation.html">Documentation</a></li>
 	  </ul>
@@ -37,14 +43,9 @@
     </div>
 	<div id ="subnavigation">
 	<div id="submenu" class="container">
-	  <ul class="l1">
-	    <li><a class="inactive" title="#" href="documentation.html">Overview</a></li>
-	    <li><a class="inactive" title="#" href="api.html">REST API</a></li>
-	    <li><a class="inactive" title="#" href="client-ruby.html">Ruby Client</a></li>
-	    <li><a class="inactive" title="#" href="drivers.html">Drivers</a></li>
-	    <li><a class="inactive" title="#" href="framework.html">Framework</a></li>
 
-	  </ul>
+          $DOC_NAV$
+
 	</div>
 	</div>
  
@@ -62,6 +63,7 @@
     </p>
       <dl id="p1">
         <dt><a href="http://augeas.net/">Augeas</a></dt>
+
         <dd><span>A configuration editing tool and API</span></dd>
         <dt><a href="http://libvirt.org/">libvirt</a></dt>
         <dd><span>The open source virtualization API</span></dd>
@@ -69,6 +71,7 @@
 
       <dl id="p2">
         <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+
         <dd>OS provisioning and profile management</dd>
         <dt><a href="http://libguestfs.org/">virt-v2v</a></dt>
         <dd><span>Migrate guests from one hypervisor to another</span></dd>
@@ -76,6 +79,7 @@
       <dl id="p3">
 
         <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+
         <dd><span>Identity, policy and audit management</span></dd>
         <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
         <dd><span>Virtualization management from the desktop</span></dd>
@@ -84,5 +88,7 @@
   	</div>
 
     </div>
+
 </body>
 </html>
+

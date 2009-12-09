@@ -8,6 +8,14 @@ bin_dir    = File.dirname(__FILE__) + '/bin'
 skin       = File.dirname(__FILE__) + '/skin/skin.html.tmpl'
 markdown   = bin_dir + '/Markdown.pl'
 
+DOC_PAGES = [
+  [ 'Overview',     'documentation' ],
+  [ 'REST API',     'api' ],
+  [ 'Ruby Client',  'client-ruby' ],
+  [ 'Drivers',      'drivers' ],
+  [ 'Framework',    'framework' ],
+]
+
 def create_toc(html)
   toc = %Q(<ul class="toc">\n)
   doc = Hpricot( html )
@@ -43,14 +51,29 @@ def make_anchor(text)
   anchor
 end
 
+def create_doc_nav(cur_page)
+  html = ''
+  html += %Q(<ul class="l1">\n)
+
+  DOC_PAGES.each do |page|
+    html += %Q(<li>\n)
+    html += %Q(  <a class="#{cur_page == page.last ? 'active' : 'inactive' }" href="#{page.last}.html">#{page.first}</a>\n)
+    html += %Q(</li>\n)
+  end
+
+  html += %Q(</ul>)
+end
+
+desc 'Generate documentation'
 task :default do
   FileUtils.mkdir_p( output_dir )
   Dir.chdir( docs_dir ) do
     Dir[ '*.mdown' ].each do |doc|
       html = `#{markdown} #{doc}`
       toc, html = create_toc( html )
+      doc_nav = create_doc_nav( File.basename( doc, '.mdown' ) )
       output = File.read( skin ) 
-      output.sub!( /\$REPLACE\$/, toc + html )
+      output.sub!( /\$REPLACE\$/, toc + html ).sub!( /\$DOC_NAV\$/, doc_nav )
       File.open( "#{output_dir}/#{File.basename(doc, '.mdown')}.html", 'w' ) {|f| f << output }
     end
   end

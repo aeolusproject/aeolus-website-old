@@ -5,24 +5,26 @@ a mock driver for testing without a cloud provider.
 
 - Amazon EC2
 - Red Hat Enterprise Virtualization Manager (RHEV-M)
+- Rackspace Cloud
+- RimuHosting Cloud
 
 ## Setting up the code
 
 To set up a given driver, currently, you must checkout the code
 for both the [framework](framework.html) and the drivers you wish to use.
 
-Check out the repositories side-by-side
+Check out the core repository
 
     deltacloud/
-      framework/
-      driver-ec/
-      driver-rhevm/
-      driver-mock/
-      driver-rackspace/
+      core/
 
-## Launch the framework
+## Launch the server
 
-To launch the framework, you must tell it which driver to use.  This can
+First, go into the server directory
+
+    cd server/
+
+To launch the server, you must tell it which driver to use.  This can
 be accomplished either through editing the `config/environment.rb` of the framework,
 or by setting the `$DRIVER` environment variable.
 
@@ -63,10 +65,12 @@ The actual RHEVM instance you are connecting to is controlled by
 the RHEVM.dll.config file which is referenced from the profile.ps1
 file located in My Documents/WindowsPowershell directory
 
-
 ### Rackspace Driver
 
-When using the Rackspace-cloud driver (Rackspace cloud used to be called "Mosso") - the password in a HTTP 401 challenge should be your API key, NOT your rackspace account password.
+When using the Rackspace-cloud driver (Rackspace cloud used to be called "Mosso") - the 
+password in a HTTP 401 challenge should be your API key, NOT your rackspace account password.
 (you can get the API-key, or generate a new one, from the rackspace console). 
 
+### RimuHosting
 
+Further details coming soon.

@@ -4,7 +4,7 @@
 }
 
 body {
-    background: #3a3a3a;    
+    background: #24292b;    
 }
 
 #main {
@@ -17,19 +17,30 @@ body {
     margin: 0;
     height: 106px;
     width: 100%;
-    background: #3e3e3e url(topbar-bg.png) repeat-x;
+    background: #6498c5 url(topbar-bg.png) no-repeat center;
     border: 0px;
+}
+
+#headerLogo {
+	display:block;
+	padding-top: 24px;
+}
+
+#headerLogo h1{
+	height: 37px;
+    width: 600px;
+    margin: 8px 0 0 0;
+    text-indent:-9999px;
+    background: url(logo-wide.png) no-repeat;
+    display: inline-block; 
+}
+
+#headerLogo a {  
+	text-decoration: none;
 }
 
 #headerLogo a:focus {  
 	outline: none; 
-}
-
-#logo {
-    background: url(logo.png);
-	display:block;
-	height: 105px;
-    width: 153px;
 }
 
 
@@ -64,9 +75,9 @@ body {
 /*=====  Main nav styles  =====*/
 
 #navigation {
-	background: #405560 url(navbarbg.png) repeat-x;
-	border-bottom:1px solid #1c272d;
-	border-top:1px solid #506f80;
+	background: #24292b url(navbarbg.png) repeat-x;
+	border-bottom:1px solid #d1dee4;
+	border-top:1px solid #074665;
 }
 
 #menu {
@@ -96,7 +107,7 @@ body {
 }
 
 #menu ul li a:hover {
-	background:#356781 none repeat scroll 0 0;
+	background:#5a1c1d none repeat scroll 0 0;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 
@@ -104,7 +115,7 @@ body {
 
 #menu ul.l0 li .active {
     color:#FFF;
-    background: #4a8fb3;
+    background: #0d84bd;
     padding: 6px 12px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -147,8 +158,8 @@ body {
 
 pre {
     font-size: 1.2em;
-    border: 1px dashed #043582;
-    background: #d1dae6;
+    border: 1px dashed #cc0000;
+    background: #dce9e7;
     color: black;
     padding: 1em;
     margin-bottom: 1em;
@@ -172,6 +183,12 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
     text-decoration: inherit;
 }
 
+li > h1 a, li > h2 a, li > h3 a, li > h4 a, li > h5 a { /* When headings are links that are in a list, they will be styled as links. */
+    color: #026fbd;
+    text-decoration: inherit;
+}
+
+
 #changelog .author {
     color: #3c857c;
     font-weight: bold;
@@ -189,13 +206,13 @@ p.image {
     clear: both;
     position: relative;
     border: 0px;
-    background: #3a3a3a;
+    background: #24292b;
     height: 180px;
 }
 
 /* This is hidden from IE <= 6 because it can't do transparency */
 body > #footer {
-    background: #3a3a3a url(footer_pattern.png) repeat-x;
+    background: #24292b url(footer_pattern.png) repeat-x;
 }
 
 /* This is hidden from IE <= 6 because it can't do transparency */
@@ -245,4 +262,8 @@ head:first-child+body #projects dl {
     color: white;
     text-decoration: inherit;
     font-weight: bold;
+}
+
+ul.toc ul {
+    margin-bottom: 0em;
 }
