@@ -7,6 +7,7 @@ a mock driver for testing without a cloud provider.
 - Red Hat Enterprise Virtualization Manager (RHEV-M)
 - Rackspace Cloud
 - RimuHosting Cloud
+- OpenNebula
 
 ## Setting up the code
 
@@ -54,9 +55,9 @@ page at Amazon AWS.
 
 ### RHEV-M Driver
 
-The RHEV-M driver needs to be installed on a Windows machine which has the RHEV-M
-Powershell API installed and configured. Assuming the directory structure above is
-followed, you should copy the file 
+The RHEV-M driver needs to be installed on a Windows machine which has the
+RHEV-M Powershell API installed and configured. Assuming the directory
+structure above is followed, you should copy the file
 deltacloud/deltacloud-driver-rhevm/config/rhevm_config.yaml.EXAMPLE to be
 rhevm_config.yaml and edit the file woith the domain you are logging into.
 The username and pasword is provided via the API.
@@ -67,10 +68,20 @@ file located in My Documents/WindowsPowershell directory
 
 ### Rackspace Driver
 
-When using the Rackspace-cloud driver (Rackspace cloud used to be called "Mosso") - the 
-password in a HTTP 401 challenge should be your API key, NOT your rackspace account password.
-(you can get the API-key, or generate a new one, from the rackspace console). 
+When using the Rackspace-cloud driver (Rackspace cloud used to be called
+"Mosso") - the password in a HTTP 401 challenge should be your API key, NOT
+your rackspace account password.  (you can get the API-key, or generate a
+new one, from the rackspace console).
 
 ### RimuHosting
 
 Further details coming soon.
+
+### OpenNebula
+
+When using the [OpenNebula](http://www.opennebula.org/) driver, the
+credentials passed in response to the HTTP 401 authentication challenge
+should be your OpenNebula user and password.
+
+The address, on which the OCCI server is listening, needs to be defined in
+an environment variable called OCCI_URL.
