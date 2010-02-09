@@ -1,0 +1,152 @@
+This is a getting started guide for working with Deltacloud.  It's
+intended for people who want to get deltacloud up and running for
+development purposes.  If you want to just install and run deltacloud,
+please use the packages provided by your distribution.
+
+How the deltacloud pieces fit together
+--------------------------------------
+Deltacloud consists of 4 main pieces: the deltacloud aggregator, the
+deltacloud Web User Interface (WUI), the deltacloud drivers, and
+the deltacloud API.  The architecture loosely looks like the
+picture below:
+
+   ############
+ ##            ##   Native API                  deltacloud
+#     Cloud      #  (i.e. EC2)  +------------+     API      +------------+
+#    Provider    # <----------> | deltacloud | <----------> | deltacloud |
+#   (i.e. EC2)   #              |   driver   |              |  API user  |
+ ##            ##               +------------+              +------------+
+   ###########
+                                    ^
+                                    |  deltacloud API
+                                    |
+                                    \/
+                  internal                  deltacloud
++------------+      API     +------------+     API      +------------+
+| deltacloud | <----------> | deltacloud | <----------> | deltacloud |
+|    WUI     |              | aggregator |              |  API user  |
++------------+              +------------+              +------------+
+
+In words, what the above picture means is that you have one or more
+deltacloud drivers running that translate the deltacloud API into
+the native API that the backend cloud speaks (if a backend cloud
+speaks deltacloud API natively, then this isn't necessary).  Once
+the driver is in place, then a deltacloud API user can talk to the
+backend cloud using the deltacloud API.  One of the deltacloud API
+users is the deltacloud aggregator, which can be used to aggregate
+disparate backend clouds and make business logic decisions about
+which particular cloud an instance should start in.  The deltacloud
+aggregator speaks to the deltacloud WUI, which provides a
+user-friendly web user interface for users.  The aggregator can
+also be accessed via the deltacloud API to support other
+user interfaces.
+
+Checking out the components
+---------------------------
+If you are reading this document, I assume you have already checked
+out the docs git repository.  Just in case you haven't, you should
+check out the following pieces:
+
+$ git clone git://git.fedorahosted.org/git/deltacloud/core.git/
+  - This is the "core" of deltacloud; it includes both the source code
+    for the deltacloud API, and the various drivers
+$ git clone git://git.fedorahosted.org/git/deltacloud/docs.git/
+  - Documentation for deltacloud (including this document)
+$ git clone git://git.fedorahosted.org/git/deltacloud/portal.git/
+  - The deltacloud aggregator code
+
+Installing packages
+-------------------
+In order to make the deltacloud components work, you'll need to
+install at least the following packages (on Fedora 12: your distro's
+packages may vary):
+
+rubygem-rails
+rubygem-daemons
+rubygem-gettext_rails
+postgresql
+postgresql-server
+ruby-postgres
+rubygem-compass (this is not yet in Fedora, so you'll have to gem install)
+rubygem-haml (this is not yet in Fedora, so you'll have to gem install)
+
+Postgresql database setup
+-------------------------
+Once you have the proper packages installed you have to setup the
+postgresql database.  As root:
+
+# /sbin/service postgresql initdb
+# /sbin/service postgresql start
+# su - postgres
+$ psql
+postgres=# CREATE USER dcloud WITH PASSWORD 'v23zj59an' CREATEDB;
+postgres=# \q
+$ exit
+
+Now you need to edit the pg_hba.conf file
+(/var/lib/pgsql/data/pg_hba.conf on Fedora 12):
+
+--------- snip ------------------------------
+local all all trust
+host all all 127.0.0.1 255.255.255.255 trust
+host all all ::1/128 trust
+--------- snip ------------------------------
+
+If you are running on Fedora 12 *only*, to make rake
+succeed you need to append the following to
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/postgresql_adapter.rb:
+
+       def PGconn.quote_ident(name)
+           %("#{name}")
+       end
+
+(see http://github.com/mneumann/postgres-pr/issues/unreads#issue/1)
+
+Setting up the drivers
+----------------------
+For testing purposes we'll start with the mock driver.  Use of the
+rest of the drivers should be similar, although may require some
+additional gems be installed.
+
+$ cd path/to/deltacloud/core/server/bin
+$ ./deltacloudd mock
+
+Setting up the aggregator
+-------------------------
+Now we need to setup the aggregator (which includes the UI).
+As your normal user:
+
+$ cd path/to/deltacloud/portal/src
+$ rake db:create:all
+$ rake db:migrate
+$ rake db:test:prepare
+
+If all went well here, then the database should be ready for you
+to start up the aggregator.  We also have to set it up so that
+the aggregator can find the deltacloud API:
+
+$ ln -s /absolute/path/to/deltacloud/core/client \
+        /absolute/path/to/deltacloud/portal/src/vendor/plugins
+
+You can now run the UI:
+
+$ ./script/server -p 3001
+
+Which will start up the UI.  There is one more piece to start
+up before we can actually run, and that is taskomatic.
+
+Setting up taskomatic
+---------------------
+Taskomatic is the component that actually runs tasks in
+response to user action.  It lives inside the portal
+code and uses the same database schema as the portal.
+To run it, you just need to:
+
+$ cd path/to/deltacloud/portal/src/task-omatic
+$ RAILS_ENV=development ./taskomatic.rb -n
+
+Checking out the UI
+-------------------
+Now that you have all of the components running, you
+should be able to point your web browser at localhost:3000
+and see the UI.  Happy hacking!
