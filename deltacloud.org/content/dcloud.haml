@@ -1,0 +1,130 @@
+!!! Strict
+%html
+  %head
+    %title
+      Deltacloud
+    %meta{ :name => "keywords", :content => "" }
+    %meta{ :name => "description", :content => "" }
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    %link{ :href => "./styles/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
+    %link{ :href => "./styles/default.css", :title => "Main style", :rel => "StyleSheet", :type => "text/css" }
+    %link{ :href => "./styles/default-debug.css", :title => "Debug main style", :rel => "Alternate StyleSheet", :type => "text/css" }
+  %body
+    #header
+      .container
+        #headerLogo{ :onclick => "location.href='index.html';", :style => "cursor: pointer;" }
+          %h1
+            Deltacloud - Many clouds. One API. No problem.
+    #navigation
+      #menu.container
+        %ul.l0
+          %li
+            %a.inactive{ :href => "./index.html", :title => "Deltacloud Home" }
+              Home
+          %li
+            %a.inactive{ :href => "./tools.html", :title => "Tools" }
+              Tools
+          %li
+            %a.inactive{ :href => "./download.html", :title => "Get the latest releases" }
+              Download
+          %li
+            %a.inactive{ :href => "./contribute.html", :title => "Information about design/development process" }
+              Contribute
+          %li
+            %a.inactive{ :href => "./documentation.html", :title => "Project documentation" }
+              Documentation
+          %li
+            %a.inactive{ :href => "./page", :title => "Project wiki" }
+              Wiki
+    #main
+      #content-deltacloud.container
+        %div{ :style => "width:400px; margin:50px auto;" }
+          %object#FLVPlayer{ :height => "300", :classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :width => "400" }
+            %param{ :name => "movie", :value => "FLVPlayer_Progressive.swf" }
+            %param{ :name => "quality", :value => "high" }
+            %param{ :name => "wmode", :value => "opaque" }
+            /
+              <param name="scale" value="noscale">
+            %param{ :name => "salign", :value => "lt" }
+            %param{ :name => "FlashVars", :value => "&amp;MM_ComponentVersion=1&amp;skinName=Clear_Skin_1&amp;streamName=video/DCloud&amp;autoPlay=true&amp;autoRewind=false" }
+            %param{ :name => "swfversion", :value => "8,0,0,0" }
+            /
+              This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt.
+            %param{ :name => "expressinstall", :value => "Scripts/expressInstall.swf" }
+            /
+              Next object tag is for non-IE browsers. So hide it from IE using IECC.
+            /
+              [if !IE]>
+            %object{ :type => "application/x-shockwave-flash", :height => "300", :data => "FLVPlayer_Progressive.swf", :width => "400" }
+              /
+                <![endif]
+              %param{ :name => "quality", :value => "high" }
+              %param{ :name => "wmode", :value => "opaque" }
+              %param{ :name => "scale", :value => "noscale" }
+              %param{ :name => "salign", :value => "lt" }
+              %param{ :name => "FlashVars", :value => "&amp;MM_ComponentVersion=1&amp;skinName=Clear_Skin_1&amp;streamName=video/DCloud&amp;autoPlay=true&amp;autoRewind=false" }
+              %param{ :name => "swfversion", :value => "8,0,0,0" }
+              %param{ :name => "expressinstall", :value => "Scripts/expressInstall.swf" }
+              /
+                The browser displays the following alternative content for users with Flash Player 6.0 and older.
+              %div
+                %h4
+                  Content on this page requires a newer version of Adobe Flash Player.
+                %p
+                  %a{ :href => "http://www.adobe.com/go/getflashplayer" }
+                    %img{ :src => "http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif", :alt => "Get Adobe Flash player" }
+              /
+                [if !IE]>
+            /
+              <![endif]
+    #footer-deltacloud
+      #projects.container
+        %p#et
+          %a{ :href => "http://et.redhat.com/" }
+            %img{ :src => "./styles/et_logo.png", :alt => "A Red Hat Emerging Technology Project" }
+        %dl#p1
+          %dt
+            %a{ :href => "http://augeas.net/" }
+              Augeas
+          %dd
+            %span
+              A configuration editing tool and API
+          %dt
+            %a{ :href => "http://libvirt.org/" }
+              libvirt
+          %dd
+            %span
+              The open source virtualization API
+        %dl#p2
+          %dt
+            %a{ :href => "http://fedorahosted.org/cobbler/" }
+              Cobbler
+          %dd
+            OS provisioning and profile management
+          %dt
+            %a{ :href => "http://libguestfs.org/" }
+              virt-v2v
+          %dd
+            %span
+              Migrate guests from one hypervisor to another
+        %dl#p3
+          %dt
+            %a{ :href => "http://freeipa.org/" }
+              FreeIPA
+          %dd
+            %span
+              Identity, policy and audit management
+          %dt
+            %a{ :href => "http://virt-manager.org/" }
+              Virtual Machine Manager
+          %dd
+            %span
+              Virtualization management from the desktop
+    %script{ :type => "text/javascript" }
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    %script{ :type => "text/javascript" }
+      try {
+      var pageTracker = _gat._getTracker("UA-10510561-1");
+      pageTracker._trackPageview();
+      } catch(err) {}

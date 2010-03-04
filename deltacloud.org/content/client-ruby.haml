@@ -1,0 +1,290 @@
+!!! Strict
+%html
+  %head
+    %title
+      Deltacloud - Documentation
+    %meta{ :name => "keywords", :content => "" }
+    %meta{ :name => "description", :content => "" }
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    %link{ :href => "./styles/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
+    %link{ :href => "./styles/default.css", :title => "Main style", :rel => "StyleSheet", :type => "text/css" }
+    %link{ :href => "./styles/default-debug.css", :title => "Debug main style", :rel => "Alternate StyleSheet", :type => "text/css" }
+  %body
+    #header
+      .container
+        #headerLogo{ :onclick => "location.href='index.html';", :style => "cursor: pointer;" }
+          %h1
+            Deltacloud - Many clouds. One API. No problem.
+    #navigation
+      #menu.container
+        %ul.l0
+          %li
+            %a.inactive{ :href => "./index.html", :title => "Deltacloud Home" }
+              Home
+          %li
+            %a.inactive{ :href => "./tools.html", :title => "Tools" }
+              Tools
+          %li
+            %a.inactive{ :href => "./download.html", :title => "Get the latest releases" }
+              Download
+          %li
+            %a.inactive{ :href => "./contribute.html", :title => "Information about design/development process" }
+              Contribute
+          %li
+            %a.active{ :href => "./documentation.html", :title => "Project documentation" }
+              Documentation
+          %li
+            %a.inactive{ :href => "./page", :title => "Project wiki" }
+              Wiki
+    #subnavigation
+      #submenu.container
+        %ul.l1
+          %li
+            %a.inactive{ :href => "documentation.html" }
+              Overview
+          %li
+            %a.inactive{ :href => "api.html" }
+              REST API
+          %li
+            %a.active{ :href => "client-ruby.html" }
+              Ruby Client
+          %li
+            %a.inactive{ :href => "drivers.html" }
+              Drivers
+          %li
+            %a.inactive{ :href => "framework.html" }
+              Framework
+    #main
+      #content-deltacloud.container
+        %ul.toc
+          %li
+            %a{ :href => "#basics" }
+              Basics
+          %li
+            %a{ :href => "#connecting_to_a_deltacloud_provider" }
+              Connecting to a Deltacloud provider
+          %li
+            %a{ :href => "#listing_realms" }
+              Listing realms
+          %li
+            %a{ :href => "#listing_flavors" }
+              Listing flavors
+          %li
+            %a{ :href => "#listing_images" }
+              Listing images
+          %li
+            %a{ :href => "#listing_instances" }
+              Listing instances
+          %li
+            %a{ :href => "#launching_instances" }
+              Launching instances
+          %li
+            %a{ :href => "#manipulating_instances" }
+              Manipulating instances
+        %h1
+          Deltacloud Client (Ruby)
+        %p
+          The Deltacloud project includes a Ruby client.  Other language-bindings
+          are possible and will be supported soon.  The client aims to insulate
+          users from having to deal with HTTP and REST directly.
+        %p
+          Each resource type has an associated model to ease usage.  Where
+          resource reference other resources, natural navigation across the
+          object model is possible.
+        %p
+          For example
+        %pre
+          %code
+            puts instance.image.name
+            puts instance.flavor.architecture
+        %h2
+          %a{ :name => "basics" }
+            Basics
+        %p
+          To use the client, you must require
+          %code
+            deltacloud
+          \.
+        %pre
+          %code
+            require 'deltacloud'
+        %h2
+          %a{ :name => "connecting_to_a_deltacloud_provider" }
+            Connecting to a Deltacloud provider
+        %pre
+          %code
+            require 'deltacloud'
+
+            api_url      = 'http://fancycloudprovider.com/api'
+            api_name     = 'larry'
+            api_password = 'swordfish'
+
+            client = DeltaCloud.new( api_url, api_name, api_password )
+
+            \# work with client here
+        %p
+          In addition to creating a client, operations may occur within a block
+          included on the initialization
+        %pre
+          %code
+            DeltaCloud.new( api_url, api_name, api_password ) do |client|
+            \# work with client here
+            end
+        %p
+          In the event of a failure, any underlying HTTP transport exceptions
+          will be thrown all the way out to the caller.
+        %h2
+          %a{ :name => "listing_realms" }
+            Listing realms
+        %p
+          You may retrieve a complete list of realms available to you
+        %pre
+          %code
+            realms = client.realms
+        %p
+          You may retrieve a specific realm by its identifier
+        %pre
+          %code
+            realm = client.realm( 'us' )
+        %h2
+          %a{ :name => "listing_flavors" }
+            Listing flavors
+        %p
+          You may retrieve a complete list of flavors available for launching
+          machines
+        %pre
+          %code
+            flavors = client.flavors
+        %p
+          You may filter flavors by architecture
+        %pre
+          %code
+            flavors = client.flavors( :architecture=&gt;'x86_64' )
+        %p
+          You may retrieve a specific flavor by its identifier
+        %pre
+          %code
+            flavor = client.flavor( 'm1-small' )
+        %h2
+          %a{ :name => "listing_images" }
+            Listing images
+        %p
+          You may retrieve a complete list of images
+        %pre
+          %code
+            images = client.images
+        %p
+          You may retrieve a list of images owned by the currently authenticated
+          user
+        %pre
+          %code
+            images = client.images( :owner_id=&gt;:self )
+        %p
+          You may retrieve a list of images visible to you but owned by a specific
+          user
+        %pre
+          %code
+            images = client.images( :owner_id=&gt;'daryll' )
+        %p
+          You may retrieve a specific image by its identifier
+        %pre
+          %code
+            image = client.image( 'ami-8675309' )
+        %h2
+          %a{ :name => "listing_instances" }
+            Listing instances
+        %p
+          You may retrieve a list of all instances visible to you
+        %pre
+          %code
+            instances = client.instances
+        %p
+          You may retrieve a specific instance by its identifier
+        %pre
+          %code
+            instance = client.instance( 'i-90125' )
+        %h2
+          %a{ :name => "launching_instances" }
+            Launching instances
+        %p
+          An instance may be launched using just an image identifier
+        %pre
+          %code
+            image = client.image( 'ami-8675309' )
+            instance = client.create_instance( image.id )
+        %p
+          Optionally, a flavor or realm may be specified
+        %pre
+          %code
+            instance = client.create_instance( image.id, :flavor=&gt;'m1-small', :realm=&gt;'us' )
+        %h2
+          %a{ :name => "manipulating_instances" }
+            Manipulating instances
+        %p
+          Given an instance, depending on its state, various actions
+          %em
+            may
+          be available.
+        %p
+          To determine what's available, the
+          %code
+            instance#available_actions
+          method may be used.
+        %pre
+          %code
+            instance.available_actions # [ 'reboot', 'stop' ]
+        %p
+          For a valid action, the method matching the action with an exclamation point may be called.
+        %pre
+          %code
+            instance.reboot!
+        %p
+          Upon invoking an action, the instance will refresh its contents, in case the state has changed.
+          To determine later if the state has changed again, the instance must be refetched using
+          the
+          %code
+            client.instance(...)
+          method.
+    #footer-deltacloud
+      #projects.container
+        %p#et
+          %a{ :href => "http://et.redhat.com/" }
+            %img{ :src => "./styles/et_logo.png", :alt => "A Red Hat Emerging Technology Project" }
+        %dl#p1
+          %dt
+            %a{ :href => "http://augeas.net/" }
+              Augeas
+          %dd
+            %span
+              A configuration editing tool and API
+          %dt
+            %a{ :href => "http://libvirt.org/" }
+              libvirt
+          %dd
+            %span
+              The open source virtualization API
+        %dl#p2
+          %dt
+            %a{ :href => "http://cobbler.et.redhat.com/" }
+              Cobbler
+          %dd
+            OS provisioning and profile management
+          %dt
+            %a{ :href => "http://libguestfs.org/" }
+              virt-v2v
+          %dd
+            %span
+              Migrate guests from one hypervisor to another
+        %dl#p3
+          %dt
+            %a{ :href => "http://freeipa.org/" }
+              FreeIPA
+          %dd
+            %span
+              Identity, policy and audit management
+          %dt
+            %a{ :href => "http://virt-manager.org/" }
+              Virtual Machine Manager
+          %dd
+            %span
+              Virtualization management from the desktop

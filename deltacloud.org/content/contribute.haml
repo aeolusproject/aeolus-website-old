@@ -1,0 +1,183 @@
+!!! Strict
+%html
+  %head
+    %title
+      Deltacloud - Contribute
+    %meta{ :name => "keywords", :content => "" }
+    %meta{ :name => "description", :content => "" }
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    %link{ :href => "./styles/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
+    %link{ :href => "./styles/default.css", :title => "Main style", :rel => "StyleSheet", :type => "text/css" }
+    %link{ :href => "./styles/default-debug.css", :title => "Debug main style", :rel => "Alternate StyleSheet", :type => "text/css" }
+  %body
+    #header
+      .container
+        #headerLogo{ :onclick => "location.href='index.html';", :style => "cursor: pointer;" }
+          %h1
+            Deltacloud - Many clouds. One API. No problem.
+    #navigation
+      #menu.container
+        %ul.l0
+          %li
+            %a.inactive{ :href => "./index.html", :title => "Deltacloud Home" }
+              Home
+          %li
+            %a.inactive{ :href => "./tools.html", :title => "Tools" }
+              Tools
+          %li
+            %a.inactive{ :href => "./download.html", :title => "Get the latest releases" }
+              Download
+          %li
+            %a.active{ :href => "./contribute.html", :title => "Information about design/development process" }
+              Contribute
+          %li
+            %a.inactive{ :href => "./documentation.html", :title => "Project documentation" }
+              Documentation
+          %li
+            %a.inactive{ :href => "./page", :title => "Project wiki" }
+              Wiki
+    #main
+      #content-deltacloud.container
+        %h1
+          Contribute
+        %p
+          All development of Deltacloud takes place in the open. Communication is run through the mailing list and all source code changes are tracked publicly. We have two lists, one for
+          %a.ext-link{ :href => "https://fedorahosted.org/mailman/listinfo/deltacloud-users" }
+            %span.icon
+              user questions
+          , and one for
+          %a.ext-link{ :href => "https://fedorahosted.org/mailman/listinfo/deltacloud-devel" }
+            %span.icon
+              development discussions and patches
+        %p
+          You can also join us on the Freenode IRC channel #deltacloud
+        %p
+          Deltacloud developers are generally available on the IRC channel, but if you do not get a response to a posted question on the IRC channel please ask on the
+          %a.ext-link{ :href => "https://fedorahosted.org/mailman/listinfo/deltacloud-users" }
+            %span.icon
+              user mailing list
+          \.
+        %p
+          Bugs are tracked in
+          %a.ext-link{ :href => "https://fedorahosted.org/deltacloud/report" }
+            %span.icon
+              here
+          for the time being, though we may move them to Bugzilla at some point.
+        %p
+          If you wish to view the gitweb interface of the various components of Deltacloud, they can be found here:
+        %ul
+          %li
+            %a{ :href => "http://git.fedorahosted.org/git/?p=deltacloud/client-ruby.git;a=summary" }
+              client
+          %li
+            %a{ :href => "http://git.fedorahosted.org/git/?p=deltacloud/framework.git;a=summary" }
+              framework
+          %li
+            %a{ :href => "http://git.fedorahosted.org/git/?p=deltacloud/driver-mock.git;a=summary" }
+              mock driver
+          %li
+            %a{ :href => "http://git.fedorahosted.org/git/?p=deltacloud/driver-rhevm.git;a=summary" }
+              rhevm driver
+          %li
+            %a{ :href => "http://git.fedorahosted.org/git/?p=deltacloud/driver-ec2.git;a=summary" }
+              ec2 driver
+          %li
+            %a{ :href => "http://git.fedorahosted.org/git/?p=deltacloud/driver-rackspace.git;a=summary" }
+              rackspace driver
+          %li
+            %a{ :href => "http://git.fedorahosted.org/git/?p=deltacloud/docs.git;a=summary" }
+              docs
+          %li
+            %a{ :href => "http://git.fedorahosted.org/git/?p=deltacloud/portal.git;a=summary" }
+              portal
+        %p
+          If you would like to contribute code, this is how you get the component you need:
+        %ul
+          %li
+            git clone
+            %a.ext-link{ :href => "git://git.fedorahosted.org/git/deltacloud/client-ruby.git/" }
+              git://git.fedorahosted.org/git/deltacloud/client-ruby.git/
+          %li
+            git clone
+            %a{ :href => "git://git.fedorahosted.org/git/deltacloud/framework.git/" }
+              git://git.fedorahosted.org/git/deltacloud/framework.git/
+          %li
+            git clone
+            %a{ :href => "git://git.fedorahosted.org/git/deltacloud/driver-mock.git/" }
+              git://git.fedorahosted.org/git/deltacloud/driver-mock.git/
+          %li
+            git clone
+            %a{ :href => "git://git.fedorahosted.org/git/deltacloud/driver-rhevm.git/" }
+              git://git.fedorahosted.org/git/deltacloud/driver-rhevm.git/
+          %li
+            git clone
+            %a{ :href => "git://git.fedorahosted.org/git/deltacloud/driver-ec2.git/" }
+              git://git.fedorahosted.org/git/deltacloud/driver-ec2.git/
+          %li
+            git clone
+            %a{ :href => "git://git.fedorahosted.org/git/deltacloud/driver-rackspace.git/" }
+              git://git.fedorahosted.org/git/deltacloud/driver-rackspace.git/
+          %li
+            git clone
+            %a{ :href => "git://git.fedorahosted.org/git/deltacloud/docs.git/" }
+              git://git.fedorahosted.org/git/deltacloud/docs.git/
+          %li
+            git clone
+            %a{ :href => "git://git.fedorahosted.org/git/deltacloud/portal.git/" }
+              git://git.fedorahosted.org/git/deltacloud/portal.git/
+        %p
+          Patches are very welcome. Please send them to the
+          %a{ :href => "https://fedorahosted.org/mailman/listinfo/deltacloud-devel" }
+            development list
+          \.  Patches should be generated with 'git format-patch' and sent to the list with 'git send-email'.
+    #footer-deltacloud
+      #projects.container
+        %p#et
+          %a{ :href => "http://et.redhat.com/" }
+            %img{ :src => "./styles/et_logo.png", :alt => "A Red Hat Emerging Technology Project" }
+        %dl#p1
+          %dt
+            %a{ :href => "http://augeas.net/" }
+              Augeas
+          %dd
+            %span
+              A configuration editing tool and API
+          %dt
+            %a{ :href => "http://libvirt.org/" }
+              libvirt
+          %dd
+            %span
+              The open source virtualization API
+        %dl#p2
+          %dt
+            %a{ :href => "http://fedorahosted.org/cobbler/" }
+              Cobbler
+          %dd
+            OS provisioning and profile management
+          %dt
+            %a{ :href => "http://libguestfs.org/" }
+              virt-v2v
+          %dd
+            %span
+              Migrate guests from one hypervisor to another
+        %dl#p3
+          %dt
+            %a{ :href => "http://freeipa.org/" }
+              FreeIPA
+          %dd
+            %span
+              Identity, policy and audit management
+          %dt
+            %a{ :href => "http://virt-manager.org/" }
+              Virtual Machine Manager
+          %dd
+            %span
+              Virtualization management from the desktop
+    %script{ :type => "text/javascript" }
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    %script{ :type => "text/javascript" }
+      try {
+      var pageTracker = _gat._getTracker("UA-10510561-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
