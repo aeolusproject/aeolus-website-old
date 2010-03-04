@@ -1,0 +1,270 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <title>Deltacloud - Documentation</title>
+
+
+
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="shortcut icon" href="./styles/favicon.ico" type="image/x-icon">
+  <link rel="StyleSheet" type="text/css" href="./styles/default.css" title="Main style">
+
+  <link rel="Alternate StyleSheet" type="text/css" href="./styles/default-debug.css" title="Debug main style">
+
+</head>
+
+
+<body>
+  <div id="header">
+       <div class="container">
+       <div id="headerLogo" style="cursor: pointer;" onclick="location.href='index.html';">
+       <h1>Deltacloud - Many clouds. One API. No problem.</h1>
+       </div>
+
+       </div>
+  </div>
+
+    <div id="navigation">
+
+    <div id="menu" class="container">
+      <ul class="l0">
+               <li><a class="inactive" title="Deltacloud Home" href="./index.html">Home</a></li>
+               <li><a class="inactive" title="Tools" href="./tools.html">Tools</a></li>
+               <li><a class="inactive" title="Get the latest releases" href="./download.html">Download</a></li>
+               <li><a class="inactive" title="Information about design/development process" href="./contribute.html">Contribute</a></li>
+               <li><a class="active" title="Project documentation" href="./documentation.html">Documentation</a></li>
+               <li><a class="inactive" title="Project wiki" href="./page">Wiki</a></li>
+         </ul>
+
+    </div>
+    </div>
+       <div id ="subnavigation">
+       <div id="submenu" class="container">
+
+          <ul class="l1">
+<li>
+  <a class="inactive" href="documentation.html">Overview</a>
+</li>
+<li>
+  <a class="inactive" href="api.html">REST API</a>
+</li>
+<li>
+  <a class="active" href="client-ruby.html">Ruby Client</a>
+</li>
+<li>
+  <a class="inactive" href="drivers.html">Drivers</a>
+</li>
+<li>
+  <a class="inactive" href="framework.html">Framework</a>
+</li>
+</ul>
+
+       </div>
+       </div>
+
+       <div id="main">
+    <div id="content-deltacloud" class="container">
+      <ul class="toc">
+  <li><a href="#basics">Basics</a>
+  </li>
+  <li><a href="#connecting_to_a_deltacloud_provider">Connecting to a Deltacloud provider</a>
+  </li>
+  <li><a href="#listing_realms">Listing realms</a>
+  </li>
+  <li><a href="#listing_flavors">Listing flavors</a>
+  </li>
+  <li><a href="#listing_images">Listing images</a>
+  </li>
+  <li><a href="#listing_instances">Listing instances</a>
+  </li>
+  <li><a href="#launching_instances">Launching instances</a>
+  </li>
+  <li><a href="#manipulating_instances">Manipulating instances</a>
+  </li>
+</ul>
+<h1>Deltacloud Client (Ruby)</h1>
+
+<p>The Deltacloud project includes a Ruby client.  Other language-bindings
+are possible and will be supported soon.  The client aims to insulate
+users from having to deal with HTTP and REST directly.</p>
+
+<p>Each resource type has an associated model to ease usage.  Where
+resource reference other resources, natural navigation across the
+object model is possible.</p>
+
+<p>For example</p>
+
+<pre><code>puts instance.image.name
+puts instance.flavor.architecture
+</code></pre>
+
+<h2><a name="basics">Basics</a></h2>
+
+<p>To use the client, you must require <code>deltacloud</code>.</p>
+
+<pre><code>require 'deltacloud'
+</code></pre>
+
+<h2><a name="connecting_to_a_deltacloud_provider">Connecting to a Deltacloud provider</a></h2>
+
+<pre><code>require 'deltacloud'
+
+api_url      = 'http://fancycloudprovider.com/api'
+api_name     = 'larry'
+api_password = 'swordfish'
+
+client = DeltaCloud.new( api_url, api_name, api_password )
+
+# work with client here
+</code></pre>
+
+<p>In addition to creating a client, operations may occur within a block
+included on the initialization</p>
+
+<pre><code>DeltaCloud.new( api_url, api_name, api_password ) do |client|
+  # work with client here
+end
+</code></pre>
+
+<p>In the event of a failure, any underlying HTTP transport exceptions
+will be thrown all the way out to the caller.</p>
+
+<h2><a name="listing_realms">Listing realms</a></h2>
+
+<p>You may retrieve a complete list of realms available to you</p>
+
+<pre><code>realms = client.realms
+</code></pre>
+
+<p>You may retrieve a specific realm by its identifier</p>
+
+<pre><code>realm = client.realm( 'us' )
+</code></pre>
+
+<h2><a name="listing_flavors">Listing flavors</a></h2>
+
+<p>You may retrieve a complete list of flavors available for launching
+machines</p>
+
+<pre><code>flavors = client.flavors
+</code></pre>
+
+<p>You may filter flavors by architecture</p>
+
+<pre><code>flavors = client.flavors( :architecture=&gt;'x86_64' )
+</code></pre>
+
+<p>You may retrieve a specific flavor by its identifier</p>
+
+<pre><code>flavor = client.flavor( 'm1-small' )
+</code></pre>
+
+<h2><a name="listing_images">Listing images</a></h2>
+
+<p>You may retrieve a complete list of images</p>
+
+<pre><code>images = client.images
+</code></pre>
+
+<p>You may retrieve a list of images owned by the currently authenticated
+user</p>
+
+<pre><code>images = client.images( :owner_id=&gt;:self )
+</code></pre>
+
+<p>You may retrieve a list of images visible to you but owned by a specific
+user</p>
+
+<pre><code>images = client.images( :owner_id=&gt;'daryll' )
+</code></pre>
+
+<p>You may retrieve a specific image by its identifier</p>
+
+<pre><code>image = client.image( 'ami-8675309' )
+</code></pre>
+
+<h2><a name="listing_instances">Listing instances</a></h2>
+
+<p>You may retrieve a list of all instances visible to you</p>
+
+<pre><code>instances = client.instances
+</code></pre>
+
+<p>You may retrieve a specific instance by its identifier</p>
+
+<pre><code>instance = client.instance( 'i-90125' )
+</code></pre>
+
+<h2><a name="launching_instances">Launching instances</a></h2>
+
+<p>An instance may be launched using just an image identifier</p>
+
+<pre><code>image = client.image( 'ami-8675309' )
+instance = client.create_instance( image.id )
+</code></pre>
+
+<p>Optionally, a flavor or realm may be specified</p>
+
+<pre><code>instance = client.create_instance( image.id, :flavor=&gt;'m1-small', :realm=&gt;'us' )
+</code></pre>
+
+<h2><a name="manipulating_instances">Manipulating instances</a></h2>
+
+<p>Given an instance, depending on its state, various actions <em>may</em> be available.</p>
+
+<p>To determine what's available, the <code>instance#available_actions</code> method may be used.</p>
+
+<pre><code>instance.available_actions # [ 'reboot', 'stop' ]
+</code></pre>
+
+<p>For a valid action, the method matching the action with an exclamation point may be called.</p>
+
+<pre><code>instance.reboot!
+</code></pre>
+
+<p>Upon invoking an action, the instance will refresh its contents, in case the state has changed.
+To determine later if the state has changed again, the instance must be refetched using
+the <code>client.instance(...)</code> method.</p>
+
+    </div>
+  </div>
+
+  <div id="footer-deltacloud">
+    <div id="projects" class="container">
+       <p id="et">
+      <a href="http://et.redhat.com/"><img src="./styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+
+    </p>
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+      </dl>
+
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+
+        <dd>OS provisioning and profile management</dd>
+        <dt><a href="http://libguestfs.org/">virt-v2v</a></dt>
+        <dd><span>Migrate guests from one hypervisor to another</span></dd>
+      </dl>
+      <dl id="p3">
+
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+      </dl>
+
+       </div>
+
+    </div>
+
+</body>
+</html>

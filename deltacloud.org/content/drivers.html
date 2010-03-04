@@ -1,0 +1,216 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <title>Deltacloud - Documentation</title>
+
+
+
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="shortcut icon" href="./styles/favicon.ico" type="image/x-icon">
+  <link rel="StyleSheet" type="text/css" href="./styles/default.css" title="Main style">
+
+  <link rel="Alternate StyleSheet" type="text/css" href="./styles/default-debug.css" title="Debug main style">
+
+</head>
+
+
+<body>
+  <div id="header">
+       <div class="container">
+       <div id="headerLogo" style="cursor: pointer;" onclick="location.href='index.html';">
+       <h1>Deltacloud - Many clouds. One API. No problem.</h1>
+       </div>
+
+       </div>
+  </div>
+
+    <div id="navigation">
+
+    <div id="menu" class="container">
+      <ul class="l0">
+               <li><a class="inactive" title="Deltacloud Home" href="./index.html">Home</a></li>
+               <li><a class="inactive" title="Tools" href="./tools.html">Tools</a></li>
+               <li><a class="inactive" title="Get the latest releases" href="./download.html">Download</a></li>
+               <li><a class="inactive" title="Information about design/development process" href="./contribute.html">Contribute</a></li>
+               <li><a class="active" title="Project documentation" href="./documentation.html">Documentation</a></li>
+               <li><a class="inactive" title="Project wiki" href="./page">Wiki</a></li>
+         </ul>
+
+    </div>
+    </div>
+       <div id ="subnavigation">
+       <div id="submenu" class="container">
+
+          <ul class="l1">
+<li>
+  <a class="inactive" href="documentation.html">Overview</a>
+</li>
+<li>
+  <a class="inactive" href="api.html">REST API</a>
+</li>
+<li>
+  <a class="inactive" href="client-ruby.html">Ruby Client</a>
+</li>
+<li>
+  <a class="active" href="drivers.html">Drivers</a>
+</li>
+<li>
+  <a class="inactive" href="framework.html">Framework</a>
+</li>
+</ul>
+
+       </div>
+       </div>
+
+       <div id="main">
+    <div id="content-deltacloud" class="container">
+      <ul class="toc">
+  <li><a href="#setting_up_the_code">Setting up the code</a>
+  </li>
+  <li><a href="#launch_the_server">Launch the server</a>
+    <ul>
+  <li><a href="#launch_the_server_ec2_driver">EC2 Driver</a>
+  <li><a href="#launch_the_server_rhev-m_driver">RHEV-M Driver</a>
+  <li><a href="#launch_the_server_rackspace_driver">Rackspace Driver</a>
+  <li><a href="#launch_the_server_rimuhosting">RimuHosting</a>
+  <li><a href="#launch_the_server_opennebula">OpenNebula</a>
+    </ul>
+  </li>
+</ul>
+<h1>Deltacloud Drivers</h1>
+
+<p>The Deltacloud project current delivers two functional drivers, plus
+a mock driver for testing without a cloud provider.</p>
+
+<ul>
+<li>Amazon EC2</li>
+<li>Red Hat Enterprise Virtualization Manager (RHEV-M)</li>
+<li>Rackspace Cloud</li>
+<li>RimuHosting Cloud</li>
+<li>OpenNebula</li>
+</ul>
+
+<h2><a name="setting_up_the_code">Setting up the code</a></h2>
+
+<p>To set up a given driver, currently, you must checkout the code
+for both the <a href="framework.html">framework</a> and the drivers you wish to use.</p>
+
+<p>Check out the core repository</p>
+
+<pre><code>deltacloud/
+  core/
+</code></pre>
+
+<h2><a name="launch_the_server">Launch the server</a></h2>
+
+<p>First, go into the server directory</p>
+
+<pre><code>cd server/
+</code></pre>
+
+<p>To launch the server, you must tell it which driver to use.  This can
+be accomplished either through editing the <code>config/environment.rb</code> of the framework,
+or by setting the <code>$DRIVER</code> environment variable.</p>
+
+<p>If adjusting <code>config/environment.rb</code> the <code>DEFAULT_DRIVER</code> variable should be set</p>
+
+<pre><code>DEFAULT_DRIVER=:rhevm
+</code></pre>
+
+<p>Even if set, it may still be overwritten by the <code>$DRIVER</code> environment variable
+which takes precendence.</p>
+
+<p>Once configured, simply launch <code>script/server</code> for the framework.</p>
+
+<pre><code>$ ./script/server
+</code></pre>
+
+<p>(Or using the <code>$DRIVER</code> variable)</p>
+
+<pre><code>$ DRIVER=ec2 ./script/server
+</code></pre>
+
+<h3><a name="launch_the_server_ec2_driver">EC2 Driver</a></h3>
+
+<p>When using the driver for Amazon EC2, the credentials passed in
+response to the HTTP 401 authentication challenge should be your
+<em>access_key</em> and <em>secret_access_key</em></p>
+
+<p>These credentials may be found on the <a href="http://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key">Access Identifiers</a>
+page at Amazon AWS.</p>
+
+<h3><a name="launch_the_server_rhev-m_driver">RHEV-M Driver</a></h3>
+
+<p>The RHEV-M driver needs to be installed on a Windows machine which has the
+RHEV-M Powershell API installed and configured. Assuming the directory
+structure above is followed, you should copy the file
+deltacloud/deltacloud-driver-rhevm/config/rhevm<em>config.yaml.EXAMPLE to be
+rhevm</em>config.yaml and edit the file woith the domain you are logging into.
+The username and pasword is provided via the API.</p>
+
+<p>The actual RHEVM instance you are connecting to is controlled by
+the RHEVM.dll.config file which is referenced from the profile.ps1
+file located in My Documents/WindowsPowershell directory</p>
+
+<h3><a name="launch_the_server_rackspace_driver">Rackspace Driver</a></h3>
+
+<p>When using the Rackspace-cloud driver (Rackspace cloud used to be called
+"Mosso") - the password in a HTTP 401 challenge should be your API key, NOT
+your rackspace account password.  (you can get the API-key, or generate a
+new one, from the rackspace console).</p>
+
+<h3><a name="launch_the_server_rimuhosting">RimuHosting</a></h3>
+
+<p>Further details coming soon.</p>
+
+<h3><a name="launch_the_server_opennebula">OpenNebula</a></h3>
+
+<p>When using the <a href="http://www.opennebula.org/">OpenNebula</a> driver, the
+credentials passed in response to the HTTP 401 authentication challenge
+should be your OpenNebula user and password.</p>
+
+<p>The address, on which the OCCI server is listening, needs to be defined in
+an environment variable called OCCI_URL.</p>
+
+    </div>
+  </div>
+
+  <div id="footer-deltacloud">
+    <div id="projects" class="container">
+       <p id="et">
+      <a href="http://et.redhat.com/"><img src="./styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+
+    </p>
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+      </dl>
+
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+
+        <dd>OS provisioning and profile management</dd>
+        <dt><a href="http://libguestfs.org/">virt-v2v</a></dt>
+        <dd><span>Migrate guests from one hypervisor to another</span></dd>
+      </dl>
+      <dl id="p3">
+
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+      </dl>
+
+       </div>
+
+    </div>
+
+</body>
+</html>
