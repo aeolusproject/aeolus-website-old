@@ -3,6 +3,7 @@ intended for people who want to get deltacloud up and running for
 development purposes.  If you want to just install and run deltacloud,
 please use the packages provided by your distribution.
 
+
 How the deltacloud pieces fit together
 --------------------------------------
 Deltacloud consists of 4 main pieces: the deltacloud aggregator, the
@@ -20,7 +21,7 @@ picture below:
                                     ^
                                     |  deltacloud API
                                     |
-                                    \/
+                                    v
                   internal                  deltacloud
 +------------+      API     +------------+     API      +------------+
 | deltacloud | <----------> | deltacloud | <----------> | deltacloud |
@@ -41,9 +42,10 @@ user-friendly web user interface for users.  The aggregator can
 also be accessed via the deltacloud API to support other
 user interfaces.
 
+
 Checking out the components
 ---------------------------
-If you are reading this document, I assume you have already checked
+If you are reading this document, we assume you have already checked
 out the docs git repository.  Just in case you haven't, you should
 check out the following pieces:
 
@@ -55,6 +57,16 @@ $ git clone git://git.fedorahosted.org/git/deltacloud/docs.git/
 $ git clone git://git.fedorahosted.org/git/deltacloud/portal.git/
   - The deltacloud aggregator code
 
+Switch the `docs` and `portal` repositories to the "next" branch:
+
+$ cd docs
+$ git checkout -t origin/next
+$ cd ../portal
+$ git checkout -t origin/next
+
+This will get you to the latest and greatest stuff.
+
+
 Installing packages
 -------------------
 In order to make the deltacloud components work, you'll need to
@@ -64,13 +76,41 @@ packages may vary):
 rubygem-rails
 rubygem-daemons
 rubygem-gettext_rails
-postgresql
-postgresql-server
-ruby-postgres
+rubygem-sqlite3-ruby
 rubygem-compass (this is not yet in Fedora, so you'll have to gem install)
 rubygem-haml (this is not yet in Fedora, so you'll have to gem install)
 
-Postgresql database setup
+If you want to develop using PostgreSQL database instead of the default SQLite,
+install these, too:
+
+ruby-postgres
+postgresql
+postgresql-server
+
+You will also need deltacloud-client gem. You can either install the packaged version:
+
+$ gem itstall deltacloud-client
+
+or build it yourself from the core.git repository:
+
+$ cd core/client
+$ gem build deltacloud-client.gemspec
+$ gem install deltacloud-client-*.gem
+
+
+Database
+--------
+For development purposes we're using SQLite database which is much easier to
+set up.
+
+However, we _strongly_ suggest using a more suitable replacement (such as
+PostgreSQL) in production.
+
+If you want to set up PostgreSQL, read the following section. SQLite users may
+skip it and continue with "Setting up the drivers".
+
+
+PostgreSQL database setup
 -------------------------
 Once you have the proper packages installed you have to setup the
 postgresql database.  As root:
@@ -102,6 +142,7 @@ succeed you need to append the following to
 
 (see http://github.com/mneumann/postgres-pr/issues/unreads#issue/1)
 
+
 Setting up the drivers
 ----------------------
 For testing purposes we'll start with the mock driver.  Use of the
@@ -109,41 +150,41 @@ rest of the drivers should be similar, although may require some
 additional gems be installed.
 
 $ cd path/to/deltacloud/core/server/bin
-$ ./deltacloudd mock
+$ ./deltacloudd -i mock
+
+This will run the deltacloud core server on port 3001.
+
 
 Setting up the aggregator
 -------------------------
 Now we need to setup the aggregator (which includes the UI).
 As your normal user:
 
-$ cd path/to/deltacloud/portal/src
-$ rake db:create:all
-$ rake db:migrate
-$ rake db:test:prepare
+
+For SQLite:
+    $ cd path/to/deltacloud/portal/src/config
+    $ mv database.sqlite database.yml
+    $ rake db:create:all
+    $ rake db:migrate
+    $ cd ../db
+
+    You should see the "development.sqlite" file there.
+
+For PostgreSQL:
+    $ cd path/to/deltacloud/portal/src
+    $ rake db:create:all
+    $ rake db:migrate
+    $ rake db:test:prepare
 
 If all went well here, then the database should be ready for you
-to start up the aggregator.  We also have to set it up so that
-the aggregator can find the deltacloud API:
-
-$ ln -s /absolute/path/to/deltacloud/core/client \
-        /absolute/path/to/deltacloud/portal/src/vendor/plugins
+to start up the aggregator.
 
 You can now run the UI:
 
-$ ./script/server -p 3001
+$ ./script/server
 
-Which will start up the UI.  There is one more piece to start
-up before we can actually run, and that is taskomatic.
+Which will start up the aggregator UI on port 3000.
 
-Setting up taskomatic
----------------------
-Taskomatic is the component that actually runs tasks in
-response to user action.  It lives inside the portal
-code and uses the same database schema as the portal.
-To run it, you just need to:
-
-$ cd path/to/deltacloud/portal/src/task-omatic
-$ RAILS_ENV=development ./taskomatic.rb -n
 
 Checking out the UI
 -------------------
