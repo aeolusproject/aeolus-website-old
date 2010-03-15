@@ -158,20 +158,30 @@ This will run the deltacloud core server on port 3001.
 Setting up the aggregator
 -------------------------
 Now we need to setup the aggregator (which includes the UI).
-As your normal user:
+As your user who will run the aggregator:
 
 
 For SQLite:
     $ cd path/to/deltacloud/portal/src/config
-    $ mv database.sqlite database.yml
+    $ cp database.sqlite database.yml
+
+    NOTE:
+    The .sqlite3 file can be put in any location you desire, 
+    just update the paths in database.yml to point to the correct location.  
+    Also, you will need to take the following 2 steps:
+    1. Run rake db:migrate to create the db file and set it to be owned by 
+       the user who will run the aggregator.
+    2. Make sure the dir that the above file lives in is also writable by this user.
+
     $ rake db:create:all
     $ rake db:migrate
-    $ cd ../db
+    $ cd <wherever you put it>/db
 
     You should see the "development.sqlite" file there.
 
 For PostgreSQL:
     $ cd path/to/deltacloud/portal/src
+    $ cp database.pg database.yml
     $ rake db:create:all
     $ rake db:migrate
     $ rake db:test:prepare
