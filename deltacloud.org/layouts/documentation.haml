@@ -42,7 +42,7 @@ filter:
           %li
             %a.inactive{ :href => "./page", :title => "Project wiki" }
               Wiki
-    <%= render(:partial => "documentation-menu", :locals => {:current_page => "#{@page.filename}.#{@page.extension}"} ) %>
+    <%= render(:partial => "submenu-documentation", :locals => {:current_page => "#{@page.filename}.#{@page.extension}"} ) %>
     #main
       #content-deltacloud.container
         <%= @content %>
