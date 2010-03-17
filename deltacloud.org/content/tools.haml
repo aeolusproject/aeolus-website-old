@@ -1,127 +1,38 @@
 ---
+title: Deltacloud - Tools
 extension: html
-filter:    erb
-filter:    haml
+filter:
+  - erb
+  - haml
 ---
-!!! Strict
-%html
-  %head
-    %title
-      Deltacloud - Tools
-    %meta{ :name => "keywords", :content => "" }
-    %meta{ :name => "description", :content => "" }
-    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
-    %link{ :href => "./styles/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
-    %link{ :href => "./styles/default.css", :title => "Main style", :rel => "StyleSheet", :type => "text/css" }
-    %link{ :href => "./styles/default-debug.css", :title => "Debug main style", :rel => "Alternate StyleSheet", :type => "text/css" }
-  %body
-    #header
-      .container
-        #headerLogo{ :onclick => "location.href='index.html';", :style => "cursor: pointer;" }
-          %h1
-            Deltacloud - Many clouds. One API. No problem.
-    #navigation
-      #menu.container
-        %ul.l0
-          %li
-            %a.inactive{ :href => "./index.html", :title => "Deltacloud Home" }
-              Home
-          %li
-            %a.active{ :href => "./tools.html", :title => "Tools" }
-              Tools
-          %li
-            %a.inactive{ :href => "./download.html", :title => "Get the latest releases" }
-              Download
-          %li
-            %a.inactive{ :href => "./contribute.html", :title => "Information about design/development process" }
-              Contribute
-          %li
-            %a.inactive{ :href => "./documentation.html", :title => "Project documentation" }
-              Documentation
-          %li
-            %a.inactive{ :href => "./page", :title => "Project wiki" }
-              Wiki
-    #main
-      #content-deltacloud.container
-        %h1
-          Tools
-        %ul
-          %li
-            %h2
-              %a{ :href => "./download.html" }
-                Deltacloud Portal
-            %p
-              Give your users a self-service window into your company's internal
-              and external clouds. Deltacloud Portal provides a user-friendly,
-              cross-platform UI in front of the Deltacloud API. With Deltacloud
-              Portal, your users can manage instances, keep track of available
-              images, migrate workloads from internal to external clouds, and
-              monitor their own cloud resource usage.
-          %li
-            %h2
-              %a{ :href => "./download.html" }
-                Deltacloud Proxy
-            %p
-              If you want to build your own cloud UI, Deltacloud Proxy gets you
-              halfway there. Deltacloud Proxy tracks your external and internal
-              cloud accounts and manages user authorization and resource limits;
-              your custom user interface does the rest.
-          %li
-            %h2
-              Your name here
-            %p
-              Do you have a tool to make Deltacloud more useful? Let us know at
-              %a{ :href => "https://fedorahosted.org/mailman/listinfo/deltacloud-devel" }
-                https://fedorahosted.org/mailman/listinfo/deltacloud-devel
-              and we'll post it here!
-    #footer-deltacloud
-      #projects.container
-        %p#et
-          %a{ :href => "http://et.redhat.com/" }
-            %img{ :src => "./styles/et_logo.png", :alt => "A Red Hat Emerging Technology Project" }
-        %dl#p1
-          %dt
-            %a{ :href => "http://augeas.net/" }
-              Augeas
-          %dd
-            %span
-              A configuration editing tool and API
-          %dt
-            %a{ :href => "http://libvirt.org/" }
-              libvirt
-          %dd
-            %span
-              The open source virtualization API
-        %dl#p2
-          %dt
-            %a{ :href => "http://fedorahosted.org/cobbler/" }
-              Cobbler
-          %dd
-            OS provisioning and profile management
-          %dt
-            %a{ :href => "http://libguestfs.org/" }
-              virt-v2v
-          %dd
-            %span
-              Migrate guests from one hypervisor to another
-        %dl#p3
-          %dt
-            %a{ :href => "http://freeipa.org/" }
-              FreeIPA
-          %dd
-            %span
-              Identity, policy and audit management
-          %dt
-            %a{ :href => "http://virt-manager.org/" }
-              Virtual Machine Manager
-          %dd
-            %span
-              Virtualization management from the desktop
-    %script{ :type => "text/javascript" }
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    %script{ :type => "text/javascript" }
-      try {
-      var pageTracker = _gat._getTracker("UA-10510561-1");
-      pageTracker._trackPageview();
-      } catch(err) {}
+%h1
+  Tools
+%ul
+  %li
+    %h2
+      %a{ :href => "./download.html" }
+        Deltacloud Portal
+    %p
+      Give your users a self-service window into your company's internal
+      and external clouds. Deltacloud Portal provides a user-friendly,
+      cross-platform UI in front of the Deltacloud API. With Deltacloud
+      Portal, your users can manage instances, keep track of available
+      images, migrate workloads from internal to external clouds, and
+      monitor their own cloud resource usage.
+  %li
+    %h2
+      %a{ :href => "./download.html" }
+        Deltacloud Proxy
+    %p
+      If you want to build your own cloud UI, Deltacloud Proxy gets you
+      halfway there. Deltacloud Proxy tracks your external and internal
+      cloud accounts and manages user authorization and resource limits;
+      your custom user interface does the rest.
+  %li
+    %h2
+      Your name here
+    %p
+      Do you have a tool to make Deltacloud more useful? Let us know at
+      %a{ :href => "https://fedorahosted.org/mailman/listinfo/deltacloud-devel" }
+        https://fedorahosted.org/mailman/listinfo/deltacloud-devel
+      and we'll post it here!

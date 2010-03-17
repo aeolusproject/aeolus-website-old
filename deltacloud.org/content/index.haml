@@ -1,272 +1,160 @@
 ---
+title: Deltacloud | Many Clouds. One API. No Problem.
 extension: html
-filter:    erb
-filter:    haml
+filter:
+  - erb
+  - haml
 ---
-!!! Strict
-%html
-  %head
-    %title
-      Deltacloud | Many Clouds. One API. No Problem.
-    %meta{ :name => "keywords", :content => "" }
-    %meta{ :name => "description", :content => "" }
-    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
-    %link{ :href => "./styles/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
-    %link{ :href => "./styles/default.css", :title => "Main style", :rel => "StyleSheet", :type => "text/css" }
-    %link{ :href => "./styles/firstpage.css", :rel => "stylesheet", :type => "text/css" }
-    %link{ :href => "./styles/default-debug.css", :title => "Debug main style", :rel => "Alternate StyleSheet", :type => "text/css" }
-    %link{ :href => "./jquery.fancybox/jquery.fancybox.css", :rel => "stylesheet", :type => "text/css", :media => "screen" }
-    %script{ :type => "text/javascript", :src => "./jquery.fancybox/jquery-1.3.2.min.js" }
-    %script{ :type => "text/javascript", :src => "./jquery.fancybox/jquery.easing.1.3.js" }
-    %script{ :type => "text/javascript", :src => "./jquery.fancybox/jquery.fancybox-1.2.1.pack.js" }
-    %script{ :src => "Scripts/swfobject_modified.js", :type => "text/javascript" }
-    %script{ :type => "text/javascript" }
-      $(document).ready(function() {
-      if($.browser.msie) {
-      $("#dcloud_popup_link").attr("href", "dcloud.html");
-      $("#demo_popup_link").attr("href", "dcloud-demo.html");
-      } else {
-      $("a.vid").fancybox({ 'hideOnContentClick': false, 'frameWidth': 400, 'frameHeight': 300 });
-      }
-      });
-  %body
-    #header
-      .container
-        #headerLogo{ :onclick => "location.href='index.html';", :style => "cursor: pointer;" }
-          %h1
-            Deltacloud - Many clouds. One API. No problem.
-    #navigation
-      #menu.container
-        %ul.l0
-          %li
-            %a.active{ :href => "./index.html", :title => "Deltacloud Home" }
-              Home
-          %li
-            %a.inactive{ :href => "./tools.html", :title => "Tools" }
-              Tools
-          %li
-            %a.inactive{ :href => "./download.html", :title => "Get the latest releases" }
-              Download
-          %li
-            %a.inactive{ :href => "./contribute.html", :title => "Information about design/development process" }
-              Contribute
-          %li
-            %a.inactive{ :href => "./documentation.html", :title => "Project documentation" }
-              Documentation
-          %li
-            %a.inactive{ :href => "./page", :title => "Project wiki" }
-              Wiki
-    #frontpageHeader
-    #main
-      #content-deltacloud.container
-        #frontpage
-          %p
-            Start an instance on an internal cloud, then with the same code start another on EC2 or
-            Rackspace. Deltacloud protects your apps from cloud API changes and
-            incompatibilities, so you can concentrate on managing cloud instances
-            the way you want.
-          .colleft
-            %p
-              %em
-                Deltacloud
-              gives you:
-            %ul
-              %li
-                REST API (simple, any-platform access)
-              %li
-                Support for EC2, RHEV-M, RackSpace; VMWare ESX and more coming soon
-              %li
-                Backward compatibility across versions, providing long-term stability for scripts, tools and applications
-          .colright
-            %p
-              One level up,
-              %em
-                Deltacloud Portal
-              provides a web UI in front of the
-              Deltacloud API. With Deltacloud Portal, your users can:
-            %ul
-              %li
-                View image status and stats across clouds, all in one place
-              %li
-                Migrate instances from one cloud to another
-              %li
-                Manage images locally and provision them on any cloud
-          %p
-            %img{ :src => "styles/diagram-soa.png", :height => "265", :alt => "diagram-soa", :width => "620", :style => "margin-bottom:1em;" }
-          %p
-            Deltacloud API and Portal are free and open source (LGPL, GPL). The
-            %a{ :href => "documentation.html" }
-              Deltacloud Framework
-            makes it easy for cloud
-            providers to add their cloud to the Deltacloud common API.
-        #news
-          .recent
-            %h2
-              News
-            %ul
-              %li
-                Deltacloud
-                %a{ :href => "http://press.redhat.com/2009/09/03/introducing-deltacloud/" }
-                  announced
-                at 2009 Red Hat Summit!
-          %br
-          %br
-          .section.video{ :style => "margin-top:6px;" }
-            %h4
-              Introducing Deltacloud
-            %p
-              %a#dcloud_popup_link.vid{ :href => "#vid1" }
-                %img.video{ :src => "video/DCloud300.png", :height => "224", :alt => "Deltacloud", :width => "298" }
-              %a{ :href => "http://www.redhat.com/v/ogg/DCloud.ogg" }
-                Ogg format
-              |
-              %a#new_dcloud{ :href => "dcloud.html" }
-                New window
-          .section.video
-            %h4
-              Deltacloud Demo
-            %p
-              %a#demo_popup_link.vid{ :href => "#vid2" }
-                %img.video{ :src => "video/DCloud_Demo300.png", :height => "224", :alt => "DCloud_Demo300", :width => "298" }
-              %a{ :href => "http://www.redhat.com/v/ogg/DCloud_Demo.ogg" }
-                Ogg format
-              |
-              %a#new_demo{ :href => "dcloud-demo.html" }
-                New window
-          %p{ :style => "font-size:11px; font-style:italic" }
-            Note: If you have trouble viewing the videos, try the new window link.
+#frontpage
+  %p
+    Start an instance on an internal cloud, then with the same code start another on EC2 or
+    Rackspace. Deltacloud protects your apps from cloud API changes and
+    incompatibilities, so you can concentrate on managing cloud instances
+    the way you want.
+  .colleft
+    %p
+      %em
+        Deltacloud
+      gives you:
+    %ul
+      %li
+        REST API (simple, any-platform access)
+      %li
+        Support for EC2, RHEV-M, RackSpace; VMWare ESX and more coming soon
+      %li
+        Backward compatibility across versions, providing long-term stability for scripts, tools and applications
+  .colright
+    %p
+      One level up,
+      %em
+        Deltacloud Portal
+      provides a web UI in front of the
+      Deltacloud API. With Deltacloud Portal, your users can:
+    %ul
+      %li
+        View image status and stats across clouds, all in one place
+      %li
+        Migrate instances from one cloud to another
+      %li
+        Manage images locally and provision them on any cloud
+  %p
+    %img{ :src => "styles/diagram-soa.png", :height => "265", :alt => "diagram-soa", :width => "620", :style => "margin-bottom:1em;" }
+  %p
+    Deltacloud API and Portal are free and open source (LGPL, GPL). The
+    %a{ :href => "documentation.html" }
+      Deltacloud Framework
+    makes it easy for cloud
+    providers to add their cloud to the Deltacloud common API.
+#news
+  .recent
+    %h2
+      News
+    %ul
+      %li
+        Deltacloud
+        %a{ :href => "http://press.redhat.com/2009/09/03/introducing-deltacloud/" }
+          announced
+        at 2009 Red Hat Summit!
+  %br
+  %br
+  .section.video{ :style => "margin-top:6px;" }
+    %h4
+      Introducing Deltacloud
+    %p
+      %a#dcloud_popup_link.vid{ :href => "#vid1" }
+        %img.video{ :src => "video/DCloud300.png", :height => "224", :alt => "Deltacloud", :width => "298" }
+      %a{ :href => "http://www.redhat.com/v/ogg/DCloud.ogg" }
+        Ogg format
+      |
+      %a#new_dcloud{ :href => "dcloud.html" }
+        New window
+  .section.video
+    %h4
+      Deltacloud Demo
+    %p
+      %a#demo_popup_link.vid{ :href => "#vid2" }
+        %img.video{ :src => "video/DCloud_Demo300.png", :height => "224", :alt => "DCloud_Demo300", :width => "298" }
+      %a{ :href => "http://www.redhat.com/v/ogg/DCloud_Demo.ogg" }
+        Ogg format
+      |
+      %a#new_demo{ :href => "dcloud-demo.html" }
+        New window
+  %p{ :style => "font-size:11px; font-style:italic" }
+    Note: If you have trouble viewing the videos, try the new window link.
+#vid1{ :style => "display:none;" }
+  %object#FLVPlayer{ :height => "300", :classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :width => "400" }
+    %param{ :name => "movie", :value => "FLVPlayer_Progressive.swf" }
+    %param{ :name => "quality", :value => "high" }
+    %param{ :name => "wmode", :value => "opaque" }
     /
-      hidden divs for videos
-    #vid1{ :style => "display:none;" }
-      %object#FLVPlayer{ :height => "300", :classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :width => "400" }
-        %param{ :name => "movie", :value => "FLVPlayer_Progressive.swf" }
-        %param{ :name => "quality", :value => "high" }
-        %param{ :name => "wmode", :value => "opaque" }
-        /
-          <param name="scale" value="noscale">
-        %param{ :name => "salign", :value => "lt" }
-        %param{ :name => "FlashVars", :value => "&amp;MM_ComponentVersion=1&amp;skinName=Clear_Skin_1&amp;streamName=video/DCloud&amp;autoPlay=true&amp;autoRewind=false" }
-        %param{ :name => "swfversion", :value => "8,0,0,0" }
-        /
-          This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt.
-        %param{ :name => "expressinstall", :value => "Scripts/expressInstall.swf" }
-        /
-          Next object tag is for non-IE browsers. So hide it from IE using IECC.
-        /
-          [if !IE]>
-        %object{ :type => "application/x-shockwave-flash", :height => "300", :data => "FLVPlayer_Progressive.swf", :width => "400" }
-          /
-            <![endif]
-          %param{ :name => "quality", :value => "high" }
-          %param{ :name => "wmode", :value => "opaque" }
-          %param{ :name => "scale", :value => "noscale" }
-          %param{ :name => "salign", :value => "lt" }
-          %param{ :name => "FlashVars", :value => "&amp;MM_ComponentVersion=1&amp;skinName=Clear_Skin_1&amp;streamName=video/DCloud&amp;autoPlay=true&amp;autoRewind=false" }
-          %param{ :name => "swfversion", :value => "8,0,0,0" }
-          %param{ :name => "expressinstall", :value => "Scripts/expressInstall.swf" }
-          /
-            The browser displays the following alternative content for users with Flash Player 6.0 and older.
-          %div
-            %h4
-              Content on this page requires a newer version of Adobe Flash Player.
-            %p
-              %a{ :href => "http://www.adobe.com/go/getflashplayer" }
-                %img{ :src => "http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif", :alt => "Get Adobe Flash player" }
-          /
-            [if !IE]>
-        /
-          <![endif]
-    #vid2{ :style => "display:none;" }
-      %object#FLVPlayer1{ :height => "300", :classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :width => "400" }
-        %param{ :name => "movie", :value => "FLVPlayer_Progressive.swf" }
-        %param{ :name => "quality", :value => "high" }
-        %param{ :name => "wmode", :value => "opaque" }
-        %param{ :name => "scale", :value => "noscale" }
-        %param{ :name => "salign", :value => "lt" }
-        %param{ :name => "FlashVars", :value => "&amp;MM_ComponentVersion=1&amp;skinName=Clear_Skin_1&amp;streamName=video/DCloud_Demo&amp;autoPlay=true&amp;autoRewind=false" }
-        %param{ :name => "swfversion", :value => "8,0,0,0" }
-        /
-          This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt.
-        %param{ :name => "expressinstall", :value => "Scripts/expressInstall.swf" }
-        /
-          Next object tag is for non-IE browsers. So hide it from IE using IECC.
-        /
-          [if !IE]>
-        %object{ :type => "application/x-shockwave-flash", :height => "300", :data => "FLVPlayer_Progressive.swf", :width => "400" }
-          /
-            <![endif]
-          %param{ :name => "quality", :value => "high" }
-          %param{ :name => "wmode", :value => "opaque" }
-          %param{ :name => "scale", :value => "noscale" }
-          %param{ :name => "salign", :value => "lt" }
-          %param{ :name => "FlashVars", :value => "&amp;MM_ComponentVersion=1&amp;skinName=Clear_Skin_1&amp;streamName=video/DCloud_Demo&amp;autoPlay=true&amp;autoRewind=false" }
-          %param{ :name => "swfversion", :value => "8,0,0,0" }
-          %param{ :name => "expressinstall", :value => "Scripts/expressInstall.swf" }
-          /
-            The browser displays the following alternative content for users with Flash Player 6.0 and older.
-          %div
-            %h4
-              Content on this page requires a newer version of Adobe Flash Player.
-            %p
-              %a{ :href => "http://www.adobe.com/go/getflashplayer" }
-                %img{ :src => "http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif", :alt => "Get Adobe Flash player" }
-          /
-            [if !IE]>
-        /
-          <![endif]
-    #footer-deltacloud
-      #projects.container
-        %p#et
-          %a{ :href => "http://et.redhat.com/" }
-            %img{ :src => "./styles/et_logo.png", :alt => "A Red Hat Emerging Technology Project" }
-        %dl#p1
-          %dt
-            %a{ :href => "http://augeas.net/" }
-              Augeas
-          %dd
-            %span
-              A configuration editing tool and API
-          %dt
-            %a{ :href => "http://libvirt.org/" }
-              libvirt
-          %dd
-            %span
-              The open source virtualization API
-        %dl#p2
-          %dt
-            %a{ :href => "http://fedorahosted.org/cobbler/" }
-              Cobbler
-          %dd
-            OS provisioning and profile management
-          %dt
-            %a{ :href => "http://libguestfs.org/" }
-              virt-v2v
-          %dd
-            %span
-              Migrate guests from one hypervisor to another
-        %dl#p3
-          %dt
-            %a{ :href => "http://freeipa.org/" }
-              FreeIPA
-          %dd
-            %span
-              Identity, policy and audit management
-          %dt
-            %a{ :href => "http://virt-manager.org/" }
-              Virtual Machine Manager
-          %dd
-            %span
-              Virtualization management from the desktop
-    %script{ :type => "text/javascript" }
+      <param name="scale" value="noscale">
+    %param{ :name => "salign", :value => "lt" }
+    %param{ :name => "FlashVars", :value => "&amp;MM_ComponentVersion=1&amp;skinName=Clear_Skin_1&amp;streamName=video/DCloud&amp;autoPlay=true&amp;autoRewind=false" }
+    %param{ :name => "swfversion", :value => "8,0,0,0" }
+    /
+      This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt.
+    %param{ :name => "expressinstall", :value => "Scripts/expressInstall.swf" }
+    /
+      Next object tag is for non-IE browsers. So hide it from IE using IECC.
+    /
+      [if !IE]>
+    %object{ :type => "application/x-shockwave-flash", :height => "300", :data => "FLVPlayer_Progressive.swf", :width => "400" }
       /
-        swfobject.registerObject("FLVPlayer");
-        swfobject.registerObject("FLVPlayer1");
-        \//
-    %script{ :type => "text/javascript" }
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    %script{ :type => "text/javascript" }
-      try {
-      var pageTracker = _gat._getTracker("UA-10510561-1");
-      pageTracker._trackPageview();
-      } catch(err) {}
+        <![endif]
+      %param{ :name => "quality", :value => "high" }
+      %param{ :name => "wmode", :value => "opaque" }
+      %param{ :name => "scale", :value => "noscale" }
+      %param{ :name => "salign", :value => "lt" }
+      %param{ :name => "FlashVars", :value => "&amp;MM_ComponentVersion=1&amp;skinName=Clear_Skin_1&amp;streamName=video/DCloud&amp;autoPlay=true&amp;autoRewind=false" }
+      %param{ :name => "swfversion", :value => "8,0,0,0" }
+      %param{ :name => "expressinstall", :value => "Scripts/expressInstall.swf" }
+      /
+        The browser displays the following alternative content for users with Flash Player 6.0 and older.
+      %div
+        %h4
+          Content on this page requires a newer version of Adobe Flash Player.
+        %p
+          %a{ :href => "http://www.adobe.com/go/getflashplayer" }
+            %img{ :src => "http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif", :alt => "Get Adobe Flash player" }
+      /
+        [if !IE]>
+    /
+      <![endif]
+#vid2{ :style => "display:none;" }
+  %object#FLVPlayer1{ :height => "300", :classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :width => "400" }
+    %param{ :name => "movie", :value => "FLVPlayer_Progressive.swf" }
+    %param{ :name => "quality", :value => "high" }
+    %param{ :name => "wmode", :value => "opaque" }
+    %param{ :name => "scale", :value => "noscale" }
+    %param{ :name => "salign", :value => "lt" }
+    %param{ :name => "FlashVars", :value => "&amp;MM_ComponentVersion=1&amp;skinName=Clear_Skin_1&amp;streamName=video/DCloud_Demo&amp;autoPlay=true&amp;autoRewind=false" }
+    %param{ :name => "swfversion", :value => "8,0,0,0" }
+    /
+      This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt.
+    %param{ :name => "expressinstall", :value => "Scripts/expressInstall.swf" }
+    /
+      Next object tag is for non-IE browsers. So hide it from IE using IECC.
+    /
+      [if !IE]>
+    %object{ :type => "application/x-shockwave-flash", :height => "300", :data => "FLVPlayer_Progressive.swf", :width => "400" }
+      /
+        <![endif]
+      %param{ :name => "quality", :value => "high" }
+      %param{ :name => "wmode", :value => "opaque" }
+      %param{ :name => "scale", :value => "noscale" }
+      %param{ :name => "salign", :value => "lt" }
+      %param{ :name => "FlashVars", :value => "&amp;MM_ComponentVersion=1&amp;skinName=Clear_Skin_1&amp;streamName=video/DCloud_Demo&amp;autoPlay=true&amp;autoRewind=false" }
+      %param{ :name => "swfversion", :value => "8,0,0,0" }
+      %param{ :name => "expressinstall", :value => "Scripts/expressInstall.swf" }
+      /
+        The browser displays the following alternative content for users with Flash Player 6.0 and older.
+      %div
+        %h4
+          Content on this page requires a newer version of Adobe Flash Player.
+        %p
+          %a{ :href => "http://www.adobe.com/go/getflashplayer" }
+            %img{ :src => "http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif", :alt => "Get Adobe Flash player" }
+      /
+        [if !IE]>
+    /
+      <![endif]
