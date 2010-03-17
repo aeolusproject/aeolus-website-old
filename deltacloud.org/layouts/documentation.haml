@@ -21,28 +21,8 @@ filter:
         #headerLogo{ :onclick => "location.href='index.html';", :style => "cursor: pointer;" }
           %h1
             Deltacloud - Many clouds. One API. No problem.
-    #navigation
-      #menu.container
-        %ul.l0
-          %li
-            %a.inactive{ :href => "./index.html", :title => "Deltacloud Home" }
-              Home
-          %li
-            %a.inactive{ :href => "./tools.html", :title => "Tools" }
-              Tools
-          %li
-            %a.inactive{ :href => "./download.html", :title => "Get the latest releases" }
-              Download
-          %li
-            %a.inactive{ :href => "./contribute.html", :title => "Information about design/development process" }
-              Contribute
-          %li
-            %a.active{ :href => "./documentation.html", :title => "Project documentation" }
-              Documentation
-          %li
-            %a.inactive{ :href => "./page", :title => "Project wiki" }
-              Wiki
-    <%= render(:partial => "submenu-documentation", :locals => {:current_page => "#{@page.filename}.#{@page.extension}"} ) %>
+    <%= render(:partial => "navigation", :locals => {:current_page => "#{@page.filename}.#{@page.extension}", :area => @page.area } ) %>
+    <%= render(:partial => "submenu-documentation", :locals => {:current_page => "#{@page.filename}.#{@page.extension}" } ) %>
     #main
       #content-deltacloud.container
         <%= @content %>
