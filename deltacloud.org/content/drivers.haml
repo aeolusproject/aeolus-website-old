@@ -3,10 +3,10 @@ title: Deltacloud - Documentation
 area: documentation
 extension: html
 filter:
-  - erb
+  - haml
   - markdown
   - outline
 ---
 <toc numbering="off" toc_style="ul" toc_range="h2-h3" />
 
-<%= File.open('../docs/client-ruby.mdown').read %>
+= File.open('../docs/drivers.mdown').read

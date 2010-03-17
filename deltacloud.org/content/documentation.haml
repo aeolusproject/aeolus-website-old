@@ -3,7 +3,7 @@ title: Deltacloud - Documentation
 area: documentation
 extension: html
 filter:
-  - erb
+  - haml
   - markdown
 ---
-<%= File.open('../docs/documentation.mdown').read %>
+= File.open('../docs/documentation.mdown').read

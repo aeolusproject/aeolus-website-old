@@ -1,14 +1,13 @@
 ---
 extension: html
-filter:
-  - haml
-  - erb
+dirty: true
+filter: haml
 ---
 !!! Strict
 %html
   %head
     %title
-      <%= @page.title %>
+      = @page.title
     %meta{ :name => "keywords", :content => "" }
     %meta{ :name => "description", :content => "" }
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
@@ -46,7 +45,7 @@ filter:
     #frontpageHeader
     #main
       #content-deltacloud.container
-        = @content
+        ~ @content
     #footer-deltacloud
       #projects.container
         %p#et
