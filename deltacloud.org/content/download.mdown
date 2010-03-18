@@ -1,0 +1,20 @@
+---
+title: Deltacloud - Download
+extension: html
+filter: markdown
+---
+Download
+========
+
+The latest released versions of the source code can be found [here][1]. Getting
+started docs are prodived in the READMEs in the [framework][2] and [portal][3]
+project.
+
+As soon as possible, we will have everythnig packaged up for fedora, but in
+the meantime, we have an rpm already built for the portal, which can be found
+[here][4].
+
+[1]: https://fedorahosted.org/released/deltacloud/
+[2]: http://git.fedorahosted.org/git/?p=deltacloud/framework.git;a=blob_plain;f=README;hb=HEAD
+[3]: http://git.fedorahosted.org/git/?p=deltacloud/portal.git;a=blob_plain;f=README;hb=HEAD
+[4]: http://git.fedorahosted.org/git/?p=deltacloud/portal.git;a=blob_plain;f=README;hb=HEAD

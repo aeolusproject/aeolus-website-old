@@ -15,5 +15,5 @@ filter: haml
         %li
           - current_page = "#{area}.html" unless area.nil? or area.empty? or (link[:href].index(area) != 0)
           - state = (link[:href] == current_page) ? 'active' : 'inactive'
-          %a{ :class => state, :href => "./#{link[:href]}", :title => link[:title] }
+          %a{ :class => state, :href => "./#{link[:href]}", :title => link[:title] }<
             = link[:text]
