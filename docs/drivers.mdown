@@ -1,13 +1,12 @@
 # Deltacloud Drivers
 
-The Deltacloud project current delivers two functional drivers, plus
-a mock driver for testing without a cloud provider.
+Deltacloud provides drivers for a growing number of popular clouds. All drivers
+can handle a set of standard operations, some of them also support a number of
+optional operations to expose the features of specific clouds more closely. The
+drivers and their capabilities are:
 
-- Amazon EC2
-- Red Hat Enterprise Virtualization Manager (RHEV-M)
-- Rackspace Cloud
-- RimuHosting Cloud
-- OpenNebula
+<table providers />
+
 
 ## Setting up the code
 
