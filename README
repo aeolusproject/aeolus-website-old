@@ -1,0 +1,183 @@
+Getting the sources
+-------------------
+The Deltacloud project consists of two parts: **Core** and **Aggregator**. Core
+gives you the API and drivers to various cloud providers. It also provides a
+client to the API so that you can see it in action.
+
+Aggregator (formerly known as Portal) is a web frontend to the API.
+
+In addition, there is the **docs** repository that contains the project
+documentation and the sources of the <http://deltacloud.org> website.
+
+You can browse the repositories on the web:
+
+* [core](http://git.fedorahosted.org/git/?p=deltacloud/core.git;a=summary)
+* [aggregator](http://git.fedorahosted.org/git/?p=deltacloud/portal.git;a=shortlog;h=refs/heads/next)
+* [docs](http://git.fedorahosted.org/git/?p=deltacloud/docs.git;a=shortlog;h=refs/heads/next)
+
+or download them to your computer:
+
+    $ git clone git://git.fedorahosted.org/git/deltacloud/core.git/
+    $ git clone --branch next git://git.fedorahosted.org/git/deltacloud/portal.git/
+    $ git clone --branch next git://git.fedorahosted.org/git/deltacloud/docs.git/
+
+Note that the development of the **docs** and **portal** takes place on the
+`next` branch, which contains the latest version of the code.
+
+To get the stable version, omit the `--branch next` part.
+
+
+Installing packages
+-------------------
+In order to make the Deltacloud components work, you'll need to
+install at least the following packages (on Fedora 12; your distro's
+packages may vary):
+
+    rubygem-rails
+    rubygem-daemons
+    rubygem-gettext_rails
+    rubygem-sqlite3-ruby
+    rubygem-haml
+
+Some packages are not in Fedora yet and you have to install them using
+[rubygems](http://rubygems.org/):
+
+    gem install compass
+    gem install rack-accept-media-types
+    gem install authlogic
+
+If you want to develop using PostgreSQL database instead of the default SQLite,
+install these, too:
+
+    ruby-postgres
+    postgresql
+    postgresql-server
+
+You will also need **deltacloud-client** gem. You can either install the packaged version:
+
+    $ gem install deltacloud-client
+
+or build it yourself from the **core** repository:
+
+    $ cd core/client
+    $ gem build deltacloud-client.gemspec
+    $ gem install deltacloud-client-*.gem
+
+
+Database
+--------
+For development purposes we're using [SQLite] database which is much easier to
+set up.
+
+However, we _strongly_ suggest using a more suitable replacement (such as
+[PostgreSQL]) in production.
+
+[SQLite]: http://www.sqlite.org/
+[PostgreSQL]: http://www.postgresql.org/
+
+If you want to set up PostgreSQL, read the following section. SQLite users may
+skip it and continue with "Setting up the drivers".
+
+
+PostgreSQL database setup
+-------------------------
+Once you have the proper packages installed you have to setup the
+postgresql database.  As root:
+
+    # /sbin/service postgresql initdb
+    # /sbin/service postgresql start
+    # su - postgres
+    $ psql
+    postgres=# CREATE USER dcloud WITH PASSWORD 'v23zj59an' CREATEDB;
+    postgres=# \q
+    $ exit
+
+Now you need to edit the pg_hba.conf file
+(`/var/lib/pgsql/data/pg_hba.conf` on Fedora 12):
+
+    local all all trust
+    host all all 127.0.0.1 255.255.255.255 trust
+    host all all ::1/128 trust
+
+If you are running on Fedora 12 *only*, to make rake
+succeed you need to append the following to
+`/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/postgresql_adapter.rb`:
+
+    def PGconn.quote_ident(name)
+       %("#{name}")
+    end
+
+(see <http://github.com/mneumann/postgres-pr/issues/unreads#issue/1>)
+
+
+Setting up the drivers
+----------------------
+For testing purposes we'll start with the mock driver. Use of the
+rest of the drivers should be similar, although may require some
+additional gems be installed.
+
+The easiest way to solve the gem dependencies is to build the deltacloud-core
+gem:
+
+    $ cd path/to/deltacloud/core/server
+    $ gem build deltacloud-core.gemspec
+
+To start the server, run the `delacloudd` script:
+
+    $ cd path/to/deltacloud/core/server/bin
+    $ ./deltacloudd -i mock
+
+This will run the Deltacloud Core server on port 3001.
+
+
+Setting up the Aggregator
+-------------------------
+Now we need to setup the Aggregator. As your user who will run the Aggregator:
+
+### With SQLite ###
+
+    $ cd path/to/deltacloud/portal/src/config
+    $ cp database.sqlite database.yml
+
+**Note:** you can update the paths in the "database.yml" file to change the
+location of the *.sqlite3 database files.
+
+    $ rake db:create:all
+    $ rake db:migrate
+    $ cd <wherever you put it>/db
+
+You should see the "development.sqlite3" file there. Make sure it is owned by
+the user who will run the Aggregator. The directory where the database files
+are stored must be also writable by this user.
+
+### With PostgreSQL ###
+
+    $ cd path/to/deltacloud/portal/src
+    $ cp database.pg database.yml
+    $ rake db:create:all
+    $ rake db:migrate
+    $ rake db:test:prepare
+
+If all went well here, then the database should be ready for you
+to start up the Aggregator.
+
+You can now run the UI:
+
+    $ ./script/server
+
+Which will start up the Aggregator on port 3000.
+
+
+Checking out the UI
+-------------------
+Now that you have all of the components running, you should be able to point
+your web browser at <http://localhost:3000> and see the Aggregator page.
+
+To be able to use it properly, you will need to create a user. You can do it on
+the Aggregator website. Users created this way have limited privileges, however.
+We recommend setting up one user as an administrator of the site.
+
+This is how you turn an existing user into an admin:
+
+    $ cd path/to/deltacloud/portal/src
+    $ rake dc:site_admin[aggregator_username]
