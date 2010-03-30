@@ -11,38 +11,27 @@ a mock driver for testing without a cloud provider.
 
 ## Setting up the code
 
-To set up a given driver, currently, you must checkout the code
-for both the [framework](framework.html) and the drivers you wish to use.
+To set up a Deltacloud core, and one of its drivers, currently, you must
+checkout the code from the core repository:
 
-Check out the core repository
+    git clone git://git.fedorahosted.org/git/deltacloud/core.git
 
-    deltacloud/
-      core/
+The core will soon be available both as a Ruby gem and RPM packages.
 
 ## Launch the server
 
 First, go into the server directory
 
-    cd server/
+    cd core/server/
 
-To launch the server, you must tell it which driver to use.  This can
-be accomplished either through editing the `config/environment.rb` of the framework,
-or by setting the `$DRIVER` environment variable.
+The server is launched with the `deltacloudd` command and pass it the name
+of the driver you want to use:
 
-If adjusting `config/environment.rb` the `DEFAULT_DRIVER` variable should be set
+    ./bin/deltacloudd -i mock
 
-    DEFAULT_DRIVER=:rhevm
-
-Even if set, it may still be overwritten by the `$DRIVER` environment variable
-which takes precendence.
-
-Once configured, simply launch `script/server` for the framework.
-
-    $ ./script/server
-
-(Or using the `$DRIVER` variable)
-
-    $ DRIVER=ec2 ./script/server
+This will start a webserver running the mock driver on
+`http://localhost:3001/api`; you can simply browse to that URL to get a
+pretty view of the objects the driver deals with.
 
 ### EC2 Driver
 
