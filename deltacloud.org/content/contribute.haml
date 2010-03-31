@@ -2,37 +2,48 @@
 title: Deltacloud - Contribute
 extension: html
 filter:
-  - erb
+  - haml
   - markdown
   - outline
 ---
 <toc numbering="off" toc_style="ul" toc_range="h2-h3" />
 
-Contribute
-==========
+%h1 Contribute
+%p All development of Deltacloud takes place in the open. Communication is run through the mailing list and all source code changes are tracked publicly.
 
-All development of Deltacloud takes place in the open. Communication is run through the mailing list and all source code changes are tracked publicly. We have two lists, one for [user questions][1], and one for [development discussions and patches][2].
+%ul
+  %li
+    %strong Mailing Lists
+    %br
+    :markdown
+      We have two lists, one for [user questions][1], and one for [development discussions and patches][2].
 
-[1]: https://fedorahosted.org/mailman/listinfo/deltacloud-users
-[2]: https://fedorahosted.org/mailman/listinfo/deltacloud-devel
+      [1]: https://fedorahosted.org/mailman/listinfo/deltacloud-users
+      [2]: https://fedorahosted.org/mailman/listinfo/deltacloud-devel
+  %li
+    %strong IRC
+    %br
+    :markdown
+      You can also join us on the Freenode IRC channel #deltacloud. Deltacloud developers are generally available on the IRC channel, but if you do not get a response to a posted question on the IRC channel please ask on the [user mailing list][3].
 
-You can also join us on the Freenode IRC channel #deltacloud.
+      [3]: https://fedorahosted.org/mailman/listinfo/deltacloud-users
+  %li
+    %strong Bugs
+    %br
+    :markdown
+      We track bugs in [Red Hat Bugzilla][4]. You can [view open bugs][view-bugs] or [file a new one][new-bug] there.
 
-Deltacloud developers are generally available on the IRC channel, but if you do not get a response to a posted question on the IRC channel please ask on the [user mailing list][3].
+      [4]: https://bugzilla.redhat.com/
+      [view-bugs]: https://bugzilla.redhat.com/buglist.cgi?query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=MODIFIED&component=Deltacloud&product=Virtualization%20Tools&classification=Other
+      [new-bug]: https://bugzilla.redhat.com/enter_bug.cgi?product=Virtualization%20Tools&component=Deltacloud
+  %li
+    %strong Patches
+    %br
+    :markdown
+      Patches are very welcome. Please send them to the [development list][5]. Patches should be generated with [`git`&nbsp;`format-patch`][6] and sent to the list with [`git`&nbsp;`send-email`][7].
 
-[3]: https://fedorahosted.org/mailman/listinfo/deltacloud-users
+      [5]: https://fedorahosted.org/mailman/listinfo/deltacloud-devel
+      [6]: http://kernel.org/pub/software/scm/git/docs/git-format-patch.html
+      [7]: http://kernel.org/pub/software/scm/git/docs/git-send-email.html
 
-We track bugs in [Red Hat Bugzilla][4]. You can [view open bugs][view-bugs] or [file a new one][new-bug] there.
-
-[4]: https://bugzilla.redhat.com/
-[view-bugs]: https://bugzilla.redhat.com/buglist.cgi?query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=MODIFIED&component=Deltacloud&product=Virtualization%20Tools&classification=Other
-[new-bug]: https://bugzilla.redhat.com/enter_bug.cgi?product=Virtualization%20Tools&component=Deltacloud
-
-Patches are very welcome. Please send them to the [development list][5]. Patches should be generated with [`git`&nbsp;`format-patch`][6] and sent to the list with [`git`&nbsp;`send-email`][7].
-
-[5]: https://fedorahosted.org/mailman/listinfo/deltacloud-devel
-[6]: http://kernel.org/pub/software/scm/git/docs/git-format-patch.html
-[7]: http://kernel.org/pub/software/scm/git/docs/git-send-email.html
-
-
-<%= File.open('../README').read %>
+= File.open('../README').read
