@@ -7,26 +7,24 @@ drivers and their capabilities are:
 
 <table providers />
 
-
 ## Setting up the code
 
 To set up a Deltacloud core, and one of its drivers, currently, you must
 checkout the code from the core repository:
 
     git clone git://git.fedorahosted.org/git/deltacloud/core.git
+    cd core/server
+    rake package
+    sudo gem install pkg/deltacloud-core-<version>.gem
 
 The core will soon be available both as a Ruby gem and RPM packages.
 
 ## Launch the server
 
-First, go into the server directory
-
-    cd core/server/
-
 The server is launched with the `deltacloudd` command and pass it the name
 of the driver you want to use:
 
-    ./bin/deltacloudd -i mock
+    deltacloudd -i mock
 
 This will start a webserver running the mock driver on
 `http://localhost:3001/api`; you can simply browse to that URL to get a
