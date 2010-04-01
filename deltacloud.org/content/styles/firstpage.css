@@ -1,4 +1,4 @@
-/*  Styles for the first page are here.  This page uses a different layout
+	/*  Styles for the first page are here.  This page uses a different layout
 than the rest of the site */
 
 #main {
@@ -63,6 +63,7 @@ than the rest of the site */
 #news h2 {
 	border-bottom:none;
 	color:#cc0000;
+	margin-top: 0;
 }
 
 
@@ -87,7 +88,7 @@ than the rest of the site */
 
 #news .recent {
 	background-color: #FFF;
-    margin-bottom: 2em;
+    margin-bottom: 3em;
     padding: 15px 15px 5px 15px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
