@@ -32,6 +32,10 @@ pretty view of the objects the driver deals with.
 
 ### EC2 Driver
 
+For the Amazon EC2 you need to install the `amazon-ec2` Ruby gem:
+
+    sudo gem install amazon-ec2
+
 When using the driver for Amazon EC2, the credentials passed in
 response to the HTTP 401 authentication challenge should be your
 *access_key* and *secret_access_key*

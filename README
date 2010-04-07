@@ -38,13 +38,14 @@ packages may vary):
     rubygem-gettext_rails
     rubygem-sqlite3-ruby
     rubygem-haml
+    rubygem-sinatra
+    rubygem-thin
 
 Some packages are not in Fedora yet and you have to install them using
 [rubygems](http://rubygems.org/):
 
-    gem install compass
-    gem install rack-accept-media-types
-    gem install authlogic
+    # gem install compass
+    # gem install authlogic
 
 If you want to develop using PostgreSQL database instead of the default SQLite,
 install these, too:
@@ -55,13 +56,13 @@ install these, too:
 
 You will also need **deltacloud-client** gem. You can either install the packaged version:
 
-    $ gem install deltacloud-client
+    # gem install deltacloud-client
 
 or build it yourself from the **core** repository:
 
     $ cd core/client
     $ gem build deltacloud-client.gemspec
-    $ gem install deltacloud-client-*.gem
+    $ sudo gem install deltacloud-client-<version>.gem
 
 
 Database
@@ -87,10 +88,10 @@ postgresql database.  As root:
     # /sbin/service postgresql initdb
     # /sbin/service postgresql start
     # su - postgres
-    $ psql
+    # psql
     postgres=# CREATE USER dcloud WITH PASSWORD 'v23zj59an' CREATEDB;
     postgres=# \q
-    $ exit
+    exit
 
 Now you need to edit the pg_hba.conf file
 (`/var/lib/pgsql/data/pg_hba.conf` on Fedora 12):
@@ -119,10 +120,9 @@ additional gems be installed.
 The easiest way to solve the gem dependencies is to build the deltacloud-core
 gem:
 
-    cd path/to/deltacloud/core/server
-    gem build deltacloud-core.gemspec
-    rake package
-    sudo gem install pkg/deltacloud-core-<version>.gem
+    $ cd path/to/deltacloud/core/server
+    $ rake package
+    $ sudo gem install pkg/deltacloud-core-<version>.gem
 
 To start the server, run the `delacloudd` script:
 
