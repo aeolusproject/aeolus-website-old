@@ -3,7 +3,6 @@ title: Deltacloud - Contribute
 extension: html
 filter:
   - haml
-  - markdown
   - outline
 ---
 <toc class="toc" numbering="off" toc_style="ul" toc_range="h2-h3" />
@@ -46,4 +45,4 @@ filter:
       [6]: http://kernel.org/pub/software/scm/git/docs/git-format-patch.html
       [7]: http://kernel.org/pub/software/scm/git/docs/git-send-email.html
 
-= File.open('../README').read
+= render(:partial => "external", :locals => {:path => '../README'} )

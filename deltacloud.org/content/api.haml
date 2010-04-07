@@ -3,10 +3,9 @@ title: Deltacloud - Documentation
 area: documentation
 extension: html
 filter:
-  - erb
-  - markdown
+  - haml
   - outline
 ---
 <toc class="toc" numbering="off" toc_style="ul" toc_range="h2-h3" />
 
-<%= File.open('../docs/api.mdown').read %>
+= render(:partial => "external", :locals => {:path => '../docs/api.mdown'} )

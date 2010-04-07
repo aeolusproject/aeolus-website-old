@@ -4,6 +4,5 @@ area: documentation
 extension: html
 filter:
   - haml
-  - markdown
 ---
-= File.open('../docs/documentation.mdown').read
+= render(:partial => "external", :locals => {:path => '../docs/documentation.mdown'} )
