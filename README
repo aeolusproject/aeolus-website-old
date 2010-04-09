@@ -119,8 +119,10 @@ additional gems be installed.
 The easiest way to solve the gem dependencies is to build the deltacloud-core
 gem:
 
-    $ cd path/to/deltacloud/core/server
-    $ gem build deltacloud-core.gemspec
+    cd path/to/deltacloud/core/server
+    gem build deltacloud-core.gemspec
+    rake package
+    sudo gem install pkg/deltacloud-core-<version>.gem
 
 To start the server, run the `delacloudd` script:
 
