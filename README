@@ -4,7 +4,7 @@ The Deltacloud project consists of two parts: **Core** and **Aggregator**. Core
 gives you the API and drivers to various cloud providers. It also provides a
 client to the API so that you can see it in action.
 
-Aggregator (formerly known as Portal) is a web frontend to the API.
+Aggregator is a web frontend to the API.
 
 In addition, there is the **docs** repository that contains the project
 documentation and the sources of the <http://deltacloud.org> website.
@@ -12,16 +12,16 @@ documentation and the sources of the <http://deltacloud.org> website.
 You can browse the repositories on the web:
 
 * [core](http://git.fedorahosted.org/git/?p=deltacloud/core.git;a=summary)
-* [aggregator](http://git.fedorahosted.org/git/?p=deltacloud/portal.git;a=shortlog;h=refs/heads/next)
+* [aggregator](http://git.fedorahosted.org/git/?p=deltacloud/aggregator.git;a=shortlog;h=refs/heads/next)
 * [docs](http://git.fedorahosted.org/git/?p=deltacloud/docs.git;a=shortlog;h=refs/heads/next)
 
 or download them to your computer:
 
     $ git clone git://git.fedorahosted.org/git/deltacloud/core.git/
-    $ git clone --branch next git://git.fedorahosted.org/git/deltacloud/portal.git/
+    $ git clone --branch next git://git.fedorahosted.org/git/deltacloud/aggregator.git/
     $ git clone --branch next git://git.fedorahosted.org/git/deltacloud/docs.git/
 
-Note that the development of the **docs** and **portal** takes place on the
+Note that the development of the **docs** and **aggregator** takes place on the
 `next` branch, which contains the latest version of the code.
 
 To get the stable version, omit the `--branch next` part.
@@ -138,7 +138,7 @@ Now we need to setup the Aggregator. As your user who will run the Aggregator:
 
 ### With SQLite ###
 
-    $ cd path/to/deltacloud/portal/src/config
+    $ cd path/to/deltacloud/aggregator/src/config
     $ cp database.sqlite database.yml
 
 **Note:** you can update the paths in the "database.yml" file to change the
@@ -154,7 +154,7 @@ are stored must be also writable by this user.
 
 ### With PostgreSQL ###
 
-    $ cd path/to/deltacloud/portal/src
+    $ cd path/to/deltacloud/aggregator/src
     $ cp database.pg database.yml
     $ rake db:create:all
     $ rake db:migrate
@@ -181,5 +181,5 @@ We recommend setting up one user as an administrator of the site.
 
 This is how you turn an existing user into an admin:
 
-    $ cd path/to/deltacloud/portal/src
+    $ cd path/to/deltacloud/aggregator/src
     $ rake dc:site_admin[aggregator_username]

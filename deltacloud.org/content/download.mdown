@@ -38,7 +38,7 @@ To get the latest source code, visit our [Contribute] page.
 
 Additional Tools
 ----------------
-Complements to the essential Core/Aggregator components.
+These are complementary to the essential Core/Aggregator components.
 
 ### Deltacloud Client ###
 
