@@ -2,63 +2,54 @@
 
 # Deltacloud API
 
-The Deltacloud API is built as a service-based REST API. 
-You do not directly link a Deltacloud library into your
-program to use it. Instead, a client speaks the Deltacloud 
-API over HTTP to a server which implements the REST interface.
+The Deltacloud API is built as a service-based REST API. You do not
+directly link a Deltacloud library into your program to use it.
+Instead, a client speaks the Deltacloud API over HTTP to a server
+which implements the REST interface.
 
-Of course, at this point in time, no cloud provider
-natively speaks the Deltacloud API. To accomodate
-the native APIs used by the various cloud providers,
-the Deltacloud project also provides a _framework_
-and a set of _drivers_ that work with the framework.
-
-By running a framework & driver combination on some
-host, your application can use the Deltacloud API,
-and the driver is responsible for translating these
-calls into each provider's own API.
+Since cloud providers use their own APIs instead of the Deltacloud
+API, we provide a translation layer that makes it possible to use
+Deltacloud with these providers.
 
 ## REST
 
-The Deltacloud API is a RESTful API, using HATEOAS
-architectural style. The API requires no client-side
-URL construction.  Access is based entirely off a 
-single entry-point resource.  This allows other implementors
-to structure their URL space however they like.
+The Deltacloud API is a [RESTful API][1], using HATEOAS architectural
+style. The API requires no client-side URL construction. Access is
+based entirely off a single entry-point resource. This allows other
+implementors to structure their URL space however they like.
 
-Additionally, the Deltacloud API uses _content negotiation_
-to determine the format of the returned representation. As
-of the current revision, the only required representation is
-XML.  Clients wishing to receive XML representations must
-specify the HTTP `Accept` header as `text/xml`.
+[1]: http://en.wikipedia.org/wiki/Representational_State_Transfer
+
+Additionally, the Deltacloud API uses _content negotiation_ to
+determine the format of the returned representation. As of the current
+revision, the only required representation is XML. Clients wishing to
+receive XML representations must specify the HTTP `Accept` header as
+`application/xml`.
 
 ## Authentication
 
-The Deltacloud API uses HTTP authentication methods for
-authenticating a given client.  There is no explicit
-_login_ action required.  If authentication is required,
-an HTTP status of 401 will be returned to challenge
-for credentials.
+The Deltacloud API uses HTTP authentication methods for authenticating
+a given client. There is no explicit _login_ action required. If
+authentication is required, an HTTP status of 401 will be returned to
+challenge for credentials.
 
 ## Primary Entry Point
 
-Any Deltacloud implementor _must_ provide exactly
-one well-known URL as an entry-point. For example,
-`http://fancycloudprovider.com/api`.
+Any Deltacloud implementor _must_ provide exactly one well-known URL
+as an entry-point. For example, `http://fancycloudprovider.com/api`.
 
-The result of this entry-point is a set of entry-points
-into other collections, such as _images_, _instances_,
-_flavors_ and _realms_, among others.
+The result of this entry-point is a set of entry-points into other
+collections, such as _images_, _instances_, _hardware profiles_ and
+_realms_, among others.
 
-Each collection is defined by a `<link>` tag with an
-`href` attribute which includes the fully-qualified URL
-to the collection (which _may_ exist on different servers)
-and a `rel` attribute to denote which collection is being
-specified.
+Each collection is defined by a `<link>` tag with an `href` attribute
+which includes the fully-qualified URL to the collection (which _may_
+exist on different servers) and a `rel` attribute to denote which
+collection is being specified.
 
     <api driver='ec2' version='1.0'>
-      <link href='http://fancycloudprovider.com/api/flavors' rel='flavors' />
-      <link href='http://fancycloudprovider.com/api/instance-states' rel='instance_states' />
+      <link href='http://fancycloudprovider.com/api/hardware_profiles' rel='hardware_profiles' />
+      <link href='http://fancycloudprovider.com/api/instance_states' rel='instance_states' />
       <link href='http://fancycloudprovider.com/api/realms' rel='realms' />
       <link href='http://fancycloudprovider.com/api/images' rel='images' />
       <link href='http://fancycloudprovider.com/api/instances' rel='instances' />
@@ -67,56 +58,86 @@ specified.
 ## Resources
 
 From the primary entry-point, a client may follow the URL provided for
-a collection to retrieve the resources within that collection.  The collection
-representation will include the full representations of the items within it,
-along with links to retrieve each item individually.
+a collection to retrieve the resources within that collection. The
+collection representation will include the full representations of the
+items within it, along with links to retrieve each item individually.
 
 ![Basic relationships][basic-relationships]
 
-### Flavors
+### Hardware Profiles
 
-Within a cloud provider a _flavor_ represents a configuration of resources upon
-which a machine may be deployed. A flavor defines aspects such as local disk storage,
-available RAM, and architecture.  A future revision of the Deltacloud API will
-include more aspects, including number and speed of CPUs available.  Each provider
-is free to define as many (or as few) flavors as desired.
+Within a cloud provider a _hardware profile_ represents a
+configuration of resources upon which a machine may be deployed. A
+hardware profile defines aspects such as local disk storage, available
+RAM, and architecture. A future revision of the Deltacloud API will
+include more aspects, including number and speed of CPUs available.
+Each provider is free to define as many (or as few) hardware profiles
+as desired.
 
-    <flavors>
-      <flavor href="http://fancycloudprovider.com/api/flavors/m1-small">
+    <hardware-profiles>
+      <hardware-profile href='http://fancycloudprovider.com/api/hardware_profiles/m1-small'>
         <id>m1-small</id>
-        <architecture>i386</architecture>
-        <memory>1.7</memory>
-        <storage>160</storage>
-      </flavor>
-      <flavor href="http://fancycloudprovider.com/api/flavors/m1-large">
-        <id>m1-large</id>
-        <architecture>x86_64</architecture>
-        <memory>7.5</memory>
-        <storage>850</storage>
-      </flavor>
-    </flavors>
+        <property kind='fixed' name='storage' unit='GB' value='160' />
+        <property kind='fixed' name='architecture' unit='label' value='i386' />
+        <property kind='fixed' name='cpu' unit='count' value='1' />
+        <property kind='fixed' name='memory' unit='MB' value='1740.8' />
+      </hardware-profile>
 
-Each `<flavor>` block shall contain an `href` attribute providing a URL to manipulate a
-specific flavor, along with elements for each attribute of a flavor. 
+Each `<hardware-profile>` block shall contain an `href` attribute providing a
+URL to manipulate a specific profile, along with property elements for each
+attribute of the hardware.
 
-- **`id`**            A unique identifier for the flavor
-- **`architecture`**  The architecture
-  - i386
-  - x86_64
-- **`memory`**        The amount of RAM, in gigabytes.
-- **`storage`**       The amount of local disk storage, in gigabytes.
+- **`id`**            is a unique identifier for the profile
+- **`property`**      describes each of the hardware aspects
 
-At this time, flavor resources are immutable and read-only.  In a future revision
-they may be mutable.
+Properties have the following attributes:
+
+- **`name`**          the type of the property: *e.g.* `memory` or `storage`
+- **`unit`**          the units in which the value is specified: `MB`, `GB`, `count` or `label`
+- **`value`**         the actual value of the property. It depends on the specified unit: `1024`, `2` on `x86_64`
+- **`kind`**          describes the values to chose from.
+  - **`fixed`**         only the value specified in the property is available
+  - **`enum`**          a list of available values is provided
+  - **`range`**         available values are described by a numeric range
+
+When the `kind` is either an `enum` or a `range`, there must be two additional elements specified. One
+that specifies the allowed values and the second with a way of picking a value.
+
+In the non-fixed case, the `value` property attribute specifies the default value.
+
+      <hardware-profile href='http://fancycloudprovider.com/api/hardware_profiles/m1-xlarge'>
+        <id>m1-xlarge</id>
+        <property kind='enum' name='storage' unit='GB' value='1024'>
+          <param href='http://fancycloudprovider.com/api/instances' method='post' name='hwp_storage' operation='create' />
+          <enum>
+            <entry value='1024' />
+            <entry value='2048' />
+            <entry value='4096' />
+          </enum>
+        </property>
+        <property kind='fixed' name='architecture' unit='label' value='x86_64' />
+        <property kind='fixed' name='cpu' unit='count' value='4' />
+        <property kind='range' name='memory' unit='MB' value='12288'>
+          <param href='http://fancycloudprovider.com/api/instances' method='post' name='hwp_memory' operation='create' />
+          <range first='12288' last='32768' />
+        </property>
+      </hardware-profile>
+    </hardware-profiles>
+
+
+At this time, hardware profile resources are immutable and read-only. In a
+future revision they may be mutable.
 
 ### Realms
 
-Within a cloud provider a _realm_ represents a boundary containing resources. The
-exact definition of a realm is left to the cloud provider.  In some cases, a realm 
-may represent different datacenters, different continents, or different pools of
-resources within a single datacenter. A cloud provider may insist that resources
-must all exist within a single realm in order to cooperate.  For instance, storage
-volumes may only be allowed to be mounted to instances within the same realm.  
+Within a cloud provider a _realm_ represents a boundary containing
+resources. The exact definition of a realm is left to the cloud
+provider. In some cases, a realm may represent different datacenters,
+different continents, or different pools of resources within a single
+datacenter. A cloud provider may insist that resources must all exist
+within a single realm in order to cooperate. For instance, storage
+volumes may only be allowed to be mounted to instances within the same
+realm.
 
     <realms>
       <realm href="http://fancycloudprovider.com/api/realms/us">
@@ -133,8 +154,9 @@ volumes may only be allowed to be mounted to instances within the same realm.
       </realm>
     </realms>
 
-Each `<realm>` block shall contain an `href` attribute providing a URL to manipulate a
-specific realm, along with elements for each attribute of a realm.
+Each `<realm>` block shall contain an `href` attribute providing a URL
+to manipulate a specific realm, along with elements for each attribute
+of a realm.
 
 - **`id`**          A unique identifier for the realm
 - **`name`**        A short label
@@ -156,31 +178,31 @@ the current user.
       <image href="http://fancycloudprovider.com/api/images/img1">
         <id>img1</id>
         <owner_id>fedoraproject</owner_id>
-        <name></name>
+        <name>Fedora 10</name>
         <description>Fedora 10</description>
         <architecture>x86_64</architecture>
       </image>
       <image href="http://fancycloudprovider.com/api/images/img2">
         <id>img2</id>
         <owner_id>fedoraproject</owner_id>
-        <name></name>
+        <name>Fedora 10</name>
         <description>Fedora 10</description>
         <architecture>i386</architecture>
       </image>
       <image href="http://fancycloudprovider.com/api/images/img3">
         <id>img3</id>
         <owner_id>ted</owner_id>
-        <name></name>
+        <name>JBoss</name>
         <description>JBoss</description>
         <architecture>i386</architecture>
       </image>
     </images>
 
-Each `<image>` block _shall_ contain an `href` attribute providing
-a URL to manipulate a specific image, along with elements for each 
-attribute of an image.  Each element, including those for optional 
-attributes must be present.  Optional attributes may be specified
-as a element with empty content.
+Each `<image>` block _shall_ contain an `href` attribute providing a
+URL to manipulate a specific image, along with elements for each
+attribute of an image. Each element, including those for optional
+attributes must be present. Optional attributes may be specified as a
+element with empty content.
 
 These attributes include
 
@@ -198,8 +220,9 @@ they will be mutable.
 
 ### Instances
 
-An _instance_ is a concrete machine realized from an _image_.  The images
-collection may be obtained by following the link from the primary entry-point.
+An _instance_ is a concrete machine realized from an _image_. The
+images collection may be obtained by following the link from the
+primary entry-point.
 
     <instances>
       <instance href="http://fancycloudprovider.com/api/instances/inst1">
@@ -207,9 +230,9 @@ collection may be obtained by following the link from the primary entry-point.
         <owner_id>larry</owner_id>
         <name>Production JBoss Instance</name>
         <image href="http://fancycloudprovider.com/api/images/img3"/>
-        <flavor href="http://fancycloudprovider.com/api/flavors/m1-small"/>
+        <hardware-profile href="http://fancycloudprovider.com/api/hardware_profiles/m1-small"/>
         <realm href="http://fancycloudprovider.com/api/realms/us"/>
-    
+
         <state>RUNNING</state>
         <actions>
           <link rel="reboot" href="http://fancycloudprovider.com/api/instances/inst1/reboot"/>
@@ -218,17 +241,18 @@ collection may be obtained by following the link from the primary entry-point.
         <public-addresses>
           <address>inst1.larry.fancycloudprovider.com</address>
         </public-addresses>
-    
+
         <private-addresses>
           <address>inst1.larry.internal</address>
         </private-addresses>
       </instance>
     </instances>
 
-Each `<instance>` block shall contain an href attribute providing a URL to manipulate a 
-specific instance, along with elements for each attribute of an instance. Each element, 
-including those for optional attributes must be present. Optional attributes may be 
-specified as a element with empty content.
+Each `<instance>` block shall contain an href attribute providing a
+URL to manipulate a specific instance, along with elements for each
+attribute of an instance. Each element, including those for optional
+attributes must be present. Optional attributes may be specified as a
+element with empty content.
 
 Simple attributes include
 
@@ -236,7 +260,7 @@ Simple attributes include
 - **`owner_id`**     An opaque identifier which indicates the owner of an instance
 - **`name`**         An _optional_ short label describing the instance
 - **`image`**        Provides a link to the platonic image from which the instance is based
-- **`flavor`**       Provides a link to flavor of virtual hardware in use by the instance 
+- **`hardware-profile`**       Provides a link to the hardware profile in use by the instance
 - **`realm`**        Provides a link to the realm where the instance is deployed
 - **`state`**        Indicator of the instance's current state
   - `PENDING`
@@ -249,9 +273,9 @@ Multiple-valued attributes include
 - **`private-addresses`**  Private network IP addresses or names for the instance
 
 In addition to the abovementioned attributes, each `<instance>` may contain an
-`<actions>` block specifying valid actions for the instance, along with the URL 
+`<actions>` block specifying valid actions for the instance, along with the URL
 which may be used to perform the action.  Each action is specified by a `<link>`
-with an `href` attribute providing the URL, and a `rel` attribute providing 
+with an `href` attribute providing the URL, and a `rel` attribute providing
 a key to determine what the action will do.
 
 Representative actions include
@@ -260,15 +284,15 @@ Representative actions include
 - `start`
 - `stop`
 
-Not all actions may be valid at all times for all instances.  To invoke an 
-action, a client must perform an HTTP `POST` to the URL indicated.
+Not all actions may be valid at all times for all instances. To invoke
+an action, a client must perform an HTTP `POST` to the URL indicated.
 
 #### Creating a new Instance
 
-Per usual REST architectural style, new instances are created by issuing
-an HTTP `POST` to the instances collection as defined through the 
-primary entry-point URL. Data should be sent in `application/x-www-form-urlencoded`
-format.
+Per usual REST architectural style, new instances are created by
+issuing an HTTP `POST` to the instances collection as defined through
+the primary entry-point URL. Data should be sent in
+`application/x-www-form-urlencoded` format.
 
 To create a new instance, only one parameter is required
 
@@ -277,13 +301,13 @@ To create a new instance, only one parameter is required
 Optional parameters may also be provided
 
 - **`realm_id`**   The realm in which to launch the instance
-- **`flavor_id`**  The machine flavor upon which to launch the instance
+- **`hwp_name`**  The hardware profile upon which to launch the instance
 - **`name`**       A short label to identify the instance
 
-If `realm_id` or `flavor_id` are not specified, the provider _must_ select 
-reasonable defaults.  The architecture of the selected flavor _must_ match the 
-architecture of the specified image.
+If `realm_id` or `hwp_name` are not specified, the provider _must_
+select reasonable defaults. The architecture of the selected harware profile
+_must_ match the architecture of the specified image.
 
-After `POST`ing the data, the server _shall_ return a representation of
-the newly-created instance's XML, including a URL to retrieve the instance
-in the future.
+After `POST`ing the data, the server _shall_ return a representation
+of the newly-created instance's XML, including a URL to retrieve the
+instance in the future.
