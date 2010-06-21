@@ -11,7 +11,7 @@ object model is possible.
 For example
 
     puts instance.image.name
-    puts instance.flavor.architecture
+    puts instance.hardware_profile.architecture
 
 ## Basics
 
@@ -23,18 +23,18 @@ To use the client, you must require `deltacloud`.
 
     require 'deltacloud'
 
-    api_url      = 'http://fancycloudprovider.com/api'
-    api_name     = 'larry'
-    api_password = 'swordfish'
+    api_url      = 'http://localhost:3001/api'
+    api_name     = 'mockuser'
+    api_password = 'mockpassword'
 
-    client = DeltaCloud.new( api_url, api_name, api_password )
+    client = DeltaCloud.new( api_name, api_password, api_url )
 
     # work with client here
 
 In addition to creating a client, operations may occur within a block
 included on the initialization
 
-    DeltaCloud.new( api_url, api_name, api_password ) do |client|
+    DeltaCloud.new( api_name, api_password, api_url ) do |client|
       # work with client here
     end
 
@@ -51,20 +51,20 @@ You may retrieve a specific realm by its identifier
 
     realm = client.realm( 'us' )
 
-## Listing flavors
+## Listing hardware profiles
 
-You may retrieve a complete list of flavors available for launching
+You may retrieve a complete list of hardware profiles available for launching
 machines
 
-    flavors = client.flavors
+    hwp = client.hardware_profiles
 
-You may filter flavors by architecture
+You may filter hardware profiles by architecture
 
-    flavors = client.flavors( :architecture=>'x86_64' )
+    flavors = client.hardware_profiles( :architecture=>'x86_64' )
 
-You may retrieve a specific flavor by its identifier
+You may retrieve a specific hardware profile by its identifier
 
-    flavor = client.flavor( 'm1-small' )
+    flavor = client.hardware_profile( 'm1-small' )
 
 ## Listing images
 
@@ -111,9 +111,9 @@ Optionally, a flavor or realm may be specified
 
 Given an instance, depending on its state, various actions _may_ be available.
 
-To determine what's available, the `instance#available_actions` method may be used.
+To determine what's available, the `instance#actions` method may be used.
 
-    instance.available_actions # [ 'reboot', 'stop' ]
+    instance.actions # [ 'reboot', 'stop' ]
 
 For a valid action, the method matching the action with an exclamation point may be called.
 
