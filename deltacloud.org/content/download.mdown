@@ -22,19 +22,10 @@ We plan to release RPM version for Fedora soon.
 Deltacloud Aggregator provides a web-based user interface for managing your
 cloud instances.
 
-Download the current release:
+We're working on releasing a downloadable package soon. In the meantime, you
+can get the source code on our [Contribute page][Contribute].
 
-* [deltacloud-portal-0.0.1-1.fc11.noarch.rpm][aggregator-rpm]
-* [deltacloud-portal-0.0.1.tar.gz][aggregator-tgz]
-
-[aggregator-rpm]: https://fedorahosted.org/released/deltacloud/deltacloud-portal-0.0.1-1.fc11.noarch.rpm
-[aggregator-tgz]: https://fedorahosted.org/released/deltacloud/deltacloud-portal-0.0.1.tar.gz
-
-You can access all Deltacloud releases on our Fedora Hosted repository: <https://fedorahosted.org/released/deltacloud/>
-
-To get the latest source code, visit our [Contribute] page.
-
-[Contribute]: /contribute.html
+[Contribute]: ./contribute.html
 
 Additional Tools
 ----------------
