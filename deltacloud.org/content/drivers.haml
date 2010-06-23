@@ -4,10 +4,7 @@ area: documentation
 extension: html
 filter:
   - haml
-  - outline
 ---
-<toc class="toc" numbering="off" toc_style="ul" toc_range="h2-h3" />
-
 - page = render(:partial => "external", :locals => { :path => '../docs/drivers.mdown' })
 - header, rest = page.split("<table providers></table>")
 
