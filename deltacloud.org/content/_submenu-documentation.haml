@@ -1,19 +1,11 @@
 ---
 filter: haml
 ---
-- menu = [ { :href => 'documentation.html', :text => 'Overview' }, |
-  { :href => "api.html" , :text => 'REST API' }, |
-  { :href => "drivers.html" , :text => 'Drivers' }, |
-  { :href => "image-builder.html" , :text => 'Image Builder' }, |
-  { :href => "framework.html" , :text => 'Framework' }, |
-  { :href => "client-ruby.html" , :text => 'Ruby Client' }, |
-  ] |
-
 #subnavigation
   #submenu.container
     %ul.l1
-      - menu.each do |link|
+      - documentation_pages.each do |link|
         %li
           - state = (link[:href] == current_page) ? 'active' : 'inactive'
           %a{:class => state, :href => link[:href]}
-            = link[:text]
+            = link[:menu]
