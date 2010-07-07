@@ -74,10 +74,10 @@ filter: haml
             OS provisioning and profile management
           %dt
             %a{ :href => "http://libguestfs.org/" }
-              virt-v2v
+              libguestfs
           %dd
             %span
-              Migrate guests from one hypervisor to another
+              Tools for accessing and modifying virtual machine disk images
         %dl#p3
           %dt
             %a{ :href => "http://freeipa.org/" }
