@@ -5,7 +5,8 @@ The Deltacloud project consists of two parts: **Core** and **Aggregator**. Core
 gives you the API and drivers to various cloud providers. It also provides a
 client library (which Aggregator uses) and a commandline interface.
 
-Aggregator is a web frontend to the API.
+Aggregator is a web frontend to the API.  The aggregator also depends on
+Condor for its task implementation system.
 
 In addition, there is the **docs** repository that contains the project
 documentation and the sources of the <http://deltacloud.org> website.
@@ -99,6 +100,45 @@ And this sets the database up:
 
     $ rake db:create:all
     $ rake db:migrate
+
+Setting up Condor
+-----------------
+
+In the `next` branch, the Deltacloud Aggregator now uses condor as a
+task system.  Condor is used to decide where a new instance is started
+and takes care of actually starting that instance among other tasks.
+At this time support for Deltacloud is provided in a custom build of
+Condor, this is available at:
+
+<http://people.redhat.com/clalance/condor-dcloud/>
+
+The easiest way to install it is to use the command:
+
+    $ yum localinstall http://people.redhat.com/clalance/condor-dcloud/condor-7.5.2-3dcloud.fc13.x86_64.rpm \
+      http://people.redhat.com/clalance/condor-dcloud/libdcloudapi-0.2-1.fc13.x86_64.rpm
+
+Note that new versions may become available and you should check the
+site for the latest version.
+
+Once those are installed, you will also want to download:
+
+<http://people.redhat.com/clalance/condor-dcloud/condor_config.local>
+
+And place this file in `/var/lib/condor/condor_config.local`.  The only
+configuration variable you will have to change is the `CONDOR_HOST`, which
+should be set to your local host name.  If you are concerned about security,
+the `ALLOW_HOSTS` variable can also be set to your machines host name.
+
+At this time you should restart Condor:
+
+    $ sudo service condor restart
+
+Note that if you restart Condor, you should also restart the aggregator
+in order to populate Condor with the available backend cloud information.
+
+For more information on Condor see the README at:
+
+<http://people.redhat.com/clalance/condor-dcloud/README>
 
 Tying it all together
 ---------------------
