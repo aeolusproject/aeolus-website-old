@@ -12,7 +12,10 @@ drivers and their capabilities are:
 To set up a Deltacloud core, and one of its drivers, currently, you must
 checkout the code from the core repository:
 
-    git clone git://git.fedorahosted.org/git/deltacloud/core.git
+    mkdir deltacloud
+    cd deltacloud
+    git svn init -s https://svn.apache.org/repos/asf/incubator/deltacloud
+    git svn fetch --log-window-size 10000
     cd core/server
     rake package
     sudo gem install pkg/deltacloud-core-<version>.gem

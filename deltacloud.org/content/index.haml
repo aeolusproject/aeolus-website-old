@@ -49,19 +49,9 @@ filter: haml
     %h2
       News
     %ul
-      %li
-        Deltacloud now&nbsp;
-        %a{ :href => "./drivers.html#providers" }> supports GoGrid
-        !
-      %li
-        We've introduced
-        %a{ :href => "./api.html#h4_1" }Hardware Profiles
-        to the API.
-      %li
-        Deltacloud
-        %a{ :href => "http://press.redhat.com/2009/09/03/introducing-deltacloud/" }
-          announced
-        at 2009 Red Hat Summit!
+      - all_news.each do |item|
+        %li
+          = item
   %br
   %br
   .section.video{ :style => "margin-top:16px;" }

@@ -1,4 +1,4 @@
-module DataHelper
+module ProviderSupportHelper
   def provider_support
     [
       {:name => "Amazon EC2", :driver => true, :instance => { :create => true, :start => false, :stop => true, :reboot => true, :destroy => true },
@@ -28,4 +28,4 @@ module DataHelper
 
 end
 
-Webby::Helpers.register(DataHelper)
+Webby::Helpers.register(ProviderSupportHelper)

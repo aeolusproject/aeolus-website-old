@@ -5,25 +5,29 @@ The Deltacloud project consists of two parts: **Core** and **Aggregator**. Core
 gives you the API and drivers to various cloud providers. It also provides a
 client library (which Aggregator uses) and a commandline interface.
 
-Aggregator is a web frontend to the API.  The aggregator also depends on
-Condor for its task implementation system.
+Aggregator is a web system that uses the API to manage all your cloud assests.
+It depends on [Condor][condor] for its task implementation system.
 
-In addition, there is the **docs** repository that contains the project
+In addition, we use the **docs** repository that contains the project
 documentation and the sources of the <http://deltacloud.org> website.
 
-You can browse the repositories on the web:
+The Deltacloud Core repository is hosted on [Apache Incubator][incubator]. To get the
+latest code:
 
-* [core](http://git.fedorahosted.org/git/?p=deltacloud/core.git;a=summary)
-* [aggregator](http://git.fedorahosted.org/git/?p=deltacloud/aggregator.git;a=shortlog;h=refs/heads/next)
-* [docs](http://git.fedorahosted.org/git/?p=deltacloud/docs.git;a=shortlog;h=refs/heads/next)
+    $ mkdir deltacloud
+    $ cd deltacloud
+    $ git svn init -s https://svn.apache.org/repos/asf/incubator/deltacloud
+    $ git svn fetch --log-window-size 10000
 
-or download them to your computer:
+**Note**: You can use git-svn, but be aware that it takes well over an hour to
+fetch the complete revision history.
 
-    $ git clone git://git.fedorahosted.org/git/deltacloud/core.git/
+The sources for Aggregator and docs are in git repositories:
+
     $ git clone --branch next git://git.fedorahosted.org/git/deltacloud/aggregator.git/
     $ git clone --branch next git://git.fedorahosted.org/git/deltacloud/docs.git/
 
-Note that the development of the **docs** and **aggregator** takes place on the
+Note that the development of the **Docs** and **Aggregator** takes place on the
 `next` branch, which contains the latest version of the code.
 
 If your `git` doesn't support the `--branch` option, do this instead:
@@ -87,8 +91,6 @@ database backend:
 
 **Note:** you can update the paths in the "database.yml" file to change the
 location of the *.sqlite3 database files.
-
-[SQlite]: http://sqlite.org/
 
 This command installs all the missing ruby gems:
 
@@ -160,8 +162,6 @@ The mock driver simulates the API behavior without making you to connect
 to a real cloud provider. For a guide to connecting Deltacloud to a provider,
 go to the [Drivers section of the Documentation][drivers].
 
-[drivers]: ./drivers.html
-
 Make sure that the `src/db` and `src/log` directories are owned by the user
 who will be running the Aggregator. Note that you can change their location in
 the `config/database.yml` file.
@@ -178,3 +178,9 @@ privileges. Run the following command in your `deltacloud/aggregator/src`
 directory (put the name of your Aggregator user in the brackets):
 
     $ rake dc:site_admin[aggregator_username]
+
+
+[condor]: http://www.cs.wisc.edu/condor/
+[incubator]: http://incubator.apache.org/
+[SQlite]: http://sqlite.org/
+[drivers]: ./drivers.html
