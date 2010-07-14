@@ -117,7 +117,7 @@ Condor, this is available at:
 The easiest way to install it is to use the command:
 
     $ yum localinstall http://people.redhat.com/clalance/condor-dcloud/condor-7.5.2-3dcloud.fc13.x86_64.rpm \
-      http://people.redhat.com/clalance/condor-dcloud/libdcloudapi-0.2-1.fc13.x86_64.rpm
+      http://people.redhat.com/clalance/condor-dcloud/libdcloudapi-0.2-1.fc13.x86_64.rpm --nogpgcheck
 
 Note that new versions may become available and you should check the
 site for the latest version.
