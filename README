@@ -74,10 +74,11 @@ Then install the client library:
 
     $ cd path/to/deltacloud/core/client
     $ rake package
-    $ sudo gem install deltacloud-client-<version>.gem
+    $ sudo gem install pkg/deltacloud-client-<version>.gem
 
 Once you have the client installed, run the following command:
 
+    $ cd path/to/deltacloud/core/client
     $ rake fixtures
 
 Setting up the Aggregator
@@ -114,10 +115,18 @@ Condor, this is available at:
 
 <http://people.redhat.com/clalance/condor-dcloud/>
 
-The easiest way to install it is to use the command:
+The easiest way to install is to use one of the following commands:
+
+For x86_64 architectures:
 
     $ yum localinstall http://people.redhat.com/clalance/condor-dcloud/condor-7.5.2-3dcloud.fc13.x86_64.rpm \
       http://people.redhat.com/clalance/condor-dcloud/libdcloudapi-0.2-1.fc13.x86_64.rpm --nogpgcheck
+
+For i386 architectures:
+
+    $ yum localinstall http://people.redhat.com/clalance/condor-dcloud/condor-7.5.2-3dcloud.fc13.i386.rpm \
+      http://people.redhat.com/clalance/condor-dcloud/libdcloudapi-0.2-1.fc13.i386.rpm --nogpgcheck
+
 
 Note that new versions may become available and you should check the
 site for the latest version.
