@@ -11,18 +11,16 @@ It depends on [Condor][condor] for its task implementation system.
 In addition, we use the **docs** repository that contains the project
 documentation and the sources of the <http://deltacloud.org> website.
 
-The Deltacloud Core repository is hosted on [Apache Incubator][incubator]. To get the
-latest code:
+The Deltacloud Core repository is hosted on [Apache Incubator][incubator].
+Apache uses Subversion, but there is a git mirror available:
 
     $ mkdir deltacloud
     $ cd deltacloud
-    $ git svn init -s https://svn.apache.org/repos/asf/incubator/deltacloud
-    $ git svn fetch --log-window-size 10000
+    $ git clone git://git.apache.org/deltacloud.git core
 
-**Note**: You can use git-svn, but be aware that it takes well over an hour to
-fetch the complete revision history.
+You can find the Subversion repository at: <https://svn.apache.org/repos/asf/incubator/deltacloud>.
 
-The sources for Aggregator and docs are in git repositories:
+To get Aggregator and Docs:
 
     $ git clone --branch next git://git.fedorahosted.org/git/deltacloud/aggregator.git/
     $ git clone --branch next git://git.fedorahosted.org/git/deltacloud/docs.git/

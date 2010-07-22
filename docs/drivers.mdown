@@ -9,25 +9,21 @@ drivers and their capabilities are:
 
 ## Setting up the code
 
-To set up a Deltacloud core, and one of its drivers, currently, you must
-checkout the code from the core repository:
+To set up a Deltacloud core and the drivers, install the
+[deltacloud-core][coregem] Ruby gem:
 
-    mkdir deltacloud
-    cd deltacloud
-    git svn init -s https://svn.apache.org/repos/asf/incubator/deltacloud
-    git svn fetch --log-window-size 10000
-    cd core/server
-    rake package
-    sudo gem install pkg/deltacloud-core-<version>.gem
+[coregem]: http://rubygems.org/gems/deltacloud-core
 
-The core will soon be available both as a Ruby gem and RPM packages.
+    # gem install deltacloud-core
+
+RPM package will be available soon.
 
 ## Launch the server
 
 The server is launched with the `deltacloudd` command and pass it the name
 of the driver you want to use:
 
-    deltacloudd -i mock
+    $ deltacloudd -i mock
 
 This will start a webserver running the mock driver on
 `http://localhost:3001/api`; you can simply browse to that URL to get a
@@ -37,7 +33,7 @@ pretty view of the objects the driver deals with.
 
 For the Amazon EC2 you need to install the `amazon-ec2` Ruby gem:
 
-    sudo gem install amazon-ec2
+    # gem install amazon-ec2
 
 When using the driver for Amazon EC2, the credentials passed in
 response to the HTTP 401 authentication challenge should be your
