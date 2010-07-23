@@ -74,16 +74,15 @@ include more aspects, including number and speed of CPUs available.
 Each provider is free to define as many (or as few) hardware profiles
 as desired.
 
-    <hardware-profiles>
-      <hardware-profile href='http://fancycloudprovider.com/api/hardware_profiles/m1-small'>
-        <id>m1-small</id>
+    <hardware_profiles>
+      <hardware_profile href='http://fancycloudprovider.com/api/hardware_profiles/m1-small' id='m1-small'>
         <property kind='fixed' name='storage' unit='GB' value='160' />
         <property kind='fixed' name='architecture' unit='label' value='i386' />
         <property kind='fixed' name='cpu' unit='count' value='1' />
         <property kind='fixed' name='memory' unit='MB' value='1740.8' />
-      </hardware-profile>
+      </hardware_profile>
 
-Each `<hardware-profile>` block shall contain an `href` attribute providing a
+Each `<hardware_profile>` block shall contain an `href` attribute providing a
 URL to manipulate a specific profile, along with property elements for each
 attribute of the hardware.
 
@@ -105,8 +104,7 @@ that specifies the allowed values and the second with a way of picking a value.
 
 In the non-fixed case, the `value` property attribute specifies the default value.
 
-      <hardware-profile href='http://fancycloudprovider.com/api/hardware_profiles/m1-xlarge'>
-        <id>m1-xlarge</id>
+      <hardware_profile href='http://fancycloudprovider.com/api/hardware_profiles/m1-xlarge' id='m1-xlarge'>
         <property kind='enum' name='storage' unit='GB' value='1024'>
           <param href='http://fancycloudprovider.com/api/instances' method='post' name='hwp_storage' operation='create' />
           <enum>
@@ -121,8 +119,8 @@ In the non-fixed case, the `value` property attribute specifies the default valu
           <param href='http://fancycloudprovider.com/api/instances' method='post' name='hwp_memory' operation='create' />
           <range first='12288' last='32768' />
         </property>
-      </hardware-profile>
-    </hardware-profiles>
+      </hardware_profile>
+    </hardware_profiles>
 
 
 At this time, hardware profile resources are immutable and read-only. In a
@@ -140,14 +138,12 @@ volumes may only be allowed to be mounted to instances within the same
 realm.
 
     <realms>
-      <realm href="http://fancycloudprovider.com/api/realms/us">
-        <id>us</id>
+      <realm href="http://fancycloudprovider.com/api/realms/us" id='us'>
         <name>United States</name>
         <state>AVAILABLE</state>
         <limit/>
       </realm>
-      <realm href="http://fancycloudprovider.com/api/realms/eu">
-        <id>eu</id>
+      <realm href="http://fancycloudprovider.com/api/realms/eu" id='eu'>
         <name>Europe</name>
         <state>AVAILABLE</state>
         <limit/>
@@ -175,22 +171,19 @@ The instances collection will return a set of all images available to
 the current user.
 
     <images>
-      <image href="http://fancycloudprovider.com/api/images/img1">
-        <id>img1</id>
+      <image href="http://fancycloudprovider.com/api/images/img1" id='img1'>
         <owner_id>fedoraproject</owner_id>
         <name>Fedora 10</name>
         <description>Fedora 10</description>
         <architecture>x86_64</architecture>
       </image>
-      <image href="http://fancycloudprovider.com/api/images/img2">
-        <id>img2</id>
+      <image href="http://fancycloudprovider.com/api/images/img2" id='img2'>
         <owner_id>fedoraproject</owner_id>
         <name>Fedora 10</name>
         <description>Fedora 10</description>
         <architecture>i386</architecture>
       </image>
-      <image href="http://fancycloudprovider.com/api/images/img3">
-        <id>img3</id>
+      <image href="http://fancycloudprovider.com/api/images/img3" id='img3'>
         <owner_id>ted</owner_id>
         <name>JBoss</name>
         <description>JBoss</description>
@@ -225,12 +218,11 @@ images collection may be obtained by following the link from the
 primary entry-point.
 
     <instances>
-      <instance href="http://fancycloudprovider.com/api/instances/inst1">
-        <id>inst1</id>
+      <instance href="http://fancycloudprovider.com/api/instances/inst1" id='inst1'>
         <owner_id>larry</owner_id>
         <name>Production JBoss Instance</name>
         <image href="http://fancycloudprovider.com/api/images/img3"/>
-        <hardware-profile href="http://fancycloudprovider.com/api/hardware_profiles/m1-small"/>
+        <hardware_profile href="http://fancycloudprovider.com/api/hardware_profiles/m1-small"/>
         <realm href="http://fancycloudprovider.com/api/realms/us"/>
 
         <state>RUNNING</state>
@@ -238,13 +230,13 @@ primary entry-point.
           <link rel="reboot" href="http://fancycloudprovider.com/api/instances/inst1/reboot"/>
           <link rel="stop" href="http://fancycloudprovider.com/api/instances/inst1/stop"/>
         </actions>
-        <public-addresses>
+        <public_addresses>
           <address>inst1.larry.fancycloudprovider.com</address>
-        </public-addresses>
+        </public_addresses>
 
-        <private-addresses>
+        <private_addresses>
           <address>inst1.larry.internal</address>
-        </private-addresses>
+        </private_addresses>
       </instance>
     </instances>
 
@@ -260,7 +252,7 @@ Simple attributes include
 - **`owner_id`**     An opaque identifier which indicates the owner of an instance
 - **`name`**         An _optional_ short label describing the instance
 - **`image`**        Provides a link to the platonic image from which the instance is based
-- **`hardware-profile`**       Provides a link to the hardware profile in use by the instance
+- **`hardware_profile`**       Provides a link to the hardware profile in use by the instance
 - **`realm`**        Provides a link to the realm where the instance is deployed
 - **`state`**        Indicator of the instance's current state
   - `PENDING`
@@ -269,8 +261,8 @@ Simple attributes include
 
 Multiple-valued attributes include
 
-- **`public-addresses`**  Publicly routable IP addresses or names for the instance
-- **`private-addresses`**  Private network IP addresses or names for the instance
+- **`public_addresses`**  Publicly routable IP addresses or names for the instance
+- **`private_addresses`**  Private network IP addresses or names for the instance
 
 In addition to the abovementioned attributes, each `<instance>` may contain an
 `<actions>` block specifying valid actions for the instance, along with the URL
