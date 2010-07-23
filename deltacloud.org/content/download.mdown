@@ -31,6 +31,21 @@ Additional Tools
 ----------------
 These are complementary to the essential Core/Aggregator components.
 
+### libdeltacloud ###
+
+A library for accessing the Deltacloud API from C/C++ programs.
+
+You can get the source code:
+
+    $ git clone git://git.fedorahosted.org/deltacloud/libdeltacloud.git
+
+Or you can download the RPMs for Fedora 12 and 13:
+
+<http://people.redhat.com/clalance/libdeltacloud>
+
+Contributed by Chris Lalancette.
+
+
 ### Deltacloud Client ###
 
 Deltacloud Client is a command line tool that communicates with the
