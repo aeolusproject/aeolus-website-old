@@ -113,17 +113,22 @@ Condor, this is available at:
 
 <http://people.redhat.com/clalance/condor-dcloud/>
 
+We hope to get our enhancements to condor integrated upstream, but
+in the meantime, the source can be found here:
+
+<http://github.com/clalancette/condor-dcloud>
+
 The easiest way to install is to use one of the following commands:
 
 For x86_64 architectures:
 
-    $ yum localinstall http://people.redhat.com/clalance/condor-dcloud/condor-7.5.2-3dcloud.fc13.x86_64.rpm \
-      http://people.redhat.com/clalance/condor-dcloud/libdcloudapi-0.2-1.fc13.x86_64.rpm --nogpgcheck
+    $ yum localinstall http://people.redhat.com/clalance/condor-dcloud/7.5.2-4dcloud/f13/condor-7.5.2-4dcloud.fc13.x86_64.rpm \
+      http://people.redhat.com/clalance/libdeltacloud/0.3.0/f13/libdeltacloud-0.3-1.fc13.x86_64.rpm --nogpgcheck
 
 For i386 architectures:
 
-    $ yum localinstall http://people.redhat.com/clalance/condor-dcloud/condor-7.5.2-3dcloud.fc13.i386.rpm \
-      http://people.redhat.com/clalance/condor-dcloud/libdcloudapi-0.2-1.fc13.i386.rpm --nogpgcheck
+    $ yum localinstall http://people.redhat.com/clalance/condor-dcloud/7.5.2-4dcloud/f13/condor-7.5.2-4dcloud.fc13.i386.rpm \
+      http://people.redhat.com/clalance/libdeltacloud/0.3.0/f13/libdeltacloud-0.3-1.fc13.i386.rpm --nogpgcheck
 
 
 Note that new versions may become available and you should check the
