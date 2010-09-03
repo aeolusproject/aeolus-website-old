@@ -39,7 +39,7 @@ To get the stable version, don't switch to the `next` branch at all.
 Required packages
 -----------------
 In order to make the Deltacloud components work, you'll need to
-have the following packages installed (on Fedora 12; the names may vary on
+have the following packages installed (on Fedora 13; the names may vary on
 your distro):
 
     ruby
@@ -48,7 +48,6 @@ your distro):
     libxml2-devel
     libxslt-devel
     rubygem-rails
-    rubygem-gettext_rails
     rubygem-sqlite3-ruby
 
 **Note:** these packages are necessary for building all the required ruby gems
@@ -56,8 +55,8 @@ that Deltacloud requires. If you want to install the gems using your system's
 package manager (yum, apt, ports, etc.) you won't need to install these
 packages manually.
 
-We recommend using Rails version 2.3.4 or 2.3.5 (default in
-Fedora 12). Older or newer versions may not be compatible at the moment.
+We recommend using Rails version 2.3.5 (default in Fedora 13) or 2.3.8. Older
+versions may not be compatible.
 
 Installing the Deltacloud Core
 ------------------------------
@@ -191,8 +190,25 @@ directory (put the name of your Aggregator user in the brackets):
 
     $ rake dc:site_admin[aggregator_username]
 
+Running tests
+-------------
+
+In order to run the tests, you need to install additional gems.  Some of
+these are packaged as rpms for Fedora, but not all.  If you'd like to help
+the list is [here][gemlist].  You can install these gems with:
+
+    # RAILS_ENV=cucumber rake gems:install
+
+There are two test suites, one for cucumber, and one for rspec.  Rspec
+currently needs an instance of the core server running on port 3001, but
+cucumber tests do not.  They can be run with the following commands (from
+src directory):
+
+    $ rake cucumber
+    $ rake spec
 
 [condor]: http://www.cs.wisc.edu/condor/
 [incubator]: http://incubator.apache.org/
 [SQlite]: http://sqlite.org/
 [drivers]: ./drivers.html
+[gemlist]: http://deltacloud.org/page/Packaging_list
