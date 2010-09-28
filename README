@@ -45,6 +45,7 @@ your distro):
     ruby
     ruby-devel
     gcc-c++
+    gnuplot
     libxml2-devel
     libxslt-devel
     rubygem-rails
