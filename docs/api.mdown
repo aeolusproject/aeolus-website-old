@@ -167,7 +167,7 @@ An _image_ is a platonic form of a machine. Images are not directly
 executable, but are a template for creating actual instances of
 machines.
 
-The instances collection will return a set of all images available to
+The images collection will return a set of all images available to
 the current user.
 
     <images>
