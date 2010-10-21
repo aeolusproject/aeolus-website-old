@@ -10,22 +10,76 @@ Download
 Deltacloud Core provides the API server and drivers necessary for connecting
 to the cloud providers.
 
-Presently, it is packaged as a Ruby gem. You can install it by typing the
-following command:
-
-    $ sudo gem install deltacloud-core
-
-We plan to release RPM version for Fedora soon.
+The appropriate version of Deltacloud Core will be retrieved as part of the 
+Cloud Engine installation process.
 
 <h3 id="deltacloud-aggregator">Deltacloud Aggregator</h3>
 
 Deltacloud Aggregator provides a web-based user interface for managing your
-cloud instances.
+cloud instances.  
 
-We're working on releasing a downloadable package soon. In the meantime, you
+ + **NOTE:** The current installation process **deletes** any existing data in your postrgresql database.  
+Either ensure that your data is backed up and restorable or consider installing Deltacloud  
+Aggregator on a box that does not need postgresql for any other purpose.
+
+ + **NOTE:** The current installation process calls for selinux to be in permissive mode.  
+This is not recommended on a mission-critical machine.
+
+#### Installation Steps ####
+
+1. Deltacloud Aggregator requires specific versions of the livecd-tools and python-imgcreate packages.  
+Remove any existing version before installing.
+
+		$ sudo yum remove livecd-tools python-imgcreate
+	
+1.  In order to integrate with the Amazon Elastic Compute Cloud (EC2), Deltacloud Aggregator uses ec2-ami-tools.  
+This package is freely available, but can not be bundled with Deltacloud Aggregator  
+due to licensing concerns. Before installing the Deltacloud Aggregator, install ec2-ami-tools.
+
+		$ sudo yum localinstall http://s3.amazonaws.com/ec2-downloads/ec2-ami-tools.noarch.rpm --nogpg
+ 
+	
+1.  Set up the deltacloud repository.
+		$ sudo wget -O /etc/yum.repos.d/fedora-deltacloud.repo \
+			http://repos.fedorapeople.org/repos/deltacloud/appliance/fedora-appliance.repo
+
+1.  Now install the configuration tool:
+		$ sudo yum install deltacloud-configure
+	
+#### Deltacloud Aggregator Configuration ####
+
+1.  Open port 80 on the firewall so that web traffic may be served.
+
+1.  Set SELinux to permissive mode.
+		sudo setenforce 0
+		
+1.  Ensure that the time is set correctly.  Failure to do so cause connectivity issues  
+with Amazon Elastic Cloud Compute (EC2)
+
+1.  Clean up any existing remanents from an older installation.  
+**Note**:  this will destroy any existing data in the postgres database.
+		sudo  /usr/sbin/deltacloud-cleanup
+		
+1.  Configure Deltacloud Aggregator.
+		sudo /usr/sbin/deltacloud-configure
+		
+#### Verify Installation ####
+
+1.  Browse to:  http://<machine_name>/deltacloud   
+A default administrative account has been created with a username "admin"  
+and a password "password" (no quotes)
+	
+1.  Browse to:  http://localhost:3002/api  
+Ensure that a page is visible.  This URL should be used as the  
+"Provider URL" in the "Manage Providers" screen within the Deltacloud Aggregator application.
+
+### Become a contributor ###
+If you would like to examine the source code or contribute to the project, you
 can get the source code on our [Contribute page][Contribute].
 
 [Contribute]: ./contribute.html
+
+
 
 Additional Tools
 ----------------
