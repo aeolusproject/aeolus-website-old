@@ -2,6 +2,7 @@ module DocumentationHelper
   def documentation_pages
     [
       { :href => 'documentation.html', :menu => 'Overview' },
+      { :href => 'use.html', :menu => 'Post-Install', :description => 'Post-installation End-to-End Usage Documentation' },
       { :href => "api.html" , :menu => 'REST API', :description => 'REST API definition' },
       { :href => "drivers.html" , :menu => 'Drivers', :description => 'Currently-supported drivers' },
       { :href => "framework.html" , :menu => 'Framework', :description => 'Framework for writing additional drivers' },
