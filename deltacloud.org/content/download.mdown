@@ -41,7 +41,7 @@ due to licensing concerns. Before installing the Deltacloud Aggregator, install 
 	
 1.  Set up the deltacloud repository.
 		$ sudo wget -O /etc/yum.repos.d/fedora-deltacloud.repo \
-			http://repos.fedorapeople.org/repos/deltacloud/appliance/fedora-appliance.repo
+			http://repos.fedorapeople.org/repos/deltacloud/appliance/fedora-deltacloud.repo
 
 1.  Now install the configuration tool:
 		$ sudo yum install deltacloud-configure
