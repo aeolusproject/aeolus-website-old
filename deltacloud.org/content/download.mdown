@@ -25,6 +25,9 @@ Aggregator on a box that does not need postgresql for any other purpose.
  + **NOTE:** The current installation process calls for selinux to be in permissive mode.  
 This is not recommended on a mission-critical machine.
 
++ **NOTE:** The current installation works on 64-bit only.  32-bit support is
+planned, but does not work at this time.
+
 #### Installation Steps ####
 
 1. Deltacloud Aggregator requires specific versions of the livecd-tools and python-imgcreate packages.  
