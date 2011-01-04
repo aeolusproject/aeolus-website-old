@@ -1,0 +1,27 @@
+---
+title: Aeolus Project
+extension: html
+filter: haml
+---
+%h1 Projects
+
+%p
+  %em
+    The projects hosted here are:
+  %ul
+    %li
+      = link_to 'Conductor', 'conductor.html'
+      &ndash; multiple cloud web UI
+    %li
+      = link_to 'Oz', 'oz.html'
+      &ndash; automated virtual machine installer
+    %li
+      = link_to 'Image Factory', 'imagefactory.html'
+      &ndash; daemon with a QMF interface for building cloud images
+    %li
+      = link_to 'Image Warehouse', 'imagewarehouse.html'
+      &ndash; a daemon to move cloud images from cloud to cloud
+      based on rules
+    %li
+      = link_to 'Audrey', 'audrey.html'
+      &ndash; a set of tools to do run-time configuration of cloud instances

@@ -1,17 +1,21 @@
+Overview
+--------
+
+The Aeolus project consists of several components.  Taken together, these
+components come together to create the Aeolus Conductor, which can be used
+to manage diverse sets of cloud instances across many different clouds.  Under
+the hood, the Deltacloud API is used to tie everything together, and provides
+a common framework for adding support for new clouds.
+
 Getting the sources
 -------------------
+There are several repositories that contain source code for the various
+Aeolus conductor pieces.  For historical reasons, some of the pieces reference
+Deltacloud even though they are not related to the API.  These will be fixed
+over time.
 
-The Deltacloud project consists of two parts: **Core** and **Aggregator**. Core
-gives you the API and drivers to various cloud providers. It also provides a
-client library (which Aggregator uses) and a commandline interface.
-
-Aggregator is a web system that uses the API to manage all your cloud assests.
-It depends on [Condor][condor] for its task implementation system.
-
-In addition, we use the **docs** repository that contains the project
-documentation and the sources of the <http://deltacloud.org> website.
-
-The Deltacloud Core repository is hosted on [Apache Incubator][incubator].
+While not directly part of the conductor, the Deltacloud API Core repository
+is hosted on [Apache Incubator][incubator].
 Apache uses Subversion, but there is a git mirror available:
 
     $ mkdir deltacloud
@@ -20,196 +24,176 @@ Apache uses Subversion, but there is a git mirror available:
 
 You can find the Subversion repository at: <https://svn.apache.org/repos/asf/incubator/deltacloud>.
 
-To get Aggregator and Docs:
+The **docs** repository contains the project documentation and the sources of
+the <http://aeolusproject.org> website.
 
-    $ git clone --branch next git://git.fedorahosted.org/git/deltacloud/aggregator.git/
-    $ git clone --branch next git://git.fedorahosted.org/git/deltacloud/docs.git/
+    $ git clone git://git.fedorahosted.org/git/deltacloud/docs.git/
 
-Note that the development of the **Docs** and **Aggregator** takes place on the
-`next` branch, which contains the latest version of the code.
-
-If your `git` doesn't support the `--branch` option, do this instead:
+To get the main code for the conductor:
 
     $ git clone git://git.fedorahosted.org/git/deltacloud/aggregator.git/
-    $ cd aggregator
-    $ git checkout -t -b next origin/next
 
-To get the stable version, don't switch to the `next` branch at all.
+To get the current code for iwhd:
+
+    $ git clone git://repo.or.cz/iwhd.git
+
+To get the current imagefactory (nee imagebuilder) code:
+
+    $ git clone git://git.fedorahosted.org/git/deltacloud/image_builder.git/
+
+To get the boxgrinder code:
+
+    $ git clone git://github.com/stormgrind/boxgrinder-core
+    $ git clone git://github.com/stormgrind/boxgrinder-build.git
+    $ git clone git://github.com/stormgrind/boxgrinder-build-plugins.git
+
+To get the oz code (next generation of the image building backend):
+
+    $ git clone git://github.com/clalancette/oz.git
+
+To get the condor patches that are necessary to use deltacloud:
+
+    $ git clone git://github.com/clalancette/condor-dcloud.git
 
 Required packages
 -----------------
-In order to make the Deltacloud components work, you'll need to
-have the following packages installed (on Fedora 13; the names may vary on
-your distro):
+The easiest way to get started with the Aeolus conductor is to use the
+pre-packaged set of RPMs available at
+<http://repos.fedorapeople.org/repos/deltacloud/appliance>.  However, if you
+are not using a Fedora repository, a mostly complete list of necessary
+packages follows (which may have different names on your distribution):
 
-    ruby
-    ruby-devel
-    gcc-c++
-    gnuplot
-    libxml2-devel
-    libxslt-devel
-    rubygem-rails
-    rubygem-sqlite3-ruby
-
-**Note:** these packages are necessary for building all the required ruby gems
-that Deltacloud requires. If you want to install the gems using your system's
-package manager (yum, apt, ports, etc.) you won't need to install these
-packages manually.
-
-We recommend using Rails version 2.3.5 (default in Fedora 13) or 2.3.8. Older
-versions may not be compatible.
-
-Installing the Deltacloud Core
-------------------------------
-
-First, you need to install the server that will give you the Deltacloud API:
-
-    $ cd path/to/deltacloud/core/server
-    $ rake package
-    $ sudo gem install pkg/deltacloud-core-<version>.gem
-
-Then install the client library:
-
-    $ cd path/to/deltacloud/core/client
-    $ rake package
-    $ sudo gem install pkg/deltacloud-client-<version>.gem
-
-Once you have the client installed, run the following command:
-
-    $ cd path/to/deltacloud/core/client
-    $ rake fixtures
+ appliance-tools
+ condor
+ deltacloud-aggregator
+ deltacloud-aggregator-daemons
+ deltacloud-configure
+ euca2ools
+ hail
+ httpd
+ iwhd
+ libdeltacloud
+ livecd-tools
+ mongodb
+ mongodb-server
+ postgresql
+ postgresql-server
+ python-imgcreate
+ qmf
+ qpid-cpp-client
+ qpid-cpp-server
+ ruby
+ ruby-RMagick
+ ruby-atk
+ ruby-cairo
+ ruby-gdk_pixbuf2
+ ruby-gettext-package
+ ruby-glib2
+ ruby-gtk2
+ ruby-irb
+ ruby-libguestfs
+ ruby-libs
+ ruby-locale
+ ruby-pango
+ ruby-postgres
+ ruby-qmf
+ ruby-rdoc
+ ruby-spqr
+ rubygem-actionmailer
+ rubygem-actionpack
+ rubygem-activerecord
+ rubygem-activeresource
+ rubygem-activesupport
+ rubygem-amazon-ec2
+ rubygem-atk
+ rubygem-authlogic
+ rubygem-aws
+ rubygem-boxgrinder-build
+ rubygem-boxgrinder-build-centos-os-plugin
+ rubygem-boxgrinder-build-ec2-platform-plugin
+ rubygem-boxgrinder-build-fedora-os-plugin
+ rubygem-boxgrinder-build-local-delivery-plugin
+ rubygem-boxgrinder-build-rhel-os-plugin
+ rubygem-boxgrinder-build-rpm-based-os-plugin
+ rubygem-boxgrinder-build-s3-delivery-plugin
+ rubygem-boxgrinder-core
+ rubygem-builder
+ rubygem-cairo
+ rubygem-commander
+ rubygem-compass
+ rubygem-compass-960-plugin
+ rubygem-cucumber
+ rubygem-daemons
+ rubygem-deltacloud-client
+ rubygem-deltacloud-core
+ rubygem-deltacloud-image-builder-agent
+ rubygem-diff-lcs
+ rubygem-eventmachine
+ rubygem-facets
+ rubygem-ffi
+ rubygem-gdk_pixbuf2
+ rubygem-gettext
+ rubygem-gherkin
+ rubygem-glib2
+ rubygem-gtk2
+ rubygem-haml
+ rubygem-hashery
+ rubygem-highline
+ rubygem-imagebuilder-console
+ rubygem-json
+ rubygem-locale
+ rubygem-macaddr
+ rubygem-mime-types
+ rubygem-nokogiri
+ rubygem-open4
+ rubygem-pango
+ rubygem-parseconfig
+ rubygem-rack
+ rubygem-rack-accept
+ rubygem-rack-restful_submit
+ rubygem-rack-test
+ rubygem-rails
+ rubygem-rake
+ rubygem-rb-inotify
+ rubygem-rcov
+ rubygem-rerun
+ rubygem-rest-client
+ rubygem-right_aws
+ rubygem-right_http_connection
+ rubygem-rspec
+ rubygem-simple-navigation
+ rubygem-sinatra
+ rubygem-term-ansicolor
+ rubygem-thin
+ rubygem-trollop
+ rubygem-typhoeus
+ rubygem-uuid
+ rubygem-uuidtools
+ rubygem-will_paginate
+ rubygem-xml-simple
+ rubygems
 
 Setting up the Aggregator
 ------------------------------------
+If you have installed all of the dependencies listed above, the easiest way
+to get a running Aeolus Conductor is to run the deltacloud-configure script.
+Note that deltacloud-configure may erase any data in a running postgres
+database, so make sure to use a machine where you don't care about the data
+in postgres:
 
-The easiest way to get Deltacloud up and running is to use [SQLite] as the
-database backend:
-
-    $ cd aggregator/src
-    $ cp config/database.sqlite config/database.yml
-
-**Note:** you can update the paths in the "database.yml" file to change the
-location of the *.sqlite3 database files.
-
-This command installs all the missing ruby gems:
-
-    # rake gems:install
-
-You can run `rake gems` to list all the required gems.
-
-And this sets the database up:
-
-    $ rake db:create:all
-    $ rake db:migrate
-
-Setting up Condor
------------------
-
-In the `next` branch, the Deltacloud Aggregator now uses condor as a
-task system.  Condor is used to decide where a new instance is started
-and takes care of actually starting that instance among other tasks.
-At this time support for Deltacloud is provided in a custom build of
-Condor, this is available at:
-
-<http://people.redhat.com/clalance/condor-dcloud/>
-
-We hope to get our enhancements to condor integrated upstream, but
-in the meantime, the source can be found here:
-
-<http://github.com/clalancette/condor-dcloud>
-
-The easiest way to install is to use one of the following commands:
-
-For x86_64 architectures:
-
-    $ yum localinstall http://people.redhat.com/clalance/condor-dcloud/7.5.2-4dcloud/f13/condor-7.5.2-4dcloud.fc13.x86_64.rpm \
-      http://people.redhat.com/clalance/libdeltacloud/0.3.0/f13/libdeltacloud-0.3-1.fc13.x86_64.rpm --nogpgcheck
-
-For i386 architectures:
-
-    $ yum localinstall http://people.redhat.com/clalance/condor-dcloud/7.5.2-4dcloud/f13/condor-7.5.2-4dcloud.fc13.i386.rpm \
-      http://people.redhat.com/clalance/libdeltacloud/0.3.0/f13/libdeltacloud-0.3-1.fc13.i386.rpm --nogpgcheck
-
-
-Note that new versions may become available and you should check the
-site for the latest version.
-
-Once those are installed, you will also want to download:
-
-<http://people.redhat.com/clalance/condor-dcloud/condor_config.local>
-
-And place this file in `/var/lib/condor/condor_config.local`.  The only
-configuration variable you will have to change is the `CONDOR_HOST`, which
-should be set to your local host name.  If you are concerned about security,
-the `ALLOW_HOSTS` variable can also be set to your machines host name.
-
-At this time you should restart Condor:
-
-    $ sudo service condor restart
-
-Note that if you restart Condor, you should also restart the aggregator
-in order to populate Condor with the available backend cloud information.
-
-For more information on Condor see the README at:
-
-<http://people.redhat.com/clalance/condor-dcloud/README>
-
-Tying it all together
----------------------
-
-**Note:** some distributions don't add the directory with the gem executables in
-your PATH environment. If that is the case, add the directory manually:
-
-    $ export PATH=$PATH:/var/lib/gems/<version>/bin
-
-Run the Core server with the mock driver:
-
-    $ deltacloudd -i mock
-
-Now if you go to <http://localhost:3001/> you should be able to see a page
-documenting the API. If you add the ".xml" extension to any page, you will see
-the API in action.
-
-The mock driver simulates the API behavior without making you to connect
-to a real cloud provider. For a guide to connecting Deltacloud to a provider,
-go to the [Drivers section of the Documentation][drivers].
-
-Make sure that the `src/db` and `src/log` directories are owned by the user
-who will be running the Aggregator. Note that you can change their location in
-the `config/database.yml` file.
-
-Run the Aggregator:
-
-    $ cd path/to/deltacloud/aggregator/src
-    $ ./script/server
-
-In your web browser go to <http://localhost:3000> and create a new user.
-
-To experience the full functionality, you should have one user with admin
-privileges. Run the following command in your `deltacloud/aggregator/src`
-directory (put the name of your Aggregator user in the brackets):
-
-    $ rake dc:site_admin[aggregator_username]
+    $ sudo deltacloud-cleanup
+    $ sudo deltacloud-configure
 
 Running tests
 -------------
+The Aeolus conductor itself comes with a number of unit tests.  There are
+currently two test suites: one for cucumber and one for rspec.  The rspec
+tests need an instance of the core server running on port 3001 to function,
+but the cucumber tests do not.  To run them, you need to change into the
+conductor source repository and run the appropriate rake commands:
 
-In order to run the tests, you need to install additional gems.  Some of
-these are packaged as rpms for Fedora, but not all.  If you'd like to help
-the list is [here][gemlist].  You can install these gems with:
-
-    # RAILS_ENV=cucumber rake gems:install
-
-There are two test suites, one for cucumber, and one for rspec.  Rspec
-currently needs an instance of the core server running on port 3001, but
-cucumber tests do not.  They can be run with the following commands (from
-src directory):
-
+    $ cd /path/to/aggregator/src
     $ rake cucumber
     $ rake spec
 
-[condor]: http://www.cs.wisc.edu/condor/
 [incubator]: http://incubator.apache.org/
-[SQlite]: http://sqlite.org/
-[drivers]: ./drivers.html
-[gemlist]: http://deltacloud.org/page/Packaging_list

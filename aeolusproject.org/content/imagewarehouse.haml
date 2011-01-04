@@ -1,0 +1,17 @@
+---
+title: Aeolus Project - Image Warehouse
+area: project
+extension: html
+filter:
+  - haml
+---
+%h1 Image Warehouse
+
+%p The Image Warehouse can store cloud images and upload them to certain cloud providers based on a set of rules.
+
+%ul
+  - imagewarehouse_pages.each do |doc|
+    - if doc[:description]
+      %li
+        %a{ :href => doc[:href] }
+          = doc[:description]

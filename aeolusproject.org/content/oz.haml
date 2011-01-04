@@ -1,0 +1,17 @@
+---
+title: Aeolus Project - Oz
+area: project
+extension: html
+filter:
+  - haml
+---
+%h1 Oz
+
+%p Oz is a tool for automatically installing guest OSs with only minimal up-front input from the user.
+
+%ul
+  - oz_pages.each do |doc|
+    - if doc[:description]
+      %li
+        %a{ :href => doc[:href] }
+          = doc[:description]

@@ -1,0 +1,17 @@
+---
+filter: haml
+---
+- menu = [ { :href => "index.html", :title => "Aeolus Project Home", :text => "Home" }, |
+  { :href => "getting_started.html", :title => "Getting Started", :text => "Getting Started" }, |
+  { :href => "projects.html", :title => "Projects", :text => "Projects" }, |
+  { :href => "page", :title => "Project wiki", :text => "Wiki" } ] |
+
+#navigation
+  #menu.container
+    %ul.l0
+      - menu.each do |link|
+        %li
+          - state = (link[:href] == current_page) ? 'active' : 'inactive'
+          - state = (area == "project" and link[:href] == 'projects.html') ? 'active' : state
+          %a{ :class => state, :href => "./#{link[:href]}", :title => link[:title] }<
+            = link[:text]

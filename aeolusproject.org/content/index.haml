@@ -1,0 +1,54 @@
+---
+title: Aeolus Project
+extension: html
+filter: haml
+---
+#frontpage
+  %p
+    %em
+      Aeolus is an umbrella project for many pieces of cloud software.
+
+    %br
+    The showpiece of Aeolus is the Aeolus Conductor, a web UI in front of the
+    Deltacloud API.  With Aeolus Conductor, your users can:
+    %ul
+      %li
+        View image status and stats across clouds, all in one place
+      %li
+        Manage images locally and provision them on any cloud
+  %p
+    :markdown
+      If you are new to Aeolus, please see the [Getting Started][start] page.
+
+      [start]: getting_started.html
+
+  %p
+    %em
+      The full list of projects hosted here are:
+    %ul
+      %li
+        = link_to 'Conductor', 'conductor.html'
+        &ndash; multiple cloud web UI
+      %li
+        = link_to 'Oz', 'oz.html'
+        &ndash; automated virtual machine installer
+      %li
+        = link_to 'Image Factory', 'imagefactory.html'
+        &ndash; daemon with a QMF interface for building cloud images
+      %li
+        = link_to 'Image Warehouse', 'imagewarehouse.html'
+        &ndash; a daemon to move cloud images from cloud to cloud
+        based on rules
+      %li
+        = link_to 'Audrey', 'audrey.html'
+        &ndash; a set of tools to do run-time configuration of cloud instances
+  %p
+    The Aeolus Project is free and open source (LGPL, GPL).
+#news
+  .recent
+    %h2
+      News
+    %ul
+      - all_news.each do |item|
+        %li
+          = item

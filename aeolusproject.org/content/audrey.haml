@@ -1,0 +1,17 @@
+---
+title: Aeolus Project - Audrey
+area: project
+extension: html
+filter:
+  - haml
+---
+%h1 Audrey
+
+%p Audrey is a set of tools to do runtime configuration of running cloud instances.
+
+%ul
+  - audrey_pages.each do |doc|
+    - if doc[:description]
+      %li
+        %a{ :href => doc[:href] }
+          = doc[:description]

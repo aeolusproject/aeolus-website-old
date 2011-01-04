@@ -1,0 +1,17 @@
+---
+title: Aeolus Project - Conductor
+area: project
+extension: html
+filter:
+  - haml
+---
+%h1 Conductor
+
+%p The Aeolus Conductor is a web UI that allows you to manage multiple clouds from the same interface.
+
+%ul
+  - conductor_pages.each do |doc|
+    - if doc[:description]
+      %li
+        %a{ :href => doc[:href] }
+          = doc[:description]

@@ -1,0 +1,57 @@
+---
+title: Aeolus Project - Oz Contribute
+area: project
+extension: html
+filter:
+  - haml
+  - outline
+---
+%h1 Help make Oz better
+
+<toc class="toc" numbering="off" toc_style="ul" toc_range="h2-h3" />
+
+%ul
+  %li
+    %strong Source Code repository
+    %br
+    :markdown
+      The source code for Oz is available in a git repository:
+
+      git://github.com/clalancette/oz.git
+  %li
+    %strong Mailing Lists
+    %br
+    :markdown
+      Please use the [imagefactory/oz mailing list][list] for patches,
+      user questions, and anything else having to do with Oz.
+
+      [list]: https://fedorahosted.org/mailman/listinfo/oz-devel
+  %li
+    %strong IRC
+    %br
+    :markdown
+      You can also join us on the Freenode IRC channel #aeolus. Oz
+      developers are generally available on the IRC channel, but if you do not
+      get a response to a posted question on the IRC channel please ask on the
+      mailing list.
+
+  %li
+    %strong Bugs
+    %br
+    :markdown
+      We track bugs in [Red Hat Bugzilla][bz]. You can
+      [view open bugs][view-bugs] or [file a new one][new-bug] there.
+
+      [bz]: https://bugzilla.redhat.com/
+      [view-bugs]: https://bugzilla.redhat.com/buglist.cgi?query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=MODIFIED&product=Aeolus
+      [new-bug]: https://bugzilla.redhat.com/enter_bug.cgi?product=Aeolus
+  %li
+    %strong Patches
+    %br
+    :markdown
+      Patches are very welcome. Please send them to the mailing list. Patches
+      should be generated with [`git`&nbsp;`format-patch`][git-format-patch]
+      and sent to the list with [`git`&nbsp;`send-email`][git-send-email].
+
+      [git-format-patch]: http://kernel.org/pub/software/scm/git/docs/git-format-patch.html
+      [git-send-email]: http://kernel.org/pub/software/scm/git/docs/git-send-email.html

@@ -1,0 +1,69 @@
+---
+title: Aeolus Project - Conductor Installation
+area: project
+extension: html
+filter:
+  - markdown
+---
+Download
+========
+<h3 id="deltacloud-core">Deltacloud Core</h3>
+
+Deltacloud Core provides the API server and drivers necessary for connecting
+to the cloud providers.
+
+The appropriate version of Deltacloud Core will be retrieved as part of the
+Aeolus Conductor installation process.
+
+<h3 id="aeolus-conductor">Aeolus Conductor</h3>
+
+Aeolus Conductor provides a web-based user interface for managing your
+cloud instances.
+
+ + **NOTE:** The current installation process **deletes** any existing data in
+your postrgresql database.  Either ensure that your data is backed up and
+restorable or consider installing Aeolus Conductor on a box that does not need
+postgresql for any other purpose.
+
+ + **NOTE:** The current installation process calls for selinux to be in
+permissive mode.  This is not recommended on a mission-critical machine.
+
++ **NOTE:** The current installation works on 64-bit only.  32-bit support is
+planned, but does not work at this time.
+
+#### Installation Steps ####
+
+1.  Set up the aeolus repository.
+		$ sudo wget -O /etc/yum.repos.d/fedora-deltacloud.repo \
+			http://repos.fedorapeople.org/repos/deltacloud/appliance/fedora-deltacloud.repo
+
+1.  Now install the configuration tool:
+		$ sudo yum install deltacloud-configure
+
+#### Aeolus Conductor Configuration ####
+
+1.  Open port 80 on the firewall so that web traffic may be served.
+
+1.  Set SELinux to permissive mode.
+		sudo setenforce 0
+
+1.  Ensure that the time is set correctly.  Failure to do so cause
+connectivity issues with Amazon Elastic Cloud Compute (EC2).
+
+1.  Clean up any existing remanents from an older installation.
+**Note**:  this will destroy any existing data in the postgres database.
+		sudo  /usr/sbin/deltacloud-cleanup
+
+1.  Configure Aeolus Conductor.
+		sudo /usr/sbin/deltacloud-configure
+
+#### Verify Installation ####
+
+1.  Browse to:  http://<machine_name>/deltacloud
+A default administrative account has been created with a username "admin"
+and a password "password" (no quotes)
+
+1.  Browse to:  http://localhost:3002/api
+Ensure that a page is visible.  This URL should be used as the
+"Provider URL" in the "Manage Providers" screen within the Aeolus Conductor
+application.
