@@ -29,6 +29,8 @@ filter: haml
           %h1
             Aeolus Project
     = render(:partial => "navigation", :locals => {:current_page => "#{@page.filename}.#{@page.extension}", :area => @page.area } )
+    - if @page.area == "projects"
+      = render(:partial => "submenu-projects", :locals => {:current_page => "#{@page.filename}.#{@page.extension}" } )
     #main
       #content-aeolusproject.container
         ~ @content

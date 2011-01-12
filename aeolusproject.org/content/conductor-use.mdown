@@ -1,6 +1,7 @@
 ---
 title: Aeolus Project - Conductor Use
-area: project
+area: projects
+subarea: conductor
 extension: html
 filter:
   - markdown

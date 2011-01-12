@@ -1,6 +1,7 @@
 ---
 title: Aeolus Project - Conductor Installation
-area: project
+area: projects
+subarea: conductor
 extension: html
 filter:
   - markdown
@@ -34,28 +35,28 @@ planned, but does not work at this time.
 #### Installation Steps ####
 
 1.  Set up the aeolus repository.
-		$ sudo wget -O /etc/yum.repos.d/fedora-deltacloud.repo \
-			http://repos.fedorapeople.org/repos/deltacloud/appliance/fedora-deltacloud.repo
+    $ sudo wget -O /etc/yum.repos.d/fedora-deltacloud.repo \
+      http://repos.fedorapeople.org/repos/deltacloud/appliance/fedora-deltacloud.repo
 
 1.  Now install the configuration tool:
-		$ sudo yum install deltacloud-configure
+    $ sudo yum install deltacloud-configure
 
 #### Aeolus Conductor Configuration ####
 
 1.  Open port 80 on the firewall so that web traffic may be served.
 
 1.  Set SELinux to permissive mode.
-		sudo setenforce 0
+    sudo setenforce 0
 
 1.  Ensure that the time is set correctly.  Failure to do so cause
 connectivity issues with Amazon Elastic Cloud Compute (EC2).
 
 1.  Clean up any existing remanents from an older installation.
 **Note**:  this will destroy any existing data in the postgres database.
-		sudo  /usr/sbin/deltacloud-cleanup
+    sudo  /usr/sbin/deltacloud-cleanup
 
 1.  Configure Aeolus Conductor.
-		sudo /usr/sbin/deltacloud-configure
+    sudo /usr/sbin/deltacloud-configure
 
 #### Verify Installation ####
 
