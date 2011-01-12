@@ -46,10 +46,11 @@
 
 body {
   background: #24292b;
+  color: #354750;
 }
 
 #main {
-  background: #FFF;
+  background: #dce9e7;
   padding: 0 0 4em 0;
 }
 

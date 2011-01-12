@@ -1,13 +1,8 @@
 /*  Styles for the first page are here.  This page uses a different layout
 than the rest of the site */
 
-#main {
-  background: #dce9e7;
-}
-
 #frontpage {
   margin: 0 340px 0 0;
-  color: #354750;
   font-size: 15px;
   line-height: 30px;
 }
@@ -24,7 +19,7 @@ than the rest of the site */
   padding: 15px;
   margin: 1em 0 10px 10px;
   background: url(colbg.png) no-repeat;
-  /* 	background-color: #ecf7f5; */
+  /*  background-color: #ecf7f5; */
   font-size: 15px;
   line-height: 30px;
   height: 270px;
@@ -36,7 +31,7 @@ than the rest of the site */
   padding: 15px;
   margin: 1em 0 10px;
   background: url(colbg.png) no-repeat;
-  /* 	background-color: #ecf7f5; */
+  /*  background-color: #ecf7f5; */
   font-size: 15px;
   line-height: 30px;
   height: 270px;
