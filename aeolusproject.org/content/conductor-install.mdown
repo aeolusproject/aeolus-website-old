@@ -6,17 +6,7 @@ extension: html
 filter:
   - markdown
 ---
-Download
-========
-<h3 id="deltacloud-core">Deltacloud Core</h3>
-
-Deltacloud Core provides the API server and drivers necessary for connecting
-to the cloud providers.
-
-The appropriate version of Deltacloud Core will be retrieved as part of the
-Aeolus Conductor installation process.
-
-<h3 id="aeolus-conductor">Aeolus Conductor</h3>
+<h1 id="aeolus-conductor">Aeolus Conductor</h1>
 
 Aeolus Conductor provides a web-based user interface for managing your
 cloud instances.
@@ -34,37 +24,33 @@ planned, but does not work at this time.
 
 #### Installation Steps ####
 
-1.  Set up the aeolus repository.
-    $ sudo wget -O /etc/yum.repos.d/fedora-deltacloud.repo \
-      http://repos.fedorapeople.org/repos/deltacloud/appliance/fedora-deltacloud.repo
-
-1.  Now install the configuration tool:
-    $ sudo yum install deltacloud-configure
+1.  Set up the aeolus repository:<pre>$ sudo wget -O /etc/yum.repos.d/fedora-deltacloud.repo \
+       http://repos.fedorapeople.org/repos/deltacloud/appliance/fedora-deltacloud.repo
+</pre>
+1.  Now install the configuration tool:<pre>$ sudo yum install deltacloud-configure</pre>
 
 #### Aeolus Conductor Configuration ####
 
 1.  Open port 80 on the firewall so that web traffic may be served.
 
-1.  Set SELinux to permissive mode.
-    sudo setenforce 0
+1.  Set SELinux to permissive mode:<pre>$ sudo setenforce 0</pre>
 
 1.  Ensure that the time is set correctly.  Failure to do so cause
 connectivity issues with Amazon Elastic Cloud Compute (EC2).
 
 1.  Clean up any existing remanents from an older installation.
-**Note**:  this will destroy any existing data in the postgres database.
-    sudo  /usr/sbin/deltacloud-cleanup
+**Note**:  this will destroy any existing data in the postgres database.<pre>$ sudo /usr/sbin/deltacloud-cleanup</pre>
 
-1.  Configure Aeolus Conductor.
-    sudo /usr/sbin/deltacloud-configure
+1.  Configure Aeolus Conductor:<pre>$ sudo /usr/sbin/deltacloud-configure</pre>
 
 #### Verify Installation ####
 
-1.  Browse to:  http://<machine_name>/deltacloud
-A default administrative account has been created with a username "admin"
-and a password "password" (no quotes)
+1.  Browse to: http://localhost:3002/api.  A page that says
+"Deltacloud: Many Clouds.  One API.  No problem" should appear, and have a
+number of links to deltacloud APIs.  Assuming this worked, this URL should be
+used as the "Provider URL" in the "Manage Providers" screen within the Aeolus
+Conductor application.
 
-1.  Browse to:  http://localhost:3002/api
-Ensure that a page is visible.  This URL should be used as the
-"Provider URL" in the "Manage Providers" screen within the Aeolus Conductor
-application.
+1.  Browse to:  http://<machine_name>/deltacloud .  The login page for the
+Aeolus Conductor should appear.  A default administrative account has been
+created with a username "admin" and a password "password" (no quotes)
