@@ -144,6 +144,6 @@ filesystem.
 
 1. Now you should be able to connect with:
 
-       $ ssh -i the-key-you-downloaded.pem root@ec2-xxx-xxx-xxx-xxx.compute-1.amazonaws.com
+       $ ssh -i the-key-you-downloaded.pem ec2-user@ec2-xxx-xxx-xxx-xxx.compute-1.amazonaws.com
 
     (substituting your actual key filename and FQHN)

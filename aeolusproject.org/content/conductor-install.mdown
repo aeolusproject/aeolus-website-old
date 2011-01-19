@@ -24,8 +24,8 @@ planned, but does not work at this time.
 
 #### Installation Steps ####
 
-1.  Set up the aeolus repository:<pre>$ sudo wget -O /etc/yum.repos.d/fedora-deltacloud.repo \
-       http://repos.fedorapeople.org/repos/deltacloud/appliance/fedora-deltacloud.repo
+1.  Set up the aeolus repository:<pre>$ sudo wget -O /etc/yum.repos.d/fedora-aeolus.repo \
+       http://repos.fedorapeople.org/repos/aeolus/packages/fedora-aeolus.repo
 </pre>
 1.  Now install the configuration tool:<pre>$ sudo yum install deltacloud-configure</pre>
 
