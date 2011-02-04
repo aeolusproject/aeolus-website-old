@@ -1,0 +1,137 @@
+<!-- Creator     : groff version 1.20.1 -->
+<!-- CreationDate: Wed Feb  2 17:06:27 2011 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>OZ-CUSTOMIZE</title>
+
+</head>
+<body>
+
+<h1 align="center">OZ-CUSTOMIZE</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">oz-customize -
+tool to automatically modify installed operating system
+files</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>oz-customize
+[OPTIONS] &lt;tdl-file&gt; &lt;libvirt-xml-file&gt;</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">This is a tool
+to modify already installed operating systems. Modifications
+typically involve installing additional packages. This
+program can be used as a counterpart to oz-install, though
+it does not have to be used in conjunction.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Note that
+oz-customize does the actual customization using a
+combination of KVM and libvirt, so both of these must be
+available (and working) for oz-customize to have a chance to
+succeed.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>&minus;c
+&lt;config&gt;</b></p>
+
+<p style="margin-left:22%;">Get the configuration from
+config file <b>config</b>, instead of the default
+/etc/oz/oz.cfg. If neither one exists, Oz will use sensible
+defaults. The config file is in standard ini format with two
+sections named <b>paths</b> and <b>libvirt</b>. There are
+two possible keys under <b>paths</b>: <b>output_dir</b>
+describes where to store the images after they are built,
+and <b>data_dir</b> describes where to cache install media
+and use temporary storage. Both locations have to have a
+decent amount of free disk space in order for oz-customize
+to work properly. There are two possible keys under
+<b>libvirt</b>: <b>uri</b> describes the libvirt URI to use
+to do the guest installation, and <b>type</b> defines what
+type of virtualization to use.</p>
+
+<p style="margin-left:11%;"><b>&minus;d
+&lt;loglevel&gt;</b></p>
+
+<p style="margin-left:22%;">Turn on debugging output to
+level <b>loglevel</b>. The log levels are: <br>
+0 - errors only (this is the default) <br>
+1 - errors and warnings <br>
+2 - errors, warnings, and information <br>
+3 - all messages <br>
+4 - all messages, prepended with the level and classname</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>&minus;h</b></p></td>
+<td width="8%"></td>
+<td width="41%">
+
+
+<p>Print a short help message.</p></td>
+<td width="37%">
+</td></tr>
+</table>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em">oz-generate-icicle(1),
+oz-install(1)</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Chris
+Lalancette &lt;clalance@redhat.com&gt;</p>
+<hr>
+</body>
+</html>

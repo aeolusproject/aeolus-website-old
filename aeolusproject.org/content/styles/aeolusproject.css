@@ -298,14 +298,14 @@ head:first-child+body #projects dl {
   font-weight: bold;
 }
 
-table#providers {
+table#ozguests {
   margin-bottom: 1em;
   border: 1px solid #efefef;
   padding: 1em;
   width: 100%;
 }
 
-table#providers th {
+table#ozguests th {
   font-weight: normal;
   padding: 0.5em;
   vertical-align: top;
@@ -313,37 +313,37 @@ table#providers th {
   background: #E4EBEF;
 }
 
-table#providers th.emptycell {
+table#ozguests th.emptycell {
   background: #FFF;
 }
 
-table#providers td {
+table#ozguests td {
   padding: 0.5em;
   width: 10%;
   height: 3em;
   background: #E4EBEF;
 }
 
-table#providers td.provider  {
+table#ozguests td.guest  {
   font-weight: bold;
   color: #242829;
   padding: 0 0.5em;
 }
 
-table#providers td.provider span {
+table#ozguests td.guest span {
   color: #738389;
   font-style: italic;
   font-weight: normal;
   font-size: .95em;
 }
 
-table#providers td.not-supported {
+table#ozguests td.not-supported {
   text-align: center;
   background: #E4EBEF;
   color: #738389;
 }
 
-table#providers td.supported {
+table#ozguests td.supported {
   text-align: center;
   background: #a4c3d4;
   color: #242829;
