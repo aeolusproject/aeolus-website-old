@@ -10,7 +10,7 @@ module OzSupportHelper
      { :name => "RHEL-2.1 GOLD, U1, U2, U3, U4, U5, U6", :install => true, :customize => false, :icicle => false },
      { :name => "OpenSUSE 11.{1,2,3}", :install => true, :customize => false, :icicle => false },
      { :name => "Ubuntu 6.10, 7.04, 7.10, 8.04, 8.10, 9.04, 9.10", :install => true, :customize => false, :icicle => false },
-     { :name => "Windows XP, 2003, 7, 2008", :install => true, :customize => false, :icicle => false },
+     { :name => "Windows 2000, XP, 2003, 7, 2008", :install => true, :customize => false, :icicle => false },
      { :name => "Red Hat Linux 7.0, 7.1, 7.2, 7.3, 8, 9", :install => true, :customize => false },
     ]
   end
