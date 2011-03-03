@@ -74,9 +74,19 @@ default value of 'unlimited'.
 
 (Note that if you test the account settings before clicking 'Add' you'll need to re-select your x.509 cert files.)
 
+#### Create a Hardware Profile ####
+
+The next thing you need to do is to create a Hardware Profile.  A Hardware Profile allows you to specify the minimum resource requirements for Memory, CPU and storage, and also what type of archtecture the your cloud instance should be.
+
+In order to create a hardware profile choose "Admin" from the main menu, then choose the subheading "Hardware Profiles".  The first time you navigate to this page *no Hardware Profiles will be shown in the list.  To create one click on the "New Hardware Profile" Button.  This will take you to a form where you can fill in your minimum requirements for Memory, CPU, Storage and the type of architecture.  Since we only support building of 64bit images (explained in the next section: "Create a Template"), be sure to select "x86_64" for your architecture.
+
+Before you save your Hardware Profile you first need to check that there are some matching Hardware Profiles offered by your provider.  To check to see if the provider you added in this example Amazon EC2, offers a Hardware Profile that satisfies your given requirements, click on the "Check Matches" button.  If a match was successful it will be shown in the lower window labelled "Matching Provider Hardware Profiles".
+
+Once you have a match you are ready to save.  Be sure you give a name to your Hardware Profile by filling in the "Name" input box then click on the "Save" button.  Your Hardware Profile will then be saved and you will be redirected back the "Hardware Profiles" page, where you can view and edit your Hardware Profile at a later date.
+
 #### Create a Template ####
 
-Now that your pool contains a cloud provider, you need to create an image to
+Now that your pool contains a cloud provider and you have setup some Hardware Profiles, you need to create an image to
 run an instance in your cloud. Please note that image building is currently
 supported only on 64-bit versions of Fedora 13, the platform we use for
 development and testing.
