@@ -9,7 +9,7 @@ filter:
 # Post-Installation Usage Guide
 
 Now that you have successfully installed the set of aeolus conductor packages
-and run deltacloud-configure, you can use the web interface to start and
+and run aeolus-configure, you can use the web interface to start and
 manage instances. We'll be using EC2 as the 'back end' cloud provider for
 these instructions, although this is only one of many cloud services providers
 you can manage with aeolus conductor.
@@ -20,7 +20,7 @@ The post-install default username/password combination is admin/password. We
 strongly recommend changing the default password as a basic protection against
 unauthorized use of your cloud resources.
 
-1. First browse to http://localhost/deltacloud/login
+1. First browse to http://localhost/conductor/login
 
 1. In the Administer section, click 'System Settings', then Manage Users.
 

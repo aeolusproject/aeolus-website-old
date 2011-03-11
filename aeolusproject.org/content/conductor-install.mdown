@@ -27,7 +27,7 @@ planned, but does not work at this time.
 1.  Set up the aeolus repository:<pre>$ sudo wget -O /etc/yum.repos.d/fedora-aeolus.repo \
        http://repos.fedorapeople.org/repos/aeolus/packages/fedora-aeolus.repo
 </pre>
-1.  Now install the conductor:<pre>$ sudo yum install deltacloud-aggregator</pre>
+1.  Now install the conductor:<pre>$ sudo yum install aeolus-conductor</pre>
 
 #### Aeolus Conductor Configuration ####
 
@@ -39,9 +39,9 @@ planned, but does not work at this time.
 connectivity issues with Amazon Elastic Cloud Compute (EC2).
 
 1.  Clean up any existing remanents from an older installation.
-**Note**:  this will destroy any existing data in the postgres database.<pre>$ sudo /usr/sbin/deltacloud-cleanup</pre>
+**Note**:  this will destroy any existing data in the postgres database.<pre>$ sudo /usr/sbin/aeolus-cleanup</pre>
 
-1.  Configure Aeolus Conductor:<pre>$ sudo /usr/sbin/deltacloud-configure</pre>
+1.  Configure Aeolus Conductor:<pre>$ sudo /usr/sbin/aeolus-configure</pre>
 
 #### Verify Installation ####
 
@@ -51,6 +51,6 @@ number of links to deltacloud APIs.  Assuming this worked, this URL should be
 used as the "Provider URL" in the "Manage Providers" screen within the Aeolus
 Conductor application.
 
-1.  Browse to:  http://<machine_name>/deltacloud .  The login page for the
+1.  Browse to:  http://<machine_name>/conductor .  The login page for the
 Aeolus Conductor should appear.  A default administrative account has been
 created with a username "admin" and a password "password" (no quotes)
