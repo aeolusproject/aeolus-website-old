@@ -27,7 +27,7 @@ planned, but does not work at this time.
 1.  Set up the aeolus repository:<pre>$ sudo wget -O /etc/yum.repos.d/fedora-aeolus.repo \
        http://repos.fedorapeople.org/repos/aeolus/packages/fedora-aeolus.repo
 </pre>
-1.  Now install the conductor:<pre>$ sudo yum install aeolus-conductor</pre>
+1.  Now install the conductor:<pre>$ sudo yum install aeolus-conductor-daemons</pre>
 
 #### Aeolus Conductor Configuration ####
 
