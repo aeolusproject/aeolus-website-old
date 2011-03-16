@@ -1,0 +1,129 @@
+---
+title: Aeolus Project - Oz Examples
+area: projects
+subarea: oz
+extension: html
+filter:
+  - haml
+---
+%h1 Oz Examples
+
+%h3 Example 1 - Minimal guest
+Assume that we want to install a minimal Fedora 13 x86_64 operating system from
+a Fedora 13 DVD ISO that we have located at
+http://example.org/fedora-13-x86_64.iso.  To do this install, we first need to
+build a TDL XML file, and then feed that to oz-install.  The TDL file would
+need to look like:
+
+%pre
+  ~ "&lt;template&gt;"
+  ~ "  &lt;name&gt;fedora13_x86_64&lt;name&gt;"
+  ~ "  &lt;os&gt;"
+  ~ "    &lt;name&gt;Fedora&lt;/name&gt;"
+  ~ "    &lt;version&gt;13&lt;/version&gt;"
+  ~ "    &lt;arch&gt;x86_64&lt;/version&gt;"
+  ~ "    &lt;install type='iso'&gt;"
+  ~ "      &lt;iso&gt;http://example.org/fedora-13-x86_64.iso&lt;/iso&gt;"
+  ~ "    &lt;/install&gt;"
+  ~ "  &lt;/os&gt;"
+  ~ "  &lt;description&gt;My Fedora 13 x86_64 template&lt;/description&gt;"
+  ~ "&lt;/template&gt;"
+
+That's it!  As you can see, we basically need to build the TDL to tell it
+what operating system we want (/template/oz/name), what version of that
+operating system (/template/oz/version), what architecture (/template/oz/arch),
+and where the installation DVD is located (/template/os/install/iso).  With
+that information in hand, Oz knows enough to actually install a minimal guest.
+To actually do the installation, the oz package needs to be installed and then
+you can run:
+
+%pre
+  ~ "# oz-install /path/to/fedora13.tdl"
+
+(for the time being, all of the oz commands need to be run as root, although
+we are working on making it work for normal users).  Running this command
+will download and prepare the installation CD, and then run an automated install
+in a KVM guest from that installation CD.  Assuming the install succeeds,
+the minimal operating system will be installed on a file
+in /var/lib/libvirt/images/fedora13_x86_64.dsk (by default).
+
+%h3 Example 2 - Guest with additional packages
+Assume that we want to install a Fedora 14 x86_64 operating system from
+a Fedora 14 DVD ISO that we have located at
+http://example.org/fedora-14-x86_64.iso.  Additionally assume that we want to
+install the postgresql-server on the operating system.  To do this install, we
+first need to build a TDL XML file, and then feed that to oz-install.  The TDL
+file would need to look like:
+
+%pre
+  ~ "&lt;template&gt;"
+  ~ "  &lt;name&gt;fedora14_postgres&lt;name&gt;"
+  ~ "  &lt;os&gt;"
+  ~ "    &lt;name&gt;Fedora&lt;/name&gt;"
+  ~ "    &lt;version&gt;14&lt;/version&gt;"
+  ~ "    &lt;arch&gt;x86_64&lt;/version&gt;"
+  ~ "    &lt;install type='iso'&gt;"
+  ~ "      &lt;iso&gt;http://example.org/fedora-14-x86_64.iso&lt;/iso&gt;"
+  ~ "    &lt;/install&gt;"
+  ~ "  &lt;/os&gt;"
+  ~ "  &lt;description&gt;Fedora 14 x86_64 with postgres&lt;/description&gt;"
+  ~ "  &lt;packages&gt;"
+  ~ "    &lt;package name='postgresql-server'/&gt;"
+  ~ "  &lt;/packages&gt;"
+  ~ "&lt;/template&gt;"
+
+This is very similar to Example 1, except that we specified an additional
+package to be installed.  Running the installation is done the same way as in
+Example 1, except that we have to add a command-line parameter to actually
+do the customization:
+
+%pre
+  ~ "# oz-install -u /path/to/fedora14.tdl"
+
+Running this command will download and prepare the installation CD, and then
+run an automated install in a KVM guest from that installation CD.  Assuming
+the initial install succeeds, Oz will then boot the operating system and run
+native commands (in this case, "yum -y install postgresql-server") to install
+the additional packages.  For more information about why this approach is
+used, please see the <a href="oz-architecture.html">Oz Architecture</a> page.
+Assuming this step succeeds, the operating system with the additional packages
+will be installed on a file in /var/lib/libvirt/images/fedora14_postgres.dsk
+(by default).
+
+%h3 Example 3 - Generate package manifest (ICICLE) after installation
+Assume that we want to install a RHEL-5 x86_64 operating system from
+a RHEL-5 DVD ISO that we have located at http://example.org/rhel-5-x86_64.iso.
+Additionally assume that we want to get a package manifest out of the
+operating system after the install is done.  To do this install, we first need
+to build a TDL XML file, and then feed that to oz-install.  The TDL file would
+need to look like:
+
+%pre
+  ~ "&lt;template&gt;"
+  ~ "  &lt;name&gt;rhel5_x86_64&lt;name&gt;"
+  ~ "  &lt;os&gt;"
+  ~ "    &lt;name&gt;RHEL-5&lt;/name&gt;"
+  ~ "    &lt;version&gt;U6&lt;/version&gt;"
+  ~ "    &lt;arch&gt;x86_64&lt;/version&gt;"
+  ~ "    &lt;install type='iso'&gt;"
+  ~ "      &lt;iso&gt;http://example.org/rhel-5-x86_64.iso&lt;/iso&gt;"
+  ~ "    &lt;/install&gt;"
+  ~ "  &lt;/os&gt;"
+  ~ "  &lt;description&gt;RHEL-5 x86_64&lt;/description&gt;"
+  ~ "&lt;/template&gt;"
+
+This is essentially the same as Example 1, except that we want to install RHEL-5
+instead of Fedora-13.  Running the installation is done the same way as in
+Example 1, except that we have to add a command-line parameter to generate the
+manifest at the end:
+
+%pre
+  ~ "# oz-install -g /path/to/rhel5.tdl"
+
+Running this command will download and prepare the installation CD, and then
+run an automated install in a KVM guest from that installation CD.  Assuming
+the initial install succeeds, Oz will then boot the operating system and run
+native commands (in this case, "rpm -qa") to query all of the packages in
+the system.  It will then output an XML document describing the entire manifest.
+Assuming this step succeeds, the minimal operating system will be installed on
+a file in /var/lib/libvirt/images/rhel5_x86_64.dsk (by default).
