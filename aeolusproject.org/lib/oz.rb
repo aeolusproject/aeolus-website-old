@@ -10,6 +10,7 @@ module OzHelper
       { :href => 'oz-install.html', :menu => "oz-install", :description => "oz-install man page" },
       { :href => 'oz-customize.html', :menu => "oz-customize", :description => "oz-customize man page" },
       { :href => 'oz-generate-icicle.html', :menu => "oz-generate-icicle", :description => "oz-generate-icicle man page" },
+      { :href => 'oz-cleanup-cache.html', :menu => "oz-cleanup-cache", :description => "oz-cleanup-cache man page" },
     ]
   end
 

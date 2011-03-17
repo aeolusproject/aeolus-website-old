@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.20.1 -->
-<!-- CreationDate: Thu Mar 17 11:41:13 2011 -->
+<!-- CreationDate: Thu Mar 17 11:41:14 2011 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,12 +13,12 @@
        table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
        h1      { text-align: center }
 </style>
-<title>OZ-CUSTOMIZE</title>
+<title>OZ-CLEANUP-CACHE</title>
 
 </head>
 <body>
 
-<h1 align="center">OZ-CUSTOMIZE</h1>
+<h1 align="center">OZ-CLEANUP-CACHE</h1>
 
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
@@ -36,9 +36,9 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">oz-customize -
-tool to automatically modify installed operating system
-files</p>
+
+<p style="margin-left:11%; margin-top: 1em">oz-cleanup-cache
+- tool to remove cached oz data</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -46,8 +46,8 @@ files</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>oz-customize
-[OPTIONS] &lt;tdl-file&gt; &lt;libvirt-xml-file&gt;</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>oz-cleanup-cache
+[OPTIONS]</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -55,16 +55,12 @@ files</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">This is a tool
-to modify already installed operating systems. Modifications
-typically involve installing additional packages. This
-program can be used as a counterpart to oz-install, though
-it does not have to be used in conjunction.</p>
-
-<p style="margin-left:11%; margin-top: 1em">Note that
-oz-customize does the actual customization using a
-combination of KVM and libvirt, so both of these must be
-available (and working) for oz-customize to have a chance to
-succeed.</p>
+to remove all of the data that Oz has cached. Because the
+data that Oz caches can grow fairly large, it may be
+worthwhile to periodically clean it up. This is a simple
+script to do so. Note that if you do cleanup the Oz cache,
+subsequent operating system installs will be slower since Oz
+will have to re-download the installation media.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -80,17 +76,6 @@ config file <b>config</b>, instead of the default
 defaults. The config file is in standard ini format; for an
 explanation of the sections and keys, see the
 <b>CONFIGURATION FILE</b> section.</p>
-
-<p style="margin-left:11%;"><b>&minus;d
-&lt;loglevel&gt;</b></p>
-
-<p style="margin-left:22%;">Turn on debugging output to
-level <b>loglevel</b>. The log levels are: <br>
-0 - errors only (this is the default) <br>
-1 - errors and warnings <br>
-2 - errors, warnings, and information <br>
-3 - all messages <br>
-4 - all messages, prepended with the level and classname</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -178,7 +163,7 @@ care.</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">oz-generate-icicle(1),
-oz-install(1), oz-cleanup-cache(1)</p>
+oz-install(1), oz-customize(1)</p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
