@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.20.1 -->
-<!-- CreationDate: Thu Mar 17 11:41:13 2011 -->
+<!-- CreationDate: Wed Mar 30 12:42:56 2011 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -213,11 +213,13 @@ following form:</p>
 
 <p style="margin-left:17%; margin-top: 1em">[paths] <br>
 output_dir = /var/lib/libvirt/images <br>
-data_dir = /var/lib/oz</p>
+data_dir = /var/lib/oz <br>
+screenshot_dir = .</p>
 
 <p style="margin-left:17%; margin-top: 1em">[libvirt] <br>
 uri = qemu:///system <br>
-type = kvm</p>
+type = kvm <br>
+bridge_name = virbr0</p>
 
 <p style="margin-left:17%; margin-top: 1em">[cache] <br>
 original_media = yes <br>
@@ -229,15 +231,18 @@ jeos = no</p>
 storing data. The <b>output_dir</b> key describes where to
 store the images after they are built, and the
 <b>data_dir</b> key describes where to cache install media
-and use temporary storage. Both locations have to have a
-decent amount of free disk space in order for Oz to work
-properly.</p>
+and use temporary storage. Both locations must have a decent
+amount of free disk space in order for Oz to work properly.
+The <b>screenshot_dir</b> key describes where to store
+screenshots of failed installs.</p>
 
 <p style="margin-left:11%; margin-top: 1em">The
 <b>libvirt</b> section allows some manipulation of how Oz
 uses libvirt. The <b>uri</b> key describes the libvirt URI
-to use to do the guest installation, and the <b>type</b> key
-defines what type of virtualization to use.</p>
+to use to do the guest installation. The <b>type</b> key
+defines what type of virtualization to use. The
+<b>bridge_name</b> key defines which bridge Oz should place
+the guests that it launches on.</p>
 
 <p style="margin-left:11%; margin-top: 1em">The
 <b>cache</b> section allows some manipulation of how Oz
