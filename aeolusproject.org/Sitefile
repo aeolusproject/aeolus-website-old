@@ -4,4 +4,7 @@ task :default => :build
 desc 'deploy the site to the webserver'
 task :deploy => [:build, 'deploy:rsync']
 
+SITE.user = 'jimmac'
+SITE.host = 'hal'
+SITE.remote_dir = '/home/jimmac/public_html/aeolus/'
 # EOF

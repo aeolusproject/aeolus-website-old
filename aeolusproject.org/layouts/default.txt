@@ -26,6 +26,9 @@ filter: haml
 
     <!-- Site wide CSS -->
     %link{ :href => "css/site-wide.css", :rel => "stylesheet", :media => "screen, projection" }
+    
+    %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"}
+    %script{:type => "text/javascript", :src => "/js/aeolus.js"}
 
   %body
     #header
@@ -76,7 +79,9 @@ filter: haml
 
     .clear
     #footer
-      .container_24.clearfix
+      %hr.shade
+      #navigationbg &nbsp;
+      .container_24.clearfix.navigation
         .grid_4
           %dl
             %dt
@@ -184,12 +189,12 @@ filter: haml
             %dd
               &nbsp;
 
-      #copyright
-        .line1
-          Copyright &copy; 2010-2011 Red Hat, Inc.
-        .line2
-          This website (not the Aeolus code) is released under a
-          %a{ :href => "http://creativecommons.org/licenses/by-sa/3.0/", :rel => "license" } Creative Commons Attribution-ShareAlike 3.0 Unported License
+        #copyright.grid_24
+          .line1
+            Copyright &copy; 2010-2011 Red Hat, Inc.
+          .line2
+            This website (not the Aeolus code) is released under a
+            %a{ :href => "http://creativecommons.org/licenses/by-sa/3.0/", :rel => "license" } Creative Commons Attribution-ShareAlike 3.0 Unported License
 
     -# Add the Google Analytics javascript
     %script{ :type => "text/javascript" }
