@@ -104,36 +104,13 @@ hr.shade
       border-bottom: 4px solid #fff
       padding: 8px 12px 3px
 
-  img
-    margin-top: 13px
-
-  img.about
-    margin-left: 72px
-
-  img.get
-    margin-left: 25px
-
-  img.use
-    margin-left: 25px
-
-  img.dev
-    margin-left: 25px
-
-  img.projects
-    margin-left: 25px
-
-  img.news
-    margin-left: 25px
-
-  img.contact
-    margin-left: 25px
-
 #front-page-main-upper
   position: relative
   background: #bfdbe8 url(../images/splash-bg.jpg) no-repeat top center
   background-size: cover
   color: #fff
   height: 277px
+  border-bottom: 4px solid lighten($aegrey, 10%)
   
   h1
     margin-top: 50px
@@ -159,13 +136,18 @@ hr.shade
     width: 260px
     height: 260px
     margin-top: 28px
-  img.learn
 
-  img.get
-
+  .frontpagebuttons
+    text-align: right
+    
+    img 
+      display: inline-block
+      margin-left: 10px
+    
 #front-page-main-lower
   clear: both
-
+  padding-bottom: 2em
+  
   h1
     color: $aeblue6
     font-weight: normal
@@ -177,7 +159,6 @@ hr.shade
   img.heading
     margin-top: 0.8em
     margin-bottom: 0.8em
-  
 
 #main
   margin-bottom: 2em
@@ -189,7 +170,14 @@ hr.shade
   min-height: 300px
   font-size: 95%
   padding: 4em 0 2em 0
-
+ 
+  a.logo
+    display: block
+    position: absolute
+    right: 0
+    bottom: 0
+    z-index: 2
+    
   #navigationbg
     position: absolute
     background: rgba(255,255,255, 0.3)

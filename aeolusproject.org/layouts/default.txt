@@ -82,6 +82,8 @@ filter: haml
       %hr.shade
       #navigationbg &nbsp;
       .container_24.clearfix.navigation
+        %a.logo{ :href => "./" }
+          %img{ :src => "images/aeolus_logo-header.png", :title => "Aeolus logo", :alt => "Aeolus" }
         .grid_4
           %dl
             %dt

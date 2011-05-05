@@ -16,10 +16,12 @@ filter: haml
         Meet the world's best cloud management software, 
         %br
         %strong and it's free.
-      %a.learn{ :href => "about.html" }
-        %img{ :src => "images/learn_more_button_center_area.jpg", :title => "Learn More about Aeolus", :alt => "Learn More button", :onMouseOver => 'setAttribute("src", "images/learn_more_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/learn_more_button_center_area.jpg");' }    
-      %a.get{ :href => "get_it.html" }
-        %img{ :src => "images/get_aeolus_button_center_area.jpg", :title => "Get Aeolus", :alt => "Get Aeolus button", :onMouseOver => 'setAttribute("src", "images/get_aeolus_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/get_aeolus_button_center_area.jpg");' }
+      
+      .frontpagebuttons
+        %a.learn{ :href => "about.html" }
+          %img{ :src => "images/learn_more_button_center_area.jpg", :title => "Learn More about Aeolus", :alt => "Learn More button", :onMouseOver => 'setAttribute("src", "images/learn_more_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/learn_more_button_center_area.jpg");' }    
+        %a.get{ :href => "get_it.html" }
+          %img{ :src => "images/get_aeolus_button_center_area.jpg", :title => "Get Aeolus", :alt => "Get Aeolus button", :onMouseOver => 'setAttribute("src", "images/get_aeolus_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/get_aeolus_button_center_area.jpg");' }
 
 #front-page-main-lower.container_24.clearfix
   .grid_8
@@ -52,15 +54,15 @@ filter: haml
     
     %p Welcome Red Hat Summit visitors!
 
-.container_24.clearfix
-  .grid_8
-    %a.more{ :href => "about.html" }
-      %img{ :src => "images/bottom_middle_more_button.png", :title => "About Aeolus", :alt => "About Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+  .grid_24
+    .grid_8.alpha
+      %a.more{ :href => "about.html" }
+        %img{ :src => "images/bottom_middle_more_button.png", :title => "About Aeolus", :alt => "About Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
 
-  .grid_8
-    %a.more{ :href => "get_it.html" }
-    %img{ :src => "images/bottom_middle_more_button.png", :title => "Get Aeolus", :alt => "Get Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
- 
-  .grid_8
-    %a.more{ :href => "news.html" }
-      %img{ :src => "images/bottom_middle_more_button.png", :title => "Read more news", :alt => "Read more news", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+    .grid_8
+      %a.more{ :href => "get_it.html" }
+      %img{ :src => "images/bottom_middle_more_button.png", :title => "Get Aeolus", :alt => "Get Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+   
+    .grid_8.omega
+      %a.more{ :href => "news.html" }
+        %img{ :src => "images/bottom_middle_more_button.png", :title => "Read more news", :alt => "Read more news", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
