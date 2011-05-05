@@ -30,20 +30,21 @@ filter: haml
 
   %body
     #header
-      %a{ :href => "./" }
-        %img.logo{ :src => "images/aeolus_logo-header.png", :title => "Aeolus logo", :alt => "Aeolus logo" }
-      %img.divider{ :src => "images/tagline-divider.png", :title => "visual divider between logo and tagline", :alt => "visual divider between logo and tagline" }
-      %img.tagline{ :src => "images/header_tagline.jpg", :title => "Aeolus tagline", :alt => "Manage Your Cloud Deployments with Ease" }
+      .container
+        %a{ :href => "./" }
+          %img.logo{ :src => "images/aeolus_logo-header.png", :title => "Aeolus logo", :alt => "Aeolus logo" }
+        %img.divider{ :src => "images/tagline-divider.png", :title => "visual divider between logo and tagline", :alt => "visual divider between logo and tagline" }
+        %img.tagline{ :src => "images/header_tagline.jpg", :title => "Aeolus tagline", :alt => "Manage Your Cloud Deployments with Ease" }
 
-      -# The search box in the header
-      %form{ :title => "Search the Aeolus website", :action => "http://www.google.com/cse", :id => "cse-search-box", :style => "float: right; margin-right: 30px; margin-top: 12px" }
-        %input{ :type => "hidden", :value => "009521294820748120480:axl-8xlshn4", :name => "cx" }
-        %input{ :type => "hidden", :name => "ie", :value => "UTF-8" }
-        %input{ :type => "search", :name => "q", :size => "30", :placeholder => "Search Aeolus", :required => "required" }
-        %input{ :type => "submit", :name => "sa", :value => "Search" }
-        <!--[if IE]>
-        %script{ :type =>"text/javascript", :src => "http://www.google.com/cse/brand?form=cse-search-box&lang=en" }
-        <![endif]-->
+        -# The search box in the header
+        %form{ :title => "Search the Aeolus website", :action => "http://www.google.com/cse", :id => "cse-search-box", :style => "float: right; margin-right: 30px; margin-top: 12px" }
+          %input{ :type => "hidden", :value => "009521294820748120480:axl-8xlshn4", :name => "cx" }
+          %input{ :type => "hidden", :name => "ie", :value => "UTF-8" }
+          %input{ :type => "search", :name => "q", :size => "30", :placeholder => "Search Aeolus", :required => "required" }
+          %input{ :type => "submit", :name => "sa", :value => "Search" }
+          <!--[if IE]>
+          %script{ :type =>"text/javascript", :src => "http://www.google.com/cse/brand?form=cse-search-box&lang=en" }
+          <![endif]-->
 
     #navigation
       %a{ :href => "about.html" }
@@ -71,106 +72,113 @@ filter: haml
         ~ @content
 
     #footer
-      %dl#p1
-        %dt
-          %a{ :href => "about.html", :title => "About Aeolus" }
-            %img{ :src => "images/footer_about.png", :title => "ABOUT link", :alt => "ABOUT", :onMouseOver => 'setAttribute("src", "images/footer_about-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_about.png");' }
-        %dd
-          %a{ :href => "about.html#overview", :title => "What is Aeolus?" }
-            Overview
-        %dd
-          %a{ :href => "features.html", :title => "Benefits and features of Aeolus" }
-            Features
-        %dd
-          %a{ :href => "requirements.html", :title => "System requirements for running Aeolus" }
-            Requirements
-        -#%dd
-          %a{ :href => "screenshots.html", :title => "Screenshots of Aeolus in use" }
-            Screenshots
-        %dd
-          %a{ :href => "aeolus_team.html", :title => "Lists all of the people in the Aeolus development team" }
-            The team
+      .container.clearfix.showgrid
+        .span-4
+          %dl
+            %dt
+              %a{ :href => "about.html", :title => "About Aeolus" }
+                %img{ :src => "images/footer_about.png", :title => "ABOUT link", :alt => "ABOUT", :onMouseOver => 'setAttribute("src", "images/footer_about-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_about.png");' }
+            %dd
+              %a{ :href => "about.html#overview", :title => "What is Aeolus?" }
+                Overview
+            %dd
+              %a{ :href => "features.html", :title => "Benefits and features of Aeolus" }
+                Features
+            %dd
+              %a{ :href => "requirements.html", :title => "System requirements for running Aeolus" }
+                Requirements
+            -#%dd
+              %a{ :href => "screenshots.html", :title => "Screenshots of Aeolus in use" }
+                Screenshots
+            %dd
+              %a{ :href => "aeolus_team.html", :title => "Lists all of the people in the Aeolus development team" }
+                The team
 
-      %dl#p2
-        %dt
-          %a{ :href => "get_it.html", :title => "Get Aeolus" }
-            %img{ :src => "images/footer_get_it.png", :title => "Get Aeolus", :alt => "GET IT", :onMouseOver => 'setAttribute("src", "images/footer_get_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_get_it.png");' }
-        -#%dd
-          %a{ :href => "get_it.html#rhel61", :title => "Download Aeolus for RHEL 6.1 (beta)" }
-            RHEL 6.1 (beta)
-        %dd
-          %a{ :href => "get_it.html#fedora", :title => "Download Aeolus for Fedora" }
-            Fedora
+        .span-4
+          %dl
+            %dt
+              %a{ :href => "get_it.html", :title => "Get Aeolus" }
+                %img{ :src => "images/footer_get_it.png", :title => "Get Aeolus", :alt => "GET IT", :onMouseOver => 'setAttribute("src", "images/footer_get_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_get_it.png");' }
+            -#%dd
+              %a{ :href => "get_it.html#rhel61", :title => "Download Aeolus for RHEL 6.1 (beta)" }
+                RHEL 6.1 (beta)
+            %dd
+              %a{ :href => "get_it.html#fedora", :title => "Download Aeolus for Fedora" }
+                Fedora
 
-      %dl#p3
-        %dt
-          %a{ :href => "use_it.html", :title => "Learn to use Aeolus" }
-            %img{ :src => "images/footer_use_it.png", :title => "Learn to use Aeolus effectively", :alt => "USE IT", :onMouseOver => 'setAttribute("src", "images/footer_use_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_use_it.png");' }
-        %dd
-          %a{ :href => "configuring_aeolus.html", :title => "Get up and running with Aeolus quickly" }
-            Configuration
-        %dd
-          %a{ :href => "faq.html", :title => "Frequently asked questions about Aeolus" }
-            FAQ
-        %dd
-          %a{ :href => "report_a_bug.html", :title => "Instructions for reporting a bug" }
-            Report a bug
-        %dd
-          %a{ :href => "wiki", :title => "Aeolus wiki" }
-            Wiki
+        .span-4
+          %dl
+            %dt
+              %a{ :href => "use_it.html", :title => "Learn to use Aeolus" }
+                %img{ :src => "images/footer_use_it.png", :title => "Learn to use Aeolus effectively", :alt => "USE IT", :onMouseOver => 'setAttribute("src", "images/footer_use_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_use_it.png");' }
+            %dd
+              %a{ :href => "configuring_aeolus.html", :title => "Get up and running with Aeolus quickly" }
+                Configuration
+            %dd
+              %a{ :href => "faq.html", :title => "Frequently asked questions about Aeolus" }
+                FAQ
+            %dd
+              %a{ :href => "report_a_bug.html", :title => "Instructions for reporting a bug" }
+                Report a bug
+            %dd
+              %a{ :href => "wiki", :title => "Aeolus wiki" }
+                Wiki
 
-      %dl#p4
-        %dt
-          %a{ :href => "developers.html", :title => "The area for Aeolus developers" }
-            %img{ :src => "images/footer_developers.png", :title => "Developers link", :alt => "DEVELOPERS", :onMouseOver => 'setAttribute("src", "images/footer_developers-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_developers.png");' }
-        -#%dd
-          %a{ :href => "detailed_concepts.html", :title => "Documentation for Aeolus Developers" }
-            Detailed concepts
-        %dd
-          %a{ :href => "source.html", :title => "How to get and use the Aeolus source code" }
-            Source code
-        %dd
-          %a{ :href => "compiling.html", :title => "Instructions for compiling each of the Aeolus components" }
-            How to compile
-        %dd
-          %a{ :href => "patches.html", :title => "Guide to submitting patches" }
-            Submitting patches
-        %dd
-          %a{ :href => "https://bugzilla.redhat.com/buglist.cgi?classification=Red%20Hat&query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=MODIFIED&product=Cloud%20Engine", :title => "List of open bugs" }
-            Open bugs
+        .span-4
+          %dl
+            %dt
+              %a{ :href => "developers.html", :title => "The area for Aeolus developers" }
+                %img{ :src => "images/footer_developers.png", :title => "Developers link", :alt => "DEVELOPERS", :onMouseOver => 'setAttribute("src", "images/footer_developers-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_developers.png");' }
+            -#%dd
+              %a{ :href => "detailed_concepts.html", :title => "Documentation for Aeolus Developers" }
+                Detailed concepts
+            %dd
+              %a{ :href => "source.html", :title => "How to get and use the Aeolus source code" }
+                Source code
+            %dd
+              %a{ :href => "compiling.html", :title => "Instructions for compiling each of the Aeolus components" }
+                How to compile
+            %dd
+              %a{ :href => "patches.html", :title => "Guide to submitting patches" }
+                Submitting patches
+            %dd
+              %a{ :href => "https://bugzilla.redhat.com/buglist.cgi?classification=Red%20Hat&query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=MODIFIED&product=Cloud%20Engine", :title => "List of open bugs" }
+                Open bugs
 
-      %dl#p5
-        %dt
-          %a{ :href => "projects.html", :title => "Project specific information" }
-            %img{ :src => "images/footer_projects.png", :title => "Projects link", :alt => "PROJECTS", :onMouseOver => 'setAttribute("src", "images/footer_projects-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_projects.png");' }
-        %dd
-          %a{ :href => "audrey.html", :title => "Audrey project pages" }
-            Audrey
-        %dd
-          %a{ :href => "conductor.html", :title => "Conductor project pages" }
-            Conductor
-        %dd
-          %a{ :href => "configure.html", :title => "Configure project pages" }
-            Configure
-        %dd
-          %a{ :href => "image_factory.html", :title => "Image Factory project pages" }
-            Image Factory
-        %dd
-          %a{ :href => "image_warehouse.html", :title => "Image Warehouse project pages" }
-            Image Warehouse
-        %dd
-          %a{ :href => "oz.html", :title => "Oz project pages" }
-            Oz
-        %dd
-          %a{ :href => "spherical.html", :title => "Spherical project pages" }
-            Spherical
+        .span-4
+          %dl
+            %dt
+              %a{ :href => "projects.html", :title => "Project specific information" }
+                %img{ :src => "images/footer_projects.png", :title => "Projects link", :alt => "PROJECTS", :onMouseOver => 'setAttribute("src", "images/footer_projects-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_projects.png");' }
+            %dd
+              %a{ :href => "audrey.html", :title => "Audrey project pages" }
+                Audrey
+            %dd
+              %a{ :href => "conductor.html", :title => "Conductor project pages" }
+                Conductor
+            %dd
+              %a{ :href => "configure.html", :title => "Configure project pages" }
+                Configure
+            %dd
+              %a{ :href => "image_factory.html", :title => "Image Factory project pages" }
+                Image Factory
+            %dd
+              %a{ :href => "image_warehouse.html", :title => "Image Warehouse project pages" }
+                Image Warehouse
+            %dd
+              %a{ :href => "oz.html", :title => "Oz project pages" }
+                Oz
+            %dd
+              %a{ :href => "spherical.html", :title => "Spherical project pages" }
+                Spherical
 
-      %dl#p6
-        %dt
-          %a{ :href => "news.html", :title => "Recent Aeolus news and happenings" }
-            %img{ :src => "images/footer_news.png", :title => "News link", :alt => "NEWS", :onMouseOver => 'setAttribute("src", "images/footer_news-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_news.png");' }
-        %dd
-          &nbsp;
+        .span-4.last
+          %dl
+            %dt
+              %a{ :href => "news.html", :title => "Recent Aeolus news and happenings" }
+                %img{ :src => "images/footer_news.png", :title => "News link", :alt => "NEWS", :onMouseOver => 'setAttribute("src", "images/footer_news-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_news.png");' }
+            %dd
+              &nbsp;
 
       #copyright
         .line1

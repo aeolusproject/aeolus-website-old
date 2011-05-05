@@ -9,73 +9,72 @@ filter: haml
   %a{ :href => "get_it.html" }
     %img.get{ :src => "images/get_aeolus_button_center_area.jpg", :title => "Get Aeolus", :alt => "Get Aeolus button", :onMouseOver => 'setAttribute("src", "images/get_aeolus_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/get_aeolus_button_center_area.jpg");' }
 
-#front-page-main-lower
-  %ul
-    %li#left
-      %img.heading{ :src => "images/bottom_middle_what_is_aeolus.png",
-            :alt => "What is Aeolus?" }
+#front-page-main-lower.container.showgrid
+  .span-8
+    %img.heading{ :src => "images/bottom_middle_what_is_aeolus.png",
+        :alt => "What is Aeolus?" }
 
-      %p
-        Aeolus is software for running virtual machines
-        %br
-        both internally in your own equipment, and in
-        %br
-        Clouds from several leading vendors.  All at
-        %br
-        the same time.
+    %p
+    Aeolus is software for running virtual machines
+    %br
+    both internally in your own equipment, and in
+    %br
+    Clouds from several leading vendors.  All at
+    %br
+    the same time.
 
-      %p
-        %b REDUCE YOUR RISK
-        of being caught out
-        %br
-        whenever your preferred Cloud vendor has
-        %br
-        issues.   
+    %p
+    %b REDUCE YOUR RISK
+    of being caught out
+    %br
+    whenever your preferred Cloud vendor has
+    %br
+    issues.   
 
-      %p
-        %a.more{ :href => "about.html" }
-          %img{ :src => "images/bottom_middle_more_button.png", :title => "About Aeolus", :alt => "About Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+    %p
+    %a.more{ :href => "about.html" }
+      %img{ :src => "images/bottom_middle_more_button.png", :title => "About Aeolus", :alt => "About Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
 
 
-    %li#middle
-      %img.heading{ :src => "images/bottom_middle_developer_info.png",
-            :alt => "Developer info" }
-      %br
-      
-      Aeolus:
-      
-      %br
-      %ul{ :style => "float: none; list-style-type: disc" }
-        %li{ :style => "float: none; list-style-type: disc" }
-          Is Open Source
-        %li{ :style => "float: none; list-style-type: disc" }
-          Is written in Ruby <em>(well, most of it)</em>
-        %li{ :style => "float: none; list-style-type: disc" }
-          Runs on Linux <em>(some parts work on OSX)</em>
-        %li{ :style => "float: none; list-style-type: disc" }
-          Has a growing Community
-        %li{ :style => "float: none; list-style-type: disc" }
-          Is sponsored by Red Hat, Inc.
-      %br
-      %br
+  .span-8
+    %img.heading{ :src => "images/bottom_middle_developer_info.png",
+        :alt => "Developer info" }
+    %br
 
-      %a.more{ :href => "get_it.html" }
-        %img{ :src => "images/bottom_middle_more_button.png", :title => "Get Aeolus", :alt => "Get Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+    Aeolus:
 
-    %li#right
-      %img.heading{ :src => "images/bottom_middle_news.png", :alt => "News heading" }
+    %br
+    %ul{ :style => "float: none; list-style-type: disc" }
+    %li{ :style => "float: none; list-style-type: disc" }
+      Is Open Source
+    %li{ :style => "float: none; list-style-type: disc" }
+      Is written in Ruby <em>(well, most of it)</em>
+    %li{ :style => "float: none; list-style-type: disc" }
+      Runs on Linux <em>(some parts work on OSX)</em>
+    %li{ :style => "float: none; list-style-type: disc" }
+      Has a growing Community
+    %li{ :style => "float: none; list-style-type: disc" }
+      Is sponsored by Red Hat, Inc.
+    %br
+    %br
 
-      %p
-        %b 4th May 2011 - New website !
-      
-      %p
-        We're very proud to launch our new
-        website.  It will provide a much nicer
-        experience for people to learn Aeolus!
-        %br
-        %br
-        Welcome Red Hat Summit visitors!
+    %a.more{ :href => "get_it.html" }
+    %img{ :src => "images/bottom_middle_more_button.png", :title => "Get Aeolus", :alt => "Get Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
 
-      %p
-        %a.more{ :href => "news.html" }
-          %img{ :src => "images/bottom_middle_more_button.png", :title => "Read more news", :alt => "Read more news", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+  .span-8.last
+    %img.heading{ :src => "images/bottom_middle_news.png", :alt => "News heading" }
+
+    %p
+    %b 4th May 2011 - New website !
+
+    %p
+    We're very proud to launch our new
+    website.  It will provide a much nicer
+    experience for people to learn Aeolus!
+    %br
+    %br
+    Welcome Red Hat Summit visitors!
+
+    %p
+    %a.more{ :href => "news.html" }
+      %img{ :src => "images/bottom_middle_more_button.png", :title => "Read more news", :alt => "Read more news", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }

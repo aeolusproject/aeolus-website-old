@@ -5,7 +5,6 @@ layout:    nil   # no layout
 ---
 
 body
-  width: 1060px
 
 #header
   background-image: url("../images/header_background.jpg")
@@ -131,28 +130,6 @@ body
 
   a:hover
     text-decoration: underline
-
-  #p1, #p2, #p3, #p4, #p5, #p6
-    float: left
-
-  #p1
-    margin-left: 110px
-    width: 13%
-
-  #p2
-    width: 13%
-
-  #p3
-    width: 16%
-
-  #p4
-    width: 18%
-
-  #p5
-    width: 14%
-
-  #p6
-    width: 9%
 
 #copyright
   float: left
