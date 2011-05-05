@@ -24,7 +24,7 @@ function preventFOUT() {
 $(document).ready(function () {
   $(window).scroll(positionFooter)
         .resize(positionFooter).scroll();
-   preventFOUT();
+   //preventFOUT();
 });
 
 
