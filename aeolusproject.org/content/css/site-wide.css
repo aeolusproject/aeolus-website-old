@@ -4,6 +4,9 @@ filter:    sass
 layout:    nil   # no layout
 ---
 
+$screenfont: "LiberationSansRegular", "Liberation Sans", Helvetica, Sans-serif
+$headlinefont: Overpass, Sans-serif
+
 $aeblue1: #025d8c
 $aeblue2: #107fc9
 $aeblue3: #0a93fc
@@ -12,14 +15,18 @@ $aeblue5: #edf7ff
 $aegrey: #ccd4d7
 
 @import mixins.css
+
 body
   margin: 0
   padding: 0
-  font: 10pt/1.5em "LiberationSansRegular", "Liberation Sans", Helvetica, Sans-Serif 
+  font:  12px/1.5 $screenfont
 
 a
   color: $aeblue3
-  
+
+h1,h2,h3,h4,h5,.headline
+  font-family: $headlinefont
+
 #header
   background: #f3f8fb url(../images/header-bg.jpg) no-repeat top center
   border-bottom: 2px solid $aegrey
@@ -27,18 +34,25 @@ a
 
   a
     text-decoration: none
-
-  img.logo
-    margin-top: 3px
-    margin-left: 60px
+  img
+    vertical-align: middle
+  .logo
+    display: block
+    float: left
+    margin: 4px -8px 0
 
   img.divider
+    display: block
+    float: left
     margin-top: 2px
     margin-left: 23px
 
-  img.tagline
-    margin-bottom: 12px
-    margin-left: 8px
+  .tagline
+    display: block
+    float: left
+    margin: 9px 12px 0
+    font-size: 150%
+    color: $aeblue1
 
   /* NOTE - The search box CSS properties have been moved into the main
    * HAML site template instead, to address a transient Chrome bug where 
@@ -96,11 +110,9 @@ a
 #front-page-main-lower
   height: 280px
 
-  li
-    float: left
-    list-style-type: none
-    margin-left: 0.5em
-    margin-right: 1em
+  h1
+    color: $aeblue2
+    font-weight: normal
     
     b
       color: black
@@ -109,19 +121,10 @@ a
     margin-top: 0.8em
     margin-bottom: 0.8em
   
-  li#left
-    width: 35%
-
-  li#middle
-    width: 32%
-
-  li#right
-    width: 24%
 
 #main
-  margin-left: 20px
-  padding: 2em 0
-
+  margin-bottom: 2em
+  
 #footer
   background-image: url("../images/footer_background.jpg")
   clear: both

@@ -31,10 +31,10 @@ filter: haml
     #header
       .container_24.clearfix
         .grid_14
-          %a{ :href => "./" }
-            %img.logo{ :src => "images/aeolus_logo-header.png", :title => "Aeolus logo", :alt => "Aeolus" }
+          %a.logo{ :href => "./" }
+            %img{ :src => "images/aeolus_logo-header.png", :title => "Aeolus logo", :alt => "Aeolus" }
           %img.divider{ :src => "images/tagline-divider.png", :title => "visual divider between logo and tagline", :alt => "visual divider between logo and tagline" }
-          %span.tagline Manage Your Cloud Deployments with Ease
+          %span.tagline.headline Manage Your Cloud Deployments with Ease
         .grid_10
           -# The search box in the header
           %form{ :title => "Search the Aeolus website", :action => "http://www.google.com/cse", :id => "cse-search-box", :style => "float: right; margin-right: 30px; margin-top: 12px" }
@@ -70,9 +70,11 @@ filter: haml
     - if @page.filename == "index"
       ~ @content
     - else
-      #main
-        ~ @content
+      #main.container_24.clearfix
+        .grid_24
+          ~ @content
 
+    .clear
     #footer
       .container_24.clearfix
         .grid_4
