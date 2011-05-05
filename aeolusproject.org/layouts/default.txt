@@ -18,7 +18,7 @@ filter: haml
     <!-- Push fonts -->
     %link{ :href => "css/fonts.css", :rel => "stylesheet" }
 
-    <!--- Blueprint CSS Framework -->
+    <!-- 960  -->
     %link{ :href => "css/960.css", :rel => "stylesheet", :media => "screen, projection" }
 
     <!-- CodeRay syntax highlighting CSS -->
@@ -53,19 +53,19 @@ filter: haml
       .container_24
         .grid_24
           %a{ :href => "about.html" }
-            %img.about{ :src => "images/top_nav_bar_about.png", :title => "About Aeolus", :alt => "About Aeolus button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_about-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_about.png");' }
+            About
           %a{ :href => "get_it.html" }
-            %img.get{ :src => "images/top_nav_bar_get_it.png", :title => "Get Aeolus", :alt => "Get Aeolus button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_get_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_get_it.png");' }
+            Get It
           %a{ :href => "use_it.html" }
-            %img.use{ :src => "images/top_nav_bar_use_it.png", :title => "Learn to use Aeolus", :alt => "Learn to use Aeolus button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_use_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_use_it.png");' }
+            Use It
           %a{ :href => "developers.html" }
-            %img.dev{ :src => "images/top_nav_bar_developers.png", :title => "Developers area", :alt => "Developers area button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_developers-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_developers.png");' }
+            Developers
           %a{ :href => "projects.html" }
-            %img.projects{ :src => "images/top_nav_bar_projects.png", :title => "Go to Projects page", :alt => "Projects page button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_projects-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_projects.png");' }
+            Projects
           %a{ :href => "news.html" }
-            %img.news{ :src => "images/top_nav_bar_news.png", :title => "Go to News page", :alt => "News page button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_news-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_news.png");' }
+            News
           %a{ :href => "contact.html" }
-            %img.contact{ :src => "images/top_nav_bar_contact_us.png", :title => "Contact Us", :alt => "Contact Us page button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_contact_us-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_contact_us.png");' }
+            Contact Us
 
     -# When the template is used to generate the front page, we have to not include the "main" content div.
     -# This is because that div has a white 20 pixel margin that breaks the front page graphics.  We just
@@ -86,7 +86,7 @@ filter: haml
           %dl
             %dt
               %a{ :href => "about.html", :title => "About Aeolus" }
-                %img{ :src => "images/footer_about.png", :title => "ABOUT link", :alt => "ABOUT", :onMouseOver => 'setAttribute("src", "images/footer_about-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_about.png");' }
+                About
             %dd
               %a{ :href => "about.html#overview", :title => "What is Aeolus?" }
                 Overview
@@ -107,7 +107,7 @@ filter: haml
           %dl
             %dt
               %a{ :href => "get_it.html", :title => "Get Aeolus" }
-                %img{ :src => "images/footer_get_it.png", :title => "Get Aeolus", :alt => "GET IT", :onMouseOver => 'setAttribute("src", "images/footer_get_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_get_it.png");' }
+                Get It
             -#%dd
               %a{ :href => "get_it.html#rhel61", :title => "Download Aeolus for RHEL 6.1 (beta)" }
                 RHEL 6.1 (beta)
@@ -119,7 +119,7 @@ filter: haml
           %dl
             %dt
               %a{ :href => "use_it.html", :title => "Learn to use Aeolus" }
-                %img{ :src => "images/footer_use_it.png", :title => "Learn to use Aeolus effectively", :alt => "USE IT", :onMouseOver => 'setAttribute("src", "images/footer_use_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_use_it.png");' }
+                Use It
             %dd
               %a{ :href => "configuring_aeolus.html", :title => "Get up and running with Aeolus quickly" }
                 Configuration
@@ -137,7 +137,7 @@ filter: haml
           %dl
             %dt
               %a{ :href => "developers.html", :title => "The area for Aeolus developers" }
-                %img{ :src => "images/footer_developers.png", :title => "Developers link", :alt => "DEVELOPERS", :onMouseOver => 'setAttribute("src", "images/footer_developers-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_developers.png");' }
+                Developers
             -#%dd
               %a{ :href => "detailed_concepts.html", :title => "Documentation for Aeolus Developers" }
                 Detailed concepts
@@ -158,7 +158,7 @@ filter: haml
           %dl
             %dt
               %a{ :href => "projects.html", :title => "Project specific information" }
-                %img{ :src => "images/footer_projects.png", :title => "Projects link", :alt => "PROJECTS", :onMouseOver => 'setAttribute("src", "images/footer_projects-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_projects.png");' }
+                Projects
             %dd
               %a{ :href => "audrey.html", :title => "Audrey project pages" }
                 Audrey
@@ -185,7 +185,7 @@ filter: haml
           %dl
             %dt
               %a{ :href => "news.html", :title => "Recent Aeolus news and happenings" }
-                %img{ :src => "images/footer_news.png", :title => "News link", :alt => "NEWS", :onMouseOver => 'setAttribute("src", "images/footer_news-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_news.png");' }
+                News
             %dd
               &nbsp;
 

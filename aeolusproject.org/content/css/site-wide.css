@@ -91,6 +91,18 @@ hr.shade
 
   a
     text-decoration: none
+    display: inline-block
+    font: normal 120%/1.5 $headlinefont
+    color: #fff
+    @include text-shadow(0,1px,0,$aeblue2)
+    margin: 4px 10px
+    padding: 4px 4px 7px
+    text-transform: uppercase
+    &:hover
+      color: $aeblue1
+      @include text-shadow(0,1px,0, rgba(255,255,255,0.5))
+      border-bottom: 3px solid #fff
+      padding: 4px 4px 4px
 
   img
     margin-top: 13px
@@ -138,6 +150,7 @@ hr.shade
 
   h2
     color: $aeblue1
+    @include text-shadow(0,1px,0, rgba(255,255,255,0.5))
 
   a
     text-decoration: none
@@ -198,6 +211,15 @@ hr.shade
 
   dt
     margin-bottom: 4px
+
+    a
+      font-family: $headlinefont
+      font-weight: bold
+      text-transform: uppercase
+      color: darken($aegrey, 20%)
+      &:hover
+        text-decoration: underline
+        color: $aeblue1
 
   dd
     margin-left: 0px
