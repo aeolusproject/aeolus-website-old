@@ -1,0 +1,323 @@
+---
+title: Aeolus | Start an Instance of the Image
+breadcrumb_name: Start Image
+extension: html
+filter: haml
+---
+%h1 Start an Instance of the Image
+
+%p
+  With the image as an AMI in the Amazon Cloud, you can start instances
+  when desired.
+
+%p
+  We'll take you through starting an instance of the image using Aeolus's
+  web interface, then show you how to connect to that image remotely using
+  SSH.
+
+.page-listing
+  %h3 Getting Started Guide
+
+  %ol
+    %li
+      %a{ :href => "configuring_aeolus.html",
+          :title => "Configuring Aeolus" } Configuring Aeolus
+
+    %li
+      %a{ :href => "first_login.html",
+          :title => "First login" } First login
+
+    %li
+      %a{ :href => "set_up_ec2.html",
+          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+
+    %li
+      %a{ :href => "make_template.html",
+          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+
+    %li
+      Start an Instance of the Image
+
+    %li
+      %a{ :href => "stop_image.html",
+          :title => "Stop a running Instance" } Stop a running Instance
+
+    %li
+      %a{ :href => "cleaning_up.html",
+          :title => "Cleaning up" } Cleaning up
+
+%br
+
+.section-grouping
+  %h2 1. Start an instance
+
+  %p
+    Before anything else, we need to get an instance up and running:
+
+  %p
+    %ol
+      %li
+        In the Aeolos web interface, go to
+        %b RESOURCE MANAGEMENT
+        &rArr; <b>INSTANCES</b>.
+
+      %li
+        Click the
+        %b Create
+        button.
+        %br
+        %br
+        The page will change to a list of the templates you have created.
+        %br
+        %br
+
+      %li
+        Click the
+        %b Launch
+        button underneath the Fedora 14 template entry.
+        %br
+        %br
+        The page changes again, asking for further details.
+        %br
+        %br
+
+      %li
+        For the
+        %b Name
+        field, choose something obvious such as
+        <em>Instance 1</em>.
+        
+      %li
+        For the
+        %b Pool
+        field, choose
+        <em>default_pool</em>.
+        
+      %li
+        For the
+        %b Hardware profile
+        field, choose
+        <em>hwp1</em>.
+        
+      %li
+        The value for the
+        %b Frontend realm
+        field doesn't matter in this instance.
+
+      %li
+        Click the
+        %b Launch
+        button.
+  
+  %p
+    Aeolus will then launch an instance of the template, using the AMI
+    created on the previous page.
+  %p
+    The main view will list your instances, with the message
+    "<em>Instance added.</em>" near the top: 
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %img{ :src => "images/getting_started/instance_added.png",
+          :title => "Instance 1 added",
+          :alt => "Instance 1 added" }
+
+  %p
+    Within a minute or two, the
+    %b STATUS
+    field for the instance should change to say
+    "<em>running</em>".
+
+  %p
+    Note though, automatic updates of the Aeolus web interface don't
+    always work yet.  You may need to refresh the window manually for the
+    %em running
+    status to appear.
+
+%br
+
+.section-grouping
+  %h2 2. Configure EC2 for SSH connections
+
+  %p
+    By default, Amazon EC2 does not allow any incoming connections to
+    instances.
+
+  %p
+    We now configure it to allow incoming SSH connections:
+
+  %p
+    %ol
+      %li
+        In the Amazon AWS Management Console, go to
+        %b EC2
+        &rArr; <b>Security Groups</b>.
+        %br
+        %br
+        This displays the list of EC2 security groups.
+        %br
+        %br
+
+      %li
+        Click on the
+        %b default
+        security group.
+        %br
+        %br
+        This displays the details for the default security group, in the
+        lower part of the window.
+        %br
+        %br
+
+      %li
+        Click on the
+        %b Inbound
+        tab.
+
+      %li
+        For the
+        %b Create a new rule
+        selector, choose <em>SSH</em>.
+
+      %li
+        Click the
+        %b Add Rule
+        button.
+
+      %li
+        Click the
+        %b Apply Rule Changes
+        button just below it.
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %img{ :src => "images/getting_started/ec2_ssh_rule_added.png",
+          :title => "SSH rule added to EC2 default security group",
+          :alt => "SSH rule added to EC2 default security group" }
+
+  %p
+    EC2 now allows SSH connections to your instances.
+
+%br
+
+.section-grouping
+  %h2 3. Retrieve the Private SSH Key
+
+  %p
+    To connect to the new running instance using SSH, you need the private
+    key generated for it: 
+
+  %p
+    %ol
+      %li
+        In the Aeolus web interface, click
+        %b RESOURCE MANAGEMENT
+        &rArr; <b>INSTANCES</b>.
+
+      %li
+        Click the name of the new running instance.
+        %b Instance 1
+        in the above screenshot.  This will open the Details view, showing
+        the
+        %b Properties
+        tab for the instance.
+
+      %li
+        Scroll down the properties list to locate the
+        %b SSH key
+        entry.
+
+      %li
+        Click the
+        %em Download
+        text next to it to bring up a download dialog for the SSH private key
+        file:
+        %br
+        %br
+        %img{ :src => "images/getting_started/instance_ssh_private_key_download_link.png",
+              :title => "Text link to Instance 1 SSH private key",
+              :alt => "Text link to Instance 1 SSH private key" }
+        %br
+        %br
+
+      %li
+        Save the private key with a distinctive name such as
+        <em>instance_1_private_key.pem</em>.
+
+      %li
+        Tighten the permissions of the saved private file to only allow
+        access by yourself, and only read access:
+        %pre
+          :preserve
+            $ chmod 400 instance_1_private_key.pem
+        %br
+        %b IMPORTANT:
+        %em
+          This is because SSH will refuse to use any private key with
+          insecure permissions.    
+
+%br
+
+.section-grouping
+  %h2 4. Connect to the instance
+
+  %p
+    Now we connect to the new running instance using SSH:
+
+  %p
+    %ol       
+      %li
+        Get the public address of the instance from the instance list:
+        %br
+        %br
+        %img{ :src => "images/getting_started/instance_public_address.png",
+              :title => "Public address for Instance 1",
+              :alt => "Public address for Instance 1" }
+        %br
+        %br
+
+      %li Launch a terminal session on your desktop.
+
+      %li
+        In the terminal session, start ssh, passing it the name of the
+        private key file for the instance with the "<em>-i</em>" option, giving
+        the root user, and giving the public address of the instance:
+
+  %p
+    %pre
+      :preserve
+        $ ssh -i <b>instance_1_private_key.pem</b> -l root <b>ec2-50-16-146-190.compute-1.amazonaws.com</b>
+        The authenticity of host 'ec2-50-16-146-190.compute-1.amazonaws.com (50.16.146.190)' can't be established.
+        RSA key fingerprint is bb:af:ad:fc:69:5a:8e:9b:1a:3c:16:7b:14:c2:94:aa.
+        Are you sure you want to continue connecting (yes/no)? <b>yes</b>
+        Warning: Permanently added 'ec2-50-16-146-190.compute-1.amazonaws.com,50.16.146.190' (RSA) to the list of known hosts.
+        <b>[root@localhost ~]#</b>
+
+  %p
+    You are now logged into the running Fedora 14 instance as the root user.
+
+  .warning
+    %p
+      %b WARNING:
+      This Fedora 14 image is from the equivalent of a DVD install, so has
+      %b NOT
+      had security updates applied.
+
+    %p
+      If you intend on running the instance for
+      any length of time, you
+      %b must
+      apply all relevant security updates using a tool such as <em>yum</em>,
+      then rebooting.
+
+    %p
+      %b IMPORTANT:
+      Changes to the file system persist across reboots, but are lost when it
+      is shut down.  This means a
+      %em yum update
+      (then reboot) will be needed each time the instance is started.
+
+%br
+
+%a{ :href => "stop_image.html", :title => "Stop an Instance of an Image" }
+  %img{ :src => "images/stop_image_button.png", :title => "Next step - Stop an Instance of an Image", :alt => "Next step - Stop an Instance of an Image", :onMouseOver => 'setAttribute("src", "images/stop_image_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/stop_image_button.png");' }

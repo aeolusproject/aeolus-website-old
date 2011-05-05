@@ -1,0 +1,33 @@
+---
+title: Aeolus Project - Image Factory
+area: projects
+extension: html
+filter:
+  - haml
+---
+%h1 Image Factory
+
+%ul
+  - imagefactory_pages.each do |doc|
+    - if doc[:description]
+      %li
+        %a{ :href => doc[:href] }
+          = doc[:description]
+
+%h2 Summary
+%p
+  The Image Factory is an external service that allows the Conductor to build
+  images for multiple cloud providers from a single image descriptor. The
+  builder exposes its services as a QMF agent and uses XML for the descriptor
+  format.  The nuts and bolts of building an image are handled by the Oz
+  component.
+
+  The resulting images are transferred to the Image Warehouse that pushes the
+  resulting images out to the appropriate cloud provider.
+
+%h2 Status
+%p
+  The image factory is being actively developed. This is a very early
+  version, and it should in no way be considered either stable or
+  production-ready. At present it supports Fedora, RHEL, and Windows based
+  distributions.

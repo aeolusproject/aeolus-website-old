@@ -1,0 +1,107 @@
+---
+title: Aeolus | Stop a running Instance
+breadcrumb_name: Stop Image
+extension: html
+filter: haml
+---
+%h1 Stop a running Instance
+
+.page-listing
+  %h3 Getting Started Guide
+
+  %ol
+    %li
+      %a{ :href => "configuring_aeolus.html",
+          :title => "Configuring Aeolus" } Configuring Aeolus
+
+    %li
+      %a{ :href => "first_login.html",
+          :title => "First login" } First login
+
+    %li
+      %a{ :href => "set_up_ec2.html",
+          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+
+    %li
+      %a{ :href => "make_template.html",
+          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+
+    %li
+      %a{ :href => "start_image.html",
+          :title => "Start an Instance of the Image" } Start an Instance of the Image
+
+    %li
+      Stop a running Instance
+
+    %li
+      %a{ :href => "cleaning_up.html",
+          :title => "Cleaning up" } Cleaning up
+
+%br
+
+.section-grouping
+  %h2 1. Stopping the Instance
+
+  %p
+    Shutting down a running instance is very simple.
+
+  %p
+    %ol
+      %li
+        In the Aeolos web interface, go to
+        %b RESOURCE MANAGEMENT
+        &rArr;
+        <b>INSTANCES</b>.
+
+      %li
+        Tick the checkbox next to the instance name in the instance list.
+        
+      %li
+        Click the
+        %b Stop
+        button:
+        
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %img{ :src => "images/getting_started/aeolus_stop_instance_button.png",
+          :title => "Shutting down the instance",
+          :alt => "Shutting down the instance" }
+
+  %p
+    Within a minute or two the instance status should change to say
+    <em>stopped</em>:
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %img{ :src => "images/getting_started/aeolus_instance_stopped.png",
+          :title => "Instance has stopped",
+          :alt => "Instance has stopped" }
+
+  %p
+    Note though, automatic updates of the Aeolus web interface don't
+    always work yet.  You may need to refresh the window manually for the
+    %em stopped
+    status to appear.
+
+%br
+
+.section-grouping
+  %h2 2. Check for instances left running in EC2
+
+  %p
+    When using a development version of Aeolus, always remember to check the
+    AWS Management Console for instances left running in EC2.
+
+  %p
+    It's rare for this to happen, but better safe than sorry:
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %img{ :src => "images/getting_started/ec2_instance_clean_up.png",
+          :title => "Check AWS for EC2 instances left running",
+          :alt => "Check AWS for EC2 instances left running" }
+
+%br
+
+%a{ :href => "cleaning_up.html", :title => "Cleaning up" }
+  %img{ :src => "images/cleaning_up_button.png", :title => "Next step - Cleaning up", :alt => "Next step - Cleaning up", :onMouseOver => 'setAttribute("src", "images/cleaning_up_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/cleaning_up_button.png");' }

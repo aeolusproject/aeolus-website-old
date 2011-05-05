@@ -2,86 +2,189 @@
 extension: html
 dirty: true
 filter: haml
----
-!!! Strict
-%html
+--- 
+<!DOCTYPE html>
+%html{ :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
+    %meta{ :charset => "UTF-8" }
     %title
       = @page.title
     %meta{ :name => "keywords", :content => "" }
     %meta{ :name => "description", :content => "" }
-    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
-    %link{ :href => "./styles/aeolus-icon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
-    %link{ :href => "./styles/default.css", :title => "Main style", :rel => "StyleSheet", :type => "text/css" }
-    %link{ :href => "./styles/default-debug.css", :title => "Debug main style", :rel => "Alternate StyleSheet", :type => "text/css" }
 
-    - if @page.filename == "index"
-      %link{ :href => "./styles/firstpage.css", :rel => "stylesheet", :type => "text/css" }
-      %link{ :href => "./jquery.fancybox/jquery.fancybox-1.3.1.css", :rel => "stylesheet", :type => "text/css", :media => "screen" }
-      %script{ :type => "text/javascript", :src => "./jquery.fancybox/jquery-1.3.2.min.js" }
-      %script{ :type => "text/javascript", :src => "./jquery.fancybox/jquery.easing-1.3.pack.js" }
-      %script{ :type => "text/javascript", :src => "./jquery.fancybox/jquery.fancybox-1.3.1.pack.js" }
+    -# Icon file
+    %link{ :href => "images/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
+
+    <!-- Liberation Sans font face -->
+    %link{ :href => "css/liberation_sans.css", :rel => "stylesheet" }
+
+    <!--- Blueprint CSS Framework -->
+    %link{ :href => "css/blueprint/screen.css", :rel => "stylesheet", :media => "screen, projection" }
+    %link{ :href => "css/blueprint/print.css", :rel => "stylesheet", :media => "print" }
+
+    <!-- CodeRay syntax highlighting CSS -->
+    %link{ :href => "css/coderay.css", :rel => "stylesheet" }
+
+    <!-- Site wide CSS -->
+    %link{ :href => "css/site-wide.css", :rel => "stylesheet", :media => "screen, projection" }
 
   %body
     #header
-      .container
-        #headerLogo{ :onclick => "location.href='index.html';", :style => "cursor: pointer;" }
-          %h1
-            Aeolus Project
-    = render(:partial => "navigation", :locals => {:current_page => "#{@page.filename}.#{@page.extension}", :area => @page.area } )
-    - if @page.area == "projects"
-      = render(:partial => "submenu-projects", :locals => {:current_page => "#{@page.filename}.#{@page.extension}" } )
-    #main
-      #content-aeolusproject.container
+      %a{ :href => "./" }
+        %img.logo{ :src => "images/aeolus_logo-header.png", :title => "Aeolus logo", :alt => "Aeolus logo" }
+      %img.divider{ :src => "images/tagline-divider.png", :title => "visual divider between logo and tagline", :alt => "visual divider between logo and tagline" }
+      %img.tagline{ :src => "images/header_tagline.jpg", :title => "Aeolus tagline", :alt => "Manage Your Cloud Deployments with Ease" }
+
+      -# The search box in the header
+      %form{ :title => "Search the Aeolus website", :action => "http://www.google.com/cse", :id => "cse-search-box", :style => "float: right; margin-right: 30px; margin-top: 12px" }
+        %input{ :type => "hidden", :value => "009521294820748120480:axl-8xlshn4", :name => "cx" }
+        %input{ :type => "hidden", :name => "ie", :value => "UTF-8" }
+        %input{ :type => "search", :name => "q", :size => "30", :placeholder => "Search Aeolus", :required => "required" }
+        %input{ :type => "submit", :name => "sa", :value => "Search" }
+        <!--[if IE]>
+        %script{ :type =>"text/javascript", :src => "http://www.google.com/cse/brand?form=cse-search-box&lang=en" }
+        <![endif]-->
+
+    #navigation
+      %a{ :href => "about.html" }
+        %img.about{ :src => "images/top_nav_bar_about.png", :title => "About Aeolus", :alt => "About Aeolus button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_about-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_about.png");' }
+      %a{ :href => "get_it.html" }
+        %img.get{ :src => "images/top_nav_bar_get_it.png", :title => "Get Aeolus", :alt => "Get Aeolus button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_get_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_get_it.png");' }
+      %a{ :href => "use_it.html" }
+        %img.use{ :src => "images/top_nav_bar_use_it.png", :title => "Learn to use Aeolus", :alt => "Learn to use Aeolus button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_use_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_use_it.png");' }
+      %a{ :href => "developers.html" }
+        %img.dev{ :src => "images/top_nav_bar_developers.png", :title => "Developers area", :alt => "Developers area button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_developers-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_developers.png");' }
+      %a{ :href => "projects.html" }
+        %img.projects{ :src => "images/top_nav_bar_projects.png", :title => "Go to Projects page", :alt => "Projects page button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_projects-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_projects.png");' }
+      %a{ :href => "news.html" }
+        %img.news{ :src => "images/top_nav_bar_news.png", :title => "Go to News page", :alt => "News page button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_news-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_news.png");' }
+      %a{ :href => "contact.html" }
+        %img.contact{ :src => "images/top_nav_bar_contact_us.png", :title => "Contact Us", :alt => "Contact Us page button image", :onMouseOver => 'setAttribute("src", "images/top_nav_bar_contact_us-selected.png");', :onMouseOut => 'setAttribute("src", "images/top_nav_bar_contact_us.png");' }
+
+    -# When the template is used to generate the front page, we have to not include the "main" content div.
+    -# This is because that div has a white 20 pixel margin that breaks the front page graphics.  We just
+    -# include the front page contents directly instead.
+    - if @page.filename == "index"
+      ~ @content
+    - else
+      #main
         ~ @content
-    #footer-aeolusproject
-      #projects.container
-        %p#et
-          %a{ :href => "http://et.redhat.com/" }
-            %img{ :src => "./styles/et_logo.png", :alt => "A Red Hat Emerging Technology Project" }
-        %dl#p1
-          %dt
-            %a{ :href => "http://augeas.net/" }
-              Augeas
-          %dd
-            %span
-              A configuration editing tool and API
-          %dt
-            %a{ :href => "http://libvirt.org/" }
-              libvirt
-          %dd
-            %span
-              The open source virtualization API
-        %dl#p2
-          %dt
-            %a{ :href => "http://fedorahosted.org/cobbler/" }
-              Cobbler
-          %dd
-            OS provisioning and profile management
-          %dt
-            %a{ :href => "http://libguestfs.org/" }
-              libguestfs
-          %dd
-            %span
-              Tools for accessing and modifying virtual machine disk images
-        %dl#p3
-          %dt
-            %a{ :href => "http://freeipa.org/" }
-              FreeIPA
-          %dd
-            %span
-              Identity, policy and audit management
-          %dt
-            %a{ :href => "http://virt-manager.org/" }
-              Virtual Machine Manager
-          %dd
-            %span
-              Virtualization management from the desktop
+
+    #footer
+      %dl#p1
+        %dt
+          %a{ :href => "about.html", :title => "About Aeolus" }
+            %img{ :src => "images/footer_about.png", :title => "ABOUT link", :alt => "ABOUT", :onMouseOver => 'setAttribute("src", "images/footer_about-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_about.png");' }
+        %dd
+          %a{ :href => "about.html#overview", :title => "What is Aeolus?" }
+            Overview
+        %dd
+          %a{ :href => "features.html", :title => "Benefits and features of Aeolus" }
+            Features
+        %dd
+          %a{ :href => "requirements.html", :title => "System requirements for running Aeolus" }
+            Requirements
+        -#%dd
+          %a{ :href => "screenshots.html", :title => "Screenshots of Aeolus in use" }
+            Screenshots
+        %dd
+          %a{ :href => "aeolus_team.html", :title => "Lists all of the people in the Aeolus development team" }
+            The team
+
+      %dl#p2
+        %dt
+          %a{ :href => "get_it.html", :title => "Get Aeolus" }
+            %img{ :src => "images/footer_get_it.png", :title => "Get Aeolus", :alt => "GET IT", :onMouseOver => 'setAttribute("src", "images/footer_get_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_get_it.png");' }
+        -#%dd
+          %a{ :href => "get_it.html#rhel61", :title => "Download Aeolus for RHEL 6.1 (beta)" }
+            RHEL 6.1 (beta)
+        %dd
+          %a{ :href => "get_it.html#fedora", :title => "Download Aeolus for Fedora" }
+            Fedora
+
+      %dl#p3
+        %dt
+          %a{ :href => "use_it.html", :title => "Learn to use Aeolus" }
+            %img{ :src => "images/footer_use_it.png", :title => "Learn to use Aeolus effectively", :alt => "USE IT", :onMouseOver => 'setAttribute("src", "images/footer_use_it-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_use_it.png");' }
+        %dd
+          %a{ :href => "configuring_aeolus.html", :title => "Get up and running with Aeolus quickly" }
+            Configuration
+        %dd
+          %a{ :href => "faq.html", :title => "Frequently asked questions about Aeolus" }
+            FAQ
+        %dd
+          %a{ :href => "report_a_bug.html", :title => "Instructions for reporting a bug" }
+            Report a bug
+        %dd
+          %a{ :href => "wiki", :title => "Aeolus wiki" }
+            Wiki
+
+      %dl#p4
+        %dt
+          %a{ :href => "developers.html", :title => "The area for Aeolus developers" }
+            %img{ :src => "images/footer_developers.png", :title => "Developers link", :alt => "DEVELOPERS", :onMouseOver => 'setAttribute("src", "images/footer_developers-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_developers.png");' }
+        -#%dd
+          %a{ :href => "detailed_concepts.html", :title => "Documentation for Aeolus Developers" }
+            Detailed concepts
+        %dd
+          %a{ :href => "source.html", :title => "How to get and use the Aeolus source code" }
+            Source code
+        %dd
+          %a{ :href => "compiling.html", :title => "Instructions for compiling each of the Aeolus components" }
+            How to compile
+        %dd
+          %a{ :href => "patches.html", :title => "Guide to submitting patches" }
+            Submitting patches
+        %dd
+          %a{ :href => "https://bugzilla.redhat.com/buglist.cgi?classification=Red%20Hat&query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=MODIFIED&product=Cloud%20Engine", :title => "List of open bugs" }
+            Open bugs
+
+      %dl#p5
+        %dt
+          %a{ :href => "projects.html", :title => "Project specific information" }
+            %img{ :src => "images/footer_projects.png", :title => "Projects link", :alt => "PROJECTS", :onMouseOver => 'setAttribute("src", "images/footer_projects-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_projects.png");' }
+        %dd
+          %a{ :href => "audrey.html", :title => "Audrey project pages" }
+            Audrey
+        %dd
+          %a{ :href => "conductor.html", :title => "Conductor project pages" }
+            Conductor
+        %dd
+          %a{ :href => "configure.html", :title => "Configure project pages" }
+            Configure
+        %dd
+          %a{ :href => "image_factory.html", :title => "Image Factory project pages" }
+            Image Factory
+        %dd
+          %a{ :href => "image_warehouse.html", :title => "Image Warehouse project pages" }
+            Image Warehouse
+        %dd
+          %a{ :href => "oz.html", :title => "Oz project pages" }
+            Oz
+        %dd
+          %a{ :href => "spherical.html", :title => "Spherical project pages" }
+            Spherical
+
+      %dl#p6
+        %dt
+          %a{ :href => "news.html", :title => "Recent Aeolus news and happenings" }
+            %img{ :src => "images/footer_news.png", :title => "News link", :alt => "NEWS", :onMouseOver => 'setAttribute("src", "images/footer_news-selected.png");', :onMouseOut => 'setAttribute("src", "images/footer_news.png");' }
+        %dd
+          &nbsp;
+
+      #copyright
+        .line1
+          Copyright &copy; 2010-2011 Red Hat, Inc.
+        .line2
+          This website (not the Aeolus code) is released under a
+          %a{ :href => "http://creativecommons.org/licenses/by-sa/3.0/", :rel => "license" } Creative Commons Attribution-ShareAlike 3.0 Unported License
+
+    -# Add the Google Analytics javascript
     %script{ :type => "text/javascript" }
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     %script{ :type => "text/javascript" }
       try {
-      var pageTracker = _gat._getTracker("UA-10510561-2");
+      var pageTracker = _gat._getTracker("UA-10510561-1");
       pageTracker._trackPageview();
       } catch(err) {}

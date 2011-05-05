@@ -1,0 +1,76 @@
+---
+title: Aeolus | Overview
+breadcrumb_name: Overview
+extension: html
+filter: haml
+---
+%h1 About Aeolus
+
+.section-grouping
+  %h2
+    Aeolus is software for managing your Cloud Computing deployments
+
+  %p
+    It supports several of the leading private and public Cloud solutions,
+    as well as supporting virtual machines running on your own private
+    equipment.
+
+  %p
+    While that's useful, the
+    %b KEY
+    aspect of Aeolus is that you can have virtual machine images running
+    (or ready to run) in several Clouds at any time.
+
+  %p
+    This completely cuts your dependence upon any specific Cloud vendor,
+    allowing you to weather Cloud outages with far less difficulty, and 
+    take advantage of the increasing price competiton among cloud providers.
+
+  %p
+    %em Next Cloud outage... no problem.
+    You can switch to a different cloud in minutes. 
+
+  %p
+    %img{ :src => "images/concept_aeolus_high_level.png" }
+
+%br
+
+-#%table{ :width => "80%" }
+  %tr
+    %td{ :colspan => "2", :align => "center" }
+      %h2 Private Cloud Providers
+    %td{ :width => "10%"} &nbsp;
+    %td{ :colspan => "2", :align => "center" }
+      %h2 Public Cloud Providers
+  %tr
+    %th Provider
+    %th Status
+    %td &nbsp;
+    %th Provider
+    %th Status
+  %tr
+    %td
+      %a{ :href => "http://www.redhat.com/virtualization/rhev/server/" } Red Hat Enterprise Virtualization (RHEV)
+    %td{ :align => "center" } In Development
+    %td &nbsp;
+    %td
+      %a{ :href => "http://aws.amazon.com/ec2" } Amazon Elastic Compute Cloud (EC2)
+    %td{ :align => "center", :style => "color: blue" }
+      %b Supported
+  %tr
+    %td VMware vSphere
+    %td{ :align => "center" } In Development
+    %td &nbsp;
+    %td
+      %a{ :href => "http://www.rackspace.com/cloud/" } Rackspace Cloud Hosting
+    %td{ :align => "center" } In Development
+  %tr
+    %td
+      %a{ :href => "http://www.eucalyptus.com" } Eucalyptus
+    %td{ :align => "center" } In Development
+
+%br
+
+&nbsp; 
+%a{ :href => "features.html" }
+  %img{ :src => "images/features_button.png", :title => "Next step - Configure it", :alt => "Next step - Configure it", :onMouseOver => 'setAttribute("src", "images/features_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/features_button.png");' }

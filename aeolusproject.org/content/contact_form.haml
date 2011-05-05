@@ -1,0 +1,77 @@
+---
+title: Aeolus | Message submission
+breadcrumb_name: Message submission
+extension: php
+filter: haml
+---
+%h1 Message submission
+
+<? // Include the mail validation and sending functions ?>
+<? require_once '/usr/share/pear/Mail.php'; ?>
+<? require_once '/usr/share/pear/Mail/RFC822.php'; ?>
+
+<? // Static fields ?>
+<? define(EMAIL_FROM, 'Aeolus Website <jclift@redhat.com>'); ?>
+<? define(EMAIL_TO, 'Justin Clift <jclift@redhat.com>'); ?>
+<? define(SUBJECT, 'Aeolus web form submission'); ?>
+<? define(MAIL_HOST, 'localhost'); ?>
+
+<? // Force UTF-8 locale, just to be safe ?>
+<? setlocale(LC_CTYPE, 'en_US.UTF-8'); ?>
+
+<? // Check for missing input ?>
+<? $missing_input = FALSE; ?>
+<? if (empty($_POST['name'])) { ?>
+<?   echo 'You forgot to fill out the Name field.' . '<br />'; ?>
+<?   $missing_input = TRUE; ?>
+<? } ?>
+<? if (empty($_POST['email'])) { ?>
+<?   echo 'You forgot to fill out the Email field.' . '<br />'; ?>
+<?   $missing_input = TRUE; ?>
+<? } ?>
+<? if (empty($_POST['message'])) { ?>
+<?   echo 'You forgot to fill out the Message field.' . '<br />'; ?>
+<?   $missing_input = TRUE; ?>
+<? } ?>
+<? if (TRUE == $missing_input) { ?>
+<?   exit(1); ?>
+<? } ?>
+
+<? // Validate the email address against RFC822 spec ?>
+<? $rfc822_check = Mail_RFC822::parseAddressList($_POST['email'], 'example.org', FALSE, TRUE); ?>
+<? if (PEAR::isError($rfc822_check)) { ?>
+<?   echo 'The email address you gave does not appear to be valid' . '<br /><br />'; ?>
+<?   echo '<b>Reason given:</b> ' . $rfc822_check->getMessage(); ?>
+<?   exit(2); ?>
+<? } ?>
+
+<? // Escape the web form input for safety ?>
+<? $form_name = escapeshellarg($_POST['name']); ?>
+<? $form_email = escapeshellarg($_POST['email']); ?>
+<? $form_message = escapeshellarg($_POST['message']); ?>
+
+<? // Construct the message body ?>
+<? $body = 'A new submission has arrived through the Aeolus contact web form' . "\n\n"; ?>
+<? $body .= 'Name:  ' . $form_name . "\n"; ?>
+<? $body .= 'Email: ' . $form_email . "\n\n"; ?>
+<? $body .= 'Message' . "\n" . '*******' . "\n\n" . $form_message . "\n\n"; ?>
+
+<? // Construct the mail message proper ?>
+<? $headers = array ('From' => EMAIL_FROM, 'To' => EMAIL_TO, 'Subject' => SUBJECT); ?>
+<? $smtp = Mail::factory('smtp', array ('host' => MAIL_HOST, 'auth' => FALSE)); ?>
+
+<? // Send the mail ?>
+<? $mail = $smtp->send(EMAIL_TO, $headers, $body); ?>
+
+<? // Check for errors ?>
+<? if (PEAR::isError($mail)) { ?>
+<?   echo('An error occurred when sending the message: ' . $mail->getMessage()); ?>
+<? } else { ?>
+<?   echo('Message successfully sent!'); ?>
+<? } ?>
+
+%h2 Thank you for your message submission
+
+%p
+  A member of the Aeolus project team will read your email and respond
+  appropriately, generally within the next few hours (during business days).

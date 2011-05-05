@@ -1,0 +1,195 @@
+---
+title: Aeolus | Create a Fedora 14 Template
+breadcrumb_name: Make Template
+extension: html
+filter: haml
+---
+%h1 Create a Fedora 14 Template
+
+%p
+  Next we'll create a basic Fedora 14 virtual machine template, to show you
+  the process.
+
+.page-listing
+  %h3 Getting Started Guide
+
+  %ol
+    %li
+      %a{ :href => "configuring_aeolus.html",
+          :title => "Configuring Aeolus" } Configuring Aeolus
+
+    %li
+      %a{ :href => "first_login.html",
+          :title => "First login" } First login
+
+    %li
+      %a{ :href => "set_up_ec2.html",
+          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+
+    %li
+      Create a Fedora 14 Template
+
+    %li
+      %a{ :href => "start_image.html",
+          :title => "Start an Instance of the Image" } Start an Instance of the Image
+
+    %li
+      %a{ :href => "stop_image.html",
+          :title => "Stop a running Instance" } Stop a running Instance
+
+    %li
+      %a{ :href => "cleaning_up.html",
+          :title => "Cleaning up" } Cleaning up
+
+%br
+
+.section-grouping
+  %h2 1. Create the template
+
+  %p
+    %ol
+      %li
+        In the Aeolos web interface, go to
+        %b IMAGE FACTORY
+        &rArr; <b>TEMPLATES</b>.
+
+      %li
+        Click the
+        %b Create
+        button.
+
+      %li
+        Change the
+        %b Template Name
+        field to be something descriptive, such as
+        <em>Fedora 14 x64_64</em>.
+
+      %li
+        Change the
+        %b Template Description
+        field to be something descriptive, such as
+        <em>Fedora 14 Template</em>.
+        
+      %li
+        Change the
+        %b Platform Choice
+        selector to
+        <em>Fedora 14 (x86_64)</em>.
+
+      %li
+        Click the
+        %b Save
+        button.
+  
+  %p
+    This creates a definition of the template, but does not actively build an
+    image for it nor push it to Amazon EC2.
+
+%br
+
+.section-grouping
+  %h2 2. Build the image, transfer the image
+
+  %p
+    Now, we'll make a virtual machine image from the template, then push it
+    to the Amazon Cloud.
+
+  %p
+    %ol
+      %li
+        Click the new Fedora 14 template in the list.
+        %br
+        %br
+        The Details pane will appear, with
+        %b Properties
+        and
+        %b Builds
+        tabs.
+        %br
+        %br
+      %li
+        Click the
+        %b Builds
+        tab.
+      %li
+        Make sure the
+        %b New Build for
+        selector has your Amazon EC2 provider account selected.
+      %li
+        Click the
+        %b Go
+        button.
+
+  %p
+    This builds a basic image for the template, push it to Amazon, then does
+    final assembly live in an EC2 virtual machine.
+
+  %p
+    When the image has been successfully assembled in EC2, it is stored in
+    Amazon S3, then registered as an AMI.
+
+  %p
+    The Aeolus web interface doesn't show the progress of this very well at
+    the moment.  The best way to follow what is happening is to run a
+    %em tail
+    on the Image Factory log file in the Aeolus server:
+
+  %p
+    %pre
+      :preserve
+        $ tail -20f /var/log/imagefactory.log
+        [verbose progress information appears here]
+
+  %p
+    You will know it has finished when the output in the log file ceases after
+    displaying an entry like this:
+
+  %p
+    %pre
+      :preserve
+        2011-05-03 06:31:12,216 DEBUG imagefactory.qmfagent.BuildAdaptor.BuildAdaptor pid(1734) Message: Raising event with agent handler
+        (&lt;ImageFactoryAgent(Thread-1, initial)&gtl), changed status from PUSHING to COMPLETED
+
+  %p
+    If you refresh the
+    %b Builds
+    tab, there should be an
+    %b ec2-us-east-1
+    line with the word
+    %em completed:
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %img{ :src => "images/getting_started/ec2_push_completed.png",
+          :title => "EC2 Image push completed",
+          :alt => "EC2 Image push completed" }
+
+%br
+
+.section-grouping
+  %h2 3. Verifying on the Amazon Cloud side
+
+  %p
+    If you load Amazon's AWS Management Console in your web browser, you will
+    see this image in your list of registered AMI's:
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %img{ :src => "images/getting_started/new_ami_in_ami_list.png",
+          :title => "New registered AMI",
+          :alt => "New registered AMI" }
+
+  %p
+    Changing to the Amazon S3 tab, you will see a new bucket has been
+    created to hold the AMI:
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %img{ :src => "images/getting_started/new_s3_bucket_holding_ami.png",
+          :title => "New S3 bucket",
+          :alt => "New S3 bucket" }
+
+%br
+
+%a{ :href => "start_image.html", :title => "Start An Instance Of An Image" }
+  %img{ :src => "images/start_image_button.png", :title => "Next step - Start An Instance Of An Image", :alt => "Next step - Start An Instance Of An Image", :onMouseOver => 'setAttribute("src", "images/start_image_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/start_image_button.png");' }

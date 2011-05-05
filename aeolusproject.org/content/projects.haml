@@ -7,22 +7,28 @@ filter: haml
 %h1 Projects
 
 %p
-  %em
-    The projects hosted here are:
-  %ul
-    %li
-      = link_to 'Conductor', 'conductor.html'
-      &ndash; multiple cloud web UI
-    %li
-      = link_to 'Oz', 'oz.html'
-      &ndash; automated virtual machine installer
-    %li
-      = link_to 'Image Factory', 'imagefactory.html'
-      &ndash; daemon with a QMF interface for building cloud images
-    %li
-      = link_to 'Image Warehouse', 'imagewarehouse.html'
-      &ndash; a daemon to move cloud images from cloud to cloud
-      based on rules
-    %li
-      = link_to 'Audrey', 'audrey.html'
-      &ndash; a set of tools to do run-time configuration of cloud instances
+  Aeolus is assembled from several components, each of which is an open source
+  project itself:
+
+%ul
+  %li
+    %a{ :href => "audrey.html", :title => "Audrey project pages", :text => "Audrey project pages" } Audrey
+    &ndash; Set of tools to do run-time configuration of cloud instances
+  %li
+    %a{ :href => "conductor.html", :title => "Conductor project pages", :text => "Conductor project pages" } Conductor
+    &ndash; Browser based user interface
+  %li
+    %a{ :href => "configure.html", :title => "Configure project pages", :text => "Configure project pages" } Configure
+    &ndash; Configuration script for setting up Aeolus 
+  %li
+    %a{ :href => "image_factory.html", :title => "Image Factory project pages", :text => "Image Factory project pages" } Image Factory
+    &ndash; Daemon with a QMF interface for building cloud images
+  %li
+    %a{ :href => "image_warehouse.html", :title => "Image Warehouse project pages", :text => "Image Warehouse project pages" } Image Warehouse
+    &ndash; Daemon to move cloud images from cloud to cloud based on rules
+  %li
+    %a{ :href => "oz.html", :title => "Oz project pages", :text => "Oz project pages" } Oz
+    &ndash; Automated virtual machine installer
+  %li
+    %a{ :href => "spherical.html", :title => "Spherical project pages", :text => "Spherical project pages" } Spherical
+    &ndash; Ruby API for VMware vSphere and ESXi

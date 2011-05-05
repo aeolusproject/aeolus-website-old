@@ -1,0 +1,169 @@
+---
+title: Aeolus | Configuration Documentation
+breadcrumb_name: Configuration Documentation
+extension: html
+filter: haml
+---
+%h1 Configuring Aeolus
+
+%p
+  These next pages get you up and running with Aeolus using our
+  <b>Getting Started Guide</b>.
+
+%p
+  They take you through initial configuration, connecting with Amazon EC2,
+  then doing very simple instance management with it.
+
+.page-listing
+  %h3 Getting Started Guide
+
+  %ol
+    %li
+      Configuring Aeolus
+
+    %li
+      %a{ :href => "first_login.html",
+          :title => "First login" } First login
+
+    %li
+      %a{ :href => "set_up_ec2.html",
+          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+
+    %li
+      %a{ :href => "make_template.html",
+          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+
+    %li
+      %a{ :href => "start_image.html",
+          :title => "Start an Instance of the Image" } Start an Instance of the Image
+
+    %li
+      %a{ :href => "stop_image.html",
+          :title => "Stop a running Instance" } Stop a running Instance
+
+    %li
+      %a{ :href => "cleaning_up.html",
+          :title => "Cleaning up" } Cleaning up
+
+%br
+
+.section-grouping
+  %h2 Initial configuration
+
+  %p
+    Most configuration for Aeolus is done through its web interface.
+
+  %p
+    To turn on this web interface, we take a few simple steps:
+
+  %ol
+    %li
+      %a{ :href => "#aeolus-configure" } Run aeolus-configure
+
+    %li
+      <a href="#selinux-enforcing">Turn off SELinux Enforcing mode</a> (if it's on)
+
+    %li
+      <a href="#update-firewall">Update the firewall</a> (if it's on)
+
+%br
+
+.section-grouping
+  %h3(id="aeolus-configure") 1. Run aeolus-configure
+
+  %p
+    The very first step is to run the
+    %b aeolus-configure
+    command with super-user privileges:
+
+  %p
+    %pre
+      :preserve
+        $ sudo /usr/sbin/aeolus-configure
+
+  %p
+    This performs an initial configuration of Aeolus with default settings.
+
+  %p
+    It is fully automatic, and doesn't require any input.  It will take a
+    while (can be several minutes), generating a fair amount of text.
+
+  %p
+    As part of this automatic configuration each Aeolus component is
+    initialized, a PostgreSQL database is created, and the web interface is
+    activated.
+
+%br
+
+.section-grouping
+  %h3(id="selinux-enforcing") 2. Turn off SELinux Enforcing mode
+
+  %p
+    Aeolus needs the server it is installed on, to not be running in
+    SELinux "<em>Enforcing</em>" mode.
+
+  %p
+    To make sure this is the case, check the configuration file here:
+
+  %p
+    %pre
+      :preserve
+        /etc/selinux/config
+
+  %p
+    Look for the line starting with '<b>SELINUX=</b>'.  If it is set to
+    "<em>enforcing</em>" then you
+    %b must
+    change it to "<i>permissive</i>" or "<i>disabled</i>" (either one is ok).
+
+  %p
+    For example, from this:
+
+  %p
+    %pre
+      :preserve
+        SELINUX=enforcing
+
+  %p
+    to this:
+
+  %p
+    %pre
+      :preserve
+        SELINUX=permissive
+
+  %p
+    This change will take effect with the next reboot.
+
+  %p
+    %b NOTE:
+    This is just a temporary requirement at this stage of Aeolus development.
+    By the time Aeolus is ready for general usage, it will work properly with
+    SELinux in enforcing mode.
+
+%br
+
+.section-grouping
+  %h3(id="update-firewall") 3. Update the firewall
+
+  %p
+    Because Aeolus has a web based user interface, the server running it
+    needs to accept web browser connections (to TCP port 80).
+
+  %p
+    So, if a firewall is running on the Aeolus server, it needs updating to
+    allow this.
+
+  %p
+    The steps to do that can vary widely, depending upon the firewall in
+    use, and are beyond the scope of these instructions.
+
+  %p
+    %b NOTE:
+    The next release of Aeolus uses HTTPS instead of HTTP for improved
+    security.
+
+%br
+
+%a{ :href => "first_login.html", :title => "First Login" }
+  %img{ :src => "images/first_login_button.png", :title => "Next step - First login", :alt => "Next step - First login", :onMouseOver => 'setAttribute("src", "images/first_login_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/first_login_button.png");' }

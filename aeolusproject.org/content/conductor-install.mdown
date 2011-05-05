@@ -11,23 +11,15 @@ filter:
 Aeolus Conductor provides a web-based user interface for managing your
 cloud instances.
 
- + **WARNING:** The current installation process **deletes** any existing data in
-your PostgreSQL database.  Either ensure that your data is backed up and
-restorable, or consider installing Aeolus Conductor on a box that does not need
-PostgreSQL for any other purpose.
+ + **NOTE:** The current installation process **deletes** any existing data in
+your postrgresql database.  Either ensure that your data is backed up and
+restorable or consider installing Aeolus Conductor on a box that does not need
+postgresql for any other purpose.
 
-#### Requirement Considerations ####
-
-1.   The current installation process calls for SELinux to be in
+ + **NOTE:** The current installation process calls for selinux to be in
 permissive mode.  This is not recommended on a mission-critical machine.
 
-1.   Image Building in Aeolus requires Hardware Virtualization (VT) support.
-This means the Image Building service won't available if Aeolus is installed
-inside a VM.  You can import existing AMIs' though, without VT support.
-This is done via the rake import task, runnable from the Aeolus install
-directory.
-
-1.   The current installation works on 64-bit only.  32-bit support is
++ **NOTE:** The current installation works on 64-bit only.  32-bit support is
 planned, but does not work at this time.
 
 #### Installation Steps ####

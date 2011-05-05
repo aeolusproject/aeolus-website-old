@@ -1,0 +1,87 @@
+---
+title: Aeolus | Get It
+breadcrumb_name: Get It
+extension: html
+filter: haml
+---
+%h1 Get Aeolus
+
+%p
+  Aeolus packages are available for Fedora 14 x86_64.
+
+%p
+  Packages are also being created for RHEL 6.1 (beta or later), but they're
+  not quite ready yet.
+
+-#%ul
+  %li
+    %b Install the
+    <a href="#rhel61" title="Red Hat Enterprise Linux 6.1 packages">Red Hat Enterprise Linux 6.1 (beta or later)</a>
+    packages
+
+    %br
+    %br
+
+  %li
+    %b Install the
+    <a href="#fedora" title="Fedora 14 x86_64 packages">Fedora 14 x86_64</a>
+    packages
+
+-#%br
+
+-#.section-grouping
+  %h2(id="rhel61")
+    Install the Red Hat Enterprise Linux 6.1 x86_64 (beta or later) packages
+  
+  %h3 1. Add the Aeolus RHEL 6.1 yum repositories
+  
+  %p
+    %pre
+      :preserve
+        $ sudo wget -O /etc/yum.repos.d/rhel-aeolus.repo \
+        &nbsp;&nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/0.2.0/rhel-aeolus.repo
+
+  %h3 2. Install the Aeolus packages
+
+  %p
+    %pre
+      :preserve
+        $ sudo yum install aeolus-conductor-daemons aeolus-conductor-doc imagefactory
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus along with its
+    dependencies on the RHEL 6.1 x86_64 (beta or later) system.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; 
+    %a{ :href => "configuring_aeolus.html" }
+      %img{ :src => "images/configure_it_button.png", :title => "Next step - Configure it", :alt => "Next step - Configure it", :onMouseOver => 'setAttribute("src", "images/configure_it_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/configure_it_button.png");' } 
+
+-#%br
+
+.section-grouping
+  %h2(id="fedora") Install the Fedora 14 x86_64 packages
+
+  %h3 1. Add the Aeolus Fedora 14 yum repositories
+  
+  %p
+    %pre
+      :preserve
+        $ sudo wget -O /etc/yum.repos.d/fedora-aeolus.repo \
+        &nbsp;&nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/0.2.0/fedora-aeolus.repo
+
+  %h3 2. Install the Aeolus packages
+
+  %p
+    %pre
+      :preserve
+        $ sudo yum install aeolus-conductor-daemons aeolus-conductor-doc imagefactory
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus along with its
+    dependencies on the Fedora 14 system.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; 
+    %a{ :href => "configuring_aeolus.html" }
+      %img{ :src => "images/configure_it_button.png", :title => "Next step - Configure it", :alt => "Next step - Configure it", :onMouseOver => 'setAttribute("src", "images/configure_it_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/configure_it_button.png");' } 

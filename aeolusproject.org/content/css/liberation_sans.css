@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'LiberationSansRegular';
+    src: url('../fonts/liberation_sans/LiberationSans-Regular-webfont.eot');
+    src: url('../fonts/liberation_sans/LiberationSans-Regular-webfont.eot?#iefix') format('eot'),
+         url('../fonts/liberation_sans/LiberationSans-Regular-webfont.woff') format('woff'),
+         url('../fonts/liberation_sans/LiberationSans-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/liberation_sans/LiberationSans-Regular-webfont.svg#webfontLfr8h6FA') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LiberationSansItalic';
+    src: url('../fonts/liberation_sans/LiberationSans-Italic-webfont.eot');
+    src: url('../fonts/liberation_sans/LiberationSans-Italic-webfont.eot?#iefix') format('eot'),
+         url('../fonts/liberation_sans/LiberationSans-Italic-webfont.woff') format('woff'),
+         url('../fonts/liberation_sans/LiberationSans-Italic-webfont.ttf') format('truetype'),
+         url('../fonts/liberation_sans/LiberationSans-Italic-webfont.svg#webfont8TmwkzPJ') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LiberationSansBold';
+    src: url('../fonts/liberation_sans/LiberationSans-Bold-webfont.eot');
+    src: url('../fonts/liberation_sans/LiberationSans-Bold-webfont.eot?#iefix') format('eot'),
+         url('../fonts/liberation_sans/LiberationSans-Bold-webfont.woff') format('woff'),
+         url('../fonts/liberation_sans/LiberationSans-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/liberation_sans/LiberationSans-Bold-webfont.svg#webfontHyWb8e07') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LiberationSansBoldItalic';
+    src: url('../fonts/liberation_sans/LiberationSans-BoldItalic-webfont.eot');
+    src: url('../fonts/liberation_sans/LiberationSans-BoldItalic-webfont.eot?#iefix') format('eot'),
+         url('../fonts/liberation_sans/LiberationSans-BoldItalic-webfont.woff') format('woff'),
+         url('../fonts/liberation_sans/LiberationSans-BoldItalic-webfont.ttf') format('truetype'),
+         url('../fonts/liberation_sans/LiberationSans-BoldItalic-webfont.svg#webfont8uGO27Bu') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+

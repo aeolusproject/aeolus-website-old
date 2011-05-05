@@ -1,0 +1,73 @@
+---
+title: Aeolus | Requirements
+breadcrumb_name: Requirements
+extension: html
+filter: haml
+---
+%h1 Requirements for using Aeolus
+
+.section-grouping
+
+  %p
+    To use Aeolus effectively, the server you install it on must meet these
+    requirements:
+
+  %table{ :width => "60%" }
+    %tr
+      %th{ :width => "25%", :align => "left", :style => "vertical-align: top" } Operating System:
+      %td{ :style => "padding-bottom: 0.7em" }
+        Fedora 14 64-bit.
+        %br
+        %em
+          Red Hat Enterprise Linux 6.1 64-bit (beta or later) support is in
+          development. 
+      -#%td{ :style => "padding-bottom: 0.7em" } Red Hat Enterprise Linux 6.1 64-bit (beta) or Fedora 14 64-bit
+    %tr
+      %th{ :align => "left", :style => "vertical-align: top" } CPU:
+      %td{ :style => "padding-bottom: 0.7em" } 1.6Ghz dual core or higher recommended.
+    -#%tr
+      %th{ :align => "left", :style => "vertical-align: top" } CPU VT extensions:
+      %td{ :style => "padding-bottom: 0.7em" }
+        %b Required
+        for creating new virtual machine images.  Not required for importing
+        existing virtual machine images.
+    %tr
+      %th{ :align => "left", :style => "vertical-align: top" } Memory:
+      %td{ :style => "padding-bottom: 0.7em" } 2GB or greater.
+    %tr
+      %th{ :align => "left", :style => "vertical-align: top" } Disk space:
+      %td{ :style => "padding-bottom: 0.7em" }
+        Less than 1 GB required for the Aeolus software,
+        %br
+        + sufficient space to hold virtual machine images (may be on network
+        storage such as SAN, NAS, or NFS).
+
+%br
+
+.section-grouping
+  %h2 Cloud provider accounts
+
+  %p
+    You also need an account with each Cloud provider you want Aeolus to manage,
+    such as Amazon EC2, and/or Rackspace.
+
+  %p
+    Creation of these accounts is something you must do outside of Aeolus, using
+    the standard sign up procedures for each Cloud provider.
+
+  %p
+    %b Note:
+    These accounts are completely optional, you do not need to create an
+    account with any Cloud provider you don't want Aeolus managing.
+
+  %p
+    That being said, our
+    %b Getting Started Guide
+    is written around having an Amazon EC2 account already, so you will need
+    one if you're going to follow that. 
+
+%br
+
+&nbsp;
+%a{ :href => "get_it.html" }
+  %img{ :src => "images/get_aeolus_right_arrow.png", :title => "Next step - Get Aeolus", :alt => "Next step - Get Aeolus", :onMouseOver => 'setAttribute("src", "images/get_aeolus_right_arrow-selected.png");', :onMouseOut => 'setAttribute("src", "images/get_aeolus_right_arrow.png");' } 

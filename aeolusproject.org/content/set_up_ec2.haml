@@ -1,0 +1,217 @@
+---
+title: Aeolus | Set up EC2
+breadcrumb_name: Set up EC2
+extension: html
+filter: haml
+---
+%h1 Configuring for Amazon EC2
+
+%p
+  On this page you'll configure Aeolus to use Amazon EC2.  You'll need to
+  have an existing account for EC2 with Amazon AWS.
+
+.page-listing
+  %h3 Getting Started Guide
+
+  %ol
+    %li
+      %a{ :href => "configuring_aeolus.html",
+          :title => "Configuring Aeolus" } Configuring Aeolus
+
+    %li
+      %a{ :href => "first_login.html",
+          :title => "First login" } First login
+
+    %li
+      Configuring for Amazon EC2
+
+    %li
+      %a{ :href => "make_template.html",
+          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+
+    %li
+      %a{ :href => "start_image.html",
+          :title => "Start an Instance of the Image" } Start an Instance of the Image
+
+    %li
+      %a{ :href => "stop_image.html",
+          :title => "Stop a running Instance" } Stop a running Instance
+
+    %li
+      %a{ :href => "cleaning_up.html",
+          :title => "Cleaning up" } Cleaning up
+
+%br
+
+.warning
+  %p
+    %b WARNING:
+    Amazon and other Cloud providers charge fees for using their products and
+    services, including EC2.
+
+  %p
+    Setting up EC2 with Aeolus means your Amazon EC2 account will be billed
+    with their appropriate usage charges as you follow this guide and/or try
+    things out.
+
+  %p
+    We
+    %b ARE NOT
+    responsible for any EC2 or other Cloud fees and charges you may incur.
+  
+  %p
+    As a precaution after finishing every Aeolus testing session, you
+    %b must
+    manually check all storage and instances in Amazon have been terminated
+    and removed as you expect.
+
+  %p
+    Aeolus has on occasion been known to report instances as stopped when
+    they are in fact still running in EC2, thereby incurring charges from
+    Amazon.
+
+  %p
+    %b BE CAREFUL!
+
+%br
+
+.section-grouping
+  %h2 1. Configure EC2 credentials in Aeolus
+
+  %p
+    Follow these steps to configure Amazon EC2 with Aeolus.
+
+  %p
+    The information you need from Amazon is on the AWS
+    <a href="https://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key"
+    title="Security Credentials">Account &rArr; Security Credentials</a>
+    page .
+
+  %p
+    %ol
+      %li
+        %em In the Aeolus web interface
+        (not the Amazon AWS Console) go to
+        %b Administration
+        &rArr; <b>Provider Account</b>.
+
+      %li
+        Click the
+        %b New Account
+        button.
+
+      %li
+        Change
+        %b Provider
+        to be "<em>ec2-us-east-1</em>".
+
+      %li
+        For
+        %b Account name
+        use any descriptive string you want, such as
+        "<em>Amazon EC2 East</em>".
+
+      %li
+        For
+        %b Api key
+        use the
+        %em Access Key ID
+        value in the
+        %b Access Keys
+        tab.
+
+      %li
+        For
+        %b Secret
+        use the
+        %em Secret Access Key
+        value next to it (same tab).
+
+      %li
+        For
+        %b Aws account id
+        use the
+        %em AWS Account ID
+        value at the bottom of the page, under the heading
+        <b>Account Identifiers</b>.
+
+%br
+
+.section-grouping
+  %h2 2. x.509 Certificates
+
+  %p
+    If you already have an existing EC2 x.509 certificate and private key,
+    use those for the EC2 x.509 fields.  The private key is used for the
+    %b Ec2 x509 private key
+    field, and the certificate is used for the
+    %b Ec2 x509 public key
+    field.
+
+  %p
+    Alternatively, or if you don't have an X.509 Certificate yet, you can
+    create a new one:
+
+  %p
+    %ol
+      %li
+        On the AWS
+        <a href="https://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key"
+        title="Security Credentials">Account &rArr; Security Credentials</a>
+        page, under
+        %b Access Credentials
+        click the
+        %em X.509 Certificates
+        tab.
+
+      %li
+        Click <b>Create a new Certificate</b>.
+        %br
+        %br
+        A new window will open giving options to download and save the Private
+        Key and X.509 Certificate files.
+        %br
+        %br
+
+      %li
+        Download and save the Private Key file using a name that is clear to
+        understand, such as <em>EC2 x509 Private Key.pem</em>.
+
+      %li
+        Download and save the Certificate file using a name that is clear to
+        understand, such as <em>EC2 x509 Certificate.pem</em>.
+
+      %li
+        Back in Aeolus, use the
+        %em EC2 x509 Private Key.pem
+        file for the      
+        %b Ec2 x509 private key
+        field.
+
+      %li
+        Use the
+        %em EC2 x509 Certificate.pem
+        file for the 
+        %b Ec2 x509 public key
+        field.
+
+      %li
+        Click the
+        %b Add
+        button.
+
+  %p
+    This will take you back to the
+    %b PROVIDER ACCOUNT
+    screen.  The new EC2 account should be listed.
+
+  %p
+    If this does not happen, and you are presented with different behaviour
+    (such as an error message), please report it to us on the
+    %a{ :href => "contact.html#developer" } aeolus-devel
+    mailing list.
+
+%br
+
+%a{ :href => "make_template.html", :title => "Create A Fedora 14 Template" }
+  %img{ :src => "images/make_image_button.png", :title => "Next step - Create A Fedora 14 Template", :alt => "Next step - Create A Fedora 14 Template", :onMouseOver => 'setAttribute("src", "images/make_image_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/make_image_button.png");' }

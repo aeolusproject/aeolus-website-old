@@ -1,54 +1,81 @@
 ---
-title: Aeolus Project
+title:       Aeolus | Manage Your Cloud Deployments with Ease
 extension: html
 filter: haml
 ---
-#frontpage
-  %p
-    %em
-      Aeolus is an umbrella project for many pieces of cloud software.
+#front-page-main-upper
+  %a{ :href => "about.html" }
+    %img.learn{ :src => "images/learn_more_button_center_area.jpg", :title => "Learn More about Aeolus", :alt => "Learn More button", :onMouseOver => 'setAttribute("src", "images/learn_more_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/learn_more_button_center_area.jpg");' }    
+  %a{ :href => "get_it.html" }
+    %img.get{ :src => "images/get_aeolus_button_center_area.jpg", :title => "Get Aeolus", :alt => "Get Aeolus button", :onMouseOver => 'setAttribute("src", "images/get_aeolus_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/get_aeolus_button_center_area.jpg");' }
 
-    %br
-    The showpiece of Aeolus is the Aeolus Conductor, a web UI in front of the
-    <a href="http://www.deltacloud.org">Deltacloud</a> API.  With Aeolus Conductor, your users can:
-    %ul
-      %li
-        View image status and stats across clouds, all in one place
-      %li
-        Manage images locally and provision them on any cloud
-  %p
-    :markdown
-      If you are new to Aeolus, please see the [Getting Started][start] page.
+#front-page-main-lower
+  %ul
+    %li#left
+      %img.heading{ :src => "images/bottom_middle_what_is_aeolus.png",
+            :alt => "What is Aeolus?" }
 
-      [start]: getting_started.html
+      %p
+        Aeolus is software for running virtual machines
+        %br
+        both internally in your own equipment, and in
+        %br
+        Clouds from several leading vendors.  All at
+        %br
+        the same time.
 
-  %p
-    %em
-      The full list of projects hosted here are:
-    %ul
-      %li
-        = link_to 'Conductor', 'conductor.html'
-        &ndash; multiple cloud web UI
-      %li
-        = link_to 'Oz', 'oz.html'
-        &ndash; automated virtual machine installer
-      %li
-        = link_to 'Image Factory', 'imagefactory.html'
-        &ndash; daemon with a QMF interface for building cloud images
-      %li
-        = link_to 'Image Warehouse', 'imagewarehouse.html'
-        &ndash; a daemon to move cloud images from cloud to cloud
-        based on rules
-      %li
-        = link_to 'Audrey', 'audrey.html'
-        &ndash; a set of tools to do run-time configuration of cloud instances
-  %p
-    The Aeolus Project is free and open source (LGPL, GPL).
-#news
-  .recent
-    %h2
-      News
-    %ul
-      - all_news.each do |item|
-        %li
-          = item
+      %p
+        %b REDUCE YOUR RISK
+        of being caught out
+        %br
+        whenever your preferred Cloud vendor has
+        %br
+        issues.   
+
+      %p
+        %a.more{ :href => "about.html" }
+          %img{ :src => "images/bottom_middle_more_button.png", :title => "About Aeolus", :alt => "About Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+
+
+    %li#middle
+      %img.heading{ :src => "images/bottom_middle_developer_info.png",
+            :alt => "Developer info" }
+      %br
+      
+      Aeolus:
+      
+      %br
+      %ul{ :style => "float: none; list-style-type: disc" }
+        %li{ :style => "float: none; list-style-type: disc" }
+          Is Open Source
+        %li{ :style => "float: none; list-style-type: disc" }
+          Is written in Ruby <em>(well, most of it)</em>
+        %li{ :style => "float: none; list-style-type: disc" }
+          Runs on Linux <em>(some parts work on OSX)</em>
+        %li{ :style => "float: none; list-style-type: disc" }
+          Has a growing Community
+        %li{ :style => "float: none; list-style-type: disc" }
+          Is sponsored by Red Hat, Inc.
+      %br
+      %br
+
+      %a.more{ :href => "get_it.html" }
+        %img{ :src => "images/bottom_middle_more_button.png", :title => "Get Aeolus", :alt => "Get Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+
+    %li#right
+      %img.heading{ :src => "images/bottom_middle_news.png", :alt => "News heading" }
+
+      %p
+        %b 4th May 2011 - New website !
+      
+      %p
+        We're very proud to launch our new
+        website.  It will provide a much nicer
+        experience for people to learn Aeolus!
+        %br
+        %br
+        Welcome Red Hat Summit visitors!
+
+      %p
+        %a.more{ :href => "news.html" }
+          %img{ :src => "images/bottom_middle_more_button.png", :title => "Read more news", :alt => "Read more news", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }

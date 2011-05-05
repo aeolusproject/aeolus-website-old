@@ -1,0 +1,305 @@
+---
+extension: css
+filter:    sass
+layout:    nil   # no layout
+---
+
+body
+  width: 1060px
+
+#header
+  background-image: url("../images/header_background.jpg")
+  height: 47px
+
+  a
+    text-decoration: none
+
+  img.logo
+    margin-top: 3px
+    margin-left: 60px
+
+  img.divider
+    margin-top: 2px
+    margin-left: 23px
+
+  img.tagline
+    margin-bottom: 12px
+    margin-left: 8px
+
+  /* NOTE - The search box CSS properties have been moved into the main
+   * HAML site template instead, to address a transient Chrome bug where 
+   * it sometimes places the search box in the navigation bar for no
+   * apparent reason
+   */
+
+#navigation
+  background-image: url("../images/top_nav_bar_background.jpg")
+  height: 38px
+
+  a
+    text-decoration: none
+
+  img
+    margin-top: 13px
+
+  img.about
+    margin-left: 72px
+
+  img.get
+    margin-left: 25px
+
+  img.use
+    margin-left: 25px
+
+  img.dev
+    margin-left: 25px
+
+  img.projects
+    margin-left: 25px
+
+  img.news
+    margin-left: 25px
+
+  img.contact
+    margin-left: 25px
+
+#front-page-main-upper
+  background-image: url("../images/center_picture_area_background.jpg")
+  height: 277px
+
+  a
+    text-decoration: none
+
+  img.learn
+    margin-left: 638px
+    margin-top: 180px
+
+  img.get
+    margin-left: 10px
+    margin-top: 180px
+
+#front-page-main-lower
+  height: 280px
+
+  li
+    float: left
+    list-style-type: none
+    margin-left: 0.5em
+    margin-right: 1em
+
+    font: 15px 'LiberationSansRegular', Arial, sans-serif
+    color: #777676
+    
+    b
+      color: black
+
+  img.heading
+    margin-top: 0.8em
+    margin-bottom: 0.8em
+  
+  li#left
+    width: 35%
+
+  li#middle
+    width: 32%
+
+  li#right
+    width: 24%
+
+#main
+  margin-left: 20px
+  padding: 2em 0
+
+#footer
+  background-image: url("../images/footer_background.jpg")
+  height: 325px
+
+  dl
+    margin-top: 90px
+
+  dt
+    margin-bottom: 4px
+
+  dd
+    margin-left: 0px
+    margin-top: 1px
+
+  a
+    font: 12px 'LiberationSansRegular', Arial, sans-serif
+    color: #5b92be
+    text-decoration: none
+
+  a:hover
+    text-decoration: underline
+
+  #p1, #p2, #p3, #p4, #p5, #p6
+    float: left
+
+  #p1
+    margin-left: 110px
+    width: 13%
+
+  #p2
+    width: 13%
+
+  #p3
+    width: 16%
+
+  #p4
+    width: 18%
+
+  #p5
+    width: 14%
+
+  #p6
+    width: 9%
+
+#copyright
+  float: left
+  margin-left: 110px
+  margin-top: 31px
+  font: 11px Arial, sans-serif
+
+  .line2
+    margin-top: 2px
+
+  a
+    font: 11px Arial, sans-serif
+
+/* CSS specific to the Aeolus team list table */
+.team-table
+  width: 100%
+  margin: 0 auto
+  border-collapse: separate
+  border-spacing: 0
+  text-shadow: 0 1px 0 #fff
+
+  td
+    height: 50px
+    padding: 0 15px
+    border-bottom: 1px solid #cdcdcd
+    box-shadow: 0 1px 0 white
+    -moz-box-shadow: 0 1px 0 white
+    -webkit-box-shadow: 0 1px 0 white
+    white-space: nowrap
+    text-align: center
+
+  thead td
+    font: bold 1.3em 'trebuchet MS', 'Lucida Sans', Arial
+    -moz-border-radius-topright: 10px
+    -moz-border-radius-topleft: 10px
+    border-top-right-radius: 10px
+    border-top-left-radius: 10px
+    border-top: 1px solid #eaeaea
+  
+  tbody td
+    text-align: center
+    font: normal 12px Verdana, Arial, Helvetica
+    width: 100px
+
+  td:first-child
+    background: #d8e9f1
+    background: rgba(216,233,241,1.0)
+    border-right: 1px solid white
+
+  td:nth-child(3), td:nth-child(5), td:nth-child(7)
+    background: #efefef
+    background: rgba(144,144,144,0.15)
+    border-right: 1px solid white
+
+  td:nth-child(2), td:nth-child(4), td:nth-child(6), td:nth-child(8)
+    background: #ffffff
+    background: rgba(200,200,200,0.15)
+    border-right: 1px solid white
+
+  td:nth-child(6)
+    background: #d8e9f1
+    background: rgba(216,233,241,1.0)
+
+  tfoot td
+    -moz-border-radius-bottomright: 10px
+    -moz-border-radius-bottomleft: 10px
+    border-bottom-right-radius: 10px
+    border-bottom-left-radius: 10px
+    border-bottom: 1px solid #dadada
+    font-style: normal
+
+  tfoot td:first-child
+    border-bottom: none
+
+/* CSS specific to the main content area */
+.section-grouping
+  background: #d8e9f1
+  background: rgba(216,233,241,0.5)
+  padding-top: 1em
+  padding-left: 1em
+  padding-right: 1em
+  padding-bottom: 0.5em
+  -moz-border-radius-topright: 10px
+  -moz-border-radius-topleft: 10px
+  border-top-right-radius: 10px
+  border-top-left-radius: 10px
+  border-top: 1px solid #eaeaea
+  -moz-border-radius-bottomright: 10px
+  -moz-border-radius-bottomleft: 10px
+  border-bottom-right-radius: 10px
+  border-bottom-left-radius: 10px
+  border-bottom: 1px solid #dadada
+
+  pre
+    background: #ffffff
+    background: rgba(255,255,255,0.8)
+    margin-left: 1em
+    margin-bottom: 0.5em
+    padding: 1em
+    -moz-border-radius-topright: 10px
+    -moz-border-radius-topleft: 10px
+    border-top-right-radius: 10px
+    border-top-left-radius: 10px
+    border-top: 1px solid #aaaaaa
+    border-left: 1px solid #aaaaaa
+    -moz-border-radius-bottomright: 10px
+    -moz-border-radius-bottomleft: 10px
+    border-bottom-right-radius: 10px
+    border-bottom-left-radius: 10px
+    border-bottom: 1px solid #9a9a9a
+    border-right: 1px solid #9a9a9a
+
+.page-listing
+  width: 25%
+  background: #dcdcdc
+  background: rgba(220,220,220,0.8)
+  padding-top: 1em
+  padding-left: 1em
+  padding-right: 1em
+  padding-bottom: 0em
+  border: 1px solid #8aa6b3
+  -moz-border-radius-topright: 10px
+  -moz-border-radius-topleft: 10px
+  border-top-right-radius: 10px
+  border-top-left-radius: 10px
+  -moz-border-radius-bottomright: 10px
+  -moz-border-radius-bottomleft: 10px
+  border-bottom-right-radius: 10px
+  border-bottom-left-radius: 10px
+
+#trademark
+  font: 11px Arial, sans-serif
+
+.warning
+  background: #f15d5e
+  background: rgba(241,93,94,0.8)
+  padding-top: 1em
+  padding-left: 1em
+  padding-right: 1em
+  padding-bottom: 0em
+  -moz-border-radius-topright: 10px
+  -moz-border-radius-topleft: 10px
+  border-top-right-radius: 10px
+  border-top-left-radius: 10px
+  border-top: 1px solid #eaeaea
+  -moz-border-radius-bottomright: 10px
+  -moz-border-radius-bottomleft: 10px
+  border-bottom-right-radius: 10px
+  border-bottom-left-radius: 10px
+  border-bottom: 1px solid #dadada
