@@ -4,10 +4,22 @@ extension: html
 filter: haml
 ---
 #front-page-main-upper
-  %a{ :href => "about.html" }
-    %img.learn{ :src => "images/learn_more_button_center_area.jpg", :title => "Learn More about Aeolus", :alt => "Learn More button", :onMouseOver => 'setAttribute("src", "images/learn_more_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/learn_more_button_center_area.jpg");' }    
-  %a{ :href => "get_it.html" }
-    %img.get{ :src => "images/get_aeolus_button_center_area.jpg", :title => "Get Aeolus", :alt => "Get Aeolus button", :onMouseOver => 'setAttribute("src", "images/get_aeolus_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/get_aeolus_button_center_area.jpg");' }
+  %hr.shade
+  .container_24
+    .grid_8
+      %img.logo{:src => "../images/logo-frontpage.png", :alt => "AEOLUS"}
+    .grid_16
+      %h1 
+        Aeolus 
+        %sup TM
+      %h2 
+        Meet the world's best cloud management software, 
+        %br
+        %strong and it's free.
+      %a.learn{ :href => "about.html" }
+        %img{ :src => "images/learn_more_button_center_area.jpg", :title => "Learn More about Aeolus", :alt => "Learn More button", :onMouseOver => 'setAttribute("src", "images/learn_more_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/learn_more_button_center_area.jpg");' }    
+      %a.get{ :href => "get_it.html" }
+        %img{ :src => "images/get_aeolus_button_center_area.jpg", :title => "Get Aeolus", :alt => "Get Aeolus button", :onMouseOver => 'setAttribute("src", "images/get_aeolus_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/get_aeolus_button_center_area.jpg");' }
 
 #front-page-main-lower.container_24.clearfix
   .grid_8

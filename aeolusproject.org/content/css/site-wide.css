@@ -4,7 +4,7 @@ filter:    sass
 layout:    nil   # no layout
 ---
 
-$screenfont: "LiberationSansRegular", "Liberation Sans", Helvetica, Sans-serif
+$screenfont: "Liberation Sans", "LiberationSansRegular", Helvetica, Sans-serif
 $headlinefont: Overpass, Sans-serif
 
 $aeblue1: #025d8c
@@ -33,9 +33,22 @@ h1,h2,h3,h4,h5,.headline
 
 h1
   text-transform: uppercase
+  font-weight: normal
 h2
   color: $aeheadlines
   font-weight: normal
+
+hr.shade
+  position: absolute
+  display: block
+  top: 0 
+  left: 0
+  right: 0
+  height: 4px
+  background: url(../images/hr-shade.png) repeat-x 0 0
+  margin: 0
+  padding: 0
+  border: 0
   
 #header
   background: #f3f8fb url(../images/header-bg.jpg) no-repeat top center
@@ -71,7 +84,8 @@ h2
    */
 
 #navigation
-  background-image: url("../images/top_nav_bar_background.jpg")
+  background: #bfdbe8 url(../images/splash-bg.jpg) no-repeat center -20px
+  background-size: cover  
   min-height: 38px
   clear: both
 
@@ -103,22 +117,42 @@ h2
     margin-left: 25px
 
 #front-page-main-upper
-  background-image: url("../images/center_picture_area_background.jpg")
+  position: relative
+  background: #bfdbe8 url(../images/splash-bg.jpg) no-repeat top center
+  background-size: cover
+  color: #fff
   height: 277px
+  
+  h1
+    margin-top: 50px
+    font-size: 250%
+    font-weight: bold
+    color: #fff
+    @include text-shadow(0,1px,1px,$aeblue1)
+    letter-spacing: .2em
+
+  sup
+    font-size: 30%
+    letter-spacing: 0
+    margin-left: -10px
+
+  h2
+    color: $aeblue1
 
   a
     text-decoration: none
 
+  .logo 
+    width: 260px
+    height: 260px
+    margin-top: 28px
   img.learn
-    margin-left: 638px
-    margin-top: 180px
 
   img.get
-    margin-left: 10px
-    margin-top: 180px
 
 #front-page-main-lower
   height: 280px
+  clear: both
 
   h1
     color: $aeblue6
@@ -143,18 +177,6 @@ h2
   min-height: 300px
   font-size: 95%
   padding: 4em 0 2em 0
-
-  hr.shade
-    position: absolute
-    display: block
-    top: 0 
-    left: 0
-    right: 0
-    height: 4px
-    background: url(../images/hr-shade.png) repeat-x 0 0
-    margin: 0
-    padding: 0
-    border: 0
 
   #navigationbg
     position: absolute
