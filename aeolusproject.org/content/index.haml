@@ -29,10 +29,6 @@ filter: haml
 
     %p REDUCE YOUR RISK  of being caught out whenever your preferred Cloud vendor has issues.   
 
-    %p
-    %a.more{ :href => "about.html" }
-      %img{ :src => "images/bottom_middle_more_button.png", :title => "About Aeolus", :alt => "About Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
-
 
   .grid_8
     %h1 Developer Info
@@ -46,9 +42,6 @@ filter: haml
       %li Has a growing Community
       %li Is sponsored by Red Hat, Inc.
 
-    %a.more{ :href => "get_it.html" }
-    %img{ :src => "images/bottom_middle_more_button.png", :title => "Get Aeolus", :alt => "Get Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
-
   .grid_8
     %h1 Recent News
 
@@ -59,6 +52,15 @@ filter: haml
     
     %p Welcome Red Hat Summit visitors!
 
+.container_24.clearfix
+  .grid_8
+    %a.more{ :href => "about.html" }
+      %img{ :src => "images/bottom_middle_more_button.png", :title => "About Aeolus", :alt => "About Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
 
+  .grid_8
+    %a.more{ :href => "get_it.html" }
+    %img{ :src => "images/bottom_middle_more_button.png", :title => "Get Aeolus", :alt => "Get Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+ 
+  .grid_8
     %a.more{ :href => "news.html" }
       %img{ :src => "images/bottom_middle_more_button.png", :title => "Read more news", :alt => "Read more news", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
