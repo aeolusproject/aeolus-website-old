@@ -28,7 +28,7 @@ filter: haml
     %link{ :href => "css/site-wide.css", :rel => "stylesheet", :media => "screen, projection" }
     
     %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"}
-    %script{:type => "text/javascript", :src => "/js/aeolus.js"}
+    %script{:type => "text/javascript", :src => "js/aeolus.js"}
 
   %body
     #header
