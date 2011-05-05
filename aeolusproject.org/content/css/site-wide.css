@@ -95,14 +95,14 @@ hr.shade
     font: normal 120%/1.5 $headlinefont
     color: #fff
     @include text-shadow(0,1px,0,$aeblue2)
-    margin: 4px 10px
-    padding: 4px 4px 7px
+    margin: 0
+    padding: 8px 12px 7px
     text-transform: uppercase
     &:hover
       color: $aeblue1
       @include text-shadow(0,1px,0, rgba(255,255,255,0.5))
-      border-bottom: 3px solid #fff
-      padding: 4px 4px 4px
+      border-bottom: 4px solid #fff
+      padding: 8px 12px 3px
 
   img
     margin-top: 13px
