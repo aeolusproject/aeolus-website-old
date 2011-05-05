@@ -113,8 +113,8 @@ hr.shade
   border-bottom: 4px solid lighten($aegrey, 10%)
   
   h1
-    margin-top: 50px
-    font-size: 250%
+    margin: 40px 0 0
+    font-size: 300%
     font-weight: bold
     color: #fff
     @include text-shadow(0,1px,1px,$aeblue1)
@@ -126,6 +126,8 @@ hr.shade
     margin-left: -10px
 
   h2
+    font-size: 200%
+    margin: 0
     color: $aeblue1
     @include text-shadow(0,1px,0, rgba(255,255,255,0.5))
 
