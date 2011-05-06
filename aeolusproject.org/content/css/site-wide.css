@@ -193,8 +193,9 @@ hr.shade
   text-decoration: none
   &:hover
     background-color: lighten($aeblue2, 10%)
-    background: url(../images/button-tex2.png) no-repeat center 1px, -moz-linear-gradient(top, lighten($aeblue2,20%), lighten($aeblue2,10%) 70%, $aeblue2)
-    background: url(../images/button-tex2.png) no-repeat center 1px, -webkit-gradient(linear, 0% 0%, 0% 100%, from(lighten($aeblue2,20%)), to($aeblue2), color-stop(.7,lighten($aeblue2,10%)))
+    background: url(../images/button-tex2.png) no-repeat center 1px, -moz-linear-gradient(top, lighten($aeblue2,20%), lighten($aeblue2,10%) 70%, darken($aeblue2,10%))
+    background: url(../images/button-tex2.png) no-repeat center 1px, -webkit-gradient(linear, 0% 0%, 0% 100%, from(lighten($aeblue2,20%)), to(darken($aeblue2,10%)), color-stop(.7,lighten($aeblue2,10%)))
+    background-size: 100% 100%
   &:active
     background: $aeblue1
     @include gradient-bg-linear(darken($aeblue2,10%),lighten($aeblue2,10%))
