@@ -1,2 +1,4 @@
 output/
 *.swp
+.project
+aeolusproject.org/.sass-cache/
