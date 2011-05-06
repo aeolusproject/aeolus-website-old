@@ -173,8 +173,14 @@ hr.shade
 
 .button
   display: inline-block
-  background: $aeblue2 url(../images/button-tex.png) no-repeat center 1px
+  background-color: $aeblue2
+  background-image: url(../images/button-tex2.png)
+  background-repeat: no-repeat
+  background-position: center 1px
+  background: url(../images/button-tex2.png) no-repeat center 1px, -moz-linear-gradient(top, lighten($aeblue2,10%), $aeblue2 70%, darken($aeblue2,10%))
+  background: url(../images/button-tex2.png) no-repeat center 1px, -webkit-gradient(linear, 0% 0%, 0% 100%, from(lighten($aeblue2,10%)), to(darken($aeblue2,10%)), color-stop(.7,$aeblue2))
   background-size: 100% 100%
+
   color: #fff
   text-transform: uppercase
   padding: 10px 25px
@@ -187,6 +193,8 @@ hr.shade
   text-decoration: none
   &:hover
     background-color: lighten($aeblue2, 10%)
+    background: url(../images/button-tex2.png) no-repeat center 1px, -moz-linear-gradient(top, lighten($aeblue2,20%), lighten($aeblue2,10%) 70%, $aeblue2)
+    background: url(../images/button-tex2.png) no-repeat center 1px, -webkit-gradient(linear, 0% 0%, 0% 100%, from(lighten($aeblue2,20%)), to($aeblue2), color-stop(.7,lighten($aeblue2,10%)))
   &:active
     background: $aeblue1
     @include gradient-bg-linear(darken($aeblue2,10%),lighten($aeblue2,10%))
