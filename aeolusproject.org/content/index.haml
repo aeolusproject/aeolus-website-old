@@ -18,10 +18,12 @@ filter: haml
         %strong and it's free.
       
       .frontpagebuttons
-        %a.learn{ :href => "about.html" }
-          %img{ :src => "images/learn_more_button_center_area.jpg", :title => "Learn More about Aeolus", :alt => "Learn More button", :onMouseOver => 'setAttribute("src", "images/learn_more_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/learn_more_button_center_area.jpg");' }    
-        %a.get{ :href => "get_it.html" }
-          %img{ :src => "images/get_aeolus_button_center_area.jpg", :title => "Get Aeolus", :alt => "Get Aeolus button", :onMouseOver => 'setAttribute("src", "images/get_aeolus_button_center_area-selected.jpg");', :onMouseOut => 'setAttribute("src", "images/get_aeolus_button_center_area.jpg");' }
+        %a.button{ :href => "about.html" }
+          Learn More
+          %img{:src => "images/button-right.png", :alt => "→"}
+        %a.button{ :href => "get_it.html" }
+          Get Aeolus 
+          %img{:src => "images/button-down.png", :alt => "v"}
 
 #front-page-main-lower.container_24.clearfix
   .grid_8
@@ -56,13 +58,13 @@ filter: haml
 
   .grid_24
     .grid_8.alpha
-      %a.more{ :href => "about.html" }
-        %img{ :src => "images/bottom_middle_more_button.png", :title => "About Aeolus", :alt => "About Aeolus", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+      %a.button.small{ :href => "about.html" }
+        More
 
     .grid_8
-      %a.more{ :href => "developers.html" }
-        %img{ :src => "images/bottom_middle_more_button.png", :title => "Get Aeolus", :alt => "Developer info", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+      %a.button.small{ :href => "developers.html" }
+        More
    
     .grid_8.omega
-      %a.more{ :href => "news.html" }
-        %img{ :src => "images/bottom_middle_more_button.png", :title => "Read more news", :alt => "Read more news", :onMouseOver => 'setAttribute("src", "images/bottom_middle_more_button-selected.png");', :onMouseOut => 'setAttribute("src", "images/bottom_middle_more_button.png");' }
+      %a.button.small{ :href => "news.html" }
+        More

@@ -34,10 +34,20 @@ h1,h2,h3,h4,h5,.headline
 h1
   text-transform: uppercase
   font-weight: normal
+  font-size: 150%
 h2
   color: $aeheadlines
   font-weight: normal
-
+  font-size: 140%
+h3
+  font-size: 130%
+h4
+  font-size: 120%
+h5
+  font-size: 110%
+h6
+  font-size: 100%
+    
 hr.shade
   position: absolute
   display: block
@@ -142,8 +152,7 @@ hr.shade
   .frontpagebuttons
     text-align: right
     
-    img 
-      display: inline-block
+    .button
       margin-left: 10px
     
 #front-page-main-lower
@@ -161,6 +170,37 @@ hr.shade
   img.heading
     margin-top: 0.8em
     margin-bottom: 0.8em
+
+.button
+  display: inline-block
+  background: $aeblue2 url(../images/button-tex.png) no-repeat center 1px
+  background-size: 100% 100%
+  color: #fff
+  text-transform: uppercase
+  padding: 10px 25px
+  font-family: $headlinefont
+  font-weight: bold
+  font-size: 110%
+  @include box-shadow(0,1px,2px,rgba(0,0,0,0.7))
+  @include text-shadow(0,-1px,0,rgba(0,0,0,0.4))
+  @include border-radius(5px)
+  text-decoration: none
+  &:hover
+    background-color: lighten($aeblue2, 10%)
+  &:active
+    background: $aeblue1
+    @include gradient-bg-linear(darken($aeblue2,10%),lighten($aeblue2,10%))
+    @include no-box-shadow()
+    @include text-shadow(0,0,0,rgba(0,0,0,0))
+  
+  img
+    display: inline-block
+    vertical-align: middle
+    margin: 0 -10px 0 10px
+
+.button.small
+  font-size: 90%
+  padding: 6px 20px
 
 #main
   margin-bottom: 2em
