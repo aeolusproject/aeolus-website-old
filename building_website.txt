@@ -51,9 +51,6 @@ by issuing the `webby` command.
 File Structure
 --------------
 
-docs/
-    - documentation for Aeolus Project
-
 aeolusproject.org/
     - the Aeolus Project website
 
