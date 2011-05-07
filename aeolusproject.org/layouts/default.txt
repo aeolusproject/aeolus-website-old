@@ -52,6 +52,8 @@ filter: haml
     #navigation
       .container_24
         .grid_24
+          %a{ :href => "index.html" }
+            Home
           %a{ :href => "about.html" }
             About
           %a{ :href => "get_it.html" }
