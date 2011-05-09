@@ -119,6 +119,7 @@ hr.shade
     position: absolute
     top: 0
     right: 0
+    height: 19px
     @include border-radius(15px)
     &:focus
       margin: 0px
