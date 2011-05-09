@@ -369,39 +369,20 @@ hr.shade
 .section-grouping
   background: #d8e9f1
   background: rgba(216,233,241,0.5)
-  padding-top: 1em
-  padding-left: 1em
-  padding-right: 1em
-  padding-bottom: 0.5em
-  -moz-border-radius-topright: 10px
-  -moz-border-radius-topleft: 10px
-  border-top-right-radius: 10px
-  border-top-left-radius: 10px
+  padding: 1em 1em 0.5em
   border-top: 1px solid #eaeaea
-  -moz-border-radius-bottomright: 10px
-  -moz-border-radius-bottomleft: 10px
-  border-bottom-right-radius: 10px
-  border-bottom-left-radius: 10px
   border-bottom: 1px solid #dadada
-
+  @include border-radius(8px)
+  
   pre
-    background: #ffffff
-    background: rgba(255,255,255,0.8)
+    background: #666
+    background: rgba(0,0,0,0.6)
+    color: #fff
+    @include border-radius(5px)
     margin-left: 1em
     margin-bottom: 0.5em
     padding: 1em
-    -moz-border-radius-topright: 10px
-    -moz-border-radius-topleft: 10px
-    border-top-right-radius: 10px
-    border-top-left-radius: 10px
-    border-top: 1px solid #aaaaaa
-    border-left: 1px solid #aaaaaa
-    -moz-border-radius-bottomright: 10px
-    -moz-border-radius-bottomleft: 10px
-    border-bottom-right-radius: 10px
-    border-bottom-left-radius: 10px
-    border-bottom: 1px solid #9a9a9a
-    border-right: 1px solid #9a9a9a
+
 
 .page-listing
   width: 25%
