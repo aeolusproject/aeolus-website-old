@@ -50,6 +50,11 @@ h6
 h2:first-child,h3:first-child,h4:first-child
   margin-top: 0
 
+img.graph
+  display: block
+  width: 767px
+  margin: 1em auto 2em
+  
 hr.shade
   position: absolute
   display: block
