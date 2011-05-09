@@ -7,30 +7,77 @@ filter: haml
 %h1 News
 
 .grid_24
-  %h2 4th May 2011: New website!
+  .section-grouping
+    %h2 6th May 2011: Image Warehouse 0.94 released
 
-  %p
-    The Aeolus Community have launched the second version of our main website.
+    %p
+      The next release of Image Warehouse is out.
 
-  %p
-    Designed by
-    %a{ :href => "http://kyleabaker.com",
-        :title => "Kyle Baker's personal website" } Kyle Baker
-    from the Red Hat User Experience (UX) Team, this one is visually
-    appealing, has a
-    %b much
-    cleaner look, and is very easy to locate information in.
+    %p
+      Primarily a bug fix release, it includes these fixes:
 
-  %p
-    Importantly, this website begins addressing the needs of business and
-    non-technical Aeolus users.  A marked improvement over the developer only
-    focus of the previous website.
+    %p
+      %ul
+        %li
+          %b iwhd no longer segfaults during garbage-collection
+          %br
+          [bug introduced in 0.91]
+          %br
+          %br
 
-  %p
-    It is expected this will be a key piece for Aeolus growing into the
-    worlds best cloud deployment software.
+        %li
+          %b iwhd now emits syntactically valid JSON output for the root query
+          %br
+          Before, it omitted the "providers": tag before the list of provider
+          descriptions.
+          %br
+          [bug introduced in the beginning]
 
-  %p
-    %a{ :href => "contact.html#business",
-        :title => "Let us know what you think" } Let us know
-    what you think. :)
+    %p Full release announcement with download information:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/aeolus-devel/2011-May/001376.html",
+          :title => "Image Warehouse 0.94 release announcement" }
+        https://fedorahosted.org/pipermail/aeolus-devel/2011-May/001376.html
+
+  %br
+  %br
+
+  .section-grouping
+    %h2 4th May 2011: New website!
+
+    %p
+      The Aeolus Community have launched the second version of our main website.
+
+    %p
+      Designed by Kyle Baker from the Red Hat User Experience (UX) Team, this
+      one is visually appealing, has a
+      %b much
+      cleaner look, and is very easy to locate information in.
+
+    %p
+      Importantly, this website begins addressing the needs of business and
+      non-technical Aeolus users.  A marked improvement over the developer only
+      focus of the previous website.
+
+    %p
+      It is expected this will be a key piece for Aeolus growing into the
+      worlds best cloud deployment software.
+
+    %p
+      %b UPDATE:
+      Although we mentioned Kyle Baker's UX Design work for the new site,
+      we unintentionally forgot to mention
+      %a{ :href => "http://jimmac.musichall.cz/",
+          :title => "Jakub Steiner's website" } Jakub Steiner's
+      significant work.  Jakub created the new Aeolus logo, did the majority
+      of the heavy lifting for the site's CSS, plus much more.  Due to his
+      effort, the site works well in all major browsers, resizes and scales
+      properly, loads quickly, and generally behaves as it should.  Thanks
+      Jakub!
+
+    %p
+      %a{ :href => "contact.html#business",
+          :title => "Let us know what you think" } Let us know
+      what you think. :)
