@@ -9,7 +9,7 @@ function positionFooter() {
 }
 
 $(document).ready(function () {
-  $(window).scroll(positionFooter).resize(positionFooter).scroll();
+  $(window).resize(positionFooter).resize();
   //chrome seems to ignore the scroll event the first time on the about page
   setTimeout(positionFooter,200);
    //preventFOUT();
