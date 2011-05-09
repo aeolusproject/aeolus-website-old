@@ -409,6 +409,11 @@ hr.shade
     padding: 1em
     overflow-x: auto
 
+.news
+  a
+    color: black
+    &:hover
+      color: $aegrey
 
 .page-listing
   width: 25%
