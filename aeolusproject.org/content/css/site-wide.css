@@ -412,10 +412,12 @@ hr.shade
 .page-listing
   width: 25%
   background: #fff
-  background: rgba(255,255,255,0.8)
+  @include gradient-bg-linear(#fff,lighten($aegrey,10%))
   padding: 1em 1em 0
-  border: 1px solid #8aa6b3
+  border: 1px solid $aegrey
   float: right
+  @include box-shadow(0,2px, 2px, rgba(0,0,0,0.4))
+  margin-left: 2em
   @include border-radius(10px)
   
 #trademark
