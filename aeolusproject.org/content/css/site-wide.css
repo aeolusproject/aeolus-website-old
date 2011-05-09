@@ -407,6 +407,7 @@ hr.shade
     margin-left: 1em
     margin-bottom: 0.5em
     padding: 1em
+    overflow-x: auto
 
 
 .page-listing
