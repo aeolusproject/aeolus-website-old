@@ -226,6 +226,7 @@ hr.shade
   background: url(../images/button-tex2.png) no-repeat center 1px, -moz-linear-gradient(top, lighten($aeblue2,10%), $aeblue2 70%, darken($aeblue2,10%))
   background: url(../images/button-tex2.png) no-repeat center 1px, -webkit-gradient(linear, 0% 0%, 0% 100%, from(lighten($aeblue2,10%)), to(darken($aeblue2,10%)), color-stop(.7,$aeblue2))
   background-size: 100% 100%
+  cursor: pointer
 
   color: #fff
   text-transform: uppercase
