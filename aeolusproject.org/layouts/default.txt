@@ -40,11 +40,11 @@ filter: haml
           %span.tagline.headline Manage Your Cloud Deployments with Ease
         .grid_10
           -# The search box in the header
-          %form{ :title => "Search the Aeolus website", :action => "http://www.google.com/cse", :id => "cse-search-box", :style => "float: right; margin-right: 30px; margin-top: 12px" }
+          %form{ :title => "Search the Aeolus website", :action => "http://www.google.com/cse", :id => "cse-search-box" }
             %input{ :type => "hidden", :value => "009521294820748120480:axl-8xlshn4", :name => "cx" }
             %input{ :type => "hidden", :name => "ie", :value => "UTF-8" }
-            %input{ :type => "search", :name => "q", :size => "30", :placeholder => "Search Aeolus", :required => "required" }
-            %input{ :type => "submit", :name => "sa", :value => "Search" }
+            %input{ :type => "search", :id => "q", :name => "q", :size => "30", :placeholder => "Search Aeolus", :required => "required" }
+            %input{ :type => "submit", :id => "sa", :name => "sa", :value => "Search" }
             <!--[if IE]>
             %script{ :type =>"text/javascript", :src => "http://www.google.com/cse/brand?form=cse-search-box&lang=en" }
             <![endif]-->

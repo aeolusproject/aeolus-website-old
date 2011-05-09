@@ -330,8 +330,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="1956.5436"
-     inkscape:cy="-1458.6187"
+     inkscape:cx="2065.5436"
+     inkscape:cy="-1421.6187"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -3773,10 +3773,41 @@ SUAFJS0UAJQaKDQAlFFB6UxCUUUUAFJS0lABRRRQB//Z
        height="199.2585"
        width="557.74982"
        mask="url(#mask4571)"
-       transform="matrix(1,0,0,1.7116904,0,-1618.5567)"
-       style="opacity:0.62280702"
+       transform="matrix(0.36083288,0,0,0.61763418,1471.5245,1006.5549)"
+       style="opacity:0.62280704"
        inkscape:label="#image3790"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
+    <g
+       transform="translate(2010.9998,1666.3622)"
+       id="search-icon"
+       inkscape:label="edit-find"
+       inkscape:export-filename="/home/jimmac/src/cvs/redhat/aeolus/aeolus-website/image_source/search-icon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         transform="matrix(1.2871768,0,0,1.2857143,-249.29926,155.57143)"
+         d="m 311,386.5 c 0,1.933 -1.567,3.5 -3.5,3.5 -1.933,0 -3.5,-1.567 -3.5,-3.5 0,-1.933 1.567,-3.5 3.5,-3.5 1.933,0 3.5,1.567 3.5,3.5 z"
+         sodipodi:ry="3.5"
+         sodipodi:rx="3.5"
+         sodipodi:cy="386.5"
+         sodipodi:cx="307.5"
+         id="path27918"
+         style="color:#000000;fill:none;stroke:#bebebe;stroke-width:1.55467153;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:new"
+         sodipodi:type="arc" />
+      <path
+         sodipodi:nodetypes="cc"
+         id="path27941"
+         d="m 150.01159,656.00001 4.00455,4"
+         style="color:#000000;fill:none;stroke:#bebebe;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:new"
+         inkscape:connector-curvature="0" />
+      <rect
+         style="opacity:0.70638272;color:#000000;fill:none;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect1431"
+         width="16.000002"
+         height="16"
+         x="140.0002"
+         y="646" />
+    </g>
   </g>
 </svg>

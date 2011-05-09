@@ -52,13 +52,15 @@ h6
 h2:first-child,h3:first-child,h4:first-child
   margin-top: 0
 
-input[type='text'], textarea
+input[type='text'], input[type='search'], textarea
   border: 1px solid darken($aegrey, 20%)
+  margin: 0 0 .5em 0
   @include border-radius(3px)
   background: -moz-linear-gradient(top, lighten($aegrey, 10%), #fff 10px, #fff)
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lighten($aegrey,10%)), to(#fff), color-stop(.2,#fff))  
   padding: 4px
   &:focus
+    outline: none
     border: 2px solid $aeblue4
     padding: 3px
     background: -moz-linear-gradient(top, lighten($aeblue4,20%), #fff 10px, #fff)
@@ -108,11 +110,32 @@ hr.shade
     font-size: 150%
     color: $aeblue1
 
-  /* NOTE - The search box CSS properties have been moved into the main
-   * HAML site template instead, to address a transient Chrome bug where 
-   * it sometimes places the search box in the navigation bar for no
-   * apparent reason
-   */
+#cse-search-box
+  position: relative
+  margin: 9px 0 0
+  #q
+    margin: 1px
+    padding: 4px 8px
+    position: absolute
+    top: 0
+    right: 0
+    @include border-radius(15px)
+    &:focus
+      margin: 0px
+      padding: 4px 8px
+
+  #sa
+    display: block
+    position: absolute
+    margin: 0
+    padding: 0
+    text-indent: -200em
+    @include no-box-shadow()
+    width: 16px
+    height: 16px
+    right: 8px
+    top: 8px
+    background: transparent url(../images/search-icon.png) no-repeat 0 0
 
 #navigation
   background: #bfdbe8 url(../images/splash-bg.jpg) no-repeat center -20px
