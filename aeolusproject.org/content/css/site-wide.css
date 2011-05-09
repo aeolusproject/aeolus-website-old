@@ -50,6 +50,18 @@ h6
 h2:first-child,h3:first-child,h4:first-child
   margin-top: 0
 
+input[type='text'], textarea
+  border: 1px solid darken($aegrey, 20%)
+  @include border-radius(3px)
+  background: -moz-linear-gradient(top, lighten($aegrey, 10%), #fff 10px, #fff)
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lighten($aegrey,10%)), to(#fff), color-stop(.2,#fff))  
+  padding: 4px
+  &:focus
+    border: 2px solid $aeblue4
+    padding: 3px
+    background: -moz-linear-gradient(top, lighten($aeblue4,20%), #fff 10px, #fff)
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lighten($aeblue4,20%)), to(#fff), color-stop(.2,#fff))
+  
 img.graph
   display: block
   width: 767px
@@ -178,8 +190,9 @@ hr.shade
     margin-top: 0.8em
     margin-bottom: 0.8em
 
-.button
+.button, input[type='submit']
   display: inline-block
+  border: none
   background-color: $aeblue2
   background-image: url(../images/button-tex2.png)
   background-repeat: no-repeat
@@ -214,7 +227,7 @@ hr.shade
     vertical-align: middle
     margin: 0 -10px 0 10px
 
-.button.small
+.button.small, input[type='submit']
   font-size: 90%
   padding: 6px 20px
 
