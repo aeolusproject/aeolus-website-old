@@ -30,7 +30,6 @@ a
 
 h1,h2,h3,h4,h5,.headline
   font-family: $headlinefont
-
 h1
   text-transform: uppercase
   font-weight: normal
@@ -47,7 +46,10 @@ h5
   font-size: 110%
 h6
   font-size: 100%
-    
+
+h2:first-child,h3:first-child,h4:first-child
+  margin-top: 0
+
 hr.shade
   position: absolute
   display: block
