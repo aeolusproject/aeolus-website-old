@@ -260,6 +260,9 @@ hr.shade
 
 #main
   margin-bottom: 2em
+  p
+    img
+      max-width: 100%
   
 #footer
   position: relative
