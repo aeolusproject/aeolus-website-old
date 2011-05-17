@@ -6,15 +6,47 @@ filter: haml
 ---
 %h1 Get Aeolus
 
-%p
-  Aeolus packages are available for Fedora 14 x86_64 and RHEL 6.1 (RC or
-  later).
+.section-grouping
+  Aeolus has both
+  <b>Stable</b>,
+  and (bleeding edge)
+  %b Development Testing
+  packages.
 
+  %p
+    The
+    %b Stable
+    packages have been tested with each other, and are known to work.  Most
+    people should use these.
+
+  %p
+    Only use the
+    %b Development Testing
+    packages when you are doing development, or looking for a specific bug
+    fix. 
+
+  %h2 Which packages do you want?
+
+  %ul
+    %li
+      %a(href="#stable" title="Stable Release packages")
+        Stable Release
+    %li
+      %a(href="#dev" title="Development Testing packages")
+        Development Testing
+
+%br
+
+%h1(id="stable" style="margin-top:0") Stable Release
+
+%p
+  Stable packages are available for Fedora 14 x86_64 and RHEL 6.1 (RC or
+  later).
 
 %ul
   %li
     %b Install the
-    <a href="#rhel61" title="Red Hat Enterprise Linux 6.1 packages">Red Hat Enterprise Linux 6.1 (RC or later)</a>
+    <a href="#stablerhel61" title="Red Hat Enterprise Linux 6.1 packages">Red Hat Enterprise Linux 6.1 (RC or later)</a>
     packages
 
     %br
@@ -22,22 +54,21 @@ filter: haml
 
   %li
     %b Install the
-    <a href="#fedora" title="Fedora 14 x86_64 packages">Fedora 14 x86_64</a>
+    <a href="#stablefedora" title="Fedora 14 x86_64 packages">Fedora 14 x86_64</a>
     packages
 
-%br
-
 .section-grouping
-  %h2(id="rhel61")
-    Install the Red Hat Enterprise Linux 6.1 x86_64 (RC or later) packages
+
+  %h2(id="stablerhel61")
+    Install the stable Red Hat Enterprise Linux 6.1 x86_64 (RC or later) packages
   
-  %h3 1. Add the Aeolus RHEL 6.1 yum repositories
+  %h3 1. Add the Aeolus RHEL 6.1 Stable yum repository
   
   %p
     %pre
       :preserve
         $ sudo wget -O /etc/yum.repos.d/rhel-aeolus.repo \
-        &nbsp;&nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/0.2.0/rhel-aeolus.repo
+        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/0.2.0/rhel-aeolus.repo
 
   %h3 2. Install the Aeolus packages
 
@@ -59,15 +90,15 @@ filter: haml
 %br
 
 .section-grouping
-  %h2(id="fedora") Install the Fedora 14 x86_64 packages
+  %h2(id="stablefedora") Install the stable Fedora 14 x86_64 packages
 
-  %h3 1. Add the Aeolus Fedora 14 yum repositories
+  %h3 1. Add the Aeolus Fedora 14 Stable yum repository
   
   %p
     %pre
       :preserve
         $ sudo wget -O /etc/yum.repos.d/fedora-aeolus.repo \
-        &nbsp;&nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/0.2.0/fedora-aeolus.repo
+        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/0.2.0/fedora-aeolus.repo
 
   %h3 2. Install the Aeolus packages
 
@@ -79,6 +110,90 @@ filter: haml
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus along with its
     dependencies on the Fedora 14 system.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; 
+    %a.button{ :href => "configuring_aeolus.html" }
+      Configure It
+      %img{:src => "images/button-right.png", :alt => "→"}
+
+%br
+%br
+
+%h1(id="dev" style="margin-top:0") Development Testing
+
+%p
+  Development testing packages are available for Fedora 14 x86_64 and RHEL 6.1 (RC or
+  later).
+
+%ul
+  %li
+    %b Install the
+    <a href="#devrhel61" title="Red Hat Enterprise Linux 6.1 packages">Red Hat Enterprise Linux 6.1 (RC or later)</a>
+    packages
+
+    %br
+    %br
+
+  %li
+    %b Install the
+    <a href="#devfedora" title="Fedora 14 x86_64 packages">Fedora 14 x86_64</a>
+    packages
+
+.section-grouping
+
+  %h2(id="devrhel61")
+    Install the Red Hat Enterprise Linux 6.1 x86_64 (RC or later) testing packages
+  
+  %h3 1. Add the Aeolus RHEL 6.1 Testing yum repository
+  
+  %p
+    %pre
+      :preserve
+        $ sudo wget -O /etc/yum.repos.d/rhel-aeolus-testing.repo \
+        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/testing/rhel-aeolus-testing.repo
+
+  %h3 2. Install the Aeolus packages
+
+  %p
+    %pre
+      :preserve
+        $ sudo yum install aeolus-conductor-doc aeolus-all
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
+    packages, along with their dependencies, on the RHEL 6.1 x86_64 (RC or
+    later) system.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; 
+    %a.button{ :href => "configuring_aeolus.html" }
+      Configure It
+      %img{:src => "images/button-right.png", :alt => "→"}
+
+%br
+
+.section-grouping
+  %h2(id="devfedora") Install the Fedora 14 x86_64 testing packages
+
+  %h3 1. Add the Aeolus Fedora 14 Testing yum repository
+  
+  %p
+    %pre
+      :preserve
+        $ sudo wget -O /etc/yum.repos.d/fedora-aeolus-testing.repo \
+        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/testing/fedora-aeolus-testing.repo
+
+  %h3 2. Install the Aeolus packages
+
+  %p
+    %pre
+      :preserve
+        $ sudo yum install aeolus-conductor-doc aeolus-all
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
+    packages, along with their dependencies, on the Fedora 14 system.
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; 
