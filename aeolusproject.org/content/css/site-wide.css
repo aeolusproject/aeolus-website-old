@@ -415,8 +415,9 @@ hr.shade
 .news
   a
     color: black
+    text-decoration: none
     &:hover
-      color: $aegrey
+      color: $aeblue2
 
 .page-listing
   width: 25%
