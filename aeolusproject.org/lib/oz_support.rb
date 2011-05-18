@@ -15,7 +15,7 @@ module OzSupportHelper
      { :name => "Fedora Core 1 - 6", :install => true, :customize => false, :icicle => false },
      { :name => "OpenSUSE 11.x", :install => true, :customize => false, :icicle => true },
      { :name => "Red Hat Linux 7 - 9", :install => true, :customize => false },
-     { :name => "RHEL 2.x, 3.x, 4.x <br /><em>(4.9 not fully tested)</em>", :install => true, :customize => false, :icicle => false },
+     { :name => "RHEL 2.x, 3.x, 4.x <br /><em>(4.9 installs via repo not cdrom/ISO)</em>", :install => true, :customize => false, :icicle => false },
      { :name => "Ubuntu 6.10 - 10.10", :install => true, :customize => false, :icicle => false },
      # Had to be moved out of this array, and into the content page itself, so it could be visually styled correctly
      #{ :name => "Windows 2000, XP, 2003, 7, 2008", :install => true, :customize => false, :icicle => false },
