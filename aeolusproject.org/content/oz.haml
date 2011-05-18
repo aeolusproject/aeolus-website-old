@@ -9,30 +9,94 @@ filter:
 
 %p Oz is a tool for automatically installing guest OSs with only minimal up-front input from the user.
 
-%h3 Supported Guests
-%table.team-table#ozguests
-  %thead
-    %tr
-      %td.emptycell &nbsp;
-      %td
-        Install
-      %td
-        Customize
-      %td
-        Generate ICICLE (package manifest)
-  %tbody
-    - ozguests.each do |guest|
-      %tr
-        %td.guest
-          = guest[:name]
-        = support_indicator(guest[:install])
-        = support_indicator(guest[:customize])
-        = support_indicator(guest[:icicle])
+.section-grouping
+  %h3 Fully supported guests (automatically customizable)
 
-%h3 Additional Information
-%ul
-  - oz_pages.each do |doc|
-    - if doc[:description]
-      %li
-        %a{ :href => doc[:href] }
-          = doc[:description]
+  %table.team-table#ozguests
+    %thead
+      %tr
+        %td.emptycell &nbsp;
+        %td
+          Install
+        %td
+          Customize
+        %td
+          Generate ICICLE (package manifest)
+    %tbody
+      - ozguestsfull.each do |guest|
+        %tr
+          %td.guest
+            = guest[:name]
+          = support_indicator(guest[:install])
+          = support_indicator(guest[:customize])
+          = support_indicator(guest[:icicle])
+    %tfoot
+      %tr
+        %td RHEL 5.x, 6
+        %td yes
+        %td yes
+        %td yes
+
+  %p
+    %b IMPORTANT NOTE:
+    Support for every guest OS revision is
+    %b manually
+    added.
+
+  %p
+    This means Oz won't automatically support RHEL 5.7, 6.1, (etc) when they
+    come out.  After a new guest OS is released (ie RHEL 5.7), Oz is updated
+    to support it, then a new release of Oz is made.
+
+%br
+
+.section-grouping
+  %h3 Partially supported guests (manually customizable)
+
+  %table.team-table#ozguests
+    %thead
+      %tr
+        %td.emptycell &nbsp;
+        %td
+          Install
+        %td
+          Customize
+        %td
+          Generate ICICLE (package manifest)
+    %tbody
+      - ozguestspartial.each do |guest|
+        %tr
+          %td.guest
+            = guest[:name]
+          = support_indicator(guest[:install])
+          = support_indicator(guest[:customize])
+          = support_indicator(guest[:icicle])
+    %tfoot
+      %tr
+        %td Windows 2000, XP, 2003, 7, 2008
+        %td yes
+        %td no
+        %td no
+
+  %p
+    %b IMPORTANT NOTE:
+    Support for every guest OS revision is
+    %b manually
+    added.
+
+  %p
+    This means Oz won't automatically support RHEL 5.7, 6.1, (etc) when they
+    come out.  After a new guest OS is released (ie RHEL 5.7), Oz is updated
+    to support it, then a new release of Oz is made.
+
+%br
+
+.section-grouping
+  %h3 Additional Information
+
+  %ul
+    - oz_pages.each do |doc|
+      - if doc[:description]
+        %li
+          %a{ :href => doc[:href] }
+            = doc[:description]
