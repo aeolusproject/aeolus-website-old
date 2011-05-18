@@ -10,22 +10,24 @@ filter:
 %p Oz is a tool for automatically installing guest OSs with only minimal up-front input from the user.
 
 %h3 Supported Guests
-%table#ozguests
-  %tr
-    %th.emptycell &nbsp;
-    %th
-      Install
-    %th
-      Customize
-    %th
-      Generate ICICLE (package manifest)
-  - ozguests.each do |guest|
+%table.team-table#ozguests
+  %thead
     %tr
-      %td.guest
-        = guest[:name]
-      = support_indicator(guest[:install])
-      = support_indicator(guest[:customize])
-      = support_indicator(guest[:icicle])
+      %td.emptycell &nbsp;
+      %td
+        Install
+      %td
+        Customize
+      %td
+        Generate ICICLE (package manifest)
+  %tbody
+    - ozguests.each do |guest|
+      %tr
+        %td.guest
+          = guest[:name]
+        = support_indicator(guest[:install])
+        = support_indicator(guest[:customize])
+        = support_indicator(guest[:icicle])
 
 %h3 Additional Information
 %ul
