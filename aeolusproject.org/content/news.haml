@@ -7,8 +7,146 @@ filter: haml
 %h1 News
 
 .grid_24
+
+  %h2(id="201105" style="color: black") May 2011
+
   .section-grouping
-    %h2(id="#20110506")
+    %h2(id="2011051801")
+      18th May 2011: Testing repositories and packages now available
+
+    %p
+      For everyone wanting the newest Aeolus features,
+      %b Development Testing
+      packages are now available.
+
+    %p
+      Incorporating fixes and features for the next Aeolus releases, they are
+      sometimes unstable, or not yet feature complete, so use with caution. 
+
+    %p
+      Installation instructions are available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/get_it.html#dev",
+          :title => "Instructions for the Aeolus Development Testing repository" }
+        http://www.aeolusproject.org/get_it.html#dev
+
+    %p
+      Packages are available for Fedora 14 x86_64, and RHEL 6.1 x86_64
+      (Release Candidate or later).
+
+    %p
+      Upgrading from previous releases can be done using the standard yum
+      tools.
+
+  %br
+
+  .section-grouping
+    %h2(id="2011051702")
+      17th May 2011: Image Warehouse 0.95 released
+
+    %p
+      This new release of Image Warehouse adds supports for registration
+      in Red Hat Enterprise Virtualisation Manager (RHEV-M) 2.2.
+
+    %p Full release announcement with download information:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/aeolus-devel/2011-May/001534.html",
+          :title => "Image Warehouse 0.95 release announcement" }
+        https://fedorahosted.org/pipermail/aeolus-devel/2011-May/001534.html
+
+  %br
+
+  .section-grouping
+    %h2(id="20110507")
+      7th May 2011: Aeolus 0.2.0 released
+
+    %p
+      The Aeolus team are pleased to announce a significant new release of
+      Aeolus, the multi-cloud deployment solution, sponsored by Red Hat.
+
+    %p
+      This release, version 0.2.0, marks the introduction of several
+      important enhancements:
+
+    %p
+      %ul
+        %li
+          Added capability to import Amazon AMIs through web UI
+        %li
+          Self-service users can now create templates and launch instances
+        %li
+          Streamlined configuration data to provide immediately usable
+          installation
+        %li
+          Now uses the 2nd incarnation of Image Factory to build images
+        %li
+          Added ability to upload existing images to newly added Cloud
+          Providers
+        %li
+          Added ability to create pools
+        %li
+          Added ability to map Cloud Provider Realms to Cloud Engine Realms
+
+
+    %p
+      And several minor fixes or functionality improvements:
+
+    %p
+      %ul
+        %li
+          Image Warehouse is now the canonical store for image-related data
+        %li
+          Improved stability and error reporting of QMF communication with
+          Image Factory
+        %li
+          Web interface verified to work end-to-end with the testing driver
+          (mock)
+        %li
+          Added ability to search on Instance owner
+        %li
+          Added end-to-end testing framework for Aeolus scripts
+        %li
+          Bugfix: <a href="https://bugzilla.redhat.com/show_bug.cgi?id=690467"
+          title="Bug 690467">BZ #690467</a> - Realm: Deleting mapping of realm w/o selecting anything throws
+          error
+
+    %p
+      Aeolus is still some way from feature complete, so is suitable for
+      testing with.  But please don't use it with live data at this stage.
+
+    %p
+      Installation is very straightforward, with instructions on the website:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/get_it.html",
+          :title => "Get Aeolus" }
+        http://www.aeolusproject.org/get_it.html
+
+    %p
+      Packages are available for Fedora 14 x86_64, and RHEL 6.1 x86_64
+      (Release Candidate or later).
+      %br
+      Support for Fedora 13 has been discontinued with this release.
+
+    %p
+      Upgrading from previous releases can be done using yum.
+      %br
+      Due to a recent reorganisation of the yum repositories, you need to
+      point to a new repo first, as shown in the above instructions.
+
+    %p
+      All testing and bug reports are hugely appreciated, directly
+      contributing towards the quality of Aeolus releases and future growth.
+
+  %br
+
+  .section-grouping
+    %h2(id="20110506")
       6th May 2011: Image Warehouse 0.94 released
 
     %p
@@ -43,10 +181,9 @@ filter: haml
         https://fedorahosted.org/pipermail/aeolus-devel/2011-May/001376.html
 
   %br
-  %br
 
   .section-grouping
-    %h2(id="#20110504")
+    %h2(id="20110504")
       4th May 2011: New website!
 
     %p
