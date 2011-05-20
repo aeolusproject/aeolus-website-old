@@ -4,7 +4,7 @@ filter:    sass
 layout:    nil   # no layout
 ---
 
-$screenfont: "Liberation Sans", "LiberationSansRegular", Helvetica, Sans-serif
+$screenfont: "Liberation Sans", Helvetica, Sans-serif
 $headlinefont: Overpass, Sans-serif
 
 $aeblue1: #025d8c
