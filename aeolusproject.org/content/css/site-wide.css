@@ -433,6 +433,24 @@ hr.shade
 #trademark
   font: 11px Arial, sans-serif
 
+.note
+  background: #a3f2b0
+  background: rgba(163,242,176,0.8)
+  padding-top: 0em
+  padding-left: 1em
+  padding-right: 1em
+  padding-bottom: 0em
+  -moz-border-radius-topright: 10px
+  -moz-border-radius-topleft: 10px
+  border-top-right-radius: 10px
+  border-top-left-radius: 10px
+  border-top: 1px solid #eaeaea
+  -moz-border-radius-bottomright: 10px
+  -moz-border-radius-bottomleft: 10px
+  border-bottom-right-radius: 10px
+  border-bottom-left-radius: 10px
+  border-bottom: 1px solid #dadada
+
 .warning
   background: #f15d5e
   background: rgba(241,93,94,0.8)
