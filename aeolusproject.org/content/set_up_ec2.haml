@@ -44,10 +44,9 @@ filter: haml
 %br
 
 .warning
-  %p
-    %b WARNING:
-    Amazon and other Cloud providers charge fees for using their products and
-    services, including EC2.
+  %b WARNING:
+  Amazon and other Cloud providers charge fees for using their products and
+  services, including EC2.
 
   %p
     Setting up EC2 with Aeolus means your Amazon EC2 account will be billed
@@ -81,6 +80,13 @@ filter: haml
   %p
     Follow these steps to configure Amazon EC2 with Aeolus.
 
+  .note
+    %p
+      %b NOTE:
+      Some field names used in the Aeolus 0.2.0 release being changed to
+      better match EC2.  These are pointed out as appropriate in the
+      following steps. 
+
   %p
     The information you need from Amazon is on the AWS
     <a href="https://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key"
@@ -113,40 +119,84 @@ filter: haml
 
       %li
         For
+        %em (Aeolus 0.2.0)
         %b Api key
         use the
         %em Access Key ID
         value in the
         %b Access Keys
         tab.
+        %br
+        %br
+        .note
+          %p
+            Releases newer than 0.2.0 have this labelled as
+            "<b>Access key</b>"
+            instead of
+            "<b>Api key</b>".
+        %br
 
       %li
         For
+        %em (Aeolus 0.2.0)
         %b Secret
         use the
         %em Secret Access Key
         value next to it (same tab).
+        %br
+        %br
+        .note
+          %p
+            Releases newer than 0.2.0 have this labelled as
+            "<b>Secret access key</b>"
+            instead of
+            "<b>Secret</b>".
+        %br
 
       %li
         For
+        %em (Aeolus 0.2.0)
         %b Aws account id
         use the
         %em AWS Account ID
         value at the bottom of the page, under the heading
         <b>Account Identifiers</b>.
+        %br
+        %br
+        .note
+          %p
+            Releases newer than 0.2.0 have this labelled as
+            "<b>Account number</b>"
+            instead of
+            "<b>Aws account id</b>".
 
 %br
 
 .section-grouping
   %h2 2. x.509 Certificates
 
+  .note
+    %p
+      %b NOTE:
+      Some field names used in the Aeolus 0.2.0 release are being changed to
+      better match EC2.  These are pointed out as appropriate in the
+      following steps. 
+
   %p
     If you already have an existing EC2 x.509 certificate and private key,
     use those for the EC2 x.509 fields.  The private key is used for the
+    %em (Aeolus 0.2.0)
     %b Ec2 x509 private key
     field, and the certificate is used for the
+    %em (Aeolus 0.2.0)
     %b Ec2 x509 public key
     field.
+
+  .note
+    %p
+      Releases newer than 0.2.0 have "<b>Ec2 x509 private key</b>" labelled as
+      "<b>Key</b>", and "<b>Ec2 x509 public key</b>" labelled as
+      "<b>Certificate</b>".
 
   %p
     Alternatively, or if you don't have an X.509 Certificate yet, you can
@@ -185,15 +235,35 @@ filter: haml
         Back in Aeolus, use the
         %em EC2 x509 Private Key.pem
         file for the      
+        %em (Aeolus 0.2.0)
         %b Ec2 x509 private key
         field.
+        %br
+        %br
+        .note
+          %p
+            Releases newer than 0.2.0 have this labelled as
+            "<b>Key</b>"
+            instead of
+            "<b>Ec2 x509 private key</b>".
+        %br
 
       %li
         Use the
         %em EC2 x509 Certificate.pem
+        %em (Aeolus 0.2.0)
         file for the 
         %b Ec2 x509 public key
         field.
+        %br
+        %br
+        .note
+          %p
+            Releases newer than 0.2.0 have this labelled as
+            "<b>Certificate</b>"
+            instead of
+            "<b>Ec2 x509 public key</b>".
+        %br
 
       %li
         Click the
