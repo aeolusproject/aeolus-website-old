@@ -69,7 +69,7 @@ filter: haml
   %p
     %pre
       :preserve
-        $ sudo yum install classads-devel rest-devel rpm-build ruby-devel zip
+        $ sudo yum install classads-devel git rest-devel rpm-build ruby-devel zip
 
   %h4 2. Clone the Conductor git repository:
 
@@ -126,14 +126,21 @@ filter: haml
 .section-grouping
   %h3(id="oz") Build Oz
 
-  %h4 1. Clone the Oz git repository
+  %h4 1. Install the required development packages:
+
+  %p
+    %pre
+      :preserve
+        $ sudo yum install git
+
+  %h4 2. Clone the Oz git repository
 
   %p
     %pre
       :preserve
         $ git clone git://github.com/clalancette/oz.git
 
-  %h4 2. Build the RPMs
+  %h4 3. Build the RPMs
 
   %p
     %pre
@@ -156,14 +163,21 @@ filter: haml
 .section-grouping
   %h3(id="factory") Build Image Factory
 
-  %h4 1. Clone the Image Factory git repository
+  %h4 1. Install the required development packages:
+
+  %p
+    %pre
+      :preserve
+        $ sudo yum install git
+
+  %h4 2. Clone the Image Factory git repository
 
   %p
     %pre
       :preserve
         $ git clone git://github.com/aeolusproject/image_factory.git
 
-  %h4 2. Build the RPMs
+  %h4 3. Build the RPMs
 
   %p
     %pre
@@ -198,7 +212,7 @@ filter: haml
     %pre
       :preserve
         $ sudo yum install jansson-devel libmicrohttpd-devel hail-devel gc-devel \
-        &nbsp;&nbsp;gperf mongodb-devel help2man mongodb-server
+        &nbsp;&nbsp;git gperf mongodb-devel help2man mongodb-server
 
   %h4 2. Clone the Image Warehouse git repository
 
@@ -237,14 +251,21 @@ filter: haml
 .section-grouping
   %h3(id="audrey") Build Audrey
 
-  %h4 1. Clone the Audrey git repository
+  %h4 1. Install the required development packages:
+
+  %p
+    %pre
+      :preserve
+        $ sudo yum install git
+
+  %h4 2. Clone the Audrey git repository
 
   %p
     %pre
       :preserve
         $ git clone git://github.com/clalancette/audrey.git -b config-server
 
-  %h4 2. Build the RPMs
+  %h4 3. Build the RPMs
 
   %p
     %pre
@@ -389,7 +410,7 @@ filter: haml
   %p
     %pre
       :preserve
-        $ sudo yum install coredumper coredumper-devel
+        $ sudo yum install coredumper coredumper-devel git wget
 
   %h4 2. Download the build script
 
@@ -493,14 +514,21 @@ filter: haml
     Web site:
     %a{ :href => "http://www.deltacloud.org", :title => "Deltacloud home page" } http://www.deltacloud.org
 
-  %h4 1. Clone the libdeltacloud git repository
+  %h4 1. Install the required development packages:
+
+  %p
+    %pre
+      :preserve
+        $ sudo yum install git
+
+  %h4 2. Clone the libdeltacloud git repository
 
   %p
     %pre
       :preserve
         $ git clone git://git.fedorahosted.org/deltacloud/libdeltacloud.git
 
-  %h4 2. Build the RPMs
+  %h4 3. Build the RPMs
 
   %p
     %pre
