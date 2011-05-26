@@ -29,9 +29,6 @@ filter: haml
       %a{ :href => "#iwhd" } Image Warehouse
 
     %li
-      %a{ :href => "#oz" } Oz
-
-    %li
       %a{ :href => "#spherical" } Spherical
 
 %p
@@ -240,11 +237,13 @@ filter: haml
 
   %p
     Imagefactory is a high level daemon, responsible for creating virtual
-    machine images for each Cloud provider.  It uses Oz for some parts of the
-    image creation process.
+    machine images for each Cloud provider.
+  %p
+    It uses Oz for some parts of the image creation process, capturing Oz's
+    logging in the Image Factory log file for convenience.
 
   %p
-    By default, the log file for Image Factory is located at:
+    By default, the Image Factory log file is located at:
 
   %p
     %pre
@@ -271,19 +270,6 @@ filter: haml
     %pre
       :preserve
         /var/log/iwhd.log
-
-%br
-
-.section-grouping
-  %h2(id="oz" style="color: #107fc9") Oz
-
-  %p.note
-    Need to get the info for this
-
-  %p
-    %pre
-      :preserve
-        Something goes here 
 
 %br
 
