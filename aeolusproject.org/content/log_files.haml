@@ -40,6 +40,9 @@ filter: haml
 %p
   %ul
     %li
+      %a{ :href => "#httpd" } Apache HTTP Server
+
+    %li
       %a{ :href => "#qpid" } Apache Qpid
 
     %li
@@ -48,16 +51,49 @@ filter: haml
     %li
       %a{ :href => "#deltacloud" } Deltacloud
 
-.section-grouping
-  %h2(id="audrey" style="color: #107fc9") Audrey (Config Server)
+    %li
+      %a{ :href => "#gofer" } Gofer
 
-  %p.note
-    Need to get the info for this
+    %li
+      %a{ :href => "#libvirt" } Libvirt
+
+    %li
+      %a{ :href => "#mongodb" } MongoDB
+
+    %li
+      %a{ :href => "#pulp" } Pulp
+
+    %li
+      %a{ :href => "#puppet" } Puppet
+
+
+.section-grouping
+  %h2(id="audrey" style="color: #107fc9") Audrey &rarr; Aeolus Configuration Server
+
+  %p
+    Aeolus-configserver is a service for storing and retrieving VM
+    configurations.
+
+  %p
+    By default, all log files for it are in the directory:
 
   %p
     %pre
       :preserve
-        Something goes here 
+        /var/log/aeolus-configserver
+
+  %h3(id="conductor-thin") Thin
+
+  %p.note
+    Need to find out what this component really does
+
+  %p
+    The Thin log file for aeolus-configserver is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-configserver/thin.log
 
 %br
 
@@ -174,15 +210,27 @@ filter: haml
 %br
 
 .section-grouping
-  %h2(id="connector" style="color: #107fc9") Connector
-
-  %p.note
-    Need to find out what this actually does
+  %h2(id="connector" style="color: #107fc9") Connector &rarr; Image Factory Connector
 
   %p
-    Decent description needs to go here
+    Provides a REST web interface for Image Factory.  Aeolus uses this for
+    internal communication with Image Factory.
 
-  %pre /var/log/aeolus-connector.log
+  %p
+    By default, the log file for it is here: 
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-connector.log
+
+  %p
+    You can run a tail on this log, to watch progress:
+
+  %p
+    %pre
+      :preserve
+        $ tail -f /var/log/aeolus-connector.log
 
 %br
 
@@ -190,13 +238,26 @@ filter: haml
 .section-grouping
   %h2(id="factory" style="color: #107fc9") Image Factory
 
-  %p.note
-    Need to get the info for this
+  %p
+    Imagefactory is a high level daemon, responsible for creating virtual
+    machine images for each Cloud provider.  It uses Oz for some parts of the
+    image creation process.
+
+  %p
+    By default, the log file for Image Factory is located at:
 
   %p
     %pre
       :preserve
-        Something goes here 
+        /var/log/imagefactory.log
+
+  %p
+    You can run a tail on this log, to watch progress of image building:
+
+  %p
+    %pre
+      :preserve
+        $ tail -f /var/log/imagefactory.log
 
 %br
 
@@ -209,7 +270,7 @@ filter: haml
   %p
     %pre
       :preserve
-        Something goes here 
+        /var/log/iwhd.log
 
 %br
 
@@ -242,6 +303,35 @@ filter: haml
 %h2 Logs files for Aeolus dependencies
 
 .section-grouping
+  %h2(id="httpd" style="color: #107fc9") Apache HTTP Server&trade;
+
+  %p
+    Web site:
+    %a{ :href => "http://httpd.apache.org", :title => "Apache HTTP Server home page" } http://httpd.apache.org
+
+  %p
+    By default, the Apache HTTP Server log files go into this directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/httpd/
+
+  %p
+    %pre
+      :preserve
+        /var/log/httpd/access_log
+        /var/log/httpd/error_log
+        /var/log/httpd/ssl_access_log
+        /var/log/httpd/ssl_error_log
+        /var/log/httpd/ssl_request_log
+
+  #trademark
+    Apache and Apache HTTP Server are trademarks of The Apache Software Foundation.
+
+%br
+
+.section-grouping
   %h2(id="qpid" style="color: #107fc9") Apache Qpid&trade;
 
   %p
@@ -268,13 +358,22 @@ filter: haml
     Web site:
     %a{ :href => "http://www.cs.wisc.edu/condor/", :title => "Condor home page" } http://www.cs.wisc.edu/condor/
 
-  %p.note
-    Need to get the info for this
+  %p
+    By default, all log files for Condor go into this directory:
 
   %p
     %pre
       :preserve
-        Something goes here
+        /var/log/condor/
+
+  %p
+    %pre
+      :preserve
+        /var/log/condor/CollectorLog
+        /var/log/condor/MasterLog
+        /var/log/condor/MatchLog
+        /var/log/condor/NegotiatorLog
+        /var/log/condor/SchedLog
 
 %br
 
@@ -285,8 +384,9 @@ filter: haml
     Web site:
     %a{ :href => "http://www.deltacloud.org", :title => "Deltacloud home page" } http://www.deltacloud.org
 
-  %p.note
-    This does XYZ
+  %p
+    Deltacloud provides the communication layer between Aeolus and each of
+    the Cloud Providers.
 
   %h3(id="configure-ec2-east") EC2 East
 
@@ -318,3 +418,97 @@ filter: haml
     %pre
       :preserve
         Something goes here
+
+%br
+
+.section-grouping
+  %h2(id="gofer" style="color: #107fc9") Gofer
+
+  %p
+    Web site:
+    %a{ :href => "https://fedorahosted.org/gofer/", :title => "Gofer home page" } https://fedorahosted.org/gofer/
+
+  %p
+    By default, the Gofer log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/gofer/agent.log
+
+%br
+
+.section-grouping
+  %h2(id="libvirt" style="color: #107fc9") Libvirt
+
+  %p
+    Web site:
+    %a{ :href => "http://www.libvirt.org", :title => "Libvirt home page" } http://www.libvirt.org
+
+  %p
+    By default, all Libvirt log files go into:
+
+  %p
+    %pre
+      :preserve
+        /var/log/libvirt/
+
+%br
+
+.section-grouping
+  %h2(id="mongodb" style="color: #107fc9") MongoDB
+
+  %p
+    Web site:
+    %a{ :href => "http://www.mongodb.org", :title => "MongoDB home page" } http://www.mongodb.org
+
+  %p
+    By default, the MongoDB log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/mongodb/mongodb.log
+
+%br
+
+.section-grouping
+  %h2(id="pulp" style="color: #107fc9") Pulp
+
+  %p
+    Web site:
+    %a{ :href => "http://www.pulpproject.org", :title => "Pulp home page" } http://www.pulpproject.org
+
+  %p
+    By default, all log files for Pulp go into this directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/pulp/
+
+  %p
+    %pre
+      :preserve
+        /var/log/pulp/client.log
+        /var/log/pulp/events.log
+        /var/log/pulp/grinder.log
+        /var/log/pulp/pulp.log
+
+%br
+
+.section-grouping
+  %h2(id="puppet" style="color: #107fc9") Puppet
+
+  %p
+    Web site:
+    %a{ :href => "http://www.puppetlabs.com", :title => "Puppet home page" } http://www.puppetlabs.com
+
+  %p
+    By default, all log files for Pupppet go into this directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/puppet/
+
