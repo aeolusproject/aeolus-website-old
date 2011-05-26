@@ -1,0 +1,320 @@
+---
+title: Aeolus | Log file locations
+breadcrumb_name: Log file locations
+extension: html
+filter: haml
+---
+%h1 Log file locations
+
+%p Default log file locations of all Aeolus components:
+
+%p
+  %ul
+    %li
+      %a{ :href => "#audrey" } Audrey
+
+    %li
+      %a{ :href => "#conductor" } Conductor
+
+    %li
+      %a{ :href => "#configure" } Configure
+
+    %li
+      %a{ :href => "#connector" } Connector
+
+    %li
+      %a{ :href => "#factory" } Image Factory
+
+    %li
+      %a{ :href => "#iwhd" } Image Warehouse
+
+    %li
+      %a{ :href => "#oz" } Oz
+
+    %li
+      %a{ :href => "#spherical" } Spherical
+
+%p
+  Default log file locations for major Aeolus dependencies:
+
+%p
+  %ul
+    %li
+      %a{ :href => "#qpid" } Apache Qpid
+
+    %li
+      %a{ :href => "#condor" } Condor
+
+    %li
+      %a{ :href => "#deltacloud" } Deltacloud
+
+.section-grouping
+  %h2(id="audrey" style="color: #107fc9") Audrey (Config Server)
+
+  %p.note
+    Need to get the info for this
+
+  %p
+    %pre
+      :preserve
+        Something goes here 
+
+%br
+
+.section-grouping
+  %h2(id="conductor" style="color: #107fc9") Conductor
+
+  %p
+    Conductor is Aeolus' web based user interface, written using Ruby on Rails.
+
+  %p By default, all log files for Conductor are in the directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-conductor/
+
+  %h3(id="conductor-dbomatic") DBomatic
+
+  %p.note
+    Need to find out what this Conductor component really does
+
+  %p
+    The dbomatic log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-conductor/dbomatic.log
+
+  %h3(id="conductor-mongrel") Mongrel
+
+  %p.note
+    Need to find out what this Conductor component really does
+
+  %p
+    The Mongrel log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-conductor/mongrel.log
+
+  %h3(id="conductor-rails") Rails
+
+  %p.note
+    Need to find out what this Conductor component really does
+
+  %p
+    The Rails log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-conductor/rails.log
+
+  %h3(id="conductor-thin") Thin
+
+  %p.note
+    Need to find out what this Conductor component really does
+
+  %p
+    The Thin log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-conductor/thin.log
+
+  %h3(id="conductor-warehouse-sync") Warehouse Sync
+
+  %p.note
+    Need to find out what this Conductor component really does
+
+  %p
+    The Warehouse Sync log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-conductor/warehouse_sync.log
+
+%br
+
+.section-grouping
+  %h2(id="configure" style="color: #107fc9") Configure
+
+  %p By default, all log files for Conductor are in the directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-configure/
+
+  %h3(id="configure-configure") aeolus-configure
+
+  %p
+    The log file for aeolus-configure is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-configure/aeolus-configure.log
+
+  %h3(id="configure-cleanup") aeolus-cleanup
+
+  %p
+    The log file for aeolus-cleanup is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-configure/aeolus-cleanup.log
+
+%br
+
+.section-grouping
+  %h2(id="connector" style="color: #107fc9") Connector
+
+  %p.note
+    Need to find out what this actually does
+
+  %p
+    Decent description needs to go here
+
+  %pre /var/log/aeolus-connector.log
+
+%br
+
+
+.section-grouping
+  %h2(id="factory" style="color: #107fc9") Image Factory
+
+  %p.note
+    Need to get the info for this
+
+  %p
+    %pre
+      :preserve
+        Something goes here 
+
+%br
+
+.section-grouping
+  %h2(id="iwhd" style="color: #107fc9") Image Warehouse
+
+  %p.note
+    Need to get the info for this
+
+  %p
+    %pre
+      :preserve
+        Something goes here 
+
+%br
+
+.section-grouping
+  %h2(id="oz" style="color: #107fc9") Oz
+
+  %p.note
+    Need to get the info for this
+
+  %p
+    %pre
+      :preserve
+        Something goes here 
+
+%br
+
+.section-grouping
+  %h2(id="spherical" style="color: #107fc9") Spherical
+
+  %p.note
+    I kind of remember Ken mentioning info about Spherical's logging via IRC,
+    but I'm not finding the conversation log.  Might need to ask Dan
+    MacPherson if he still has it.
+
+  %pre Something goes here 
+
+%br
+
+
+%h2 Logs files for Aeolus dependencies
+
+.section-grouping
+  %h2(id="qpid" style="color: #107fc9") Apache Qpid&trade;
+
+  %p
+    Web site:
+    %a{ :href => "http://qpid.apache.org", :title => "Apache Qpid home page" } http://qpid.apache.org
+
+  %p.note
+    Need to get the info for this
+
+  %p
+    %pre
+      :preserve
+        Something goes here
+
+  #trademark
+    Apache, Qpid, and Apache Qpid are trademarks of The Apache Software Foundation.
+
+%br
+
+.section-grouping
+  %h2(id="condor" style="color: #107fc9") Condor
+
+  %p
+    Web site:
+    %a{ :href => "http://www.cs.wisc.edu/condor/", :title => "Condor home page" } http://www.cs.wisc.edu/condor/
+
+  %p.note
+    Need to get the info for this
+
+  %p
+    %pre
+      :preserve
+        Something goes here
+
+%br
+
+.section-grouping
+  %h2(id="deltacloud" style="color: #107fc9") Deltacloud
+
+  %p
+    Web site:
+    %a{ :href => "http://www.deltacloud.org", :title => "Deltacloud home page" } http://www.deltacloud.org
+
+  %p.note
+    This does XYZ
+
+  %h3(id="configure-ec2-east") EC2 East
+
+  %p
+    %pre
+      :preserve
+        /var/log/deltacloud-ec2-us-east-1/ec2.log
+
+  %h3(id="configure-ec2-west") EC2 West
+
+  %p
+    %pre
+      :preserve
+        /var/log/deltacloud-ec2-us-wast-1/ec2.log
+
+  %h3(id="configure-mock") Mock
+
+  %p
+    %pre
+      :preserve
+        /var/log/deltacloud-mock/mock.log
+
+  %h3(id="configure-rhevm") RHEV-M
+
+  %p.note
+    Need to get the info for this
+
+  %p
+    %pre
+      :preserve
+        Something goes here
