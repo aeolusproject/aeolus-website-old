@@ -128,7 +128,7 @@ filter: haml
                 Use It
             %dd
               %a{ :href => "configuring_aeolus.html", :title => "Get up and running with Aeolus quickly" }
-                Configuration
+                Getting started
             %dd
               %a{ :href => "log_files.html", :title => "Locations of the Aeolus log files" }
                 Log files
