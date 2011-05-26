@@ -64,6 +64,8 @@ filter: haml
             Developers
           %a{ :href => "projects.html" }
             Projects
+          %a{ :href => "/wiki" }
+            Wiki
           %a{ :href => "news.html" }
             News
           %a{ :href => "contact.html" }
@@ -128,14 +130,17 @@ filter: haml
               %a{ :href => "configuring_aeolus.html", :title => "Get up and running with Aeolus quickly" }
                 Configuration
             %dd
-              %a{ :href => "faq.html", :title => "Frequently asked questions about Aeolus" }
-                FAQ
+              %a{ :href => "log_files.html", :title => "Locations of the Aeolus log files" }
+                Log files
             %dd
               %a{ :href => "report_a_bug.html", :title => "Instructions for reporting a bug" }
                 Report a bug
             %dd
               %a{ :href => "wiki", :title => "Aeolus wiki" }
                 Wiki
+            %dd
+              %a{ :href => "faq.html", :title => "Frequently asked questions about Aeolus" }
+                FAQ
 
         .grid_4
           %dl
