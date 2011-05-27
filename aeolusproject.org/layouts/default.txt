@@ -133,6 +133,9 @@ filter: haml
               %a{ :href => "log_files.html", :title => "Locations of the Aeolus log files" }
                 Log files
             %dd
+              %a{ :href => "config_files.html", :title => "Aeolus configuration files" }
+                Config files
+            %dd
               %a{ :href => "report_a_bug.html", :title => "Instructions for reporting a bug" }
                 Report a bug
             %dd
