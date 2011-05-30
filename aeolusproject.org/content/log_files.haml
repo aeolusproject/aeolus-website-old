@@ -28,9 +28,6 @@ filter: haml
     %li
       %a{ :href => "#iwhd" } Image Warehouse
 
-    %li
-      %a{ :href => "#spherical" } Spherical
-
 %p
   Default log file locations for major Aeolus dependencies:
 
@@ -39,7 +36,8 @@ filter: haml
     %li
       %a{ :href => "#httpd" } Apache HTTP Server
 
-    %li
+    -# Commented out until the correct info is worked out
+    -#%li
       %a{ :href => "#qpid" } Apache Qpid
 
     %li
@@ -81,8 +79,9 @@ filter: haml
 
   %h3(id="conductor-thin") Thin
 
-  %p.note
-    Need to find out what this component really does
+  %p
+    Thin is the ruby web server Audrey Config Server uses to run the web
+    application.
 
   %p
     The Thin log file for aeolus-configserver is located at:
@@ -109,34 +108,22 @@ filter: haml
 
   %h3(id="conductor-dbomatic") DBomatic
 
-  %p.note
-    Need to find out what this Conductor component really does
+  %p
+    DBomatic watches Condor's EventLog, updating the Conductor database based
+    on what happens in Condor.
 
   %p
-    The dbomatic log file is located at:
+    The DBomatic log file is located at:
 
   %p
     %pre
       :preserve
         /var/log/aeolus-conductor/dbomatic.log
 
-  %h3(id="conductor-mongrel") Mongrel
-
-  %p.note
-    Need to find out what this Conductor component really does
-
-  %p
-    The Mongrel log file is located at:
-
-  %p
-    %pre
-      :preserve
-        /var/log/aeolus-conductor/mongrel.log
-
   %h3(id="conductor-rails") Rails
 
-  %p.note
-    Need to find out what this Conductor component really does
+  %p
+    Rails is the ruby based web application framework used by Conductor. 
 
   %p
     The Rails log file is located at:
@@ -148,8 +135,8 @@ filter: haml
 
   %h3(id="conductor-thin") Thin
 
-  %p.note
-    Need to find out what this Conductor component really does
+  %p
+    Thin is the ruby based web server used by Conductor for its web interface.
 
   %p
     The Thin log file is located at:
@@ -158,19 +145,6 @@ filter: haml
     %pre
       :preserve
         /var/log/aeolus-conductor/thin.log
-
-  %h3(id="conductor-warehouse-sync") Warehouse Sync
-
-  %p.note
-    Need to find out what this Conductor component really does
-
-  %p
-    The Warehouse Sync log file is located at:
-
-  %p
-    %pre
-      :preserve
-        /var/log/aeolus-conductor/warehouse_sync.log
 
 %br
 
@@ -263,8 +237,12 @@ filter: haml
 .section-grouping
   %h2(id="iwhd" style="color: #107fc9") Image Warehouse
 
-  %p.note
-    Need to get the info for this
+  %p
+    Image Warehouse stores cloud images, upload them to cloud providers based
+    on a set of rules.
+
+  %p
+    By default, the its log file is located at:
 
   %p
     %pre
@@ -272,19 +250,6 @@ filter: haml
         /var/log/iwhd.log
 
 %br
-
-.section-grouping
-  %h2(id="spherical" style="color: #107fc9") Spherical
-
-  %p.note
-    I kind of remember Ken mentioning info about Spherical's logging via IRC,
-    but I'm not finding the conversation log.  Might need to ask Dan
-    MacPherson if he still has it.
-
-  %pre Something goes here 
-
-%br
-
 
 %h2 Logs files for Aeolus dependencies
 
@@ -317,15 +282,19 @@ filter: haml
 
 %br
 
-.section-grouping
+-# Commented out until the correct info is worked out
+-#.section-grouping
   %h2(id="qpid" style="color: #107fc9") Apache Qpid&trade;
 
   %p
     Web site:
     %a{ :href => "http://qpid.apache.org", :title => "Apache Qpid home page" } http://qpid.apache.org
 
+  %p
+    Qpid is a cross-platform Enterprise Messaging system implementing AMQP.
+
   %p.note
-    Need to get the info for this
+    Log files still need to be determined
 
   %p
     %pre
@@ -335,7 +304,7 @@ filter: haml
   #trademark
     Apache, Qpid, and Apache Qpid are trademarks of The Apache Software Foundation.
 
-%br
+-#%br
 
 .section-grouping
   %h2(id="condor" style="color: #107fc9") Condor
@@ -386,7 +355,7 @@ filter: haml
   %p
     %pre
       :preserve
-        /var/log/deltacloud-ec2-us-wast-1/ec2.log
+        /var/log/deltacloud-ec2-us-west-1/ec2.log
 
   %h3(id="configure-mock") Mock
 
@@ -394,16 +363,6 @@ filter: haml
     %pre
       :preserve
         /var/log/deltacloud-mock/mock.log
-
-  %h3(id="configure-rhevm") RHEV-M
-
-  %p.note
-    Need to get the info for this
-
-  %p
-    %pre
-      :preserve
-        Something goes here
 
 %br
 
