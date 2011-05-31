@@ -6,39 +6,20 @@ filter:
 ---
 %h1 Getting started
 
-%p
-  :markdown
-    The Aeolus Conductor is the central management piece of the entire Aeolus
-    project.  If you are new to Aeolus, you probably want to start with the
-    conductor.  Installation for the conductor is easiest through installing the
-    RPMs; instructions to do that are [here][install].
+.section-grouping
+  .note
+    %p
+      %b NOTE:
+      This is an outdated page and has been replaced by the (much expanded): 
 
-    [install]: conductor-install.html
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "configuring_aeolus.html",
+          :title => "Aeolus Getting Started Guide" } Getting Started Guide
+    -#%p
+      It has been replaced with an expanded "<b>Getting Started Guide</b>",
+      available here:
 
-    If you are not using an RPM based distribution, be aware that the conductor
-    has a very long chain of dependencies.  In particular there are many
-    rubygems that are required for proper operation.  The rubygems can be
-    installed via gem by checking out the conductor git repository from
-    [here][conductor]:
-
-    [conductor]: http://git.fedorahosted.org/git/?p=aeolus/conductor.git
-
-    <pre>$ git clone git://git.fedorahosted.org/aeolus/conductor.git</pre>
-
-    Then running:
-
-    <pre>$ cd src ; rake gems</pre>
-
-    Building from source is also possible.  More detailed instructions are
-    available on the individual project pages, but the general sequence is:
-
-  %ol
-    %li Check out the conductor git repository and run rake gems to install
-    gem dependencies.
-    %li Check out the oz git repository and build and install oz.
-    %li Check out the imagefactory git repository and build and install
-    imagefactory.
-    %li Check out the imagewarehouse git repository and build and install
-    imagewarehouse.
-    %li Check out the audrey git repository and build and install audrey.
-    %li Build and install conductor.
+    %p
+      If you came here from a link or bookmark, please let the referring place
+      know to update their link.
