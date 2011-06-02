@@ -13,13 +13,11 @@ filter: haml
   %h2 Preparing patches
 
   %p
-    :markdown
-      Patches should be generated with [`git`&nbsp;`format-patch`][git-format-patch]
-      and sent to the appropriate mailing list using
-      [`git`&nbsp;`send-email`][git-send-email].
-
-        [git-format-patch]: http://kernel.org/pub/software/scm/git/docs/git-format-patch.html
-        [git-send-email]: http://kernel.org/pub/software/scm/git/docs/git-send-email.html
+    Patches should be generated with
+    %a(href="http://kernel.org/pub/software/scm/git/docs/git-format-patch.html")
+      %code git format-patch
+    and sent to the appropriate mailing list using
+    <a href="http://kernel.org/pub/software/scm/git/docs/git-send-email.html"><code>git send-email</code></a>.
 
   %p
     %ul

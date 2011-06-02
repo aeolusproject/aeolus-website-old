@@ -1,17 +1,100 @@
 ---
-title: Aeolus Project - Conductor
-area: projects
+title: Aeolus | Conductor
+breadcrumb_name: Conductor
 extension: html
-filter:
-  - haml
+filter: haml
 ---
-%h1 Conductor
+%h1(id="aeolus-conductor")Aeolus Conductor
 
-%p The Aeolus Conductor is a web UI that allows you to manage multiple clouds from the same interface.
+%p
+  Aeolus Conductor provides a web-based user interface for managing your
+  Cloud instances.
 
-%ul
-  - conductor_pages.each do |doc|
-    - if doc[:description]
-      %li
-        %a{ :href => doc[:href] }
-          = doc[:description]
+.section-grouping
+  .note
+    %b NOTE 1:
+    The current installation process
+    %b deletes
+    any existing data in your PostgreSQL database.  Either ensure that your
+    data is backed up and restorable, or consider installing Aeolus Conductor
+    on a box that does not need PostgreSQL for any other purpose.
+
+  %p.note
+    %b NOTE 2:
+    The current installation process calls for SELinux to be in permissive
+    mode.  This is not recommended on a mission-critical machine.
+
+  %p.note
+    %b NOTE 3:
+    The current installation works on 64-bit Linux only.  32-bit support is
+    planned, but does not work at this time.
+
+%br
+
+.section-grouping
+  %h2 Installation Steps
+
+  %ol
+    %li
+      Set up an Aeolus repository, following the instructions on the
+      <a href="get_it.html" title="Get Aeolus">Get It</a> page.
+      %br
+      %br
+
+    %li
+      Install the Conductor:
+      %p
+        %pre
+          $ sudo yum install aeolus-conductor-daemons
+
+%br
+
+.section-grouping
+  %h2 Aeolus Conductor Configuration
+
+  %ol
+    %li
+      Open ports 80 and 443 on the firewall, so that (secure) web traffic may
+      be served.
+      %br
+      %br
+
+    %li
+      Set SELinux to permissive mode:
+      %p
+        %pre
+          $ sudo setenforce 0
+
+    %li
+      Ensure that the time is set correctly.  Failure to do so causes
+      connectivity issues with Amazon Elastic Cloud Compute (EC2).
+      %br
+      %br
+
+    %li
+      Clean up any existing remnants from an older installation.
+      %p.note
+      %b NOTE:
+      This will destroy any existing data in the PostgreSQL database.
+      %p
+        %pre
+          $ sudo /usr/sbin/aeolus-cleanup
+
+    %li
+      Configure Aeolus Conductor:
+      %p
+        %pre
+          $ sudo /usr/sbin/aeolus-configure
+
+%br
+
+.section-grouping
+  %h2 Verify Installation
+
+  Browse to
+  <a href="http://machine_name/conductor">http://&lt;machine_name&gt;/conductor</a>.
+
+  %p
+    The login page for Aeolus Conductor should appear.  A default
+    administrative account has been created with a username "admin" and a
+    password "password" (no quotes).
