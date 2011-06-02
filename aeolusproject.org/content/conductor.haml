@@ -10,8 +10,8 @@ filter: haml
   Aeolus Conductor provides a web-based user interface for managing your
   Cloud instances.
 
-.section-grouping
-  .note
+.note
+  %p
     %b NOTE 1:
     The current installation process
     %b deletes
@@ -19,12 +19,18 @@ filter: haml
     data is backed up and restorable, or consider installing Aeolus Conductor
     on a box that does not need PostgreSQL for any other purpose.
 
-  %p.note
+%br
+
+.note
+  %p
     %b NOTE 2:
     The current installation process calls for SELinux to be in permissive
     mode.  This is not recommended on a mission-critical machine.
 
-  %p.note
+%br
+
+.note
+  %p
     %b NOTE 3:
     The current installation works on 64-bit Linux only.  32-bit support is
     planned, but does not work at this time.
