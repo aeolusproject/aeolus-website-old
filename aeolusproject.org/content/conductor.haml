@@ -10,20 +10,22 @@ filter: haml
   Aeolus Conductor provides a web-based user interface for managing your
   Cloud instances.
 
-.note
+.warning
+  %b WARNING:
+  The current installation process
+  %b deletes
+  any existing data in your PostgreSQL database.
+
   %p
-    %b NOTE 1:
-    The current installation process
-    %b deletes
-    any existing data in your PostgreSQL database.  Either ensure that your
-    data is backed up and restorable, or consider installing Aeolus Conductor
-    on a box that does not need PostgreSQL for any other purpose.
+    Either ensure that your data is backed up and restorable, or consider
+    installing Aeolus Conductor on a box that does not need PostgreSQL for
+    any other purpose.
 
 %br
 
 .note
   %p
-    %b NOTE 2:
+    %b NOTE 1:
     The current installation process calls for SELinux to be in permissive
     mode.  This is not recommended on a mission-critical machine.
 
@@ -31,7 +33,7 @@ filter: haml
 
 .note
   %p
-    %b NOTE 3:
+    %b NOTE 2:
     The current installation works on 64-bit Linux only.  32-bit support is
     planned, but does not work at this time.
 
@@ -79,9 +81,13 @@ filter: haml
 
     %li
       Clean up any existing remnants from an older installation.
-      %p.note
-      %b NOTE:
-      This will destroy any existing data in the PostgreSQL database.
+      %br
+      %br
+      .warning
+        %b WARNING:
+        This will destroy any existing data in the PostgreSQL database.
+        %br
+        %br
       %p
         %pre
           $ sudo /usr/sbin/aeolus-cleanup
