@@ -61,8 +61,19 @@ filter: haml
 
   %h2(id="stablerhel61")
     Install the stable Red Hat Enterprise Linux 6.1 x86_64 (RC or later) packages
+
+  %h3 1. Enable the RHEL 6.1 Optional Channel
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    Log into the Red Hat Network website, then enable the "Optional" channel
+    (rhel-x86_64-server-optional-6) for the server:
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    %a(href="https://rhn.redhat.com" title="Red Hat Network") https://rhn.redhat.com
   
-  %h3 1. Add the Aeolus RHEL 6.1 Stable yum repository
+  %h3 2. Add the Aeolus RHEL 6.1 Stable yum repository
   
   %p
     %pre
@@ -70,7 +81,7 @@ filter: haml
         $ sudo wget -O /etc/yum.repos.d/rhel-aeolus.repo \
         &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/0.2.0/rhel-aeolus.repo
 
-  %h3 2. Install the Aeolus packages
+  %h3 3. Install the Aeolus packages
 
   %p
     %pre
@@ -144,8 +155,19 @@ filter: haml
 
   %h2(id="devrhel61")
     Install the Red Hat Enterprise Linux 6.1 x86_64 (RC or later) testing packages
-  
-  %h3 1. Add the Aeolus RHEL 6.1 Testing yum repository
+
+  %h3 1. Enable the RHEL 6.1 Optional Channel
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    Log into the Red Hat Network website, then enable the "Optional" channel
+    (rhel-x86_64-server-optional-6) for the server:
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    %a(href="https://rhn.redhat.com" title="Red Hat Network") https://rhn.redhat.com
+
+  %h3 2. Add the Aeolus RHEL 6.1 Testing yum repository
   
   %p
     %pre
@@ -153,7 +175,7 @@ filter: haml
         $ sudo wget -O /etc/yum.repos.d/rhel-aeolus-testing.repo \
         &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/testing/rhel-aeolus-testing.repo
 
-  %h3 2. Install the Aeolus packages
+  %h3 3. Install the Aeolus packages
 
   %p
     %pre
