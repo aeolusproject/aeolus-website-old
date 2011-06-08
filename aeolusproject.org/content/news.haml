@@ -7,6 +7,63 @@ filter: haml
 %h1 News
 
 .grid_24
+  %h2(id="201106" style="color: black") June 2011
+
+  .section-grouping
+    %h2(id="2011060801")
+      8th June 2011: Oz version 0.4.0 now available
+
+    %p
+      Oz version 0.4.0 has been released.  Release 0.4.0 is a bugfix and
+      feature release for Oz.  Some of the highlights between Oz 0.3.0 and
+      0.4.0 are:
+
+    %p
+      %ul
+        %li
+          Automatic detection/use of cached JEOS images (the previous method
+          required the user of the oz libraries to detect whether the image
+          was cached or not)
+        %li
+          Fixes to make Debian installs work for both x86_64 and i386
+        %li
+          Honor user-provided automatic installation files better, by not doing
+          modifications
+        %li
+          Use pyparted to generate partitions on newly created disks (if
+          necessary)
+        %li
+          Add support for Fedora 15
+        %li
+          Add the ability to supply an initial root/Administrator password to
+          the diskimage
+        %li
+          Abort installs after 5 minutes of disk inactivity
+        %li
+          Use M2Crypto to generate SSH keys (if necessary)
+        %li
+          Some pydoc documentation (more of this to come in the future)
+        %li
+          Support for Ubuntu 11.04
+        %li
+          Support for RHEL-6.1
+
+    %p
+      More documentation on Oz (including links on how to obtain it) is
+      available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/oz.html",
+          :title => "Oz Main Page" }
+        http://www.aeolusproject.org/oz.html
+
+    %p
+      For this release, Fedora 14 and RHEL-6 packages are available.  Note that
+      I have stopped providing Fedora 13 packages, since that distribution is
+      (or will be) out of support.  Also note that to install the RHEL-6
+      packages, you must be running RHEL-6.1 or later.
+
 
   %h2(id="201105" style="color: black") May 2011
 
@@ -21,7 +78,7 @@ filter: haml
 
     %p
       Incorporating fixes and features for the next Aeolus releases, they are
-      sometimes unstable, or not yet feature complete, so use with caution. 
+      sometimes unstable, or not yet feature complete, so use with caution.
 
     %p
       Installation instructions are available:
