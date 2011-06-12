@@ -70,7 +70,18 @@ img.graph
   display: block
   width: 767px
   margin: 1em auto 2em
-  
+
+table
+  caption-side: bottom
+
+  caption
+    padding-left: 1.5em
+    text-align: left
+    font-style: italic
+
+  pre
+    margin-top: 0
+
 hr.shade
   position: absolute
   display: block
