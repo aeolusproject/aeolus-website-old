@@ -7,11 +7,184 @@ filter:
 ---
 %h1 Audrey
 
-%p Audrey is a set of tools to do runtime configuration of running cloud instances.
+.note
+  %p
+    %b REWRITTEN:
+    Audrey configures instances in the cloud, after they have launched.
 
-%ul
-  - audrey_pages.each do |doc|
-    - if doc[:description]
-      %li
-        %a{ :href => doc[:href] }
-          = doc[:description]
+.page-listing
+  %h3 Table of contents
+
+  %ol
+    %li
+      %a{ :href => "#overview" } Overview
+
+    %li
+      %a{ :href => "#services" } Services
+
+    %li
+      %a{ :href => "#templates" } Templates
+
+    %li
+      %a{ :href => "#assemblies" } Assemblies
+
+    %li
+      %a{ :href => "#deployables" } Deployables
+
+%br
+
+.section-grouping
+  %h2(id="overview") Overview
+
+  %p
+    Audrey uses the information from <b>Templates</b>, <b>Assemblies</b>, and
+    <b>Deployables</b> to build an <b>Instance Configuration</b> record for
+    instances in a cloud.
+
+  %p
+    This <b>Instance Configuration</b> is used to generate the input to the
+    specific <b>Configuration Engine</b> that will drive the post launch
+    configuration.
+
+%br
+
+.section-grouping
+  %h2(id="services") Services
+
+  %img{ :src => "images/audrey_service.png", :width => "140",
+        :height => "75", :alt => "Abstract Audrey image" }
+
+  %p
+    An Aeolus <b>Service</b> is an abstraction of something that can be
+    configured by a <b>Configuration Engine</b>. Typically, a Service
+    contains some static information along with parameters that can modify
+    configuration of the service.
+
+  %p
+    For <a href="http://www.puppetlabs.com" title="Puppet website">Puppet</a>,
+    this might be a collection of <b>Classes</b> and <b>Parameters</b>.  For
+    <a href="http://wiki.opscode.com/display/chef/Home" title="Chef website">Chef</a>,
+    this might be a <b>Chef Recipe</b>. A Service contains a set of
+    <b>Parameters</b> that define how the service can be configured for an
+    instance. Each parameter can be an input parameter, an output parameter,
+    or both. The image above depicts a service with an input parameter and an
+    output parameter.
+
+  %p
+    Input parameters are required by the service to function properly. Output
+    parameters are provided by the service (or, provided by the configured
+    instance).
+
+  %p
+    In order to build an Instance Configuration, values must be assigned to
+    all input parameters.
+
+%br
+
+.section-grouping
+  %h2(id="templates") Templates
+
+  %img{ :src => "images/audrey_template.png", :width => "46",
+        :height => "112", :alt => "Audrey template image" }
+
+  %p
+    An Aeolus <b>Template</b> describes a collection of services along with
+    the operating system for an instance in a cloud.
+
+  %p
+    The image above depicts a Fedora template with several services. A
+    template does not contain any values for the service parameters. Instead,
+    it is a boilerplate representation of a class of instances. Additionally,
+    it serves as the basis for creating images through
+    <a href="imagefactory.html" title="Image Factory page">Image Factory</a>.
+
+  %p
+    The physical representation of a template is an XML file containing a
+    <b>template name</b>, the <b>operating system</b>, a <b>description</b>,
+    and a set of <b>services</b>.
+
+  %h3 Example
+
+  %p
+    The example below shows how to specify a template that includes puppet
+    classes and parameters.
+
+  %table(border="0" cellpadding="0" cellspacing="0" style="caption-side: bottom;")
+    %caption(style="text-align:left; font-size:-1; font-style:italic;")
+      Example 1: template.xml
+    %tr
+      %td
+        %pre
+          :preserve
+            &lt;template name=&quot;Template1&quot; id=&quot;UUID&quot;&gt;
+              &lt;os&gt;
+                &lt;name&gt;Fedora&lt;/name&gt;
+                &lt;version&gt;14&lt;/version&gt;
+              &lt;/os&gt;
+              &lt;description&gt;This is a template&lt;/description&gt;
+              &lt;services&gt;
+                &lt;service name=&quot;service-name&quot;&gt;
+                  &lt;scripts&gt;
+                    &lt;script&gt;puppet-class1&lt;/script&gt;
+                    &lt;script&gt;puppet-class2&lt;/script&gt;
+                  &lt;/scripts&gt;
+                  &lt;!-- a parameter that must have a value in an assembly --&gt;
+                  &lt;parameter name=&quot;param-name&quot; type=&quot;scalar&quot; required=&quot;true&quot;/&gt;
+                  &lt;!-- a parameter whose value can be used by other assemblies in a deployable --&gt;
+                  &lt;parameter name=&quot;param2-name&quot; type=&quot;scalar&quot; provided=&quot;true&quot;/&gt;
+                &lt;/service&gt;
+              &lt;/services&gt;
+            &lt;/template&gt;
+
+%br
+
+.section-grouping
+  %h2(id="assemblies") Assemblies
+
+  %img{ :src => "images/audrey_assembly.png", :width => "63",
+        :height => "112", :alt => "Audrey assembly image" }
+
+  %p
+    An Aeolus <b>Assembly</b> is really a template with values provided for
+    the service parameters. These values are depicted as "<b>user data</b>" in
+    the image above. The assembly represents the data required to configure a
+    single instance in a cloud.
+
+  %p
+    An assembly is physically represented as an XML document with a name and
+    a set of services. The name captures the assembly "<b>type</b>". An
+    assembly type is a way of classifying the assembly for a particular
+    purpose.
+
+  %p
+    For instance, there might be a "<b>mysql</b>" assembly type that indicates
+    instances based on that assembly will be MySQL Database Servers.
+
+  %h3 Example
+
+  %table(border="0" cellpadding="0" cellspacing="0" style="caption-side: bottom;")
+    %caption(style="text-align:left; font-size:-1; font-style:italic;")
+      Example 2: assembly.xml
+    %tr
+      %td
+        %pre
+          :preserve
+            &lt;assembly name="AssemblyType" id="UUID"&gt;
+              &lt;template type="Template1" id="template-UUID/&gt;
+              &lt;services&gt;
+                &lt;service name="service-name"&gt;
+                  &lt;parameter name="param-name"&gt;
+                    &lt;value&gt;&lt;![CDATA[Parameter Value]]&gt;&lt;/value&gt;
+                  &lt;/parameter&gt;
+                  &lt;parameter name="another-parameter"&gt;
+                    &lt;reference assembly="AnotherAssembly" provided-parameter="param-from-another-assembly"/&gt;
+                  &lt;/parameter&gt;
+                &lt;/service&gt;
+              &lt;/services&gt;
+            &lt;/assembly&gt;
+
+%br
+
+.section-grouping
+  %h2(id="deployables") Deployables
+
