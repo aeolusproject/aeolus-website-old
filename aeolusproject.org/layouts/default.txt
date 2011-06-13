@@ -115,8 +115,8 @@ filter: haml
               %a{ :href => "get_it.html", :title => "Get Aeolus" }
                 Get It
             %dd
-              %a{ :href => "get_it.html#rhel61", :title => "Download Aeolus for RHEL 6.1 (RC or later)" }
-                RHEL 6.1 (RC)
+              %a{ :href => "get_it.html#rhel61", :title => "Download Aeolus for RHEL 6.1" }
+                RHEL 6.1
             %dd
               %a{ :href => "get_it.html#fedora", :title => "Download Aeolus for Fedora" }
                 Fedora
