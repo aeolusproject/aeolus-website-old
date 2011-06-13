@@ -60,18 +60,19 @@ filter: haml
 .section-grouping
 
   %h2(id="stablerhel61")
-    Install the stable Red Hat Enterprise Linux 6.1 x86_64 (RC or later) packages
+    Install the stable Red Hat Enterprise Linux 6.1 x86_64 (RC or later)
+    packages
 
-  %h3 1. Enable the RHEL 6.1 Optional Channel
+  %h3
+    1. If the system is using RHN Classic, enable the RHEL 6.1 Optional
+    Channel
+  
+  %p.note
+    This step isn't needed if you're using RHN Subscription Management.
 
   %p
-    &nbsp;&nbsp;&nbsp;
-    Log into the Red Hat Network website, then enable the "Optional" channel
-    (rhel-x86_64-server-optional-6) for the server:
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    %a(href="https://rhn.redhat.com" title="Red Hat Network") https://rhn.redhat.com
+    %pre
+      $ sudo rhn-channel --add --channel=rhel-x86_64-server-optional-6
   
   %h3 2. Add the Aeolus RHEL 6.1 Stable yum repository
   
@@ -84,9 +85,23 @@ filter: haml
   %h3 3. Install the Aeolus packages
 
   %p
+    &nbsp;&nbsp;&nbsp;&nbsp; 
+    If you are using RHN Classic, use this command to install Aeolus:
+
+  %p
+    %pre
+      $ sudo yum install aeolus-conductor-daemons aeolus-conductor-doc imagefactory
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; 
+    If you are using RHN Subscription Management (instead of RHN Classic), use
+    this command to install Aeolus:
+
+  %p
     %pre
       :preserve
-        $ sudo yum install aeolus-conductor-daemons aeolus-conductor-doc imagefactory
+        $ sudo yum install aeolus-conductor-daemons aeolus-conductor-doc imagefactory \
+        &nbsp; --enablerepo=rhel-6-server-optional-rpms
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus along with its
