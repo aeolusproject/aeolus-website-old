@@ -23,7 +23,7 @@ filter: haml
     Only use the
     %b Development Testing
     packages when you are doing development, or looking for a specific bug
-    fix. 
+    fix.
 
   %h2 Which packages do you want?
 
@@ -66,16 +66,16 @@ filter: haml
   %h3
     1. If the system is using RHN Classic, enable the RHEL 6.1 Optional
     Channel
-  
+
   %p.note
     This step isn't needed if you're using RHN Subscription Management.
 
   %p
     %pre
       $ sudo rhn-channel --add --channel=rhel-x86_64-server-optional-6
-  
+
   %h3 2. Add the Aeolus RHEL 6.1 Stable yum repository
-  
+
   %p
     %pre
       :preserve
@@ -85,7 +85,7 @@ filter: haml
   %h3 3. Install the Aeolus packages
 
   %p
-    &nbsp;&nbsp;&nbsp;&nbsp; 
+    &nbsp;&nbsp;&nbsp;&nbsp;
     If you are using RHN Classic, use this command to install Aeolus:
 
   %p
@@ -93,7 +93,7 @@ filter: haml
       $ sudo yum install aeolus-conductor-daemons aeolus-conductor-doc imagefactory
 
   %p
-    &nbsp;&nbsp;&nbsp;&nbsp; 
+    &nbsp;&nbsp;&nbsp;&nbsp;
     If you are using RHN Subscription Management (instead of RHN Classic), use
     this command to install Aeolus:
 
@@ -108,7 +108,7 @@ filter: haml
     dependencies on the RHEL 6.1 x86_64 (RC or later) system.
 
   %p
-    &nbsp;&nbsp;&nbsp;&nbsp; 
+    &nbsp;&nbsp;&nbsp;&nbsp;
     %a.button{ :href => "configuring_aeolus.html" }
       Configure It
       %img{:src => "images/button-right.png", :alt => "→"}
@@ -119,7 +119,7 @@ filter: haml
   %h2(id="stablefedora") Install the stable Fedora 14 x86_64 packages
 
   %h3 1. Add the Aeolus Fedora 14 Stable yum repository
-  
+
   %p
     %pre
       :preserve
@@ -138,7 +138,7 @@ filter: haml
     dependencies on the Fedora 14 system.
 
   %p
-    &nbsp;&nbsp;&nbsp;&nbsp; 
+    &nbsp;&nbsp;&nbsp;&nbsp;
     %a.button{ :href => "configuring_aeolus.html" }
       Configure It
       %img{:src => "images/button-right.png", :alt => "→"}
@@ -183,7 +183,7 @@ filter: haml
     %a(href="https://rhn.redhat.com" title="Red Hat Network") https://rhn.redhat.com
 
   %h3 2. Add the Aeolus RHEL 6.1 Testing yum repository
-  
+
   %p
     %pre
       :preserve
@@ -203,7 +203,7 @@ filter: haml
     later) system.
 
   %p
-    &nbsp;&nbsp;&nbsp;&nbsp; 
+    &nbsp;&nbsp;&nbsp;&nbsp;
     %a.button{ :href => "configuring_aeolus.html" }
       Configure It
       %img{:src => "images/button-right.png", :alt => "→"}
@@ -214,7 +214,7 @@ filter: haml
   %h2(id="devfedora") Install the Fedora 14 x86_64 testing packages
 
   %h3 1. Add the Aeolus Fedora 14 Testing yum repository
-  
+
   %p
     %pre
       :preserve
@@ -233,7 +233,7 @@ filter: haml
     packages, along with their dependencies, on the Fedora 14 system.
 
   %p
-    &nbsp;&nbsp;&nbsp;&nbsp; 
+    &nbsp;&nbsp;&nbsp;&nbsp;
     %a.button{ :href => "configuring_aeolus.html" }
       Configure It
       %img{:src => "images/button-right.png", :alt => "→"}
