@@ -12,59 +12,92 @@ filter: haml
   %br
   There's a
   %a{ :href => "http://maps.google.com/maps/ms?hl=en&ie=UTF8&oe=UTF8&msa=0&msid=208821202026111036470.0004a15803778082ac2c5&t=h&ll=-4.565474,9.140625&spn=176.477907,336.796875&z=2" } Google Map
-  showing locations of several contributors. 
+  showing locations of several contributors.
+
+%h2 Connectivity
+
+%h3 Ruby wrapper for VMware VI API
+
+.section-grouping
+  %h3
+    Project:
+    %a{ :href => "spherical.html" } Spherical
+
+  %p John Dunning (mgr), Ken Keiter (lead)
 
 %br
 
-%h2 Team membership
+%h2 Infrastructure
 
-%h3
-  %a{ :href => "audrey.html" } Audrey
+%h3 Integration
 
-%p John Dunning (mgr), Chris Lalancette (lead), Greg Blomquist, Joe Vlcek
+.section-grouping
+  %h4
+    Project:
+    %a{ :href => "audrey.html" } Audrey
 
-
-%h3
-  %a{ :href => "conductor.html" } Conductor
-
-%p
-  Hugh Brock (mgr), Jay Guiditta, Wes Hayutin, Tomáš Hrčka, Ken Keiter,
-  Chris Lalancette, Steven Linabery, Ian Main, Mo Morsi, Mike Orazi,
-  Jan Provaznik, Scott Seago, Tomas Sedovic, Richard Su, Martyn Taylor,
-  Angus Thomas, Jiri Tomasek, Francesco Vollero, Matt Wagner, Maros Zatko,
-  Jozef Zigmund
-
-%h3
-  %a{ :href => "configure.html" } Configure
-
-%p Hugh Brock (mgr), Mo Morsi (lead), Michael Orazi (lead), Martyn Taylor
-
-%h3
-  %a{ :href => "imagefactory.html" } Image Factory
-
-%p John Dunning (mgr), Steve Loranz, Ian McLeod, Ovidiu Visan
-
-
-%h3
-  %a{ :href => "imagewarehouse.html" } Image Warehouse
-
-%p John Dunning (mgr), Jim Meyering (lead), Jeff Darcy, Chris Lalancette, Pete Zaitcev
-
-
-%h3
-  %a{ :href => "oz.html" } Oz
-
-%p John Dunning (mgr), Chris Lalancette (lead), Steve Loranz, Jim Meyering, Ovidiu Visan
-
-
-%h3
-  %a{ :href => "spherical.html" } Spherical
-
-%p John Dunning (mgr), Ken Keiter (lead)
+  %p John Dunning (mgr), Greg Blomquist (lead), Chris Lalancette, Joe Vlcek
 
 %br
 
-%h2 Team member details
+.section-grouping
+  %h4
+    Project:
+    %a{ :href => "configure.html" } Configure
+
+  %p
+    Hugh Brock (mgr), Mo Morsi (lead), Michael Orazi (lead), Richard Su,
+    Martyn Taylor, Francesco Vollero
+
+%br
+
+%h3 Self-contained projects
+
+.section-grouping
+  %h4
+    Project:
+    %a{ :href => "imagefactory.html" } Image Factory
+
+  %p John Dunning (mgr), Steve Loranz, Ian McLeod, Ovidiu Visan
+
+%br
+
+.section-grouping
+  %h4
+    Project:
+    %a{ :href => "imagewarehouse.html" } Image Warehouse
+
+  %p
+    John Dunning (mgr), Jim Meyering (lead), Jeff Darcy, Mark McLoughlin,
+    Pete Zaitcev
+
+%br
+
+.section-grouping
+  %h4
+    Project:
+    %a{ :href => "oz.html" } Oz
+
+  %p John Dunning (mgr), Chris Lalancette (lead), Ian McLeod, Ovidiu Visan
+
+%br
+
+%h2 Web-based User Interface
+
+.section-grouping
+  %h3
+    Project:
+    %a{ :href => "conductor.html" } Conductor
+
+  %p
+    Hugh Brock (mgr), Jay Guiditta, Wes Hayutin, Tomáš Hrčka, Ken Keiter,
+    Chris Lalancette, Steven Linabery, Ian Main, Mo Morsi, Mike Orazi,
+    Jan Provaznik, Scott Seago, Tomas Sedovic, Richard Su, Martyn Taylor,
+    Angus Thomas, Jiri Tomasek, Matt Wagner, Maros Zatko, Jozef Zigmund
+
+%br
+
+%h1 People's details
 
 %table.team-table
   %thead
@@ -172,7 +205,6 @@ filter: haml
       %td Jay
       %td &nbsp;
       %td &nbsp;
-
     %tr
       %td Wes Hayutin
       %td weshay
@@ -185,7 +217,6 @@ filter: haml
       %td Wes
       %td &nbsp;
       %td &nbsp;
-
     %tr
       %td Tomáš Hrčka
       %td thrcka
@@ -198,7 +229,6 @@ filter: haml
       %td &nbsp;
       %td
         %a{ :href => "http://twitter.com/thrcka" } thrcka
-
     %tr
       %td Kenneth Keiter
       %td tigger
@@ -284,6 +314,17 @@ filter: haml
       %td Ian
       %td &nbsp;
       %td &nbsp;
+    %tr
+      %td Mark McLoughlin
+      %td markmc
+      %td ???, Image Warehouse, ???
+      %td ???
+      %td markmc AT red hat DOT com
+      %td Mark
+      %td
+        %a{ :href => "http://blogs.gnome.org/markmc" } Link
+      %td
+        %a{ :href => "http://twitter.com/markmc_" } markmc_
     %tr
       %td Jim Meyering
       %td jim
@@ -436,15 +477,6 @@ filter: haml
       %td
         %a{ :href => "http://twitter.com/ovidiuvisan" } ovidiuvisan
     %tr
-      %td Francesco Vollero
-      %td fvollero
-      %td Condor, Conductor
-      %td Ruby Development
-      %td fvollero AT red hat DOT com
-      %td Francesco
-      %td &nbsp;
-      %td &nbsp;
-    %tr
       %td Joe Vlcek
       %td JoeV
       %td Audrey
@@ -456,6 +488,16 @@ filter: haml
       %td Joe
       %td &nbsp;
       %td &nbsp;
+    %tr
+      %td Francesco Vollero
+      %td fvollero
+      %td Condor, Conductor
+      %td Ruby Development
+      %td fvollero AT red hat DOT com
+      %td Francesco
+      %td &nbsp;
+      %td
+        %a{ :href => "http://twitter.com/fvollero" } fvollero
     %tr
       %td Mark Wagner
       %td mwagner
