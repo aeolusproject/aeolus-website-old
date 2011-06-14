@@ -115,11 +115,11 @@ filter: haml
               %a{ :href => "get_it.html", :title => "Get Aeolus" }
                 Get It
             %dd
-              %a{ :href => "get_it.html#rhel61", :title => "Download Aeolus for RHEL 6.1" }
-                RHEL 6.1
+              %a{ :href => "get_it.html#stable", :title => "Download latest stable release" }
+                Stable release
             %dd
-              %a{ :href => "get_it.html#fedora", :title => "Download Aeolus for Fedora" }
-                Fedora
+              %a{ :href => "get_it.html#dev", :title => "Download latest development packages" }
+                Development
 
         .grid_4
           %dl
