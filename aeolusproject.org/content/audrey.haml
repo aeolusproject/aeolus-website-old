@@ -430,28 +430,37 @@ filter:
   %p
     There are several moving parts in Figure 1 above:
 
-  %table
+  %table.team-table(width="80%")
     %caption
       %b Table 1:
       Audrey overview breakdown
-    %tr(valign="top")
-      %th(style="border-top:1px solid black; border-bottom:1px solid black; padding:4px 2px 4px 2px") Deployable
-      %td(style="border-top:1px solid black; border-bottom:1px solid black; padding:4px 2px 4px 2px") The collection of assemblies that will generate instances in a cloud
-    %tr(valign="top")
-      %th(style="border-bottom:1px solid black; padding:4px 2px 4px 2px") Cloud Engine
-      %td(style="border-bottom:1px solid black; padding:4px 2px 4px 2px") A collection of tools in Aeolus that work together to generate instances in various cloud providers
-    %tr(valign="top")
-      %th(style="border-bottom:1px solid black; padding:4px 2px 4px 2px") Cloud
-      %td(style="border-bottom:1px solid black; padding:4px 2px 4px 2px") A cloud provider
-    %tr(valign="top")
-      %th(style="border-bottom:1px solid black; padding:4px 2px 4px 2px") Config Server
-      %td(style="border-bottom:1px solid black; padding:4px 2px 4px 2px") A piece of Audrey that manages the instance configuration data
-    %tr(valign="top")
-      %th(style="border-bottom:1px solid black; padding:4px 2px 4px 2px") Instance
-      %td(style="border-bottom:1px solid black; padding:4px 2px 4px 2px") The actual instance in a cloud, created by Cloud Engine
-    %tr(valign="top")
-      %th(style="border-bottom:1px solid black; padding:4px 2px 4px 2px") Audrey Startup
-      %td(style="border-bottom:1px solid black; padding:4px 2px 4px 2px") The Audrey component that resides on the instance, which contacts the Config Server for configuration information
+    %thead
+      %tr
+        %td
+          %b Deployable
+        %td(style="text-align: left") The collection of assemblies that will generate instances in a cloud
+    %tbody
+      %tr
+        %td
+          %b Cloud Engine
+        %td(style="text-align: left") A collection of tools in Aeolus that work together to generate instances in various cloud providers
+      %tr
+        %td
+          %b Cloud
+        %td(style="text-align: left") A cloud provider
+      %tr
+        %td
+          %b Config Server
+        %td(style="text-align: left") A piece of Audrey that manages the instance configuration data
+      %tr
+        %td
+          %b Instance
+        %td(style="text-align: left") The actual instance in a cloud, created by Cloud Engine
+    %tfoot
+      %tr
+        %td(style="font: normal 12px Verdana, Arial, Helvetica")
+          %b Audrey Startup
+        %td(style="text-align: left") The Audrey component that resides on the instance, which contacts the Config Server for configuration information
 
   %p
     The process follows the diagram from the top left to the bottom right.  A
@@ -541,77 +550,119 @@ filter:
   %p
     Figure 2 shows the specific interactions with the Config Server and cuts out much of what is happening in the Cloud Engine. For the Config Server to provide complete configuration data to an instance, several things take place:
 
-  %table(style="width: 90%; background-color:#fff;" cellspacing="0" cellpadding="2")
+  %table.team-table(width="80%")
     %caption
       %b Table 2:
       Config Server communication process
-    %tr(valign="middle")
-      %td(width="1%" nowrap="nowrap" style="border-left:1px solid grey; border-top:1px solid grey; border-bottom:1px solid grey; padding:4px 2px 4px 2px;") Step #
-      %td(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; border-bottom:1px solid grey; padding:4px 2px 4px 2px;") Description
-    %tr
-      %td(style="text-align: center; border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 1
-      %td(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") Conductor POSTs instance configuration to the Config Server
-    %tr
-      %td(style="text-align: center; border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 2
-      %td(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The Audrey Startup script on the Instance "learns" how to contact the Config Server (not shown--see [[#Audrey_Startup | Audrey Startup]] below)
-    %tr
-      %td(style="text-align: center; border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 3
-      %td(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The Audrey Startup script issues a GET for the configuration data
-    %tr
-      %td(style="text-align: center; border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 4
-      %td(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The Audrey Startup script issues a GET for the parameters that the Config Server expects the instance to provide back (the "provided-parameters" section from the instance-config XML document)
-    %tr
-      %td(style="text-align: center; border-bottom: 1px solid grey; border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 5
-      %td(style="border-bottom: 1px solid grey; border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The Audrey Startup script issues a PUT to send the "provided-parameters" values back to the Config Server.
-
+    %thead
+      %tr
+        %td(width="5%") Step #
+        %td(style="text-align: left") Description
+    %tbody
+      %tr
+        %td
+          %b 1
+        %td(style="text-align: left")
+          Conductor POSTs instance configuration to the Config Server
+      %tr
+        %td
+          %b 2
+        %td(style="text-align: left")
+          The Audrey Startup script on the Instance "learns" how to contact
+          the Config Server (not shown--see
+          %a(href="#audrey-startup") Audrey Startup 
+          below)
+      %tr
+        %td
+          %b 3
+        %td(style="text-align: left")
+          The Audrey Startup script issues a GET for the configuration data
+      %tr
+        %td
+          %b 4
+        %td(style="white-space: normal; text-align: left")
+          The Audrey Startup script issues a GET for the parameters that the
+          Config Server expects the instance to provide back (the
+          "provided-parameters" section from the instance-config XML document)
+    %tfoot
+      %tr
+        %td(style="font: normal 12px Verdana, Arial, Helvetica")
+          %b 5
+        %td(style="text-align: left")
+          The Audrey Startup script issues a PUT to send the
+          "provided-parameters" values back to the Config Server.
 
   %h4 RESTful Interface
 
   %p
     For the different types of requests to the Config Server, there are a set of specific responses that can occur.
 
-  %table(style="width: 90%; background-color:#eee;" cellspacing="0")
+  %table.team-table(width="80%")
     %caption
       %b Table 3:
       RESTful interface for config server
-    %tr(valign="middle")
-      %th(width="20%" style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") Request
-      %th(width="8%" style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") Status
-      %th(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") Description
-    %tr(valign="middle")
-      %th(rowspan="2" style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") POST /configs/$UUID
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 201
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The instance configuration document was received and a record was created for the instance
-    %tr(valign="middle")
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 400
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The instance configuration document is not valid
-    %tr(valign="middle")
-      %tr(rowspan="3" style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") GET /configs/$UUID
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 200
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The complete set of instance configs is returned in the response body. There's no need to request again.
-    %tr(valign="middle")
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 202
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The response body contains a portion of the complete set of instance configs. Try again soon for the complete set.
-    %tr(valign="middle")
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 404
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The requested URL cannot be found.
-    %tr(valign="middle")
-      %tr(rowspan="3" style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") GET /params/$UUID
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 200
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The config server does not require anymore provided parameters from the instance.
-    %tr(valign="middle")
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 202
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The response body contains the set of provided parameters still required by the config server.
-    %tr(valign="middle")
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 404
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The requested URL cannot be found.
-    %tr(valign="middle")
-      %tr(valign="middle" rowspan="2" style="border-left:1px solid grey; border-top:1px solid grey; border-bottom:1px solid grey; padding:4px 2px 4px 2px;") PUT /reply/$UUID
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; padding:4px 2px 4px 2px;") 200
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; padding:4px 2px 4px 2px;") The values for the provided params in the request body have been updated for $UUID.
-    %tr(valign="middle")
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; border-bottom:1px solid grey; padding:4px 2px 4px 2px;") 404
-      %tr(style="border-left:1px solid grey; border-top:1px solid grey; border-right:1px solid grey; border-bottom:1px solid grey; padding:4px 2px 4px 2px;") The $UUID in the request is not known by the config server.
+    %thead
+      %tr
+        %td(width="20%") Request
+        %td(width="8%") Status
+        %td(style="text-align: left") Description
+    %tbody
+      %tr
+        %td(rowspan="2")
+          %b POST /configs/$UUID
+        %td 201
+        %td(style="text-align: left")
+          The instance configuration document was received and a record was
+          created for the instance
+      %tr
+        %td 400
+        %td(style="text-align: left")
+          The instance configuration document is not valid
+      %tr
+        %td(rowspan="3")
+          %b GET /configs/$UUID
+        %td 200
+        %td(style="white-space: normal; text-align: left")
+          The complete set of instance configs is returned in the response
+          body. There's no need to request again.
+      %tr
+        %td 202
+        %td(style="white-space: normal; text-align: left")
+          The response body contains a portion of the complete set of
+          instance configs. Try again soon for the complete set.
+      %tr
+        %td 404
+        %td(style="text-align: left")
+          The requested URL cannot be found.
+      %tr
+        %td(rowspan="3")
+          %b GET /params/$UUID
+        %td 200
+        %td(style="text-align: left")
+          The config server does not require anymore provided parameters from
+          the instance.
+      %tr
+        %td 202
+        %td(style="text-align: left")
+          The response body contains the set of provided parameters still
+          required by the config server.
+      %tr
+        %td 404
+        %td(style="text-align: left")
+          The requested URL cannot be found.
+    %tfoot
+      %tr
+        %td(rowspan="2" style="font: normal 12px Verdana, Arial, Helvetica")
+          %b PUT /reply/$UUID
+        %td(style="border-bottom-left-radius: 0; border-bottom-right-radius: 0")
+          200
+        %td(style="text-align: left; border-bottom-left-radius: 0; border-bottom-right-radius: 0")
+          The values for the provided params in the request body have been
+          updated for $UUID.
+      %tr
+        %td 404
+        %td(style="text-align: left")
+          The $UUID in the request is not known by the config server.
 
   %h4 Partial Configuration
 
@@ -647,7 +698,7 @@ filter:
   %p
     There are no immediate plans to have Audrey do deadlock detection.  It is up to the configuration engine script author to determine that the service and assembly dependencies in a deployable do not cause deadlock.
 
-  %h3 Audrey Startup
+  %h3(id="audrey-startup") Audrey Startup
 
   %p
     %b TODO:
