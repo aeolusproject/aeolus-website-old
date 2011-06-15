@@ -67,10 +67,10 @@ filter: haml
 <? if (PEAR::isError($mail)) { ?>
 <?   echo('An error occurred when sending the message: ' . $mail->getMessage()); ?>
 <? } else { ?>
-<?   echo('Message successfully sent!'); ?>
+<?   echo('<h2>Message sent!</h2>'); ?>
 <? } ?>
 
-%h2 Thank you for your message submission
+%h3 Thank you for your message submission
 
 %p
   A member of the Aeolus project team will read your email and respond
