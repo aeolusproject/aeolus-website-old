@@ -13,6 +13,7 @@ filter: haml
 <? // Static fields ?>
 <? define(EMAIL_FROM, 'Aeolus Website <jclift@redhat.com>'); ?>
 <? define(EMAIL_TO, 'Justin Clift <jclift@redhat.com>'); ?>
+<? define(CC_LIST, 'Bryan Che <bche@redhat.com>, Carl Trieloff <ctrielof@redhat.com>, Margaret Rimmler <mrimmler@redhat.com>, Mike Evans <mevans@redhat.com>, Sarangan Rangachari <srangach@redhat.com>'); ?>
 <? define(SUBJECT, 'Aeolus web form submission'); ?>
 <? define(MAIL_HOST, 'localhost'); ?>
 
@@ -61,17 +62,17 @@ filter: haml
 <? $smtp = Mail::factory('smtp', array ('host' => MAIL_HOST, 'auth' => FALSE)); ?>
 
 <? // Send the mail ?>
-<? $mail = $smtp->send(EMAIL_TO, $headers, $body); ?>
+<? $smtp_to = array('To' => EMAIL_TO, 'Cc' => CC_LIST); ?>
+<? $mail = $smtp->send($smtp_to, $headers, $body); ?>
 
 <? // Check for errors ?>
 <? if (PEAR::isError($mail)) { ?>
+<?   echo('<h2>Failure to send message!</h2>'); ?>
 <?   echo('An error occurred when sending the message: ' . $mail->getMessage()); ?>
 <? } else { ?>
 <?   echo('<h2>Message sent!</h2>'); ?>
+<?   echo('<h3>Thank you for your message submission</h3>'); ?>
+<?   echo('<p>A member of the Aeolus project team will read your email'); ?>
+<?   echo(' and respond appropriately, generally within the next few'); ?>
+<?   echo(' hours (during business days).</p>'); ?>
 <? } ?>
-
-%h3 Thank you for your message submission
-
-%p
-  A member of the Aeolus project team will read your email and respond
-  appropriately, generally within the next few hours (during business days).
