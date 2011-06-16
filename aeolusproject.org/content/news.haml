@@ -10,6 +10,72 @@ filter: haml
   %h2(id="201106" style="color: black") June 2011
 
   .section-grouping
+    %h2(id="2011061501")
+      15th June 2011: Image Warehouse 0.96 stable release
+
+    %h3 New features
+
+    %ul
+      %li
+        %b Added VMware vSphere registration back-end
+        %br
+        Type is "fs-vmw".
+        %br
+        %br
+      %li
+        %b
+          The RHEV-M registration back-end can now import a just-uploaded
+          template into a master storage domain
+        %br
+        See new POST parameter "cluster".
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        %b
+          iwhd will segfault or hang less often during garbage collection
+        %br
+        [bug introduced in 0.91, partially fixed in 0.94]
+        %br
+        %br
+      %li
+        %b
+          iwhd init system start script more reliable
+        %br
+        Prior to this release, the system init script for iwhd would
+        mistakenly succeed even if mongod failed to start in time.
+        %br
+        Now, when mongod fails to start, the iwhd init script also fails.
+        %br
+        %br
+      %li
+        %b
+          It is now possible to use Windows.Domain\Administrator as a user
+          name in a cloud with Windows credentials
+        %br
+        The backslash was causing an internal error due to improper JSON
+        escaping.
+
+    %p Full release announcement with download information:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/aeolus-devel/2011-June/002416.html",
+          :title => "Image Warehouse 0.96 release announcement" }
+        https://fedorahosted.org/pipermail/aeolus-devel/2011-June/002416.html
+
+    %p Fedora 15 Source RPM (omitted from announcement email):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://people.redhat.com/meyering/iwhd/iwhd-0.96.1.9e86-1.fc15.src.rpm",
+          :title => "Fedora 15 Source RPM for Image Warehouse 0.96" }
+        http://people.redhat.com/meyering/iwhd/iwhd-0.96.1.9e86-1.fc15.src.rpm
+
+  %br
+
+  .section-grouping
     %h2(id="2011060801")
       8th June 2011: Oz version 0.4.0 now available
 
