@@ -418,7 +418,7 @@ filter:
     various pieces of Audrey that exist in the workflow of spinning up
     instances in a cloud.
 
-  %table
+  %table(id="figure1")
     %caption
       %b Figure 1:
       Audrey overview
@@ -430,7 +430,7 @@ filter:
   %p
     There are several moving parts in Figure 1 above:
 
-  %table.team-table(width="80%")
+  %table.team-table(id="table1" width="80%")
     %caption
       %b Table 1:
       Audrey overview breakdown
@@ -550,7 +550,7 @@ filter:
   %p
     Figure 2 shows the specific interactions with the Config Server and cuts out much of what is happening in the Cloud Engine. For the Config Server to provide complete configuration data to an instance, several things take place:
 
-  %table.team-table(width="80%")
+  %table.team-table(id="table2" width="80%")
     %caption
       %b Table 2:
       Config Server communication process
@@ -592,12 +592,12 @@ filter:
           The Audrey Startup script issues a PUT to send the
           "provided-parameters" values back to the Config Server.
 
-  %h4 RESTful Interface
+  %h4(id="restful-interface") RESTful Interface
 
   %p
     For the different types of requests to the Config Server, there are a set of specific responses that can occur.
 
-  %table.team-table(width="80%")
+  %table.team-table(id="table3" width="80%")
     %caption
       %b Table 3:
       RESTful interface for config server
@@ -667,21 +667,44 @@ filter:
   %h4 Partial Configuration
 
   %p
-    Since there is no way for the Config Server to predetermine which instance will be the first to execute the PUT (Table 2, step 5), assembly dependencies are not guaranteed to be fulfilled before an instance does the first GET (Table 2, step 3). For example, if Assembly1 depends on provided parameters from Assembly2, but Assembly1 does its GET (Table 2, step 3) before Assembly2 does its PUT (Table 2, step 5), then the configurations available to Assembly1 will be incomplete.
+    Since there is no way for the Config Server to predetermine which
+    instance will be the first to execute the PUT (Table 2, step 5), assembly
+    dependencies are not guaranteed to be fulfilled before an instance does
+    the first GET (Table 2, step 3). For example, if Assembly1 depends on
+    provided parameters from Assembly2, but Assembly1 does its GET (Table 2,
+    step 3) before Assembly2 does its PUT (Table 2, step 5), then the
+    configurations available to Assembly1 will be incomplete.
 
   %p
-    There is a choice to make in this situation: allow partial configs to be sent to instance, or do not allow partial configs? The best way to handle this choice is probably to make it configurable either at the assembly level or the service level.
+    There is a choice to make in this situation: allow partial configs to be
+    sent to instance, or do not allow partial configs? The best way to handle
+    this choice is probably to make it configurable either at the assembly
+    level or the service level.
 
   %p
-    If an instance is not allowed to partially configure, then the Config Server will respond to step 3 with an empty response body and an HTTP 202 status code.  This will indicate to the client that even though the body is empty, there really is configuration data to retrieve, and the client should try again later.  If the instance is allowed to partially configure, then the Config Server will still respond with an HTTP 202 status code, but the response body will contain whatever configuration data can be collected at the time of the request.
+    If an instance is not allowed to partially configure, then the Config
+    Server will respond to step 3 with an empty response body and an HTTP 202
+    status code.  This will indicate to the client that even though the body
+    is empty, there really is configuration data to retrieve, and the client
+    should try again later.  If the instance is allowed to partially
+    configure, then the Config Server will still respond with an HTTP 202
+    status code, but the response body will contain whatever configuration
+    data can be collected at the time of the request.
 
   %p
-    If a client receives an HTTP 202 status code, it is up to the client to understand how to configure itself based on the partial configuration data.
+    If a client receives an HTTP 202 status code, it is up to the client to
+    understand how to configure itself based on the partial configuration
+    data.
 
   %h4 Deadlock Concerns
 
   %p
-    Since this system of assembly dependencies generates instances that depend on each other for configuration information, it's possible to construct a set of dependencies that lead to deadlock.  In other words, it's possible to have assembly dependencies that lead to instances never being able to finish their configuration because they are forever waiting for other instances to report "provided" parameters.
+    Since this system of assembly dependencies generates instances that
+    depend on each other for configuration information, it's possible to
+    construct a set of dependencies that lead to deadlock.  In other words,
+    it's possible to have assembly dependencies that lead to instances never
+    being able to finish their configuration because they are forever waiting
+    for other instances to report "provided" parameters.
 
   %table
     %caption
@@ -693,10 +716,19 @@ filter:
           :height => "167", :alt => "RHEV-M image" }
 
   %p
-    Figure 3 illustrates a contrived deadlock example.  When configured, service "B" in Assembly1 produces a parameter that is required by service "2" in Assembly2.  Service "2" produces a parameter that is required by service "Y" in Assembly3.  And, service "Y" produces a parameter that is required by service "B" in Assembly1.  In order for any of those three services to be configured, another service in another instance must first be configured.  In this example, services "B", "2", and "Y" will never be able to complete configuration.
+    Figure 3 illustrates a contrived deadlock example.  When configured,
+    service "B" in Assembly1 produces a parameter that is required by service
+    "2" in Assembly2.  Service "2" produces a parameter that is required by
+    service "Y" in Assembly3.  And, service "Y" produces a parameter that is
+    required by service "B" in Assembly1.  In order for any of those three
+    services to be configured, another service in another instance must first
+    be configured.  In this example, services "B", "2", and "Y" will never be
+    able to complete configuration.
 
   %p
-    There are no immediate plans to have Audrey do deadlock detection.  It is up to the configuration engine script author to determine that the service and assembly dependencies in a deployable do not cause deadlock.
+    There are no immediate plans to have Audrey do deadlock detection.  It is
+    up to the configuration engine script author to determine that the
+    service and assembly dependencies in a deployable do not cause deadlock.
 
   %h3(id="audrey-startup") Audrey Startup
 
@@ -705,7 +737,13 @@ filter:
     %i Include link to Audrey Start documentation
 
   %p
-    Each instance that is part of an Aeolus deployable must be created from an image that contains the Audrey Start script.  The Audrey Start script depends on the '''user data''' from the Assembly to indicate where the Config Server can be found.  The ''user data'' also contains the UUID for the instance, which is used in requests from the instance to retrieve configuration data from the Config Server (see [[#RESTful Interface | RESTful Interface]]).
+    Each instance that is part of an Aeolus deployable must be created from
+    an image that contains the Audrey Start script.  The Audrey Start script
+    depends on the '''user data''' from the Assembly to indicate where the
+    Config Server can be found.  The ''user data'' also contains the UUID for
+    the instance, which is used in requests from the instance to retrieve
+    configuration data from the Config Server (see
+    <a href="#restful-interface" title="RESTful Interface">RESTful Interface</a>).
 
 %br
 
@@ -715,15 +753,21 @@ filter:
   %h3(id="ce-integration") Cloud Engine Integration
 
   %p
-  The integration with Cloud Engine is limited to requiring images to contain the Audrey Start script when creating Audrey-enabled instances.  To that end, the proper Audrey client tools packages need to be part of the Template used by Image Factory when creating images.
+    The integration with Cloud Engine is limited to requiring images to
+    contain the Audrey Start script when creating Audrey-enabled instances.
+    To that end, the proper Audrey client tools packages need to be part of
+    the Template used by Image Factory when creating images.
 
   %h3 Cloud Provider Integration
 
   %p
-    Audrey's main purpose is to enable post boot configuration of instances in a cloud.  To that end, it is important that Audrey supports various cloud providers.
+    Audrey's main purpose is to enable post boot configuration of instances
+    in a cloud.  To that end, it is important that Audrey supports various
+    cloud providers.
 
   %p
-    For the initial reference implementation, only EC2 is included for integration.
+    For the initial reference implementation, only EC2 is included for
+    integration.
 
   %h4 EC2
 
@@ -734,26 +778,46 @@ filter:
     %li Setting up a Config Server in EC2
     %li
       %a(href="#ce-integration") Cloud Engine integration
-    %li Properly creating ''user data'' in EC2's user data location
+    %li Properly creating <b>user data</b> in EC2's user data location
 
   %p
-    Setting up a Config Server in EC2 is largely a manual process today.  It entails creating a new instance through the AWS console, installing the aeolus-configserver package, and configuring the Config Server appropriately.  It is the goal of the Audrey development team to create a streamlined process for creating Config Servers for EC2.
+    Setting up a Config Server in EC2 is largely a manual process today.  It
+    entails creating a new instance through the AWS console, installing the
+    <b>aeolus-configserver</b> package, and configuring the Config Server
+    appropriately.  It is the goal of the Audrey development team to create a
+    streamlined process for creating Config Servers for EC2.
 
   %p
-    The Cloud Engine integration simply assures that instances created as part of a deployable in EC2 have the correct Audrey Start script installed.
+    The Cloud Engine integration simply assures that instances created as
+    part of a deployable in EC2 have the correct Audrey Start script
+    installed.
 
   %p
-    Properly creating the ''user data'' in EC2's user data location simply requires using Cloud Engine to create the instances for EC2.  This ensures that the correct EC2 deltacloud driver will be used when the user data is created for the instance.
+    Properly creating the <b>user data</b> in EC2's user data location simply
+    requires using Cloud Engine to create the instances for EC2.  This
+    ensures the correct EC2 deltacloud driver will be used when the user data
+    is created for the instance.
 
   %h4 RHEV-M
 
   %p
-    Integration with RHEV-M adds an extra bit of complexity over integrating with EC2.  The EC2 deltacloud back-end driver can query EC2 as a cloud provider and request the IP address of instances it has launched.  RHEV-M doesn't have this same support.  In order to return IP addresses to the RHEV-M deltacloud back-end driver, the driver needs to ask a the config server responsible for the configuration management of launched instances.
+    Integration with RHEV-M adds an extra bit of complexity over integrating
+    with EC2.  The EC2 deltacloud back-end driver can query EC2 as a cloud
+    provider and request the IP address of instances it has launched.
+    RHEV-M doesn't have this same support.  In order to return IP addresses
+    to the RHEV-M deltacloud back-end driver, the driver needs to ask the
+    Config Server responsible for the configuration management of launched
+    instances.
 
   %p
-    As instances are launched, they contact the config server via HTTP (see Figure 1 above).  The config server stores the IP address of the instances as they check in.  This information can be retrieved by another REST call to the config server.  Figure 4 below illustrates this extra integration point.
+    As instances are launched, they contact the Config Server via HTTP (see
+    <a href="#figure1">Figure 1</a> above).  The config server stores the IP
+    address of the instances as they check in.  This information can be
+    retrieved by another REST call to the config server.
+    <a href="#figure4">Figure 4</a> below illustrates this extra integration
+    point.
 
-  %table
+  %table(id="figure4")
     %caption
       %b Figure 4:
       Audrey RHEV-M Integration
