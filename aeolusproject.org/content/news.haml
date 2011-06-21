@@ -10,6 +10,65 @@ filter: haml
   %h2(id="201106" style="color: black") June 2011
 
   .section-grouping
+    %h2(id="2011062101")
+      21st June 2011: Image Factory 0.2.1 now available
+
+    %p
+      The Image Factory team is pleased to announce the release of Image
+      Factory version 0.2.1.  Version 0.2.1 adds features and bugfixes needed
+      to support the next step in the evolution of Aeolus.
+
+    %p
+      %ul
+        %li
+          VMware vSphere support has been added.
+        %li
+          Support for snapshots of EC2 images on EBS has been added.
+        %li
+          Importing images from providers has been added to both the command
+          line and QMF interfaces.
+        %li
+          Explicit support for rebuilding images without having to respecify
+          the template.
+        %li
+          Building and pushing images now supports multiple targets or
+          providers in a single call rather than requiring one to repeat the
+          call multiple times. (added in 0.2.0)
+        %li
+          Source has been cleaned up and DRYed out.  This is an ongoing,
+          iterative process.
+
+    %p
+      Download packages from:
+      %br
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://repos.fedorapeople.org/repos/aeolus/image-factory/",
+          :title => "Image Factory repository"} Image Factory repository
+
+    %p
+      More documentation will be published at the Image Factory project page of
+      the Aeolus site.
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/imagefactory.html",
+          :title => "Image Factory project page"} Image Factory project page
+    %p
+      Until then, please refer to the README and documentation
+      included with the Image Factory source for more information.
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://github.com/aeolusproject/image_factory/blob/master/README.markdown",
+          :title => "Image Factory README"} Image Factory README
+      %br
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://github.com/aeolusproject/image_factory/tree/master/Documentation",
+          :title => "Image Factory documentation"} Image Factory documentation
+
+  %br
+
+  .section-grouping
     %h2(id="2011061501")
       15th June 2011: Image Warehouse 0.96 stable release
 
