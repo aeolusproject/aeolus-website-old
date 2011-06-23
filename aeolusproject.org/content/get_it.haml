@@ -129,7 +129,8 @@ filter: haml
   %p
     %pre
       :preserve
-        $ sudo yum install aeolus-conductor-daemons aeolus-conductor-doc imagefactory --exclude='deltacloud-core'
+        $ sudo yum install aeolus-conductor-daemons aeolus-conductor-doc imagefactory \
+        &nbsp; --exclude='deltacloud-core rubygem-http_connection'
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus along with its
@@ -235,7 +236,7 @@ filter: haml
   %p
     %pre
       :preserve
-        $ sudo yum install aeolus-all
+        $ sudo yum install aeolus-all --exclude='rubygem-http_connection'
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
