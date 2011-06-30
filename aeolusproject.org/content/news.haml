@@ -10,6 +10,50 @@ filter: haml
   %h2(id="201106" style="color: black") June 2011
 
   .section-grouping
+    %h2(id="2011063001")
+      30th June 2011: Oz version 0.5.0 now available
+
+    %p
+      Oz version 0.5.0 has been released.  Release 0.5.0 is a bugfix and
+      feature release for Oz.
+
+    %p
+      Highlighted improvements of Oz 0.5.0 are:
+
+    %p
+      %ul
+        %li
+          Replace icicle-nc binary with a shell script to try various methods.
+          Besides being more portable, this also allows us to convert Oz to a
+          noarch RPM (thanks to Padraig Brady)
+        %li
+          Support for Ubuntu 6.06
+        %li
+          Support for md5sum/sha1sum/sha256sum checking of ISOs after download
+        %li
+          New -x flag for oz-install to write the libvirt XML file to a
+          user-specified location (thanks to Steve Dake)
+        %li
+          Support for OpenSUSE customization
+        %li
+          Support for F-15 customization (thanks to Steve Dake)
+        %li
+          Support for running commands at the end of package installation
+          (thanks to Steve Dake)
+
+    %p
+      More documentation on Oz (including links on how to obtain it) is
+      available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/oz.html",
+          :title => "Oz Main Page" } http://www.aeolusproject.org/oz.html
+
+    %p
+      For this release, Fedora 14 and RHEL-6.1 packages are available.
+
+  .section-grouping
     %h2(id="2011062101")
       21st June 2011: Image Factory 0.2.2 now available
 

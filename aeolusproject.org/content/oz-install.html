@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.20.1 -->
-<!-- CreationDate: Wed Jun  8 10:22:13 2011 -->
+<!-- CreationDate: Thu Jun 30 17:34:32 2011 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -107,6 +107,14 @@ level <b>loglevel</b>. The log levels are: <br>
 3 - all messages <br>
 4 - all messages, prepended with the level and classname</p>
 
+<p style="margin-left:11%;"><b>&minus;x
+&lt;xmlfile&gt;</b></p>
+
+<p style="margin-left:22%;">Oz will normally generate a
+libvirt XML file in the current working directory suffixed
+with the date and time. Specifing the -x option allows the
+filename to be overridden.</p>
+
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
@@ -166,20 +174,24 @@ exists prior to Oz starting installation, Oz will abort. If
 this option is used, then Oz will undefine the libvirt guest
 with the same name or UUID and delete the diskimage, so it
 should be used with caution.</p></td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="3%">
+</table>
 
+<p style="margin-left:11%;"><b>&minus;t
+&lt;timeout&gt;</b></p>
 
-<p><b>&minus;t</b></p></td>
-<td width="8%"></td>
-<td width="78%">
+<p style="margin-left:22%;">Terminate the installation of
+the guest in <b>timeout</b> seconds rather than the oz
+default. This value should be increased if running on slow
+storage or running multiple oz-install operations on the
+same machine.</p>
 
+<p style="margin-left:22%; margin-top: 1em">Please note
+that there is a separate termination action that occurs if
+300 seconds elapses with no disk activity to the operating
+system. This timer value is not configurable.</p>
 
-<p>Use a timeout value of <b>timeout</b> for installation,
-rather than the oz default. This can be useful if you know
-you have slower storage and want to wait longer for the
-installation to timeout.</p></td></tr>
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
