@@ -7,6 +7,71 @@ filter: haml
 %h1 News
 
 .grid_24
+  %h2(id="201107" style="color: black") July 2011
+
+  .section-grouping
+    %h2(id="2011071201")
+      12th July 2011: Image Warehouse 0.97 stable release
+
+    %h3 New features
+
+    %ul
+      %li
+        %b
+          A registration to RHEV-M now returns the ID and diagnostic messages
+          in the body of reply to POST request
+        %br
+        This permits registration of the same image several times, which
+        helps when triaging problems. The old "ami-id" attribute is retained
+        and remains the same across registration back-end types.
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        %b
+          On Fedora systems, /etc/iwhd/conf.js is not overwritten anymore when
+          upgrading the package
+        %br
+        Added %config(noreplace) to the rpm .spec file
+        %br
+        %br
+
+      %li
+        %b
+          Adapted to jansson-1.2's new, incompatible, changed API
+        %br
+        We can now build both with it and the older API
+        %br
+        %br
+
+      %li
+        %b
+          Do not leave a value of "pending xxxx" remaining in "ami-id"
+          attribute in case of an error in registration process.
+        %br
+        When we did, no application or human administrator could tell if
+        there was an error or a hung  registration.
+
+    %p Full release announcement with download information:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/aeolus-devel/2011-July/003029.html",
+          :title => "Image Warehouse 0.97 release announcement" }
+        https://fedorahosted.org/pipermail/aeolus-devel/2011-July/003029.html
+
+    %p Fedora 15 Source RPM:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://people.redhat.com/meyering/iwhd/iwhd-0.97-1.fc15.src.rpm",
+          :title => "Fedora 15 Source RPM for Image Warehouse 0.97" }
+        http://people.redhat.com/meyering/iwhd/iwhd-0.97-1.fc15.src.rpm
+
+  %br
+
+.grid_24
   %h2(id="201106" style="color: black") June 2011
 
   .section-grouping
