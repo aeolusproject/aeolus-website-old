@@ -78,7 +78,7 @@ filter: haml
     %pre
       :preserve
         $ sudo wget -O /etc/yum.repos.d/rhel-aeolus.repo \
-        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/0.2.0/rhel-aeolus.repo
+        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/0.3.0/rhel-aeolus.repo
 
   %h3 3. Install the Aeolus packages
 
@@ -88,7 +88,7 @@ filter: haml
 
   %p
     %pre
-      $ sudo yum install aeolus-conductor-daemons aeolus-conductor-doc imagefactory
+      $ sudo yum install aeolus-all
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -98,8 +98,7 @@ filter: haml
   %p
     %pre
       :preserve
-        $ sudo yum install aeolus-conductor-daemons aeolus-conductor-doc imagefactory \
-        &nbsp; --enablerepo=rhel-6-server-optional-rpms
+        $ sudo yum install aeolus-all --enablerepo=rhel-6-server-optional-rpms
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus along with its
@@ -122,15 +121,14 @@ filter: haml
     %pre
       :preserve
         $ sudo wget -O /etc/yum.repos.d/fedora-aeolus.repo \
-        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/0.2.0/fedora-aeolus.repo
+        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/0.3.0/fedora-aeolus.repo
 
   %h3 2. Install the Aeolus packages
 
   %p
     %pre
       :preserve
-        $ sudo yum install aeolus-conductor-daemons aeolus-conductor-doc imagefactory \
-        &nbsp; --exclude='deltacloud-core rubygem-aws-2.5.5 rubygem-http_connection'
+        $ sudo yum install aeolus-all
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus along with its
