@@ -1,0 +1,1705 @@
+---
+title: Aeolus | Aeolus 0.3.0 Milestone - Release Notes
+breadcrumb_name: Aeolus 0.3.0 Milestone -Release Notes
+extension: html
+filter: haml
+---
+%h1 Aeolus 0.3.0 Milestone - Release Notes
+
+.page-listing
+  %h3 Table of Contents
+
+  %ol
+    %li
+      %a{ :href => "#newplatforms",
+          :title => "New platforms supported" } New platforms supported
+
+    %li
+      %a{ :href => "set_up_ec2.html",
+          :title => "Configuring for Amazon EC2" } New features (summary)
+
+    %li
+      %a{ :href => "make_template.html",
+          :title => "Create a Fedora 14 Template" } Issues resolved (summary)
+
+    %li
+      %a{ :href => "start_image.html",
+          :title => "Start an Instance of the Image" } Known issues still remaining
+
+    %li
+      %a{ :href => "stop_image.html",
+          :title => "Stop a running Instance" } New features (Redmine issue list)
+
+    %li
+      %a{ :href => "cleaning_up.html",
+          :title => "Cleaning up" } Issues resolved (Bugzilla issue list)
+
+.section-grouping
+  This is a
+  %b signficant
+  new release of Aeolus.
+
+  %p
+    It is our first to use the
+    <b>new, user friendly, web interface</b>,
+    designed by Ken Keiter and Jonell Lay.
+
+  %p
+    Additionally, this release brings
+    %b initial support
+    for
+    <b>VMware vSphere 4.1</b>,
+    and tentative support for
+    <b>Red Hat Enterprise Virtualization</b> (RHEV).
+
+  %p
+    Installation is very straightforward, with instructions on the website:
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %a{ :href => "http://www.aeolusproject.org/get_it.html",
+        :title => "Get Aeolus" }
+      http://www.aeolusproject.org/get_it.html
+
+  %p
+    Upgrading from a previous version also works, following the
+    instructions on the
+    %a(href="upgrading.html" title="Instructions for upgrading Aeolus") upgrading Aeolus
+    page.
+
+  %p
+    Packages are available for Fedora 14 x86_64, and RHEL 6.1 x86_64.
+
+  %p
+    All testing and bug reports are hugely appreciated, directly
+    contributing towards the quality of Aeolus releases and future growth.
+
+  %p
+    %b NOTE -
+    Although Aeolus is still some way from production quality, it is suitable
+    for testing.
+    %b Please don't use it with live data yet.
+
+%br
+
+.section-grouping
+  %h2(id="newplatforms") New platforms supported
+
+  %p
+    Initial working support has been added for:
+
+  %ul
+    %li
+      %b VMware vSphere 4.1
+      %br
+      Initial setup instructions are
+      <a href="https://www.aeolusproject.org/redmine/projects/aeolus/wiki/VSphere_Setup" title="VMware vSphere setup instructions">here</a>.
+      These instructions are in initial working form, with more user friendly
+      ones presently being created.
+      %br
+      %br
+    %li
+      %b Red Hat Enterprise Virtualization 2.x
+      %br
+      This is very early stage support, and still pretty fragile.  It's
+      receiving a lot of development effort though, so should be pretty decent
+      in the next major Aeolus release (0.4.0).
+      %br
+      %br 
+      Initial setup instructions are
+      <a href="https://www.aeolusproject.org/redmine/projects/aeolus/wiki/RHEV-M_Setup" title="RHEV-M setup instructions">here</a>.  They are in
+      rough initial form, with more user friendly ones due for creation soon.
+
+%br
+
+.section-grouping
+  %h2(id="newfeaturesummary") New features (summary)
+
+  %p
+    %b Creation in progress
+
+%br
+
+.section-grouping
+  %h2(id="issues") Issues resolved (summary)
+
+  %p
+    %b Creation in progress
+
+%br
+
+.section-grouping
+  %h2(id="knownissues") Known issues
+
+  %p
+    These are known problems due to be resolved in a subsequent release.
+
+  %ul
+    %li
+      %b
+        BZ
+        %a(id="726428" href="https://bugzilla.redhat.com/show_bug.cgi?id=726428") 726428
+        \- EC2 push failure when deleting temporary security group
+      %ul
+        %li
+          Pushes to Amazon EC2 Cloud occasionally fail with an error in the
+          \/var/log/imagefactory.log file
+        %li
+          Users can still proceed to deploy images as long as they use both
+          the image id and build id in their deployable xml file
+        %li
+          Users should clean up defunct security groups resulting from a
+          failed push
+      %br
+
+    -#%li
+      %b
+        BZ
+        %a(id="719747" href="https://bugzilla.redhat.com/show_bug.cgi?id=719747") 719747
+        \- rhevm and vmware setup / requirements for Aeolus
+      %ul
+        %li
+          Initial documents are present, with user friendly ones with being
+          written or due to be written soon.
+      %br
+
+    %li
+      %b
+        BZ
+        %a(id="726206" href="https://bugzilla.redhat.com/show_bug.cgi?id=726206") 726206
+        \- With RHEV, only the Default Datacenter with Default Cluster can be
+        used
+      %ul
+        %li
+          In order to use Redhat Enterprise Virtualization Manager,
+          hypervisor servers must be members of the default datacenter and
+          default cluster.
+      %br
+
+    %li
+      %b
+        BZ
+        %a(id="723896" href="https://bugzilla.redhat.com/show_bug.cgi?id=723896") 723896
+        \- Need smarter conductor RHEV-M heartbeat
+      %ul
+        %li
+          Current implementation can result in overloading the RHEV-M v2.2
+          server if more than five instances exist due to limitation in the
+          RHEV-M api.
+        %li
+          Users should limit the number of instances running within RHEV-M.
+      %br
+
+    -# This sounds more like a problem with the testing gear
+    %li
+      %b
+        BZ
+        %a(id="723894" href="https://bugzilla.redhat.com/show_bug.cgi?id=723894") 723894
+        \- VMware deployments to low spec NFS datastores error out
+      %ul
+        %li
+          Low spec NFS datastores are not recommend due to poor performance
+      %br
+
+    %li
+      %b
+        BZ
+        %a(id="723897" href="https://bugzilla.redhat.com/show_bug.cgi?id=723897") 723897
+        \- Unable to build RHEV-M and VMware at the same time with aeolus-image
+      %ul
+        %li
+          Users should not attempt to build/push images to both rhevm and
+          vmware at the same time
+      %br
+
+    %li
+      %b
+        BZ
+        %a(id="723327" href="https://bugzilla.redhat.com/show_bug.cgi?id=723327") 723327
+        \- aeolus-push fails to push images to the correct provider when
+        multiple, different sets of credentials are used
+      %ul
+        %li
+          Multiple provider accounts for a single provider are not supported
+          in the beta
+      %br
+
+    %li
+      %b
+        BZ
+        %a(id="719377" href="https://bugzilla.redhat.com/show_bug.cgi?id=719377") 719377
+        \- Guests built for VMware/rhevm allow ssh as root with default password
+      %ul
+        %li
+          users should specify the root password when building templates for rhevm or vmware
+          %pre
+            :preserve
+              &lt;os&gt;
+                &lt;name&gt;RHEL-6&lt;/name&gt;
+                &lt;version>1&lt;/version&gt;
+                &lt;arch&gt;x86_64&lt;/arch&gt;
+                &lt;install type='iso'&gt;
+                  &lt;iso&gt;http://path/to/path/EC2.iso&lt;/iso&gt;
+                &lt;/install&gt;
+                &lt;rootpw&gt;myRootPasswd&lt;/rootpw&gt;
+              &lt;/os&gt;
+      %br
+
+    %li
+      %b
+        BZ
+        %a(id="719972" href="https://bugzilla.redhat.com/show_bug.cgi?id=719972") 719972
+        \- Need documentation around the Oz tdl, for creating custom
+        templates
+      %ul
+        %li
+          Due to be created soon, with examples
+      %br
+
+    %li
+      %b
+        BZ
+        %a(id="719486" href="https://bugzilla.redhat.com/show_bug.cgi?id=719486") 719486
+        \- Hardware virtualization support required
+      %ul
+        %li
+          Virtualization support needs to be enabled in hardware bios running Aeolus
+        %li
+          One way to check for this is to see the hvm support when running
+          '<b>virsh capabilities</b>' command line tool
+          %pre
+            :preserve
+              [root@localhost ~]# virsh capabilities | grep hvm
+                <os_type>hvm</os_type>
+                <os_type>hvm</os_type>
+              [root@localhost ~]# 
+      %br
+
+    %li
+      %b
+        BZ
+        %a(id="717657" href="https://bugzilla.redhat.com/show_bug.cgi?id=717657") 717657
+        \- Requirement for port 443 inbound to be open
+      %ul
+        %li
+          Documentation needs updating to show inbound port 443 (https) needs
+          to be open
+%br
+
+.section-grouping
+  %h2(id="newfeaturesredmine") New features (Redmine issue list)
+
+  %ul
+    -#%li
+      %b Completely new, user friendly, interface
+      %br
+      -#Screenshots
+      -#<a href="screenshots.html" title="Aeolus screenshots">here</a>.
+    %li
+      %b
+        Redmine
+        %a(id="rmXXX" href="https://www.aeolusproject.org/redmine/issues/1914") 1914
+      \- Remove unimplemented admin settings
+    %li
+      %b
+        Redmine
+        %a(id="1882" href="https://www.aeolusproject.org/redmine/issues/1882") 1882
+      \- Find_index method doesn't find breadcrumb for slice! method
+    %li
+      %b
+        Redmine
+        %a(id="1870" href="https://www.aeolusproject.org/redmine/issues/1870") 1870
+      \- Conductor supports HWPs with nil attributes
+    %li
+      %b
+        Redmine
+        %a(id="1869" href="https://www.aeolusproject.org/redmine/issues/1869") 1869
+      \- Build imagefactory 0.2.2
+    %li
+      %b
+        Redmine
+        %a(id="1866" href="https://www.aeolusproject.org/redmine/issues/1866") 1866
+      \- Create config file for aeolus-cli if one doesn't exist
+    %li
+      %b
+        Redmine
+        %a(id="1845" href="https://www.aeolusproject.org/redmine/issues/1845") 1845
+      \- As a user, I would like the look of tab navigation to match that of
+      the visual designs
+    %li
+      %b
+        Redmine
+        %a(id="1844" href="https://www.aeolusproject.org/redmine/issues/1844") 1844
+      \- As a sefl service user, I would like permission to launch deployables
+      in all pools by default
+    %li
+      %b
+        Redmine
+        %a(id="1830" href="https://www.aeolusproject.org/redmine/issues/1830") 1830
+      \- When admin is adding new suggested deployables, warn if the URL they
+      enter doesn't resolve to a valid XML file
+    %li
+      %b
+        Redmine
+        %a(id="1809" href="https://www.aeolusproject.org/redmine/issues/1809") 1809
+      \- aeolus-list
+    %li
+      %b
+        Redmine
+        %a(id="1799" href="https://www.aeolusproject.org/redmine/issues/1799") 1799
+      \- As RCM, I have access to updated packages in brew & a list of NEVRs
+      for the rpms that need to be included
+    %li
+      %b
+        Redmine
+        %a(id="1796" href="https://www.aeolusproject.org/redmine/issues/1796") 1796
+      \- As a conductor/rhev-m user, I can launch a deployable on RHEV-M
+    %li
+      %b
+        Redmine
+        %a(id="1790" href="https://www.aeolusproject.org/redmine/issues/1790") 1790
+      \- As a conductor/rhev-m user, when I push an image the image is
+      exported as a template in rhevm that is launchable
+    %li
+      %b
+        Redmine
+        %a(id="1784" href="https://www.aeolusproject.org/redmine/issues/1784") 1784
+      \- Removed the legacy Configure code whichs adds aeolus repos to
+      \/etc/yum.repos.d/
+    %li
+      %b
+        Redmine
+        %a(id="1761" href="https://www.aeolusproject.org/redmine/issues/1761") 1761
+      \- Fix JS method for selecting Provider in New ProviderAccount view
+    %li
+      %b
+        Redmine
+        %a(id="1740" href="https://www.aeolusproject.org/redmine/issues/1740") 1740
+      \- Review
+    %li
+      %b
+        Redmine
+        %a(id="1683" href="https://www.aeolusproject.org/redmine/issues/1683") 1683
+      \- As a developer, I have an understanding of the IPA/SSO integration
+      strategy so I can execute on future work
+    %li
+      %b
+        Redmine
+        %a(id="1681" href="https://www.aeolusproject.org/redmine/issues/1681") 1681
+      \- Resolve critical rubygem-rails bug
+    %li
+      %b
+        Redmine
+        %a(id="1663" href="https://www.aeolusproject.org/redmine/issues/1663") 1663
+      \- As an aeolus-conductor developer, there is an automated sequence to
+      build an srpm using mock and trigger staged QE tests to pass rpm to
+      fp-testing repo
+    %li
+      %b
+        Redmine
+        %a(id="1658" href="https://www.aeolusproject.org/redmine/issues/1658") 1658
+      \- Broken translations in next, after merge of newui
+    %li
+      %b
+        Redmine
+        %a(id="1650" href="https://www.aeolusproject.org/redmine/issues/1650") 1650
+      \- As an admin, I have a cli tool for building and importing images
+    %li
+      %b
+        Redmine
+        %a(id="1631" href="https://www.aeolusproject.org/redmine/issues/1631") 1631
+      \- As an end-user, pulp is not installed by an installation of aeolus-all
+    %li
+      %b
+        Redmine
+        %a(id="1618" href="https://www.aeolusproject.org/redmine/issues/1618") 1618
+      \- Check if pool has set up quota in pretty/filter view
+    %li
+      %b
+        Redmine
+        %a(id="1597" href="https://www.aeolusproject.org/redmine/issues/1597") 1597
+      \- Prepare to remove old/unnecessary components
+    %li
+      %b
+        Redmine
+        %a(id="1595" href="https://www.aeolusproject.org/redmine/issues/1595") 1595
+      \- building aeolus conductor from src instructions are no longer accurate
+    %li
+      %b
+        Redmine
+        %a(id="1575" href="https://www.aeolusproject.org/redmine/issues/1575") 1575
+      \- Implement loading/switching of AJAX partials for pretty/grid views
+      on any pages which offer both
+    %li
+      %b
+        Redmine
+        %a(id="1566" href="https://www.aeolusproject.org/redmine/issues/1566") 1566
+      \- dbomatic periodically crashes (the next iteration)
+    %li
+      %b
+        Redmine
+        %a(id="1563" href="https://www.aeolusproject.org/redmine/issues/1563") 1563
+      \- As an aeous developer I want to work against puppet components in the
+      upstream project
+    %li
+      %b
+        Redmine
+        %a(id="1524" href="https://www.aeolusproject.org/redmine/issues/1524") 1524
+      \- Dependency analysis for rails 3 upgrade next sprint
+    %li
+      %b
+        Redmine
+        %a(id="1514" href="https://www.aeolusproject.org/redmine/issues/1514") 1514
+      \- As a admin of machines running Fedora / Java stacks, I would like to
+      see jruby in Fedora so as to eventually support aeolus on my platform
+    %li
+      %b
+        Redmine
+        %a(id="1487" href="https://www.aeolusproject.org/redmine/issues/1487") 1487
+      \- As an admin I would like more options to configure aeolus-configure
+      logging
+    %li
+      %b
+        Redmine
+        %a(id="1473" href="https://www.aeolusproject.org/redmine/issues/1473") 1473
+      \- As a user of aeolus-configure, web requests should have consistent
+      error handling/management
+    %li
+      %b
+        Redmine
+        %a(id="1458" href="https://www.aeolusproject.org/redmine/issues/1458") 1458
+      \- Fix public redmine issues
+    %li
+      %b
+        Redmine
+        %a(id="1453" href="https://www.aeolusproject.org/redmine/issues/1453") 1453
+      \- As a developer, I want the Rails application to know if the user's
+      browser supports javascript
+    %li
+      %b
+        Redmine
+        %a(id="1451" href="https://www.aeolusproject.org/redmine/issues/1451") 1451
+      \- As a developer, I want ensure that my controllers adhere to REST
+      principles
+    %li
+      %b
+        Redmine
+        %a(id="1449" href="https://www.aeolusproject.org/redmine/issues/1449") 1449
+      \- As a developer, I need the CRUD actions in the pools, deployments,
+      and instances controllers to be able to render only a partial of the
+      page when the request is made by XHR
+    %li
+      %b
+        Redmine
+        %a(id="1447" href="https://www.aeolusproject.org/redmine/issues/1447") 1447
+      \- As a developer, I need the CRUD actions in the pools, deployments,
+      and instances controllers to respond_to :json requests
+    %li
+      %b
+        Redmine
+        %a(id="1444" href="https://www.aeolusproject.org/redmine/issues/1444") 1444
+      \- As a developer, I want to simplify the controller namespacing
+    %li
+      %b
+        Redmine
+        %a(id="1439" href="https://www.aeolusproject.org/redmine/issues/1439") 1439
+      \- deltacloud-core-0.3.0 available in f14
+    %li
+      %b
+        Redmine
+        %a(id="1429" href="https://www.aeolusproject.org/redmine/issues/1429") 1429
+      \- As a team member, I have seen the QE automation suite in action and
+      can run it myself
+    %li
+      %b
+        Redmine
+        %a(id="1406" href="https://www.aeolusproject.org/redmine/issues/1406") 1406
+      \- As a user, When I destroy a pool, I dont want to destroy Hardware
+      Profile
+    %li
+      %b
+        Redmine
+        %a(id="1402" href="https://www.aeolusproject.org/redmine/issues/1402") 1402
+      \- RHEV-M issue encountered by iwhd
+    %li
+      %b
+        Redmine
+        %a(id="1386" href="https://www.aeolusproject.org/redmine/issues/1386") 1386
+      \- As a mainter of aeolus-conductor, there is a scripted way to
+      synchronize the results of a mock build with the correct fedora public
+      repo on fedorapeople
+    %li
+      %b
+        Redmine
+        %a(id="1384" href="https://www.aeolusproject.org/redmine/issues/1384") 1384
+      \- As an internal user of redmine, I can verify that reset password
+      works as expected
+    %li
+      %b
+        Redmine
+        %a(id="1383" href="https://www.aeolusproject.org/redmine/issues/1383") 1383
+      \- As an internal user of redmine,I will get an email when I request a
+      password change, create a new account, etc
+    %li
+      %b
+        Redmine
+        %a(id="1382" href="https://www.aeolusproject.org/redmine/issues/1382") 1382
+      \- As an end user, I can configure an aeolus-conductor machine by
+      specifying the layout in yml. (external puppet node)
+    %li
+      %b
+        Redmine
+        %a(id="1381" href="https://www.aeolusproject.org/redmine/issues/1381") 1381
+      \- As an end user, I can launch an instance in RHEV
+    %li
+      %b
+        Redmine
+        %a(id="1379" href="https://www.aeolusproject.org/redmine/issues/1379") 1379
+      \- As an admin, I have access to imagefactory (0.1.7 +)
+    %li
+      %b
+        Redmine
+        %a(id="1378" href="https://www.aeolusproject.org/redmine/issues/1378") 1378
+      \- As an admin, I have libdeltacloud (0.8) + new condor (7.6.0 +
+      patches for libdeltacloud 0.8 compatibility)
+    %li
+      %b
+        Redmine
+        %a(id="1374" href="https://www.aeolusproject.org/redmine/issues/1374") 1374
+      \- As a community member, I can see 'bleeding edge' rpms in the new
+      repo locations. (peers to 0.2.0)
+    %li
+      %b
+        Redmine
+        %a(id="1363" href="https://www.aeolusproject.org/redmine/issues/1363") 1363
+      \- As a community member, both F14 and RHEL-6 versions of 0.2.0 appear
+      to work as intended
+    %li
+      %b
+        Redmine
+        %a(id="1363" href="https://www.aeolusproject.org/redmine/issues/1363") 1363
+      \- rubygem_rsolr 1.0.0 package in conductor 0.2.0 F14 repo is busted
+    %li
+      %b
+        Redmine
+        %a(id="1342" href="https://www.aeolusproject.org/redmine/issues/1342") 1342
+      \- As a user, I want the application to be capable of retaining the
+      state of pages I've viewed
+    %li
+      %b
+        Redmine
+        %a(id="1341" href="https://www.aeolusproject.org/redmine/issues/1341") 1341
+      \- As a user, I want the application to include a breadcrumb trail for
+      site navigation
+    %li
+      %b
+        Redmine
+        %a(id="1339" href="https://www.aeolusproject.org/redmine/issues/1339") 1339
+      \- As an Infrastructure Consumer, I want to review the operational
+      status of a Deployment such as uptime, resource consumption, etc
+    %li
+      %b
+        Redmine
+        %a(id="1318" href="https://www.aeolusproject.org/redmine/issues/1318") 1318
+      \- Wrap up the public redmine installation
+    %li
+      %b
+        Redmine
+        %a(id="1303" href="https://www.aeolusproject.org/redmine/issues/1303") 1303
+      \- apply imagefactory-v0.5-amis.patch & build in brew
+    %li
+      %b
+        Redmine
+        %a(id="1302" href="https://www.aeolusproject.org/redmine/issues/1302") 1302
+      \- apply imcleod's ec2-repofix patch & build in brew
+    %li
+      %b
+        Redmine
+        %a(id="1272" href="https://www.aeolusproject.org/redmine/issues/1272") 1272
+      \- Review the patches for #1270
+    %li
+      %b
+        Redmine
+        %a(id="1245" href="https://www.aeolusproject.org/redmine/issues/1245") 1245
+      \- Add some last minute in-place changes for a demo
+    %li
+      %b
+        Redmine
+        %a(id="1241" href="https://www.aeolusproject.org/redmine/issues/1241") 1241
+      \- As an end-user of aeolus, I want https on by default, with no other
+      security features enabled
+    %li
+      %b
+        Redmine
+        %a(id="1230" href="https://www.aeolusproject.org/redmine/issues/1230") 1230
+      \- Verify localization infrastructure is functional
+    %li
+      %b
+        Redmine
+        %a(id="1192" href="https://www.aeolusproject.org/redmine/issues/1192") 1192
+      \- Template creation should generate assembly
+    %li
+      %b
+        Redmine
+        %a(id="1160" href="https://www.aeolusproject.org/redmine/issues/1160") 1160
+      \- As a team member, I have constant access to the internal bleeding
+      edge yum repo
+    %li
+      %b
+        Redmine
+        %a(id="1142" href="https://www.aeolusproject.org/redmine/issues/1142") 1142
+      \- 692161: Fix how /etc/init.d/solr reports status
+    %li
+      %b
+        Redmine
+        %a(id="1112" href="https://www.aeolusproject.org/redmine/issues/1112") 1112
+      \- Write up design doc for installation and puppet's role in same
+    %li
+      %b
+        Redmine
+        %a(id="1095" href="https://www.aeolusproject.org/redmine/issues/1095") 1095
+      \- As a scrum master, I have a way import & sync content from bugzilla
+    %li
+      %b
+        Redmine
+        %a(id="1082" href="https://www.aeolusproject.org/redmine/issues/1082") 1082
+      \- As an SA I want to create a Provider definition
+    %li
+      %b
+        Redmine
+        %a(id="1081" href="https://www.aeolusproject.org/redmine/issues/1081") 1081
+      \- As an SA I want to review the user who launched a deployment in the
+      pool
+    %li
+      %b
+        Redmine
+        %a(id="1078" href="https://www.aeolusproject.org/redmine/issues/1078") 1078
+      \- As an SA I want to enable the pool so that it can be used for a
+      deployment
+    %li
+      %b
+        Redmine
+        %a(id="1077" href="https://www.aeolusproject.org/redmine/issues/1077") 1077
+      \- As an SA I want to delete an existing pool
+    %li
+      %b
+        Redmine
+        %a(id="1075" href="https://www.aeolusproject.org/redmine/issues/1075") 1075
+      \- As an SA I want to create a pool
+    %li
+      %b
+        Redmine
+        %a(id="1074" href="https://www.aeolusproject.org/redmine/issues/1074") 1074
+      \- As an SA I want to create 3 pools that can be used for the
+      development, test and production use of the applications/services
+      that will utilize resources in the cloud
+    %li
+      %b
+        Redmine
+        %a(id="1040" href="https://www.aeolusproject.org/redmine/issues/1040") 1040
+      \- As an Infrastructure Consumer, I want to review the operational
+      status of a Deployment such as uptime, resource consumption, etc
+    %li
+      %b
+        Redmine
+        %a(id="1013" href="https://www.aeolusproject.org/redmine/issues/1013") 1013
+      \- As an SA, I want to update an existing Deployable definition
+    %li
+      %b
+        Redmine
+        %a(id="1010" href="https://www.aeolusproject.org/redmine/issues/1010") 1010
+      \- As an SA, I want to delete an existing Deployable
+    %li
+      %b
+        Redmine
+        %a(id="1009" href="https://www.aeolusproject.org/redmine/issues/1009") 1009
+      \- As an SA, I want to review running Deployments that were derived
+      from a Deployable
+    %li
+      %b
+        Redmine
+        %a(id="995" href="https://www.aeolusproject.org/redmine/issues/995") 995
+      \- As an SA, I want to create a Deployable definition
+    %li
+      %b
+        Redmine
+        %a(id="945" href="https://www.aeolusproject.org/redmine/issues/945") 945
+      \- As an SA, I want to create a Template
+    %li
+      %b
+        Redmine
+        %a(id="888" href="https://www.aeolusproject.org/redmine/issues/888") 888
+      \- As a system administrator, I want Conductor to work with SELinux
+      turned on
+    %li
+      %b
+        Redmine
+        %a(id="751" href="https://www.aeolusproject.org/redmine/issues/751") 751
+      \- aeolus-configure output should be logged
+    %li
+      %b
+        Redmine
+        %a(id="680" href="https://www.aeolusproject.org/redmine/issues/680") 680
+      \- As a community member, I have access to a working aeolus ami
+    %li
+      %b
+        Redmine
+        %a(id="633" href="https://www.aeolusproject.org/redmine/issues/633") 633
+      \- As a sys admin, I want to configure location for factory connector
+    %li
+      %b
+        Redmine
+        %a(id="495" href="https://www.aeolusproject.org/redmine/issues/495") 495
+      \- As a member of the aeolus community, I would like the public aeolus
+      redmine site to be production ready
+    %li
+      %b
+        Redmine
+        %a(id="459" href="https://www.aeolusproject.org/redmine/issues/459") 459
+      \- As a user I want to see instances running in a pool
+    %li
+      %b
+        Redmine
+        %a(id="409" href="https://www.aeolusproject.org/redmine/issues/409") 409
+      \- I want to launch a deployable in the cloud
+    %li
+      %b
+        Redmine
+        %a(id="rm315" href="https://www.aeolusproject.org/redmine/issues/315") 315
+      \- As a RHEL 6 user, I am able to cleanly install conductor
+    %li
+      %b
+        Redmine
+        %a(id="rm58" href="https://www.aeolusproject.org/redmine/issues/58") 58
+      \- As an admin, I would like to be able to deploy Aeolus on RHEL 6
+
+%br
+
+.section-grouping
+  %h2(id="issuesresolvedbz") Issues resolved (Bugzilla issue list)
+
+  %ul
+    %li
+      %b
+        BZ
+        %a(id="641385" href="https://bugzilla.redhat.com/show_bug.cgi?id=641385") 641385
+      \- Setups with lots of images/realms/providers/provider accounts may be
+      slow
+    %li
+      %b
+        BZ
+        %a(id="723585" href="https://bugzilla.redhat.com/show_bug.cgi?id=723585") 723585
+      \- Create generic hardware profiles and remove provider specific ones
+    %li
+      %b
+        BZ
+        %a(id="722340" href="https://bugzilla.redhat.com/show_bug.cgi?id=722340") 722340
+      \- Conductor service does not start in aeolus-configure script
+    %li
+      %b
+        BZ
+        %a(id="721333" href="https://bugzilla.redhat.com/show_bug.cgi?id=721333") 721333
+      \- Alert count not reflected correctly in UI
+    %li
+      %b
+        BZ
+        %a(id="721036" href="https://bugzilla.redhat.com/show_bug.cgi?id=721036") 721036
+      \- aeolus-configure fails in latest installs,
+      rubygem-image_factory_connector has failures: true
+    %li
+      %b
+        BZ
+        %a(id="720780" href="https://bugzilla.redhat.com/show_bug.cgi?id=720780") 720780
+      \- RHEL 6.1 jeos image from EC2 tracker
+    %li
+      %b
+        BZ
+        %a(id="720772" href="https://bugzilla.redhat.com/show_bug.cgi?id=720772") 720772
+      \- Enable/Disable Pools does not do anything.. leave it in the webui?
+    %li
+      %b
+        BZ
+        %a(id="720706" href="https://bugzilla.redhat.com/show_bug.cgi?id=720706") 720706
+      \- aeolus-image list --images, include provider type
+    %li
+      %b
+        BZ
+        %a(id="720645" href="https://bugzilla.redhat.com/show_bug.cgi?id=720645") 720645
+      \- Deployment with long name gets truncated.
+    %li
+      %b
+        BZ
+        %a(id="720426" href="https://bugzilla.redhat.com/show_bug.cgi?id=720426") 720426
+      \- Deployment launch form is ugly
+    %li
+      %b
+        BZ
+        %a(id="720342" href="https://bugzilla.redhat.com/show_bug.cgi?id=720342") 720342
+      \- Provider account  quota is not enforced
+    %li
+      %b
+        BZ
+        %a(id="720337" href="https://bugzilla.redhat.com/show_bug.cgi?id=720337") 720337
+      \- Pool family quota is not enforced
+    %li
+      %b
+        BZ
+        %a(id="720312" href="https://bugzilla.redhat.com/show_bug.cgi?id=720312") 720312
+      \- Hardware profile page displayed while trying to sort provider
+      account name
+    %li
+      %b
+        BZ
+        %a(id="719723" href="https://bugzilla.redhat.com/show_bug.cgi?id=719723") 719723
+      \- Can't toggle collapse icons (in text)
+    %li
+      %b
+        BZ
+        %a(id="719590" href="https://bugzilla.redhat.com/show_bug.cgi?id=719590") 719590
+      \- Aeolus does not start properly after reboot
+    %li
+      %b
+        BZ
+        %a(id="719481" href="https://bugzilla.redhat.com/show_bug.cgi?id=719481") 719481
+      \- Need to install gem rbvmomi
+    %li
+      %b
+        BZ
+        %a(id="719383" href="https://bugzilla.redhat.com/show_bug.cgi?id=719383") 719383
+      \- New deployable missing check on hw profile names
+    %li
+      %b
+        BZ
+        %a(id="719227" href="https://bugzilla.redhat.com/show_bug.cgi?id=719227") 719227
+      \- Uninitialized constant Deltacloud::BackendError : On adding provider
+      account on RHEL
+    %li
+      %b
+        BZ
+        %a(id="719122" href="https://bugzilla.redhat.com/show_bug.cgi?id=719122") 719122
+      \- Need service restart after configuring iwhd conf for rhev
+    %li
+      %b
+        BZ
+        %a(id="719055" href="https://bugzilla.redhat.com/show_bug.cgi?id=719055") 719055
+      \- Unable to deploy 32-bit Amazon Images
+    %li
+      %b
+        BZ
+        %a(id="719011" href="https://bugzilla.redhat.com/show_bug.cgi?id=719011") 719011
+      \- Oz aborted the build after going 300 seconds with no disk activity
+    %li
+      %b
+        BZ
+        %a(id="718968" href="https://bugzilla.redhat.com/show_bug.cgi?id=718968") 718968
+      \- Provider field blank in deployments
+    %li
+      %b
+        BZ
+        %a(id="718712" href="https://bugzilla.redhat.com/show_bug.cgi?id=718712") 718712
+      \- Typo error: "vant should be replaced by want"
+    %li
+      %b
+        BZ
+        %a(id="718680" href="https://bugzilla.redhat.com/show_bug.cgi?id=718680") 718680
+      \- Unable to delete deployments
+    %li
+      %b
+        BZ
+        %a(id="718354" href="https://bugzilla.redhat.com/show_bug.cgi?id=718354") 718354
+      \- aeolus-image rails.log exception, RoutingError No route matching
+      "/builds/update_status"
+    %li
+      %b
+        BZ
+        %a(id="718331" href="https://bugzilla.redhat.com/show_bug.cgi?id=718331") 718331
+      \- Building x86_64 F15 Image fails on RHEVM/VMWARE
+    %li
+      %b
+        BZ
+        %a(id="718325" href="https://bugzilla.redhat.com/show_bug.cgi?id=718325") 718325
+      \- view deployable def does not work
+    %li
+      %b
+        BZ
+        %a(id="718246" href="https://bugzilla.redhat.com/show_bug.cgi?id=718246") 718246
+      \- aeolus configure adding erroneous entries to /etc/fstab
+    %li
+      %b
+        BZ
+        %a(id="718216" href="https://bugzilla.redhat.com/show_bug.cgi?id=718216") 718216
+      \- Unable to build simple RHEL6.1 images
+    %li
+      %b
+        BZ
+        %a(id="718153" href="https://bugzilla.redhat.com/show_bug.cgi?id=718153") 718153
+      \- frontend: undefined local variable or method `brealms' for # : when
+      launching instances for all realms
+    %li
+      %b
+        BZ
+        %a(id="717967" href="https://bugzilla.redhat.com/show_bug.cgi?id=717967") 717967
+      \- solr is not shutting down correctly
+    %li
+      %b
+        BZ
+        %a(id="717963" href="https://bugzilla.redhat.com/show_bug.cgi?id=717963") 717963
+      \- cloud ssh key for the instance shall be available for running
+      instances
+    %li
+      %b
+        BZ
+        %a(id="717673" href="https://bugzilla.redhat.com/show_bug.cgi?id=717673") 717673
+      \- tracker bug for iteration three fixed bugs
+    %li
+      %b
+        BZ
+        %a(id="717634" href="https://bugzilla.redhat.com/show_bug.cgi?id=717634") 717634
+      \- IP address of a launched instance is not displayed
+    %li
+      %b
+        BZ
+        %a(id="717585" href="https://bugzilla.redhat.com/show_bug.cgi?id=717585") 717585
+      \- Multiple Image displayed for Invalid credentials.
+    %li
+      %b
+        BZ
+        %a(id="717571" href="https://bugzilla.redhat.com/show_bug.cgi?id=717571") 717571
+      \- Remove selected button in pool family does not work.
+    %li
+      %b
+        BZ
+        %a(id="717569" href="https://bugzilla.redhat.com/show_bug.cgi?id=717569") 717569
+      \- Pool Family sorting does not work
+    %li
+      %b
+        BZ
+        %a(id="717542" href="https://bugzilla.redhat.com/show_bug.cgi?id=717542") 717542
+      \- Hardware profile page is loaded when clicked on Realm
+    %li
+      %b
+        BZ
+        %a(id="717541" href="https://bugzilla.redhat.com/show_bug.cgi?id=717541") 717541
+      \- Need proper validation messages if images to be stopped are not
+      selected
+    %li
+      %b
+        BZ
+        %a(id="717538" href="https://bugzilla.redhat.com/show_bug.cgi?id=717538") 717538
+      \- Pools delete button not working
+    %li
+      %b
+        BZ
+        %a(id="717533" href="https://bugzilla.redhat.com/show_bug.cgi?id=717533") 717533
+      \- Admin shall not be able to delete itself.
+    %li
+      %b
+        BZ
+        %a(id="717276" href="https://bugzilla.redhat.com/show_bug.cgi?id=717276") 717276
+      \- Adding a rhevm provider account w/ bad username causes proxy error
+    %li
+      %b
+        BZ
+        %a(id="717219" href="https://bugzilla.redhat.com/show_bug.cgi?id=717219") 717219
+      \- 0.2.0 install Error: Package: rubygem-right_aws-2.0.0-1.fc14.noarch
+    %li
+      %b
+        BZ
+        %a(id="717176" href="https://bugzilla.redhat.com/show_bug.cgi?id=717176") 717176
+      \- Frontend: undefined method `kind' for nil:NilClass : when launching
+      instance
+    %li
+      %b
+        BZ
+        %a(id="717172" href="https://bugzilla.redhat.com/show_bug.cgi?id=717172") 717172
+      \- Realm Mapping deletion does not work
+    %li
+      %b
+        BZ
+        %a(id="717150" href="https://bugzilla.redhat.com/show_bug.cgi?id=717150") 717150
+      \- Undefined method `storage' for # on adding VMWare Provider on Fedora
+    %li
+      %b
+        BZ
+        %a(id="716958" href="https://bugzilla.redhat.com/show_bug.cgi?id=716958") 716958
+      \- Aeolus configure error: 
+      \/Stage[main]/Aeolus::Conductor/Rails::Migrate::Db[migrate_aeolus_database]/Exec[migrate_rails_database]/
+    %li
+      %b
+        BZ
+        %a(id="716948" href="https://bugzilla.redhat.com/show_bug.cgi?id=716948") 716948
+      \- Aeolus-configure error:
+      \/Stage[main]/Aeolus::Conductor::Seed_data/Aeolus::Provider
+    %li
+      %b
+        BZ
+        %a(id="716866" href="https://bugzilla.redhat.com/show_bug.cgi?id=716866") 716866
+      \- admin user can be created twice with different mail id
+    %li
+      %b
+        BZ
+        %a(id="716296" href="https://bugzilla.redhat.com/show_bug.cgi?id=716296") 716296
+      \- Monitor, deployment list view , new deployments does not work
+    %li
+      %b
+        BZ
+        %a(id="716294" href="https://bugzilla.redhat.com/show_bug.cgi?id=716294") 716294
+      \- pool quotas not not registered or enforced in new ui
+    %li
+      %b
+        BZ
+        %a(id="716286" href="https://bugzilla.redhat.com/show_bug.cgi?id=716286") 716286
+      \- Could not find a matching backend provider
+    %li
+      %b
+        BZ
+        %a(id="715601" href="https://bugzilla.redhat.com/show_bug.cgi?id=715601") 715601
+      \- match provider names between image factory and deltacloud
+    %li
+      %b
+        BZ
+        %a(id="715506" href="https://bugzilla.redhat.com/show_bug.cgi?id=715506") 715506
+      \- aeolus-configure runs into multiple errors
+    %li
+      %b
+        BZ
+        %a(id="715218" href="https://bugzilla.redhat.com/show_bug.cgi?id=715218") 715218
+      \- Install aeolus-all gives "Error: Package:
+      rubygem-aws-2.5.2-1.fc14.noarch (updates)Requires:
+      rubygem(right_http_connection)"
+    %li
+      %b
+        BZ
+        %a(id="715087" href="https://bugzilla.redhat.com/show_bug.cgi?id=715087") 715087
+      \- match provider names between image factory and deltacloud
+    %li
+      %b
+        BZ
+        %a(id="714940" href="https://bugzilla.redhat.com/show_bug.cgi?id=714940") 714940
+      \- URL Validation required while adding new deployable
+    %li
+      %b
+        BZ
+        %a(id="714935" href="https://bugzilla.redhat.com/show_bug.cgi?id=714935") 714935
+      \- "No Matching Provider Hardware Profiles Could be found" is displayed
+      when clicked on New Hardware profile
+    %li
+      %b
+        BZ
+        %a(id="714930" href="https://bugzilla.redhat.com/show_bug.cgi?id=714930") 714930
+      \- Select:All/None option for selecting/deselecting multiple values
+      should be made available in Users and Suggested deployables section
+    %li
+      %b
+        BZ
+        %a(id="XX714927X" href="https://bugzilla.redhat.com/show_bug.cgi?id=714927") 714927
+      \- Realm gets created with same name- Realm name validation required
+    %li
+      %b
+        BZ
+        %a(id="714816" href="https://bugzilla.redhat.com/show_bug.cgi?id=714816") 714816
+      \- Provider account, editing an account fails
+    %li
+      %b
+        BZ
+        %a(id="714790" href="https://bugzilla.redhat.com/show_bug.cgi?id=714790") 714790
+      \- Default non admin users have no rights, roles or privileges in new UI
+    %li
+      %b
+        BZ
+        %a(id="714787" href="https://bugzilla.redhat.com/show_bug.cgi?id=714787") 714787
+      \- Fail error w/ green check box
+    %li
+      %b
+        BZ
+        %a(id="714757" href="https://bugzilla.redhat.com/show_bug.cgi?id=714757") 714757
+      \- /usr/bin/rake dc:prepare_repos returned 1 instead of one of [0]
+    %li
+      %b
+        BZ
+        %a(id="714287" href="https://bugzilla.redhat.com/show_bug.cgi?id=714287") 714287
+      \- Uptime reported for instances that do not start
+    %li
+      %b
+        BZ
+        %a(id="714281" href="https://bugzilla.redhat.com/show_bug.cgi?id=714281") 714281
+      \- getSchema error when building a template
+    %li
+      %b
+        BZ
+        %a(id="714276" href="https://bugzilla.redhat.com/show_bug.cgi?id=714276") 714276
+      \- aeolus-image list --builds $image_id has an error
+    %li
+      %b
+        BZ
+        %a(id="714269" href="https://bugzilla.redhat.com/show_bug.cgi?id=714269") 714269
+      \- /var/lib/aeolus-conductor/jobs not created, not owned by aeolus
+    %li
+      %b
+        BZ
+        %a(id="714052" href="https://bugzilla.redhat.com/show_bug.cgi?id=714052") 714052
+      \- 'PGError: ERROR: null value in column "realm_or_provider_id" violates
+      not-null constraint" when Add mapping to realm
+    %li
+      %b
+        BZ
+        %a(id="713418" href="https://bugzilla.redhat.com/show_bug.cgi?id=713418") 713418
+      \- Clicking on administrator/monitor tab does not display control
+      panels drop-down list
+    %li
+      %b
+        BZ
+        %a(id="713048" href="https://bugzilla.redhat.com/show_bug.cgi?id=713048") 713048
+      \- New Deployement : getaddrinfo: Name or service not known (Error
+      should be handled by proper message )
+    %li
+      %b
+        BZ
+        %a(id="713045" href="https://bugzilla.redhat.com/show_bug.cgi?id=713045") 713045
+      \- Delete a realm says "Please make a selection before clicking Delete
+      button"
+    %li
+      %b
+        BZ
+        %a(id="713010" href="https://bugzilla.redhat.com/show_bug.cgi?id=713010") 713010
+      \- Changing provider type in New Provider Account page causes error
+    %li
+      %b
+        BZ
+        %a(id="713010" href="https://bugzilla.redhat.com/show_bug.cgi?id=711294") 713010
+      \- RFE : Remove failed option on instances should remove the erroneous
+      instances not just stop them.
+    %li
+      %b
+        BZ
+        %a(id="713010" href="https://bugzilla.redhat.com/show_bug.cgi?id=711225") 713010
+      \- Dbomatic fails to start after install
+    %li
+      %b
+        BZ
+        %a(id="711112" href="https://bugzilla.redhat.com/show_bug.cgi?id=711112") 711112
+      \- F14 yum errors with public production repo
+    %li
+      %b
+        BZ
+        %a(id="711084" href="https://bugzilla.redhat.com/show_bug.cgi?id=711084") 711084
+      \- Hardware Profiles are not loaded in the instance launch Page
+    %li
+      %b
+        BZ
+        %a(id="710041" href="https://bugzilla.redhat.com/show_bug.cgi?id=710041") 710041
+      \- Condormatic - job_name with slashes
+    %li
+      %b
+        BZ
+        %a(id="710033" href="https://bugzilla.redhat.com/show_bug.cgi?id=710033") 710033
+      \- Building image from Image fails
+    %li
+      %b
+        BZ
+        %a(id="709980" href="https://bugzilla.redhat.com/show_bug.cgi?id=709980") 709980
+      \- New UI : No Logout button under new UI
+    %li
+      %b
+        BZ
+        %a(id="709817" href="https://bugzilla.redhat.com/show_bug.cgi?id=709817") 709817
+      \- iwhd initscript continues on in the face of failure
+    %li
+      %b
+        BZ
+        %a(id="709598" href="https://bugzilla.redhat.com/show_bug.cgi?id=709598") 709598
+      \- Deltacloud::BackendError On adding provider account
+    %li
+      %b
+        BZ
+        %a(id="709584" href="https://bugzilla.redhat.com/show_bug.cgi?id=709584") 709584
+      \- Install aeolus-all doesn't install/update puppet dependency
+    %li
+      %b
+        BZ
+        %a(id="706100" href="https://bugzilla.redhat.com/show_bug.cgi?id=706100") 706100
+      \- Conductor displays incorrect error message on image import
+    %li
+      %b
+        BZ
+        %a(id="701482" href="https://bugzilla.redhat.com/show_bug.cgi?id=701482") 701482
+      \- Building/pushing templates may bring down warehouse
+    %li
+      %b
+        BZ
+        %a(id="700953" href="https://bugzilla.redhat.com/show_bug.cgi?id=700953") 700953
+      \- AMI needs manual run of aeolus-configure
+    %li
+      %b
+        BZ
+        %a(id="699906" href="https://bugzilla.redhat.com/show_bug.cgi?id=699906") 699906
+      \- EC2 credentials printed to log file
+    %li
+      %b
+        BZ
+        %a(id="699831" href="https://bugzilla.redhat.com/show_bug.cgi?id=699831") 699831
+      \- Templates, building templates in us-west fails, us-east works
+    %li
+      %b
+        BZ
+        %a(id="699783" href="https://bugzilla.redhat.com/show_bug.cgi?id=699783") 699783
+      \- httpd does not start after cleanup/configure, missing rpms
+    %li
+      %b
+        BZ
+        %a(id="699417" href="https://bugzilla.redhat.com/show_bug.cgi?id=699417") 699417
+      \- RFE: creating buckets/key should return server response '201 Created'
+    %li
+      %b
+        BZ
+        %a(id="698765" href="https://bugzilla.redhat.com/show_bug.cgi?id=698765") 698765
+      \- Additional log files to cover in documentation
+    %li
+      %b
+        BZ
+        %a(id="698763" href="https://bugzilla.redhat.com/show_bug.cgi?id=698763") 698763
+      \- Additional log files found under /var/log/condor
+    %li
+      %b
+        BZ
+        %a(id="698762" href="https://bugzilla.redhat.com/show_bug.cgi?id=698762") 698762
+      \- aeolus-conductor logs are not accurate
+    %li
+      %b
+        BZ
+        %a(id="698759" href="https://bugzilla.redhat.com/show_bug.cgi?id=698759") 698759
+      \- Documentation bug in CloudForms Admin Guide
+    %li
+      %b
+        BZ
+        %a(id="698753" href="https://bugzilla.redhat.com/show_bug.cgi?id=698753") 698753
+      \- Please add documentation for "self-service" users and the difference
+      between self-service and regular users
+    %li
+      %b
+        BZ
+        %a(id="698750" href="https://bugzilla.redhat.com/show_bug.cgi?id=698750") 698750
+      \- User details
+    %li
+      %b
+        BZ
+        %a(id="698747" href="https://bugzilla.redhat.com/show_bug.cgi?id=698747") 698747
+      \- "System entities" is a little too ambiguous
+    %li
+      %b
+        BZ
+        %a(id="698716" href="https://bugzilla.redhat.com/show_bug.cgi?id=698716") 698716
+      \- Dbomatic periodically crashes, no clear recreate atm
+    %li
+      %b
+        BZ
+        %a(id="698689" href="https://bugzilla.redhat.com/show_bug.cgi?id=698689") 698689
+      \- Instances: periodic  ssh failures
+    %li
+      %b
+        BZ
+        %a(id="698510" href="https://bugzilla.redhat.com/show_bug.cgi?id=698510") 698510
+      \- QE Review: Cloud Engine Administration Guide should have correct
+      Bugzilla component
+    %li
+      %b
+        BZ
+        %a(id="698509" href="https://bugzilla.redhat.com/show_bug.cgi?id=698509") 698509
+      \- QE Review: Assumption of familiarity with interface layout
+    %li
+      %b
+        BZ
+        %a(id="698508" href="https://bugzilla.redhat.com/show_bug.cgi?id=698508") 698508
+      \- QE Review: Superfluous Index
+    %li
+      %b
+        BZ
+        %a(id="698507" href="https://bugzilla.redhat.com/show_bug.cgi?id=698507") 698507
+      \- QE Review: Cloud Engine Administration Guide TYPO's
+    %li
+      %b
+        BZ
+        %a(id="698270" href="https://bugzilla.redhat.com/show_bug.cgi?id=698270") 698270
+      \- RFE: allow stopped instances to be removed from webui
+    %li
+      %b
+        BZ
+        %a(id="698259" href="https://bugzilla.redhat.com/show_bug.cgi?id=698259") 698259
+      \- Duplicate aeolus-configure logs
+    %li
+      %b
+        BZ
+        %a(id="697906" href="https://bugzilla.redhat.com/show_bug.cgi?id=697906") 697906
+      \- Aeolus related daemons need to be turned off at ami boot
+    %li
+      %b
+        BZ
+        %a(id="697552" href="https://bugzilla.redhat.com/show_bug.cgi?id=697552") 697552
+      \- Some error messages persist on next tab click
+    %li
+      %b
+        BZ
+        %a(id="697543" href="https://bugzilla.redhat.com/show_bug.cgi?id=697543") 697543
+      \- Misspelled word in provider error message
+    %li
+      %b
+        BZ
+        %a(id="697478" href="https://bugzilla.redhat.com/show_bug.cgi?id=697478") 697478
+      \- Templates, adding package groups to template builds fails @push
+    %li
+      %b
+        BZ
+        %a(id="696710" href="https://bugzilla.redhat.com/show_bug.cgi?id=696710") 696710
+      \- Aeolus configure stops aeolus connector when reexecuted
+    %li
+      %b
+        BZ
+        %a(id="696228" href="https://bugzilla.redhat.com/show_bug.cgi?id=696228") 696228
+      \- Template builds stay in queued due to missing uuid in conductor
+    %li
+      %b
+        BZ
+        %a(id="695770" href="https://bugzilla.redhat.com/show_bug.cgi?id=695770") 695770
+      \- Instance creation gui needs redhat/fedora logos
+    %li
+      %b
+        BZ
+        %a(id="695489" href="https://bugzilla.redhat.com/show_bug.cgi?id=695489") 695489
+      \- Aeolus deltacloudd wrapper scripts report invalid status
+    %li
+      %b
+        BZ
+        %a(id="694060" href="https://bugzilla.redhat.com/show_bug.cgi?id=694060") 694060
+      \- Image imports: On importing non existent image, unhandled error is
+      thrown
+    %li
+      %b
+        BZ
+        %a(id="693715" href="https://bugzilla.redhat.com/show_bug.cgi?id=693715") 693715
+      \- Self Service: Once validation for user creation fails, user save
+      button disappears
+    %li
+      %b
+        BZ
+        %a(id="693699" href="https://bugzilla.redhat.com/show_bug.cgi?id=693699") 693699
+      \- Template build fails
+    %li
+      %b
+        BZ
+        %a(id="693669" href="https://bugzilla.redhat.com/show_bug.cgi?id=693669") 693669
+      \- Account Id is blank in UI after adding a provider account
+    %li
+      %b
+        BZ
+        %a(id="XXX" href="https://bugzilla.redhat.com/show_bug.cgi?id=693514") 693514
+      \- aeolus-cleanup need to clean up /var/tmp and /var/lib/iwhd/images
+    %li
+      %b
+        BZ
+        %a(id="693369" href="https://bugzilla.redhat.com/show_bug.cgi?id=693369") 693369
+      \- Guarantee providers created w/ one run of aeolus-configure
+    %li
+      %b
+        BZ
+        %a(id="692923" href="https://bugzilla.redhat.com/show_bug.cgi?id=692923") 692923
+      \- imgfactory is not stopped by aeolus-cleanup
+    %li
+      %b
+        BZ
+        %a(id="692651" href="https://bugzilla.redhat.com/show_bug.cgi?id=692651") 692651
+      \- Template build failed status should be reflected in the webui
+    %li
+      %b
+        BZ
+        %a(id="692626" href="https://bugzilla.redhat.com/show_bug.cgi?id=692626") 692626
+      \- condor_q -better shows 1 "reject your job..."
+    %li
+      %b
+        BZ
+        %a(id="692207" href="https://bugzilla.redhat.com/show_bug.cgi?id=692207") 692207
+      \- aeolus-connector stop does not work
+    %li
+      %b
+        BZ
+        %a(id="692204" href="https://bugzilla.redhat.com/show_bug.cgi?id=692204") 692204
+      \- Several errors in connector.log while attempting to build templates
+    %li
+      %b
+        BZ
+        %a(id="692190" href="https://bugzilla.redhat.com/show_bug.cgi?id=692190") 692190
+      \- Error while bulding simple f13 template, libvirt_xml =
+      self.guest.install(self.app_config["timeout"])
+    %li
+      %b
+        BZ
+        %a(id="692173" href="https://bugzilla.redhat.com/show_bug.cgi?id=692173") 692173
+      \- aeolus-configure needs to verify/install libvirtd before trying to
+      start it
+    %li
+      %b
+        BZ
+        %a(id="692161" href="https://bugzilla.redhat.com/show_bug.cgi?id=692161") 692161
+      \- /etc/init.d/solr status returns rake info. should return status
+    %li
+      %b
+        BZ
+        %a(id="690960" href="https://bugzilla.redhat.com/show_bug.cgi?id=690960") 690960
+      \- Aeolus user does not exist error on rpm install
+    %li
+      %b
+        BZ
+        %a(id="690811" href="https://bugzilla.redhat.com/show_bug.cgi?id=690811") 690811
+      \- Missing mongodb-server dependency
+    %li
+      %b
+        BZ
+        %a(id="690656" href="https://bugzilla.redhat.com/show_bug.cgi?id=690656") 690656
+      \- Template builds do not progress past the queued state, due to
+      network error
+    %li
+      %b
+        BZ
+        %a(id="690467" href="https://bugzilla.redhat.com/show_bug.cgi?id=690467") 690467
+      \- Realm: Deleting mapping of realm w/o selecting anything throws error
+    %li
+      %b
+        BZ
+        %a(id="690436" href="https://bugzilla.redhat.com/show_bug.cgi?id=690436") 690436
+      \- Hardware Profiles sorting doesn't work
+    %li
+      %b
+        BZ
+        %a(id="690266" href="https://bugzilla.redhat.com/show_bug.cgi?id=690266") 690266
+      \- Libvirtd not started, causes image-factory exception (no building)
+    %li
+      %b
+        BZ
+        %a(id="690228" href="https://bugzilla.redhat.com/show_bug.cgi?id=690228") 690228
+      \- aeolus-connector failed to start with aeolus-configure
+    %li
+      %b
+        BZ
+        %a(id="690154" href="https://bugzilla.redhat.com/show_bug.cgi?id=690154") 690154
+      \- Hwp page misrenders the details pane
+    %li
+      %b
+        BZ
+        %a(id="689863" href="https://bugzilla.redhat.com/show_bug.cgi?id=689863") 689863
+      \- aeolus-configure should no longer deploy /etc/init.d/iwhd and
+      \/etc/iwhd/conf.js
+    %li
+      %b
+        BZ
+        %a(id="689442" href="https://bugzilla.redhat.com/show_bug.cgi?id=689442") 689442
+      \- Field check for pool families (it accepts special chars)
+    %li
+      %b
+        BZ
+        %a(id="688924" href="https://bugzilla.redhat.com/show_bug.cgi?id=688924") 688924
+      \- Push requests not sent to factory connector for EC2
+    %li
+      %b
+        BZ
+        %a(id="688706" href="https://bugzilla.redhat.com/show_bug.cgi?id=688706") 688706
+      \- Update copyright to 2011
+    %li
+      %b
+        BZ
+        %a(id="688688" href="https://bugzilla.redhat.com/show_bug.cgi?id=688688") 688688
+      \- Sufficient libmicrohttpd missing from RHEL 6
+    %li
+      %b
+        BZ
+        %a(id="685046" href="https://bugzilla.redhat.com/show_bug.cgi?id=685046") 685046
+      \- Validation for Hardware Profile fields
+    %li
+      %b
+        BZ
+        %a(id="685039" href="https://bugzilla.redhat.com/show_bug.cgi?id=685039") 685039
+      \- Creating duplicate roles need to be handled by error message
+    %li
+      %b
+        BZ
+        %a(id="685036" href="https://bugzilla.redhat.com/show_bug.cgi?id=685036") 685036
+      \- Edit admin launches the deployment page
+    %li
+      %b
+        BZ
+        %a(id="685036" href="https://bugzilla.redhat.com/show_bug.cgi?id=684893") 685036
+      \- RFE: provider account should show quota percentage
+    %li
+      %b
+        BZ
+        %a(id="684105" href="https://bugzilla.redhat.com/show_bug.cgi?id=684105") 684105
+      \- Delete h/w Profile w/o selecting a profile :Couldn't find
+      HardwareProfile
+    %li
+      %b
+        BZ
+        %a(id="683190" href="https://bugzilla.redhat.com/show_bug.cgi?id=683190") 683190
+      \- Template queued status no longer appears when build is waiting
+    %li
+      %b
+        BZ
+        %a(id="682277" href="https://bugzilla.redhat.com/show_bug.cgi?id=682277") 682277
+      \- Unable to ssh into instances started from conductor
+    %li
+      %b
+        BZ
+        %a(id="681977" href="https://bugzilla.redhat.com/show_bug.cgi?id=681977") 681977
+      \- Ruby deprecation warning with aeolus-configure
+    %li
+      %b
+        BZ
+        %a(id="680435" href="https://bugzilla.redhat.com/show_bug.cgi?id=680435") 680435
+      \- Httpd not starting after reboot
+    %li
+      %b
+        BZ
+        %a(id="679890" href="https://bugzilla.redhat.com/show_bug.cgi?id=679890") 679890
+      \- Incorrect label "Username" and "Password" on "New Account Provider"
+      form
+    %li
+      %b
+        BZ
+        %a(id="679147" href="https://bugzilla.redhat.com/show_bug.cgi?id=679147") 679147
+      \- Template build status changes depending on which tab you have selected
+    %li
+      %b
+        BZ
+        %a(id="678600" href="https://bugzilla.redhat.com/show_bug.cgi?id=678600") 678600
+      \- Template build marked as complete even though it failed
+    %li
+      %b
+        BZ
+        %a(id="678597" href="https://bugzilla.redhat.com/show_bug.cgi?id=678597") 678597
+      \- Yum xml issues, packages getting added to template that do NOT exist
+      in repository
+    %li
+      %b
+        BZ
+        %a(id="678071" href="https://bugzilla.redhat.com/show_bug.cgi?id=678071") 678071
+      \- Deleting provider accounts w/ instances, needs error message.
+    %li
+      %b
+        BZ
+        %a(id="676654" href="https://bugzilla.redhat.com/show_bug.cgi?id=676654") 676654
+      \- Concurrent user test fails.. deleting objects w/ one user while
+      another user views object
+    %li
+      %b
+        BZ
+        %a(id="674899" href="https://bugzilla.redhat.com/show_bug.cgi?id=674899") 674899
+      \- The ssh key downloaded from instance details page has formatting
+      issues
+    %li
+      %b
+        BZ
+        %a(id="674661" href="https://bugzilla.redhat.com/show_bug.cgi?id=674661") 674661
+      \- PGError value too long on role name field
+    %li
+      %b
+        BZ
+        %a(id="674557" href="https://bugzilla.redhat.com/show_bug.cgi?id=674557") 674557
+      \- After deletion of default pool, User creation fails.
+    %li
+      %b
+        BZ
+        %a(id="669246" href="https://bugzilla.redhat.com/show_bug.cgi?id=669246") 669246
+      \- Launching an instance fails in Jan 4th build
+    %li
+      %b
+        BZ
+        %a(id="667927" href="https://bugzilla.redhat.com/show_bug.cgi?id=667927") 667927
+      \- Set correct iwhd path
+    %li
+      %b
+        BZ
+        %a(id="662994" href="https://bugzilla.redhat.com/show_bug.cgi?id=662994") 662994
+      \- When No access key provided :"No :access_key_id provided"
+    %li
+      %b
+        BZ
+        %a(id="662957" href="https://bugzilla.redhat.com/show_bug.cgi?id=662957") 662957
+      \- Provider Account : Field Validation errors
+    %li
+      %b
+        BZ
+        %a(id="662947" href="https://bugzilla.redhat.com/show_bug.cgi?id=662947") 662947
+      \- Provider Account : Test Account errors
+    %li
+      %b
+        BZ
+        %a(id="657025" href="https://bugzilla.redhat.com/show_bug.cgi?id=657025") 657025
+      \- Some /var/log/dcloud-agg logs missing log-rotate, causing filesystem
+      full
+    %li
+      %b
+        BZ
+        %a(id="649879" href="https://bugzilla.redhat.com/show_bug.cgi?id=649879") 649879
+      \- Image fails to build when template name has single quote or
+      semi-colon
+    %li
+      %b
+        BZ
+        %a(id="649473" href="https://bugzilla.redhat.com/show_bug.cgi?id=649473") 649473
+      \- Instance: name too long throws PGError
+    %li
+      %b
+        BZ
+        %a(id="645370" href="https://bugzilla.redhat.com/show_bug.cgi?id=645370") 645370
+      \- Don't show hardware profiles that can't possibly work
+    %li
+      %b
+        BZ
+        %a(id="645370" href="https://bugzilla.redhat.com/show_bug.cgi?id=644086") 645370
+      \- EC2: key.pem returns a "corrupted" private key
+    %li
+      %b
+        BZ
+        %a(id="644050" href="https://bugzilla.redhat.com/show_bug.cgi?id=644050") 644050
+      \- Instance Management: instances launched by non-admin users are
+      listed as started by Admin
+    %li
+      %b
+        BZ
+        %a(id="643812" href="https://bugzilla.redhat.com/show_bug.cgi?id=643812") 643812
+      \- Feature Request : Checkbox to select all users at once
+    %li
+      %b
+        BZ
+        %a(id="643096" href="https://bugzilla.redhat.com/show_bug.cgi?id=643096") 643096
+      \- New User Account Cancel button is unstyled and does not work
+    %li
+      %b
+        BZ
+        %a(id="641948" href="https://bugzilla.redhat.com/show_bug.cgi?id=641948") 641948
+      \- No error information is presented to the user on a failed "Provider
+      Account"
+    %li
+      %b
+        BZ
+        %a(id="641376" href="https://bugzilla.redhat.com/show_bug.cgi?id=641376") 641376
+      \- Clicking on actions without checking an instance in Instance
+      Management shows confusing error
+    %li
+      %b
+        BZ
+        %a(id="640319" href="https://bugzilla.redhat.com/show_bug.cgi?id=640319") 640319
+      \- Manage Providers: cloud engine does not accept URL redirect for
+      provider url
+    %li
+      %b
+        BZ
+        %a(id="638326" href="https://bugzilla.redhat.com/show_bug.cgi?id=638326") 638326
+      \- With no available images, EC2 driver throws a stack trace
+    %li
+      %b
+        BZ
+        %a(id="618307" href="https://bugzilla.redhat.com/show_bug.cgi?id=618307") 618307
+      \- Support custom HW profiles in condor_submit
+    %li
+      %b
+        BZ
+        %a(id="618306" href="https://bugzilla.redhat.com/show_bug.cgi?id=618306") 618306
+      \- Support custom HW profiles in C libdeltacloud
