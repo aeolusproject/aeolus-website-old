@@ -12,27 +12,27 @@ filter: haml
   %ol
     %li
       %a{ :href => "#newplatforms",
-          :title => "New platforms supported" } New platforms supported
+          :title => "New virtualization platforms" } New virtualization platforms
 
     %li
-      %a{ :href => "set_up_ec2.html",
-          :title => "Configuring for Amazon EC2" } New features (summary)
+      %a{ :href => "#newfeaturesummary",
+          :title => "New features (summary)" } New features (summary)
 
     %li
-      %a{ :href => "make_template.html",
-          :title => "Create a Fedora 14 Template" } Issues resolved (summary)
+      %a{ :href => "#issues",
+          :title => "Issues resolved (summary)" } Issues resolved (summary)
 
     %li
-      %a{ :href => "start_image.html",
-          :title => "Start an Instance of the Image" } Known issues still remaining
+      %a{ :href => "#knownissues",
+          :title => "Known issues still remaining" } Known issues still remaining
 
     %li
-      %a{ :href => "stop_image.html",
-          :title => "Stop a running Instance" } New features (Redmine issue list)
+      %a{ :href => "#newfeaturesredmine",
+          :title => "New features (Redmine issue list)" } New features (Redmine issue list)
 
     %li
-      %a{ :href => "cleaning_up.html",
-          :title => "Cleaning up" } Issues resolved (Bugzilla issue list)
+      %a{ :href => "#issuesresolvedbz",
+          :title => "Issues resolved (Bugzilla issue list)" } Issues resolved (Bugzilla issue list)
 
 .section-grouping
   This is a
@@ -83,7 +83,7 @@ filter: haml
 %br
 
 .section-grouping
-  %h2(id="newplatforms") New platforms supported
+  %h2(id="newplatforms") New virtualization platforms
 
   %p
     Initial working support has been added for:
@@ -143,20 +143,43 @@ filter: haml
       %ul
         %li
           Pushes to Amazon EC2 Cloud occasionally fail with an error in the
-          \/var/log/imagefactory.log file
+          \/var/log/imagefactory.log file.
         %li
           Users can still proceed to deploy images as long as they use both
-          the image id and build id in their deployable xml file
+          the image id and build id in their deployable xml file.
         %li
           Users should clean up defunct security groups resulting from a
-          failed push
+          failed push.
+      %br
+
+    %li
+      %b
+        BZ
+        %a(id="717987" href="https://bugzilla.redhat.com/show_bug.cgi?id=717987") 717987
+        \- Instance fails to launch with message "The requested Availability
+        Zone is no longer supported..."
+      %ul
+        %li
+          On occasion, Amazon changes which Availability Zones new instances
+          can be launched on.
+        %li
+          This causes new instances to fail, if Aeolus has been configured to
+          start them in that zone.
+        %li
+          The error message can be seen in the deltacloud daemon log file on
+          the Aeolus server.
+          
+        %li
+          At present, the workaround is to change the realm the instance is
+          launched with, to only use supported availability zones.  Then
+          relaunch it.
       %br
 
     -#%li
       %b
         BZ
         %a(id="719747" href="https://bugzilla.redhat.com/show_bug.cgi?id=719747") 719747
-        \- rhevm and vmware setup / requirements for Aeolus
+        \- rhevm and vmware setup / requirements for Aeolus.
       %ul
         %li
           Initial documents are present, with user friendly ones with being
@@ -198,7 +221,7 @@ filter: haml
         \- VMware deployments to low spec NFS datastores error out
       %ul
         %li
-          Low spec NFS datastores are not recommend due to poor performance
+          Low spec NFS datastores are not recommend due to poor performance.
       %br
 
     %li
@@ -209,7 +232,7 @@ filter: haml
       %ul
         %li
           Users should not attempt to build/push images to both rhevm and
-          vmware at the same time
+          vmware at the same time.
       %br
 
     %li
@@ -221,7 +244,7 @@ filter: haml
       %ul
         %li
           Multiple provider accounts for a single provider are not supported
-          in the beta
+          in the beta.
       %br
 
     %li
@@ -231,7 +254,8 @@ filter: haml
         \- Guests built for VMware/rhevm allow ssh as root with default password
       %ul
         %li
-          users should specify the root password when building templates for rhevm or vmware
+          Users should specify the root password when building templates for
+          rhevm or vmware:
           %pre
             :preserve
               &lt;os&gt;
@@ -253,7 +277,7 @@ filter: haml
         templates
       %ul
         %li
-          Due to be created soon, with examples
+          Due to be created soon, with examples.
       %br
 
     %li
@@ -263,10 +287,11 @@ filter: haml
         \- Hardware virtualization support required
       %ul
         %li
-          Virtualization support needs to be enabled in hardware bios running Aeolus
+          Virtualization support needs to be enabled in hardware bios running
+          Aeolus.
         %li
           One way to check for this is to see the hvm support when running
-          '<b>virsh capabilities</b>' command line tool
+          '<b>virsh capabilities</b>' command line tool:
           %pre
             :preserve
               [root@localhost ~]# virsh capabilities | grep hvm
@@ -283,7 +308,7 @@ filter: haml
       %ul
         %li
           Documentation needs updating to show inbound port 443 (https) needs
-          to be open
+          to be open.
 %br
 
 .section-grouping
