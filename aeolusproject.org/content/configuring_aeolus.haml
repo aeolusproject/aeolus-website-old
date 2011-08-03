@@ -147,16 +147,79 @@ filter: haml
   %h3(id="update-firewall") 3. Update the firewall
 
   %p
-    Because Aeolus has a web based user interface, the server running it
-    needs to accept secure web browser connections (to TCP port 443).
+    Because Aeolus has a secure web based user interface, the server running
+    it needs to accept web browser connections (to TCP port 443).
 
   %p
-    So, if a firewall is running on the Aeolus server, it needs updating to
-    allow this.
+    If a firewall is running on the Aeolus server, it needs updating to allow
+    those connections.
 
   %p
-    The steps to do that can vary widely, depending upon the firewall in
-    use, and are beyond the scope of these instructions.
+    For the standard iptables firewall on Fedora or RHEL, add this line: 
+    %pre
+      :preserve
+        -A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+  %p
+    To both of these files (one is for IPv4, one is for IPv6):
+
+  %p
+    %pre
+      :preserve
+        /etc/sysconfig/iptables
+        /etc/sysconfig/ip6tables
+
+  %p
+    The correct place is in the
+    %b OUTPUT
+    chain, just before the
+    %b REJECT
+    lines start.
+
+  %p
+    For example, this is the default
+    %em /etc/sysconfig/iptables
+    file, with the line added (in blue):
+
+  %p
+    %pre
+      :preserve
+        *filter
+        :INPUT ACCEPT [0:0]
+        :FORWARD ACCEPT [0:0]
+        :OUTPUT ACCEPT [0:0]
+        -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+        -A INPUT -p icmp -j ACCEPT
+        -A INPUT -i lo -j ACCEPT
+        -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+        <span style="color: blue">-A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT</span>
+        -A INPUT -j REJECT --reject-with icmp-host-prohibited
+        -A FORWARD -j REJECT --reject-with icmp-host-prohibited
+        COMMIT
+
+  %p
+    Do the same for the
+    %em ip6tables
+    file as well.
+
+  %p The firewall rules then need to be reloaded:
+  
+  %p
+    %pre
+      :preserve
+        $ sudo service iptables restart
+        iptables: Flushing firewall rules:                         [  <span style="color: chartreuse">OK</span>  ]
+        iptables: Setting chains to policy ACCEPT: nat mangle filte[  <span style="color: chartreuse">OK</span>  ]
+        iptables: Unloading modules:                               [  <span style="color: chartreuse">OK</span>  ]
+        iptables: Applying firewall rules:                         [  <span style="color: chartreuse">OK</span>  ]
+
+  %p
+    %pre
+      :preserve
+        $ sudo service ip6tables restart
+        ip6tables: Flushing firewall rules:                        [  <span style="color: chartreuse">OK</span>  ]
+        ip6tables: Setting chains to policy ACCEPT: filter         [  <span style="color: chartreuse">OK</span>  ]
+        ip6tables: Unloading modules:                              [  <span style="color: chartreuse">OK</span>  ]
+        ip6tables: Applying firewall rules:                        [  <span style="color: chartreuse">OK</span>  ]
 
 %br
 
