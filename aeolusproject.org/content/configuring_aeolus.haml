@@ -158,8 +158,8 @@ filter: haml
   %h3(id="update-firewall") 3. Update the firewall
 
   %p
-    Because Aeolus has a secure web based user interface, the server running
-    it needs to accept web browser connections (to TCP port 443).
+    Because Aeolus uses an encrypted web interface, the server running it
+    needs to be configured to accept connections on TCP port 443.
 
   %p
     If a firewall is running on the Aeolus server, it needs updating to allow
@@ -234,6 +234,14 @@ filter: haml
 
   %p
     The Aeolus server now accepts secure connections from a web browser.
+
+  .note
+    %p
+      %b USEFUL NOTE -
+      You can additionally open TCP port 80, for users to attempt connecting
+      via standard http.
+    
+    %p Aeolus automatically redirects them to the secure port. 
 
 %br
 
