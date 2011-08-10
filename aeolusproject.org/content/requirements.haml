@@ -23,16 +23,26 @@ filter: haml
         CPU:
       %td{ :style => "padding-bottom: 0.7em" }
         1.6Ghz dual core or higher recommended.
-    -#%tr
+    %tr
       %th{ :align => "left", :style => "vertical-align: top" }
         CPU VT extensions:
       %td{ :style => "padding-bottom: 0.7em" }
-        %b Required
-        for creating new virtual machine images.  Not required for importing
-        existing virtual machine images.
+        Not required for creating Amazon EC2 virtual machine images, or
+        importing existing images.
+        %br
+        %br
+        VT extensions
+        %b are
+        required for creating new
+        %b vSphere
+        virtual machine images.
     %tr
       %th{ :align => "left", :style => "vertical-align: top" } Memory:
       %td{ :style => "padding-bottom: 0.7em" } 2GB or greater.
+    %tr
+      %th{ :align => "left", :style => "vertical-align: top" } Firewall:
+      %td{ :style => "padding-bottom: 0.7em" }
+        Must allow web browser connections on tcp port 443 (https).
     %tr
       %th{ :align => "left", :style => "vertical-align: top" } Disk space:
       %td{ :style => "padding-bottom: 0.7em" }
