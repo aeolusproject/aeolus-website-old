@@ -97,14 +97,14 @@ filter: haml
               %a{ :href => "about.html#overview", :title => "What is Aeolus?" }
                 Overview
             %dd
+              %a{ :href => "screenshots.html", :title => "Screenshots of Aeolus in use" }
+                Screenshots
+            %dd
               %a{ :href => "features.html", :title => "Benefits and features of Aeolus" }
                 Features
             %dd
               %a{ :href => "requirements.html", :title => "System requirements for running Aeolus" }
                 Requirements
-            -#%dd
-              %a{ :href => "screenshots.html", :title => "Screenshots of Aeolus in use" }
-                Screenshots
             %dd
               %a{ :href => "aeolus_team.html", :title => "Lists all of the people in the Aeolus development team" }
                 The team
@@ -185,8 +185,8 @@ filter: haml
               %a{ :href => "configure.html", :title => "Configure project pages" }
                 Configure
             %dd
-              %a{ :href => "imagefactory.html", :title => "Image Factory project pages" }
-                Image Factory
+              %a{ :href => "imagefactory.html", :title => "ImageFactory project pages" }
+                ImageFactory
             %dd
               %a{ :href => "imagewarehouse.html", :title => "Image Warehouse project pages" }
                 Image Warehouse
