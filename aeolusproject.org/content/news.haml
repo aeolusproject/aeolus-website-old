@@ -7,6 +7,29 @@ filter: haml
 %h1 News
 
 .grid_24
+  %h2(id="201108" style="color: black") August 2011
+
+  .section-grouping
+    %h2(id="2011081001")
+      10th August 2011: Image Warehouse 0.98 stable release
+
+    %h3 New features
+
+    %ul
+      %li
+        The log output may be rotated now (parameter "-l" has to be set).
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        Make sure the Garbage Collection library keeps track of my_state
+        and provider name, and does not free them from under us, leading to
+        crashes.
+
+  %br
+
+.grid_24
   %h2(id="201107" style="color: black") July 2011
 
   .section-grouping
