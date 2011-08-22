@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.20.1 -->
-<!-- CreationDate: Thu Jun 30 17:34:32 2011 -->
+<!-- CreationDate: Mon Aug 22 11:56:43 2011 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -107,14 +107,6 @@ level <b>loglevel</b>. The log levels are: <br>
 3 - all messages <br>
 4 - all messages, prepended with the level and classname</p>
 
-<p style="margin-left:11%;"><b>&minus;x
-&lt;xmlfile&gt;</b></p>
-
-<p style="margin-left:22%;">Oz will normally generate a
-libvirt XML file in the current working directory suffixed
-with the date and time. Specifing the -x option allows the
-filename to be overridden.</p>
-
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
@@ -158,6 +150,20 @@ additional metadata) after the installation is complete.</p></td></tr>
 
 
 <p>Print a short help message.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><b>&minus;i
+&lt;icicle&gt;</b></p>
+
+<p style="margin-left:22%;">If oz-install has been
+instructed to generate an ICICLE (see the -g option), then
+it will normally write the ICICLE XML to stdout. To have
+oz-install write the ICICLE to a file instead, use the -i
+option. Note that it is an error to specify -i without
+-g.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
@@ -206,6 +212,14 @@ system. This timer value is not configurable.</p>
 installs additional packages onto the disk image after
 installation.</p> </td></tr>
 </table>
+
+<p style="margin-left:11%;"><b>&minus;x
+&lt;xmlfile&gt;</b></p>
+
+<p style="margin-left:22%;">Oz will normally generate a
+libvirt XML file in the current working directory suffixed
+with the date and time. Specifing the -x option allows the
+filename to be overridden.</p>
 
 <h2>CONFIGURATION FILE
 <a name="CONFIGURATION FILE"></a>

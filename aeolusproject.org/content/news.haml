@@ -10,6 +10,62 @@ filter: haml
   %h2(id="201108" style="color: black") August 2011
 
   .section-grouping
+    %h2(id="2011082201")
+      22nd August 2011: Oz version 0.6.0 now available
+
+    %p
+      Oz version 0.6.0 has been released.  Release 0.6.0 is a bugfix and
+      feature release for Oz.
+
+    %p
+      Highlighted improvements of Oz 0.6.0 are:
+
+    %p
+      %ul
+        %li
+          The ability to specify the destination for the ICICLE output
+          from oz-install and oz-generate-icicle
+        %li
+          pydoc class documentation for all internal Oz classes
+        %li
+          Automatic detection of KVM or QEMU at runtime (this allows oz to be
+          used within virtual machines, although with a large performance hit)
+        %li
+          Less scary warning messages in the debug output
+        %li
+          Printing of the screenshot path when a build fails
+        %li
+          Ability to run multiple Oz installs of the same OS at the same time
+        %li
+          Support for OEL and ScientificLinux
+        %li
+          Support for RHEL-5.7
+        %li
+          Support for CentOS 6
+        %li
+          Support for OpenSUSE arbitrary file injection and command execution
+        %li
+          Ability to make the TDL (template) parsing enforce a root password
+        %li
+          Rejection of localhost URLs for repositories (since they must be
+          reachable from the guest operating system, localhost URLs make no
+          sense)
+
+    %p
+      More documentation on Oz (including links on how to obtain it) is
+      available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/oz.html",
+          :title => "Oz Main Page" } http://www.aeolusproject.org/oz.html
+
+    %p
+      For this release, Fedora 14, Fedora 15, and RHEL-6.1 packages are available.
+
+  %br
+
+  .section-grouping
     %h2(id="2011081101") 11th August 2011: Aeolus 0.3.0 Milestone release
 
     %p
