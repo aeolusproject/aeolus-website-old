@@ -149,57 +149,55 @@ filter: haml
         $ make rpm
 
   %p
-    The RPMs are built and placed in <b>~/rpmbuild/RPMS/$arch/</b>:
+    The RPMs are built and placed in <b>~/rpmbuild/RPMS</b>,
+    under either the
+    %b i386
+    or
+    %b x86_64
+    subdirectory, depending upon your architecture:
 
   %p
     %pre
       :preserve
-        $ ls -la ~/rpmbuild/RPMS/x86_64/oz-*
+        $ ls -l ~/rpmbuild/RPMS/x86_64/oz-*
         -rw-r--r--. 1 jc jc 283452 Apr 21 20:19 /home/jc/rpmbuild/RPMS/x86_64/oz-0.3.0-1.fc14.x86_64.rpm
         -rw-r--r--. 1 jc jc   2060 Apr 21 20:19 /home/jc/rpmbuild/RPMS/x86_64/oz-debuginfo-0.3.0-1.fc14.x86_64.rpm
 
 %br
 
 .section-grouping
-  %h3(id="factory") Build Image Factory
+  %h3(id="factory") Build ImageFactory
 
   %h4 1. Install the required development packages:
 
   %p
     %pre
       :preserve
-        $ sudo yum install git
+        $ sudo yum install gcc git make rpm-build
 
   %h4 2. Clone the Image Factory git repository
 
   %p
     %pre
       :preserve
-        $ git clone git://github.com/aeolusproject/image_factory.git
+        $ git clone git://github.com/aeolusproject/imagefactory.git
 
-  %h4 3. Build the RPMs
-
-  %p
-    %pre
-      :preserve
-        $ cd image_factory
-        $ python setup.py bdist_rpm
-
-  %p
-    The Image Factory RPMs will be placed into a new directory called
-    %b dist
-    in the current directory:
+  %h4 3. Build the RPM
 
   %p
     %pre
       :preserve
-        $ ls -la dist/
-        total 132
-        drwxrwxr-x. 2 jc jc  4096 Apr 21 20:32 .
-        drwxr-xr-x. 9 jc jc  4096 Apr 21 20:31 ..
-        -rw-r--r--. 1 jc jc 60984 Apr 21 20:32 imagefactory-0.1.6.2_17_gfb650d5-1.fc14.noarch.rpm
-        -rw-r--r--. 1 jc jc 31607 Apr 21 20:32 imagefactory-0.1.6.2_17_gfb650d5-1.fc14.src.rpm
-        -rw-rw-r--. 1 jc jc 29071 Apr 21 20:31 imagefactory-0.1.6.2_17_gfb650d5.tar.gz
+        $ cd imagefactory
+        $ make rpm
+
+  %p
+    The Image Factory RPM will be placed in <b>~/rpmbuild/RPMS/noarch</b>:
+
+  %p
+    %pre
+      :preserve
+        $ ls -la ~/rpmbuild/RPMS/noarch/im*
+        -rw-r--r--. 1 jc jc 139914 Aug 22 15:24 imagefactory-0.4.1_55_g9203de5-1.fc14.noarch.rpm
 
 %br
 
