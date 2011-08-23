@@ -27,7 +27,9 @@ filter: haml
 
 #front-page-main-lower.container_24.clearfix
   .grid_8
-    %h1 What is Aeolus?
+    %h1
+      %a{ :href => "about.html",
+          :style => "color: #007EB5; text-decoration: none" } What is Aeolus?
 
     %p
       Aeolus is software for running virtual machines both internally on your
@@ -39,7 +41,9 @@ filter: haml
       vendor has issues.
 
   .grid_8
-    %h1 Developer Info
+    %h1
+      %a{ :href => "developers.html",
+          :style => "color: #007EB5; text-decoration: none" } Developer Info
 
     %h3 Aeolus:
     
@@ -54,7 +58,18 @@ filter: haml
       %li Is sponsored by Red Hat, Inc.
 
   .grid_8.news
-    %h1 Recent News
+    %h1
+      %a{ :href => "news.html",
+          :style => "color: #007EB5" } Recent News
+
+    %p
+      %a{ :href => "news.html#2011082201",
+          :title => "News item: Oz version 0.6.0 now available" }
+        %strong 22nd August 2011 - Oz version 0.6.0 now available
+
+    %p(style="margin-bottom: 2em")
+      Oz version 0.6.0 has been released.  Release 0.6.0 is a bugfix and
+      feature release for Oz.
 
     %p
       %a{ :href => "news.html#2011081101",
@@ -65,15 +80,6 @@ filter: haml
       This is our latest major release.  It includes a brand new, user
       friendly web interface, support for vSphere, and initial support for
       RHEV.  
-
-    %p
-      %a{ :href => "news.html#2011081001",
-          :title => "News item: Image Warehouse 0.98 stable release" }
-        %strong 10th August 2011 - Image Warehouse 0.98 stable release
-
-    %p(style="margin-bottom: 2em")
-      Image Warehouse 0.98 has been released.  This is a stable release
-      with new features and bug fixes.
 
   .grid_24
     .grid_8.alpha
