@@ -64,7 +64,7 @@ filter: haml
             Developers
           %a{ :href => "projects.html" }
             Projects
-          %a{ :href => "/wiki" }
+          %a{ :href => "/redmine/projects/aeolus/wiki/" }
             Wiki
           %a{ :href => "news.html" }
             News
@@ -140,7 +140,7 @@ filter: haml
               %a{ :href => "report_a_bug.html", :title => "Instructions for reporting a bug" }
                 Report a bug
             %dd
-              %a{ :href => "wiki", :title => "Aeolus wiki" }
+              %a{ :href => "redmine/projects/aeolus/wiki/", :title => "Aeolus wiki" }
                 Wiki
             %dd
               %a{ :href => "faq.html", :title => "Frequently asked questions about Aeolus" }
