@@ -2,7 +2,7 @@
 extension: html
 dirty: true
 filter: haml
---- 
+---
 <!DOCTYPE html>
 %html{ :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
@@ -26,7 +26,7 @@ filter: haml
 
     <!-- Site wide CSS -->
     %link{ :href => "css/site-wide.css", :rel => "stylesheet", :media => "screen, projection" }
-    
+
     %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"}
     %script{:type => "text/javascript", :src => "js/aeolus.js"}
 
@@ -64,7 +64,7 @@ filter: haml
             Developers
           %a{ :href => "projects.html" }
             Projects
-          %a{ :href => "/redmine/projects/aeolus/wiki/" }
+          %a{ :href => "redmine/projects/aeolus/wiki/" }
             Wiki
           %a{ :href => "news.html" }
             News
@@ -167,7 +167,7 @@ filter: haml
               %a{ :href => "https://bugzilla.redhat.com/buglist.cgi?classification=Red%20Hat&query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=MODIFIED&product=Cloud%20Engine", :title => "List of open bugs" }
                 Open bugs
             %dd
-              %a{ :href => "https://www.aeolusproject.org/redmine/", :title => "Project Planning in Redmine" }
+              %a{ :href => "redmine", :title => "Project Planning in Redmine" }
                 Planning (Redmine)
 
         .grid_4
