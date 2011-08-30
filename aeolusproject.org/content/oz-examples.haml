@@ -15,7 +15,7 @@ http://example.org/fedora-13-x86_64.iso.  To do this install, we first need to
 build a TDL XML file, and then feed that to oz-install.  The TDL file would
 need to look like:
 
-%pre
+%pre.code
   ~ "&lt;template&gt;"
   ~ "  &lt;name&gt;fedora13_x86_64&lt;/name&gt;"
   ~ "  &lt;os&gt;"
@@ -55,7 +55,7 @@ install the postgresql-server on the operating system.  To do this install, we
 first need to build a TDL XML file, and then feed that to oz-install.  The TDL
 file would need to look like:
 
-%pre
+%pre.code
   ~ "&lt;template&gt;"
   ~ "  &lt;name&gt;fedora14_postgres&lt;/name&gt;"
   ~ "  &lt;os&gt;"
@@ -98,7 +98,7 @@ operating system after the install is done.  To do this install, we first need
 to build a TDL XML file, and then feed that to oz-install.  The TDL file would
 need to look like:
 
-%pre
+%pre.code
   ~ "&lt;template&gt;"
   ~ "  &lt;name&gt;rhel5_x86_64&lt;/name&gt;"
   ~ "  &lt;os&gt;"
