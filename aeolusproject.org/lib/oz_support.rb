@@ -2,7 +2,7 @@ module OzSupportHelper
   def ozguestsfull
     [
      { :name => "CentOS, ScientificLinux, OEL 5.x", :install => true, :customize => true, :icicle => true },
-     { :name => "Fedora 7 - 15", :install => true, :customize => true, :icicle => true },
+     { :name => "Fedora 7 - 16", :install => true, :customize => true, :icicle => true },
      { :name => "OpenSUSE 11.x", :install => true, :customize => true, :icicle => true },
      # Had to be moved out of this array, and into the content page itself, so it could be visually styled correctly 
      #{ :name => "RHEL 5.x, 6.x", :install => true, :customize => true, :icicle => true },

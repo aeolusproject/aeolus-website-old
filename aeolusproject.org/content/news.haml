@@ -7,6 +7,53 @@ filter: haml
 %h1 News
 
 .grid_24
+  %h2(id="201109" style="color: black") September 2011
+
+  .section-grouping
+    %h2(id="2011091501")
+      15th September 2011: Oz version 0.7.0 now available
+
+    %p
+      Oz version 0.7.0 has been released.  Release 0.7.0 is a bugfix and
+      feature release for Oz.
+
+    %p
+      Highlighted improvements of Oz 0.7.0 are:
+
+    %p
+      %ul
+        %li
+          Ability to use the "direct initrd injection" method to install
+          Fedora/RHEL guests.  This is an internal implementation detail, but
+          can significantly speed up installs for Fedora or RHEL guests.
+          (thanks for the tip from Kashyap Chamarthy)
+        %li
+          Support for Fedora-16 (thanks to Steve Dake for help in making this
+          work)
+        %li
+          Use the serial port to announce guest boot, rather than a network
+          port.  This makes it so we no longer have to manipulate iptables, and
+          gets us one step closer to having Oz run as non-root
+        %li
+          (for developers) Re-written unittests in python for speedier execution
+        %li
+          (for developers) Additional methods in the TDL class to merge in
+          external package lists (thanks to Ian McLeod)
+
+    %p
+      More documentation on Oz (including links on how to obtain it) is
+      available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/oz.html",
+          :title => "Oz Main Page" } http://www.aeolusproject.org/oz.html
+
+    %p
+      For this release, Fedora 14, Fedora 15, and RHEL-6.1 packages are available.
+
+  %br
+
   %h2(id="201108" style="color: black") August 2011
 
   .section-grouping
