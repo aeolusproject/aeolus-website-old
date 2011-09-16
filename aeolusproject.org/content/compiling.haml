@@ -204,13 +204,12 @@ filter: haml
 .section-grouping
   %h3(id="iwhd") Build Image Warehouse
 
-  %h4 1. Install its dependencies
+  %h4 1. Install git and gperf
 
   %p
     %pre
       :preserve
-        $ sudo yum install jansson-devel libmicrohttpd-devel hail-devel gc-devel \
-        &nbsp;&nbsp;git gperf mongodb-devel help2man mongodb-server
+        $ sudo yum install git gperf
 
   %h4 2. Clone the Image Warehouse git repository
 
@@ -219,7 +218,15 @@ filter: haml
       :preserve
         $ git clone git://git.fedorahosted.org/iwhd.git
 
-  %h4 3. Build the RPMs
+  %h4 3. Install its dependencies
+
+  %p
+    %pre
+      :preserve
+        $ cd iwhd
+        $ sudo yum install $(grep BuildReq iwhd.spec.in|sed 's/.*: //')
+
+  %h4 4. Build the RPMs
 
   %p
     %pre
