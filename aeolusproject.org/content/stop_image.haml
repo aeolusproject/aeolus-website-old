@@ -6,25 +6,6 @@ filter: haml
 ---
 %h1 Stop a running Instance
 
-.warning
-  %b NOTE -
-  This guide was initially written for the previous Aeolus release, version
-  0.2.0, and still needs updating for version 0.3.0.  The template creation
-  process and all Aeolus screenshots are now substantially different.
-  %br
-  %b (in progress)
-
-  %p
-    <b>For now, please use these instructions on the wiki, written by Matt
-    Wagner:</b>
-    
-  %p
-    &nbsp;&nbsp;&nbsp;
-    %a{ :href => "https://www.aeolusproject.org/redmine/projects/aeolus/wiki/Launching_Instances",
-        :title => "Building, Pushing, and Launching Instances",
-        :style => "color: black; font-weight: bold" }
-      Building, Pushing, and Launching Instances
-
 .page-listing
   %h3 Getting Started Guide
 
@@ -43,7 +24,7 @@ filter: haml
 
     %li
       %a{ :href => "make_template.html",
-          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+          :title => "Create a Fedora 15 Template" } Create a Fedora 15 Template
 
     %li
       %a{ :href => "start_image.html",
@@ -67,24 +48,24 @@ filter: haml
   %p
     %ol
       %li
-        In the Aeolos web interface, go to
-        %b RESOURCE MANAGEMENT
-        &rArr;
-        <b>INSTANCES</b>.
+        On the same screen the ssh key and public address were available
+        switch to the grid view by clicking the grid button on the right
+        side of the page.
 
       %li
         Tick the checkbox next to the instance name in the instance list.
         
       %li
-        Click the
-        %b Stop
-        button:
+        Click the "Stop Selected Instances" button:
         
   %p
     &nbsp;&nbsp;&nbsp;
-    %img{ :src => "images/getting_started/aeolus_stop_instance_button.png",
-          :title => "Shutting down the instance",
-          :alt => "Shutting down the instance" }
+    %center
+      %a{ :href => "images/getting_started/aeolus_stop_instance_button.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_stop_instance_button_thumb.png",
+              :title => "Shutting down the instance - click to view at full size in a new window",
+              :alt => "Shutting down the instance - click to view at full size in a new window" }
 
   %p
     Within a minute or two the instance status should change to say
@@ -92,15 +73,12 @@ filter: haml
 
   %p
     &nbsp;&nbsp;&nbsp;
-    %img{ :src => "images/getting_started/aeolus_instance_stopped.png",
-          :title => "Instance has stopped",
-          :alt => "Instance has stopped" }
-
-  %p
-    Note though, automatic updates of the Aeolus web interface don't
-    always work yet.  You may need to refresh the window manually for the
-    %em stopped
-    status to appear.
+    %center
+      %a{ :href => "images/getting_started/aeolus_instance_stopped.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_instance_stopped_thumb.png",
+              :title => "Instance has stopped - click to view at full size in a new window",
+              :alt => "Instance has stopped - click to view at full size in a new window" }
 
 %br
 

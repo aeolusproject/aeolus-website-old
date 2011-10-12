@@ -1,33 +1,10 @@
 ---
-title: Aeolus | Create a Fedora 14 Template
+title: Aeolus | Create a Fedora 15 Template
 breadcrumb_name: Make Template
 extension: html
 filter: haml
 ---
-%h1 Create a Fedora 14 Template
-
-.warning
-  %b NOTE -
-  This guide was initially written for the previous Aeolus release, version
-  0.2.0, and still needs updating for version 0.3.0.  The template creation
-  process and all Aeolus screenshots are now substantially different.
-  %br
-  %b (in progress)
-
-  %p
-    <b>For now, please use these instructions on the wiki, written by Matt
-    Wagner:</b>
-    
-  %p
-    &nbsp;&nbsp;&nbsp;
-    %a{ :href => "https://www.aeolusproject.org/redmine/projects/aeolus/wiki/Launching_Instances",
-        :title => "Building, Pushing, and Launching Instances",
-        :style => "color: black; font-weight: bold" }
-      Building, Pushing, and Launching Instances
-
-%p
-  Next we'll create a basic Fedora 14 virtual machine template, to show you
-  the process.
+%h1 Create a Fedora 15 Template
 
 .page-listing
   %h3 Getting Started Guide
@@ -46,7 +23,7 @@ filter: haml
           :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
 
     %li
-      Create a Fedora 14 Template
+      Create a Fedora 15 Template
 
     %li
       %a{ :href => "start_image.html",
@@ -66,97 +43,88 @@ filter: haml
   %h2 1. Create the template
 
   %p
-    %ol
-      %li
-        In the Aeolos web interface, go to
-        %b IMAGE FACTORY
-        &rArr; <b>TEMPLATES</b>.
+    Create an xml file with the following content in it, the file name and extension doesn't matter.
 
-      %li
-        Click the
-        %b Create
-        button.
-
-      %li
-        Change the
-        %b Template Name
-        field to be something descriptive, such as
-        <em>Fedora 14 x64_64</em>.
-
-      %li
-        Change the
-        %b Template Description
-        field to be something descriptive, such as
-        <em>Fedora 14 Template</em>.
-        
-      %li
-        Change the
-        %b Platform Choice
-        selector to
-        <em>Fedora 14 (x86_64)</em>.
-
-      %li
-        Click the
-        %b Save
-        button.
-  
   %p
-    This creates a definition of the template, but does not actively build an
-    image for it nor push it to Amazon EC2.
-
+    %pre
+      :escaped
+        <template>
+          <name>Fedora 15 Template</name>
+          <os>
+            <name>Fedora</name>
+            <version>15</version>
+            <arch>x86_64</arch>
+            <install type='url'>
+              <url>http://download.fedoraproject.org/pub/fedora/linux/releases/15/Fedora/x86_64/os/</url>
+            </install>
+          </os>
+          <description>A Fedora 15 Image Factory Template</description>
+        </template>
+  
 %br
 
 .section-grouping
   %h2 2. Build the image, transfer the image
 
   %p
-    Now, we'll make a virtual machine image from the template, then push it
-    to the Amazon Cloud.
+    Now use the aeolus-image command-line tool to build the image described in the XML.
+
+    %pre
+      :preserve
+        $ aeolus-image build --target ec2 --template template.xml
+
+        Target Image: 663ad46e-709f-4ea1-89f0-e73b8bb2205a
+        Image: cb7acabd-59c3-41a7-894a-f3e1b072638c
+        Build: 3b5624b1-c9a5-48e2-b6cb-2abecd232eb9
+        Status: COMPLETED
+        Percent Complete: 100
 
   %p
-    %ol
-      %li
-        Click the new Fedora 14 template in the list.
-        %br
-        %br
-        The Details pane will appear, with
-        %b Properties
-        and
-        %b Builds
-        tabs.
-        %br
-        %br
-      %li
-        Click the
-        %b Builds
-        tab.
-      %li
-        Make sure the
-        %b New Build for
-        selector has your Amazon EC2 provider account selected.
-      %li
-        Click the
-        %b Go
-        button.
+    When building for EC2, this occurs in the form of a "snapshot build" that
+    occurs in the cloud using your EC2 credentials. For all other providers, Image
+    Factory will build an image locally inside of a virtual machine, so hardware
+    virtualization support is required.
 
   %p
-    This builds a basic image for the template, push it to Amazon, then does
-    final assembly live in an EC2 virtual machine.
+    Take note of the line beginning "Image:" -- this UUID (6ae8421f-9ab2-4925-8f8d-ab165862b137)
+    is important and we will use it in the step below.
 
   %p
-    When the image has been successfully assembled in EC2, it is stored in
-    Amazon S3, then registered as an AMI.
+    It is possible to build for more than one target by separating them with commas, e.g., with --target ec2,mock.
 
   %p
-    The Aeolus web interface doesn't show the progress of this very well at
-    the moment.  The best way to follow what is happening is to run a
+    Once an image is built, you will want to push the built image to one or
+    more providers. You must specify the image ID, which is the Image UUID obtained
+    in the step above. In this step, instead of specifying --target, we will
+    specify the name of the Provider in Conductor.  %pre
+
+    %pre
+      :preserve
+        $ aeolus-image push --provider ec2-us-east-1 --id cb7acabd-59c3-41a7-894a-f3e1b072638c
+
+        Provider Image: 06479253-5f01-42b4-8d55-0e7ae8619700
+        Image: cb7acabd-59c3-41a7-894a-f3e1b072638c
+        Build: 3b5624b1-c9a5-48e2-b6cb-2abecd232eb9
+        Status: PUSHING
+        Percent Complete: 0
+
+  %p
+    Building and pushing can take some time.
+    %br
+    To monitor the build process
     %em tail
-    on the Image Factory log file in the Aeolus server:
-
-  %p
+    the image factory log:
     %pre
       :preserve
         $ tail -20f /var/log/imagefactory.log
+        [verbose progress information appears here]
+
+    To monitor the push process
+    %em tail
+    the image factory and image warehouse logs:
+    %pre
+      :preserve
+        $ tail -20f /var/log/imagefactory.log /var/log/iwhd.log
         [verbose progress information appears here]
 
   %p
@@ -168,20 +136,6 @@ filter: haml
       :preserve
         2011-05-03 06:31:12,216 DEBUG imagefactory.qmfagent.BuildAdaptor.BuildAdaptor pid(1734) Message: Raising event
         with agent handler (&lt;ImageFactoryAgent(Thread-1, initial)&gtl), changed status from PUSHING to COMPLETED
-
-  %p
-    If you refresh the
-    %b Builds
-    tab, there should be an
-    %b ec2-us-east-1
-    line with the word
-    %em completed:
-
-  %p
-    &nbsp;&nbsp;&nbsp;
-    %img{ :src => "images/getting_started/ec2_push_completed.png",
-          :title => "EC2 Image push completed",
-          :alt => "EC2 Image push completed" }
 
 %br
 

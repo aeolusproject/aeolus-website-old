@@ -6,17 +6,6 @@ filter: haml
 ---
 %h1 Configuring for Amazon EC2
 
-.warning
-  %b NOTE -
-  This guide was initially written for the previous Aeolus release, version
-  0.2.0, and still needs updating for version 0.3.0.
-  %br
-  %b (in progress)
-  
-  %p
-    The template creation process and all Aeolus screenshots are now
-    substantially different.
-
 %p
   On this page you'll configure Aeolus to use Amazon EC2.  You'll need to
   have an existing account for EC2 with Amazon AWS.
@@ -38,7 +27,7 @@ filter: haml
 
     %li
       %a{ :href => "make_template.html",
-          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+          :title => "Create a Fedora 15 Template" } Create a Fedora 15 Template
 
     %li
       %a{ :href => "start_image.html",
@@ -91,13 +80,6 @@ filter: haml
   %p
     Follow these steps to configure Amazon EC2 with Aeolus.
 
-  .note
-    %p
-      %b NOTE:
-      Some field names used in the Aeolus 0.2.0 release being changed to
-      better match EC2.  These are pointed out as appropriate in the
-      following steps. 
-
   %p
     The information you need from Amazon is on the AWS
     <a href="https://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key"
@@ -109,105 +91,35 @@ filter: haml
       %li
         %em In the Aeolus web interface
         (not the Amazon AWS Console) go to
-        %b Administration
-        &rArr; <b>Provider Account</b>.
+        %b Administer
+        &rArr; <b>Cloud Providers</b>.
 
       %li
-        Click the
-        %b New Account
-        button.
+        Choose your provider in the upper right hand corner.
 
       %li
-        Change
-        %b Provider
-        to be "<em>ec2-us-east-1</em>".
+        Click "Accounts" just below the choose provider selector.
+
+      %li
+        Click the "New Account" button.
 
       %li
         For
         %b Account name
         use any descriptive string you want, such as
         "<em>Amazon EC2 East</em>".
-
       %li
-        For
-        %em (Aeolus 0.2.0)
-        %b Api key
-        use the
-        %em Access Key ID
-        value in the
-        %b Access Keys
-        tab.
-        %br
-        %br
-        .note
-          %p
-            Releases newer than 0.2.0 have this labelled as
-            "<b>Access key</b>"
-            instead of
-            "<b>Api key</b>".
-        %br
-
-      %li
-        For
-        %em (Aeolus 0.2.0)
-        %b Secret
-        use the
-        %em Secret Access Key
-        value next to it (same tab).
-        %br
-        %br
-        .note
-          %p
-            Releases newer than 0.2.0 have this labelled as
-            "<b>Secret access key</b>"
-            instead of
-            "<b>Secret</b>".
-        %br
-
-      %li
-        For
-        %em (Aeolus 0.2.0)
-        %b Aws account id
-        use the
-        %em AWS Account ID
-        value at the bottom of the page, under the heading
-        <b>Account Identifiers</b>.
-        %br
-        %br
-        .note
-          %p
-            Releases newer than 0.2.0 have this labelled as
-            "<b>Account number</b>"
-            instead of
-            "<b>Aws account id</b>".
+        For Access Key, Secret Access Key and Account Number fill
+        in the values from the link at the top of this page.
 
 %br
 
 .section-grouping
   %h2 2. x.509 Certificates
 
-  .note
-    %p
-      %b NOTE:
-      Some field names used in the Aeolus 0.2.0 release are being changed to
-      better match EC2.  These are pointed out as appropriate in the
-      following steps. 
-
   %p
     If you already have an existing EC2 x.509 certificate and private key,
-    use those for the EC2 x.509 fields.  The private key is used for the
-    %em (Aeolus 0.2.0)
-    %b Ec2 x509 private key
-    field, and the certificate is used for the
-    %em (Aeolus 0.2.0)
-    %b Ec2 x509 public key
-    field.
-
-  .note
-    %p
-      Releases newer than 0.2.0 have "<b>Ec2 x509 private key</b>" labelled as
-      "<b>Key</b>", and "<b>Ec2 x509 public key</b>" labelled as
-      "<b>Certificate</b>".
+    use those for the key and certificate fields.
 
   %p
     Alternatively, or if you don't have an X.509 Certificate yet, you can
@@ -245,40 +157,18 @@ filter: haml
       %li
         Back in Aeolus, use the
         %em EC2 x509 Private Key.pem
-        file for the      
-        %em (Aeolus 0.2.0)
-        %b Ec2 x509 private key
-        field.
+        file for the key field.
         %br
-        %br
-        .note
-          %p
-            Releases newer than 0.2.0 have this labelled as
-            "<b>Key</b>"
-            instead of
-            "<b>Ec2 x509 private key</b>".
-        %br
-
+    
       %li
         Use the
         %em EC2 x509 Certificate.pem
-        %em (Aeolus 0.2.0)
-        file for the 
-        %b Ec2 x509 public key
-        field.
-        %br
-        %br
-        .note
-          %p
-            Releases newer than 0.2.0 have this labelled as
-            "<b>Certificate</b>"
-            instead of
-            "<b>Ec2 x509 public key</b>".
+        file for the certificate field.
         %br
 
       %li
         Click the
-        %b Add
+        %b Save
         button.
 
   %p
@@ -294,6 +184,6 @@ filter: haml
 
 %br
 
-%a.button{ :href => "make_template.html", :title => "Create A Fedora 14 Template" }
+%a.button{ :href => "make_template.html", :title => "Create A Fedora 15 Template" }
   Make Image
   %img{:src => "images/button-right.png", :alt => "→"}

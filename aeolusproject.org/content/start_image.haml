@@ -6,25 +6,6 @@ filter: haml
 ---
 %h1 Start an Instance of the Image
 
-.warning
-  %b NOTE -
-  This guide was initially written for the previous Aeolus release, version
-  0.2.0, and still needs updating for version 0.3.0.  The template creation
-  process and all Aeolus screenshots are now substantially different.
-  %br
-  %b (in progress)
-
-  %p
-    <b>For now, please use these instructions on the wiki, written by Matt
-    Wagner:</b>
-    
-  %p
-    &nbsp;&nbsp;&nbsp;
-    %a{ :href => "https://www.aeolusproject.org/redmine/projects/aeolus/wiki/Launching_Instances",
-        :title => "Building, Pushing, and Launching Instances",
-        :style => "color: black; font-weight: bold" }
-      Building, Pushing, and Launching Instances
-
 %p
   With the image as an AMI in the Amazon Cloud, you can start instances
   when desired.
@@ -52,7 +33,7 @@ filter: haml
 
     %li
       %a{ :href => "make_template.html",
-          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+          :title => "Create a Fedora 15 Template" } Create a Fedora 15 Template
 
     %li
       Start an Instance of the Image
@@ -68,90 +49,92 @@ filter: haml
 %br
 
 .section-grouping
-  %h2 1. Start an instance
+  %h2 1. Launch a deployable
 
   %p
-    Before anything else, we need to get an instance up and running:
+    On your Aeolus server create a file accessible in your web root with the following content.
 
+    %pre
+      :escaped
+          <deployable name="My Deployable">
+            <description>This is an example deployment</description>
+            <assemblies>
+             <assembly name="samplehost" hwp="hwp1">
+              <image id="6ae8421f-9ab2-4925-8f8d-ab165862b137">
+              </image>
+             </assembly>
+            </assemblies>
+           </deployable>
   %p
     %ol
       %li
-        In the Aeolos web interface, go to
-        %b RESOURCE MANAGEMENT
-        &rArr; <b>INSTANCES</b>.
+        In the Aeolos web interface, go to the
+        %b MONITOR
+        tab.
+        %br
+        Under "Your Pools" is the default pool. On the right side
+        of the default pool there's an arrow. Click the arrow and it will expose the
+        button "New Deployment". Click the "New Deployment" button.
+
+        %br
+        %center
+          %a{ :href => "images/getting_started/new_deployment.png",
+              :target => "_blank" }
+            %img.thumbnail{ :src => "images/getting_started/thumbnails/new_deployment_thumb.png",
+                  :title => "New Deployment - click to view at full size in a new window",
+                  :alt => "New Deployment - click to view at full size in a new window" }
+        %br
+
+      %li
+        Give your deployment a name and enter the url to the deployable xml file you
+        just created.
+
+        %br
+        %center
+          %a{ :href => "images/getting_started/new_deployment_details.png",
+              :target => "_blank" }
+            %img.thumbnail{ :src => "images/getting_started/thumbnails/new_deployment_details_thumb.png",
+                  :title => "New Deployment - click to view at full size in a new window",
+                  :alt => "New Deployment - click to view at full size in a new window" }
+        %br
 
       %li
         Click the
-        %b Create
+        %b Next
         button.
-        %br
-        %br
-        The page will change to a list of the templates you have created.
-        %br
-        %br
 
       %li
-        Click the
-        %b Launch
-        button underneath the Fedora 14 template entry.
-        %br
-        %br
-        The page changes again, asking for further details.
-        %br
-        %br
+        To launch the deployment click the "Launch this deployment" button.
 
-      %li
-        For the
-        %b Name
-        field, choose something obvious such as
-        <em>Instance 1</em>.
-        
-      %li
-        For the
-        %b Pool
-        field, choose
-        <em>default_pool</em>.
-        
-      %li
-        For the
-        %b Hardware profile
-        field, choose
-        <em>hwp1</em>.
-        
-      %li
-        The value for the
-        %b Frontend realm
-        field doesn't matter in this instance.
-
-      %li
-        Click the
-        %b Launch
-        button.
+        %br
+        %center
+          %a{ :href => "images/getting_started/launch_deployment.png",
+              :target => "_blank" }
+            %img.thumbnail{ :src => "images/getting_started/thumbnails/launch_deployment_thumb.png",
+                  :title => "Launch Deployment - click to view at full size in a new window",
+                  :alt => "Launch  Deployment - click to view at full size in a new window" }
+        %br 
   
   %p
     Aeolus will then launch an instance of the template, using the AMI
     created on the previous page.
   %p
     The main view will list your instances, with the message
-    "<em>Instance added.</em>" near the top: 
+    "<em>Deployment launched.</em>" near the top: 
 
   %p
     &nbsp;&nbsp;&nbsp;
-    %img{ :src => "images/getting_started/instance_added.png",
-          :title => "Instance 1 added",
-          :alt => "Instance 1 added" }
+    %center
+      %a{ :href => "images/getting_started/instance_added.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/instance_added_thumb.png",
+              :title => "Instance 1 added",
+              :alt => "Instance 1 added" }
 
   %p
     Within a minute or two, the
-    %b STATUS
-    field for the instance should change to say
-    "<em>running</em>".
-
-  %p
-    Note though, automatic updates of the Aeolus web interface don't
-    always work yet.  You may need to refresh the window manually for the
-    %em running
-    status to appear.
+    %b State
+    field for the instance should change to "<em>running</em>".
 
 %br
 
@@ -229,28 +212,23 @@ filter: haml
   %p
     %ol
       %li
-        In the Aeolus web interface, click
-        %b RESOURCE MANAGEMENT
-        &rArr; <b>INSTANCES</b>.
+        In the Aeolus web interface, click the
+        %b MONITOR
+        tab.
 
       %li
         Click the name of the new running instance.
-        %b Instance 1
-        in the above screenshot.  This will open the Details view, showing
-        the
+        %b My First Deployment
+        in the above screenshot.
+        %br
+        This will open the Details view, showing the
         %b Properties
         tab for the instance.
 
       %li
-        Scroll down the properties list to locate the
-        %b SSH key
-        entry.
-
-      %li
         Click the
-        %em Download
-        text next to it to bring up a download dialog for the SSH private key
-        file:
+        %em Download Key
+        link to bring up a download dialog for the SSH private key file:
         %br
         %br
         %img{ :src => "images/getting_started/instance_ssh_private_key_download_link.png",
@@ -260,7 +238,7 @@ filter: haml
         %br
 
       %li
-        Save the private key with a distinctive name such as
+        Save the private key with a name such as
         <em>instance_1_private_key.pem</em>.
 
       %li
@@ -286,12 +264,13 @@ filter: haml
   %p
     %ol       
       %li
-        Get the public address of the instance from the instance list:
+        Get the public address of the instance from the instance list on the same
+        screen the ssh came from:
         %br
         %br
-        %img{ :src => "images/getting_started/instance_public_address.png",
-              :title => "Public address for Instance 1",
-              :alt => "Public address for Instance 1" }
+        %img{ :src => "images/getting_started/instance_ssh_private_key_download_link.png",
+              :title => "Text link to Instance 1 SSH private key",
+              :alt => "Text link to Instance 1 SSH private key" }
         %br
         %br
 
@@ -305,20 +284,20 @@ filter: haml
   %p
     %pre
       :preserve
-        $ ssh -i <b>instance_1_private_key.pem</b> -l root <b>ec2-50-16-146-190.compute-1.amazonaws.com</b>
-        The authenticity of host 'ec2-50-16-146-190.compute-1.amazonaws.com (50.16.146.190)' can't be established.
-        RSA key fingerprint is bb:af:ad:fc:69:5a:8e:9b:1a:3c:16:7b:14:c2:94:aa.
-        Are you sure you want to continue connecting (yes/no)? <b>yes</b>
-        Warning: Permanently added 'ec2-50-16-146-190.compute-1.amazonaws.com,50.16.146.190' (RSA) to the list of known hosts.
+        $ ssh -i <b>instance_1_private_key.pem</b> root@<b>ec2-67-202-12-174.compute-1.amazonaws.com</b>
+        The authenticity of host 'ec2-67-202-12-174.compute-1.amazonaws.com (67.202.12.174)' can't be established.
+        RSA key fingerprint is 09:94:bc:be:1c:a0:7c:8b:50:e5:bf:42:8c:cf:86:1b.
+        Are you sure you want to continue connecting (yes/no)? yes
+        Warning: Permanently added 'ec2-67-202-12-174.compute-1.amazonaws.com,67.202.12.174' (RSA) to the list of known hosts.
         <b>[root@localhost ~]#</b>
 
   %p
-    You are now logged into the running Fedora 14 instance as the root user.
+    You are now logged into the running Fedora 15 instance as the root user.
 
   .warning
     %p
       %b WARNING:
-      This Fedora 14 image is from the equivalent of a DVD install, so has
+      This Fedora 15 image is from the equivalent of a DVD install, so has
       %b NOT
       had security updates applied.
 

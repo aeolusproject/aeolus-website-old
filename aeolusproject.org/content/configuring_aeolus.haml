@@ -6,17 +6,6 @@ filter: haml
 ---
 %h1 Configuring Aeolus
 
-.warning
-  %b NOTE -
-  This guide was initially written for the previous Aeolus release, version
-  0.2.0, and still needs updating for version 0.3.0.
-  %br
-  %b (in progress)
-  
-  %p
-    The template creation process and all Aeolus screenshots are now
-    substantially different.
-
 %p
   These next pages get you up and running with Aeolus using our
   <b>Getting Started Guide</b>.
@@ -84,13 +73,12 @@ filter: haml
 
   %p
     The very first step is to run the
-    %b aeolus-configure
-    command with super-user privileges:
+    %b aeolus-configure command with super-user privileges.
 
   %p
     %pre
       :preserve
-        $ sudo /usr/sbin/aeolus-configure
+        $ sudo /usr/sbin/aeolus-configure -p ec2
 
   %p
     This performs an initial configuration of Aeolus with default settings.
@@ -144,7 +132,12 @@ filter: haml
         SELINUX=permissive
 
   %p
-    This change will take effect with the next reboot.
+    This change will take effect with the next reboot. To apply in immediately run:
+
+  %p
+    %pre
+      :preserve
+        setenforce 0
 
   %p
     %b NOTE:

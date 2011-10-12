@@ -6,17 +6,6 @@ filter: haml
 ---
 %h1 First login
 
-.warning
-  %b NOTE -
-  This guide was initially written for the previous Aeolus release, version
-  0.2.0, and still needs updating for version 0.3.0.
-  %br
-  %b (in progress)
-  
-  %p
-    The template creation process and all Aeolus screenshots are now
-    substantially different.
-
 %p
   On this page, you will log into Aeolus, be introduced to the main parts of
   the web based interface, and change the administrator password.
@@ -38,7 +27,7 @@ filter: haml
 
     %li
       %a{ :href => "make_template.html",
-          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+          :title => "Create a Fedora 15 Template" } Create a Fedora 15 Template
 
     %li
       %a{ :href => "start_image.html",
@@ -87,11 +76,6 @@ filter: haml
               :alt => "Initial login screen - click to view at full size in a new window" }
 
   %p
-    %b NOTE:
-    The branding says "Red Hat Cloud Engine" instead of Aeolus.  We still
-    need to fix that. :)
-
-  %p
     Login now, using the default administrator details set by
     <b>aeolus-configure</b>:
 
@@ -132,32 +116,7 @@ filter: haml
       %dt Primary navigation line
       %dd
         This is the horizontal area under the header, containing
-        "<b>RESOURCE MANAGEMENT</b>", "<b>IMAGE FACTORY</b>",
-        "<b>ADMINISTRATION</b>", and "<b>DASHBOARD</b>".
-        %br
-        The first three are operational, changing the overall function
-        presented by the interface.  The <b>DASHBOARD</b> item isn't
-        yet operational.
-        %br
-        %br
-
-      %dt Secondary navigation line
-      %dd
-        This is the second level of text, right underneath the Primary
-        navigation line.  In the screenshot above, it has the terms
-        "<b>POOLS</b>", "<b>DEPLOYMENTS</b>", and "<b>INSTANCES</b>".
-        %br
-        The options presented here are tied to the Primary navigation.  When
-        you click on a Primary navigation item, the secondary navigation
-        options change to show what is available.
-        %br
-        %br
-
-      %dt Saved searches
-      %dd
-        On the left hand side, this will contain search patterns you've
-        saved for frequent use.  We haven't written the code for this section
-        yet, so it's pretty much dead space.  You can ignore it.
+        "<b>MONITOR</b>" and "<b>ADMINISTRATION</b>"
         %br
         %br
 
@@ -182,11 +141,26 @@ filter: haml
   %h2(id="change-passwd") 3. Change the administrator password
 
   %p
-    In the top right corner of the interface, are the words
-    "<b>aeolus user</b>", next to "<b>Log out</b>".  Click on
-    "<b>aeolus user</b>".
+    In the top right corner of the interface, click on the silhouette between
+    "<b>aeolus user</b>" and the search box.
 
-  %p This is a shortcut to the screen for changing your password:
+  %p
+    %center
+      %img.thumbnail{ :src => "images/getting_started/account_shortcut.png",
+              :title => "User details shortcut",
+              :alt => "User details shortcut" }
+
+  %p
+    In the drop down menu this opens click "My Account".
+
+  %p
+    %center
+      %img.thumbnail{ :src => "images/getting_started/edit_user_screen.png",
+              :title => "Edit user details screen",
+              :alt => "Edit user details screen" }
+
+  %p
+    Then the "Edit" button on the user's business card.
 
   %p
     %center
@@ -204,8 +178,7 @@ filter: haml
     If you want, also change the First name, Last name, and E-mail fields.
   
   %p
-    Click the "<b>Save</b>" button when you're done.
-
+    Click the "<b>Save User</b>" button when you're done.
 %br
 
 %a.button{ :href => "set_up_ec2.html", :title => "Set Up Amazon EC2" }
