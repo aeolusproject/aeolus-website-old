@@ -18,37 +18,56 @@ filter: haml
     Gets you up and running quickly with Aeolus.
 
   %p
-    It covers initial configuration, connecting with Amazon EC2, then doing
-    very simple instance management with it.
+    It covers initial configuration, configuring to use VMware vSphere and/or
+    Amazon EC2 (both optional), then doing very simple virtual machine with
+    it.
 
   %ol
     %li
       %a{ :href => "configuring_aeolus.html",
-          :title => "Configuring Aeolus" } Configuring Aeolus
+          :title => "Configure Aeolus" }
+        Configure Aeolus
 
     %li
       %a{ :href => "first_login.html",
-          :title => "First login" } First login
+          :title => "First login" }
+        First login
+
+    -# Enable this when we have the mock configuration guide in place
+    -#%li
+    -#  %a{ :href => "set_up_mock.html",
+    -#      :title => "Configure for Mock" }
+    -#    Configure for Mock
+
+    %li
+      %a{ :href => "vsphere_4_1_configuration_aeolus_0_3_0.html",
+          :title => "Configure for VMware vSphere 4.1" }
+        Configure for VMware vSphere 4.1
 
     %li
       %a{ :href => "set_up_ec2.html",
-          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+          :title => "Configure for Amazon EC2" }
+        Configure for Amazon EC2
 
     %li
-      %a{ :href => "make_template.html",
-          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+      %a{ :href => "create_deployable.html",
+          :title => "Create a Deployable" }
+        Create a Deployable
 
     %li
-      %a{ :href => "start_image.html",
-          :title => "Start an Instance of the Image" } Start an Instance of the Image
+      %a{ :href => "start_deployable.html",
+          :title => "Start a Deployable" }
+        Start a Deployable
 
     %li
-      %a{ :href => "stop_image.html",
-          :title => "Stop a running Instance" } Stop a running Instance
+      %a{ :href => "stop_deployable.html",
+          :title => "Stop a running Deployable" }
+        Stop a Deployable
 
     %li
       %a{ :href => "cleaning_up.html",
-          :title => "Cleaning up" } Cleaning up
+          :title => "Cleaning up" }
+        Cleaning up
 
 %br
 

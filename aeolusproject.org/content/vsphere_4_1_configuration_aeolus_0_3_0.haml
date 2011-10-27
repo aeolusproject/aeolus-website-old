@@ -1,0 +1,513 @@
+---
+title: Aeolus | vSphere configuration for Aeolus 0.3.0
+breadcrumb_name: vSphere configuration for Aeolus 0.3.0
+extension: html
+filter: haml
+---
+%h1 Configure for VMware vSphere 4.1
+
+%p
+  On this page you'll configure Aeolus to use an existing VMware vSphere 4.1
+  installation.
+
+.note
+  %p
+    If you don't have an existing vSphere 4.1 installation, or
+    don't want to configure Aeolus to use one, just move on to the
+    %a{ :href => "set_up_ec2.html",
+        :title => "Configuring for Amazon EC2" } next page
+    of this guide.
+
+%br
+
+.page-listing
+  %h3 Getting Started Guide
+
+  %ol
+    %li
+      %a{ :href => "configuring_aeolus.html",
+          :title => "Configure Aeolus" }
+        Configure Aeolus
+
+    %li
+      %a{ :href => "first_login.html",
+          :title => "First login" }
+        First login
+
+    %li
+      Configure for VMware vSphere 4.1
+
+      %ol{ :style => "list-style-type: lower-alpha" }
+        %li
+          %a{ :href => "#reqs" }
+            Requirements
+
+        %li
+          %a{ :href => "#init-script" }
+            Set up the Deltacloud vSphere init.d script
+
+        %li
+          %a{ :href => "#add-credentials" }
+            Add vSphere login credentials
+
+        %li
+          %a{ :href => "#add-provider" }
+            Add a vSphere Provider
+
+        %li
+          %a{ :href => "#verify-working" }
+            Verify functionality
+
+    %li
+      %a{ :href => "set_up_ec2.html",
+          :title => "Configure for Amazon EC2" }
+        Configure for Amazon EC2
+
+    %li
+      %a{ :href => "create_deployable.html",
+          :title => "Create a Deployable" }
+        Create a Deployable
+
+    %li
+      %a{ :href => "start_deployable.html",
+          :title => "Start a Deployable" }
+        Start a Deployable
+
+    %li
+      %a{ :href => "stop_deployable.html",
+          :title => "Stop a running Deployable" }
+        Stop a Deployable
+
+    %li
+      %a{ :href => "cleaning_up.html",
+          :title => "Cleaning up" }
+        Cleaning up
+
+%br
+
+.section-grouping
+  %h2(id="reqs") a. Requirements
+
+  %p
+    These are the requirements for Aeolus to work with vSphere:
+
+  %ul
+    %li
+      %b Hardware virtualization on the Aeolus server
+
+      %p
+        The server Aeolus runs on must have hardware virtualization enabled.
+
+      %p
+        Without it, building images will fail.
+
+    %li
+      %b The vSphere installation must be using vCenter 4.1
+      
+      %p
+        You can't use an installation of vSphere that doesn't have vCenter,
+        or that runs an older version of vCenter.
+
+%br
+
+.section-grouping
+  %h2(id="init-script") b. Set up the Deltacloud vSphere init.d script
+
+  %ol
+    %li
+      %b Download the required init.d script
+
+      %p
+        For the Aeolus 0.3.0 release, you need to download the Deltacloud
+        vSphere init.d script manually.  This step won't be needed in future
+        Aeolus releases.
+
+      %pre
+        :preserve
+          $ sudo wget -O /etc/init.d/deltacloud-vsphere \
+          &nbsp; https://github.com/aeolusproject/aeolus-extras/raw/master/deltacloud-vsphere
+
+      %p Make sure it is executable:
+
+      %pre
+        :preserve
+          $ sudo chmod 755 /etc/init.d/deltacloud-vsphere
+
+      %p Verify it is correct:
+
+      %pre
+        :preserve
+          $ ls -la /etc/init.d/deltacloud*
+          -rwxr-xr-x. 1 root root 2009 Jun 25 04:39 /etc/init.d/deltacloud-core
+          -rwxr-xr-x. 1 root root 2221 Jul 28 21:59 /etc/init.d/deltacloud-ec2-us-east-1
+          -rwxr-xr-x. 1 root root 2221 Jul 28 21:59 /etc/init.d/deltacloud-ec2-us-west-1
+          -rwxr-xr-x. 1 root root 2121 Jul 28 22:19 /etc/init.d/deltacloud-mock
+          <span style="color: chartreuse">-rwxr-xr-x. 1 root root 3075 Aug  6 10:59 /etc/init.d/deltacloud-vsphere</span>
+
+      %br
+      %br
+
+    %li
+      %b
+        Make sure the script starts and stops the Deltacloud vSphere daemon
+        correctly
+
+      %p Test the script starts properly by manually starting it:
+
+      %pre
+        :preserve
+          $ sudo service deltacloud-vsphere start
+          Starting deltacloud-vsphere:                               [  <span style="color: chartreuse">OK</span>  ]
+
+      %p
+        Verify there is now a process named "deltacloudd", with a command
+        line option containing "vsphere":
+
+      %pre
+        :preserve
+          $ ps -eo pid,args | grep deltacloud | grep vsphere
+           3057 /usr/bin/ruby /usr/bin/<span style="color: chartreuse">deltacloudd</span> -i <span style="color: chartreuse">vsphere</span> -e production -p 3006
+
+      %p Test the script stops the daemon correctly as well:
+
+      %pre
+        :preserve
+          $ sudo service deltacloud-vsphere stop
+          Shutting down deltacloud-vsphere:                          [  <span style="color: chartreuse">OK</span>  ]
+
+      %p Verify the process is no longer running:
+
+      %pre
+        :preserve
+          $ ps -eo pid,args | grep deltacloud | grep vsphere
+          $
+
+      %br
+      %br
+
+    %li
+      %b Add the script to the system configuration
+
+      %p
+        Once the script has been verified to function correctly on the
+        system, add it to the init.d configuration using chkconfig:
+
+      %pre
+        :preserve
+          $ sudo chkconfig --add deltacloud-vsphere
+
+      %p
+        By default, it should be automatically set to start when the server
+        boots.  Verify this, just to make sure:
+
+      %pre
+        :preserve
+          $ chkconfig --list | grep deltacloud
+          deltacloud-core            0:off   1:off   2:off   3:off   4:off   5:off   6:off
+          deltacloud-ec2-us-east-1   0:off   1:off   2:on    3:on    4:on    5:on    6:off
+          deltacloud-ec2-us-west-1   0:off   1:off   2:on    3:on    4:on    5:on    6:off
+          deltacloud-mock            0:off   1:off   2:on    3:on    4:on    5:on    6:off
+          <span style="color: chartreuse">deltacloud-vsphere         0:off   1:off   2:off</span>   <span style="color:blue">3:on</span>    <span style="color: chartreuse">4:off</span>   <span style="color: blue">5:on</span>    <span style="color: chartreuse">6:off</span>
+
+%br
+
+.section-grouping
+  %h2(id="add-credentials") c. Add vSphere login credentials
+
+  %ol
+    %li
+      %b Add the vCenter login credentials
+
+      %p
+        Create the following text file on the Aeolus server, for holding
+        vSphere vCenter login credentials:
+
+      %pre
+        :preserve
+          /etc/vmware.json
+
+      %p
+        The file is in a simple, easy to read format called <b>JSON</b>:
+
+      %pre
+        :preserve
+          { "<span style="color: blue">identifier</span>": { "<span style="color: lightgreen">api-url</span>": "https://vcentername/sdk",
+                            "<span style="color: magenta">username</span>": "myusername",
+                            "<span style="color: darkred">password</span>": "mypassword",
+                            "<span style="color: indigo">datastore</span>": "mydatastore",
+                            "<span style="color: orange">network_name</span>": "VM Network" } }
+
+      %p
+        All fields are required, and have the following meanings:
+
+      %ul
+        %li
+          %b(style="color: blue") identifier -
+          A plain text string to uniquely identify the credentials.
+
+          %p
+            For example, "vmware" or "vsphere".
+
+        %li
+          %b(style="color: lightgreen") api-url -
+          The API URL of your vCenter server
+
+          %p
+            Always follows the format "https://<b>vcentername</b>/sdk".
+
+          %p
+            Just replace the "vcentername" part with the name of your vCenter
+            server.  The Aeolus server
+            %b must
+            be able to resolve this name. (ie in DNS, or Active Directory)
+
+        %li
+          %b(style="color: magenta") username -
+          The username for logging into vCenter.
+          %br
+          %br
+
+        %li
+          %b(style="color: darkred") password -
+          The password for the vCenter user.  In plain text.
+          %br
+          %br
+
+        %li
+          %b(style="color: indigo") datastore -
+          The name of the vSphere datastore that Aeolus will place new images
+          in.
+          %br
+          %br
+
+        %li
+          %b(style="color: orange") network_name -
+          The name of a virtual network new images are attached to.
+          
+          %p
+            The default virtual network name in vSphere is "VM Network".
+
+      %p
+        An example with data:
+
+      %pre
+        :preserve
+          { "<span style="color: blue">vsphere</span>": { "<span style="color: lightgreen">api-url</span>": "https://vcenter.aeolusproject.org/sdk",
+                         "<span style="color: magenta">username</span>": "Administrator",
+                         "<span style="color: darkred">password</span>": "mypassword",
+                         "<span style="color: indigo">datastore</span>": "storage1-nfs",
+                         "<span style="color: orange">network_name</span>": "VM Network" } }
+
+      %br
+      %br
+
+    %li
+      %b Ensure only the root user has access
+
+      %p
+        Because plain text passwords are stored in this file, you
+        %b must
+        make sure only the root user can access it:
+
+      %pre
+        :preserve
+          $ sudo chown root:root /etc/vmware.json
+
+      %pre
+        :preserve
+          $ sudo chmod 600 /etc/vmware.json
+
+      %pre
+        :preserve
+          $ ls -la /etc/vmware.json
+          -rw-------. 1 root root 187 Aug  7 11:11 /etc/vmware.json
+
+      %br
+      %br
+
+    %li
+      %b Restart the Deltacloud vSphere daemon
+
+      %p
+        Start (or restart) the Deltacloud vSphere daemon, to load the
+        credentials:
+
+      %pre
+        :preserve
+          $ sudo service deltacloud-vsphere start
+          Starting deltacloud-vsphere:                               [  <span style="color: chartreuse">OK</span>  ]
+
+%br
+
+.section-grouping
+  %h2(id="add-provider") d. Add a vSphere Provider
+
+  %p
+    Now we add a new Provider to Aeolus using the web interface.  This
+    Provider will tell Aeolus how to connect to the Deltacloud vSphere
+    daemon.
+
+  %ol
+    %li
+      %b
+        In the Aeolus web interface, navigate to the Administer &rArr;
+        Providers page
+
+      %p
+        To get there, change to the
+        %b Administer
+        section, then choose "<b>Providers</b>" from the drop down
+        %b Control Panel
+        menu up in the top right. 
+
+      %p
+        %center
+          %a{ :href => "images/getting_started/administer_providers_menu_option_selection.png",
+              :target => "_blank" }
+            %img.thumbnail{ :src => "images/getting_started/thumbnails/administer_providers_menu_option_selection_thumb.png",
+                  :title => "Providers menu item selection - click to view at full size in a new window",
+                  :alt => "Providers menu item selection - click to view at full size in a new window",
+                  :width => 500,
+                  :height => 305 }
+
+      %br
+      %br
+
+    %li
+      %b
+        Click on the
+        %b New Provider
+        button
+
+      %p
+        %center
+          %a{ :href => "images/getting_started/click_new_provider_button.png",
+              :target => "_blank" }
+            %img.thumbnail{ :src => "images/getting_started/thumbnails/click_new_provider_button_thumb.png",
+                  :title => "New Provider button - click to view at full size in a new window",
+                  :alt => "New Provider button - click to view at full size in a new window",
+                  :width => 500,
+                  :height => 305 }
+
+    %p
+      The
+      %b New Provider
+      screen will appear:
+
+      %p
+        %center
+          %a{ :href => "images/getting_started/new_provider_screen_no_values.png",
+              :target => "_blank" }
+            %img.thumbnail{ :src => "images/getting_started/thumbnails/new_provider_screen_no_values_thumb.png",
+                  :title => "New Provider screen not yet filled out - click to view at full size in a new window",
+                  :alt => "New Provider screen not yet filled out - click to view at full size in a new window",
+                  :width => 500,
+                  :height => 305 }
+
+      %br
+      %br
+
+    %li
+      %b Give the details of the Deltacloud vSphere daemon
+
+      %p
+        .note
+          %p
+            %b NOTE -
+            The Deltacloud vSphere daemon
+            %b must
+            be running when you do this, otherwise this step will fail.
+
+      %p
+        We need to point it at the Deltacloud vSphere daemon we installed
+        above:
+
+      %p
+        %ul
+          %li
+            %b Provider name:
+            The <b><span style="color: blue">identifier</span></b> of a set
+            of credentials in the /etc/vmware.json file.  We used
+            <b><span style="color: blue">vsphere</span></b> in our example
+            above.
+
+            %p
+              Aeolus uses this identifier name when communicating with
+              Deltacloud.  Deltacloud uses the details in the json file to
+              communicate to the vCenter server.
+
+          %li
+            %b Provider URL:
+            The Deltacloud vSphere daemon we set up earlier listens for http
+            requests on "<b>http://localhost:3006/api</b>".
+            %br
+            %br
+
+          %li
+            %b Provider type:
+            Set this to "<b>VMware vSphere</b>".
+
+      %p
+        %center
+          %a{ :href => "images/getting_started/new_vsphere_provider_values.png",
+              :target => "_blank" }
+            %img.thumbnail{ :src => "images/getting_started/thumbnails/new_vsphere_provider_values_thumb.png",
+                  :title => "Example values for new vSphere Provider screen - click to view at full size in a new window",
+                  :alt => "Example values for new vSphere Provider screen - click to view at full size in a new window",
+                  :width => 500,
+                  :height => 305 }
+
+        %p
+          Then click the
+          %b Save
+          button.  The new vSphere Provider will appear in the list:
+
+      %p
+        %center
+          %a{ :href => "images/getting_started/new_vsphere_provider_in_providers_list.png",
+              :target => "_blank" }
+            %img.thumbnail{ :src => "images/getting_started/thumbnails/new_vsphere_provider_in_providers_list_thumb.png",
+                  :title => "Provider list showing new vSphere Provider - click to view at full size in a new window",
+                  :alt => "Provider list showing new vSphere Provider - click to view at full size in a new window",
+                  :width => 500,
+                  :height => 305 }
+
+      %br
+      %br
+
+    %li
+      %b Test the vSphere Provider connection
+
+      %p
+        Click on the vSphere Provider we just added, to display its details
+        screen.  Then click the "<b>Test</b>" button up on the top right: 
+
+      %p
+        %center
+          %a{ :href => "images/getting_started/vsphere_provider_click_test_button.png",
+              :target => "_blank" }
+            %img.thumbnail{ :src => "images/getting_started/thumbnails/vsphere_provider_click_test_button_thumb.png",
+                  :title => "vSphere Provider detail page with test button highlighted - click to view at full size in a new window",
+                  :alt => "vSphere Provider detail page with test button highlighted - click to view at full size in a new window",
+                  :width => 500,
+                  :height => 305 }
+
+      %p
+        A status message will appear, showing if the connection test worked.
+        If it did, then the vSphere Provider has been configured correctly:
+
+      %p
+        %center
+          %a{ :href => "images/getting_started/vsphere_provider_test_result.png",
+              :target => "_blank" }
+            %img.thumbnail{ :src => "images/getting_started/thumbnails/vsphere_provider_test_result_thumb.png",
+                  :title => "vSphere Provider detail page with test button highlighted - click to view at full size in a new window",
+                  :alt => "vSphere Provider detail page with test button highlighted - click to view at full size in a new window",
+                  :width => 500,
+                  :height => 305 }
+
+%br
+
+%a.button{ :href => "set_up_ec2.html", :title => "Set Up Amazon EC2" }
+  Configure for EC2
+  %img{:src => "images/button-right.png", :alt => "→"}

@@ -6,17 +6,6 @@ filter: haml
 ---
 %h1 First login
 
-.warning
-  %b NOTE -
-  This guide was initially written for the previous Aeolus release, version
-  0.2.0, and still needs updating for version 0.3.0.
-  %br
-  %b (in progress)
-  
-  %p
-    The template creation process and all Aeolus screenshots are now
-    substantially different.
-
 %p
   On this page, you will log into Aeolus, be introduced to the main parts of
   the web based interface, and change the administrator password.
@@ -27,35 +16,56 @@ filter: haml
   %ol
     %li
       %a{ :href => "configuring_aeolus.html",
-          :title => "Configuring Aeolus" } Configuring Aeolus
+          :title => "Configure Aeolus" }
+        Configure Aeolus
 
     %li
       First login
 
+      %ol{ :style => "list-style-type: lower-alpha" }
+        %li
+          %a{ :href=> "#first-login" } Web based interface 
+
+        %li
+          %a{ :href=> "#welcome" } Welcome screen
+
+        %li
+          %a{ :href=> "#change-passwd" } Change the administrator password
+
+    %li
+      %a{ :href => "vsphere_4_1_configuration_aeolus_0_3_0.html",
+          :title => "Configure for VMware vSphere 4.1" }
+        Configure for VMware vSphere 4.1
+
     %li
       %a{ :href => "set_up_ec2.html",
-          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+          :title => "Configure for Amazon EC2" }
+        Configure for Amazon EC2
 
     %li
-      %a{ :href => "make_template.html",
-          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+      %a{ :href => "create_deployable.html",
+          :title => "Create a Deployable" }
+        Create a Deployable
 
     %li
-      %a{ :href => "start_image.html",
-          :title => "Start an Instance of the Image" } Start an Instance of the Image
+      %a{ :href => "start_deployable.html",
+          :title => "Start a Deployable" }
+        Start a Deployable
 
     %li
-      %a{ :href => "stop_image.html",
-          :title => "Stop a running Instance" } Stop a running Instance
+      %a{ :href => "stop_deployable.html",
+          :title => "Stop a running Deployable" }
+        Stop a Deployable
 
     %li
       %a{ :href => "cleaning_up.html",
-          :title => "Cleaning up" } Cleaning up
+          :title => "Cleaning up" }
+        Cleaning up
 
 %br
   
 .section-grouping
-  %h2(id="first-login") 1. Web based interface
+  %h2(id="first-login") a. Web based interface
 
   %p
     After Aeolus has been initialized, with any SELinux and firewall updates
@@ -73,7 +83,7 @@ filter: haml
   %p
     %b USEFUL INFO:
     Aeolus is really several pieces of software that work together.
-    "Conductor" is the web based user interface piece.  
+    "Conductor" is the piece providing the web based user interface.  
 
   %p
     If everything is working properly, the initial login screen will appear:
@@ -85,11 +95,6 @@ filter: haml
         %img.thumbnail{ :src => "images/getting_started/thumbnails/initial_login_screen_thumb.png",
               :title => "Initial login screen - click to view at full size in a new window",
               :alt => "Initial login screen - click to view at full size in a new window" }
-
-  %p
-    %b NOTE:
-    The branding says "Red Hat Cloud Engine" instead of Aeolus.  We still
-    need to fix that. :)
 
   %p
     Login now, using the default administrator details set by
@@ -105,13 +110,12 @@ filter: haml
     password
 
   %p
-    We'll change that password in a few moments, after introducing you to
-    the major parts of the Aeolus interface.
+    We'll change that password in the next step.
 
 %br
 
 .section-grouping
-  %h2(id="welcome") 2. Welcome screen
+  %h2(id="welcome") b. Welcome screen
 
   %p
     Once you've logged in, the main Aeolus web interface appears:
@@ -125,68 +129,82 @@ filter: haml
               :alt => "Initial welcome screen - click to view at full size in a new window" }
 
   %p
-    The most important parts of the web interface are:
-  
+    The
+    %b MONITOR
+    and
+    %b ADMINISTER
+    tabs near the top change the view in the main window area.
+
   %p
-    %dl
-      %dt Primary navigation line
-      %dd
-        This is the horizontal area under the header, containing
-        "<b>RESOURCE MANAGEMENT</b>", "<b>IMAGE FACTORY</b>",
-        "<b>ADMINISTRATION</b>", and "<b>DASHBOARD</b>".
-        %br
-        The first three are operational, changing the overall function
-        presented by the interface.  The <b>DASHBOARD</b> item isn't
-        yet operational.
-        %br
-        %br
+    When the
+    %b MONITOR
+    tab is selected, the main window area provides live status information
+    for all virtual infrastructure under management, across all configured
+    Cloud Providers.
 
-      %dt Secondary navigation line
-      %dd
-        This is the second level of text, right underneath the Primary
-        navigation line.  In the screenshot above, it has the terms
-        "<b>POOLS</b>", "<b>DEPLOYMENTS</b>", and "<b>INSTANCES</b>".
-        %br
-        The options presented here are tied to the Primary navigation.  When
-        you click on a Primary navigation item, the secondary navigation
-        options change to show what is available.
-        %br
-        %br
+  %p
+    When the
+    %b ADMINISTER
+    tab is selected, the main window area is for changing Aeolus
+    configuration settings.
 
-      %dt Saved searches
-      %dd
-        On the left hand side, this will contain search patterns you've
-        saved for frequent use.  We haven't written the code for this section
-        yet, so it's pretty much dead space.  You can ignore it.
-        %br
-        %br
+  %p
+    To switch to a specific configuration topic, select it in the
+    %b Control Panel
+    drop down list up in the top right:     
 
-      %dt Main area
-      %dd
-        This is the area in the middle of the screen.  In this screenshot it
-        contains items such as the "Login successful" message, various
-        buttons including "Start", "Stop" and "Delete", along with an empty
-        list starting with "DEPLOYMENT NAME".
-        %br
-        %br
-
-      %dt Details view
-      %dd
-        Not shown in the above screenshot.  This appears when items are
-        selected in the Main area, often presenting additional information
-        and options.
+  %p
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_3_0_administer_showing_control_panel.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_3_0_administer_showing_control_panel_thumb.png",
+              :title => "Administer and control panel - click to view at full size in a new window",
+              :alt => "Administer and control panel - click to view at full size in a new window" }
 
 %br
 
 .section-grouping
-  %h2(id="change-passwd") 3. Change the administrator password
+  %h2(id="change-passwd") c. Change the administrator password
 
   %p
-    In the top right corner of the interface, are the words
-    "<b>aeolus user</b>", next to "<b>Log out</b>".  Click on
+    Our first step is changing the password of the
+    %b admin
+    user.
+
+  %p
+    In the top menu bar, click the silhouette button to the right of the words
     "<b>aeolus user</b>".
 
-  %p This is a shortcut to the screen for changing your password:
+  %p
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_3_0_display_my_account_option.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_3_0_display_my_account_option_thumb.png",
+              :title => "Show the My Account link - click to view at full size in a new window",
+              :alt => "Show the My Account link - click to view at full size in a new window" }
+
+  %p
+    A small menu of options will be displayed.  Click the "<b>My Account</b>"
+    option.
+
+  %p
+    This takes you to a screen displaying the details for the
+    %b admin
+    user.  Click the
+    %b Edit
+    button, so changes can be made:
+
+  %p
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_3_0_admin_user_click_edit_button.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_3_0_admin_user_click_edit_button_thumb.png",
+              :title => "Read only user details screen - click to view at full size in a new window",
+              :alt => "Read only user details screen - click to view at full size in a new window" }
+
+  %p
+    Change the password now, using the "<b>Change password</b>" and
+    "<b>Confirm password</b>" fields:
 
   %p
     %center
@@ -197,17 +215,14 @@ filter: haml
               :alt => "Update user details screen - click to view at full size in a new window" }
 
   %p
-    Change the password now, using the "<b>Change password</b>" and
-    "<b>Confirm password</b>" fields.
-    %br
-    %br
     If you want, also change the First name, Last name, and E-mail fields.
-  
+
   %p
     Click the "<b>Save</b>" button when you're done.
 
 %br
 
-%a.button{ :href => "set_up_ec2.html", :title => "Set Up Amazon EC2" }
-  Set Up EC2
+%a.button{ :href => "vsphere_4_1_configuration_aeolus_0_3_0.html",
+           :title => "Configure for VMware vSphere 4.1" }
+  Configure for vSphere
   %img{:src => "images/button-right.png", :alt => "→"}

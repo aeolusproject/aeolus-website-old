@@ -26,35 +26,59 @@ filter: haml
   %ol
     %li
       %a{ :href => "configuring_aeolus.html",
-          :title => "Configuring Aeolus" } Configuring Aeolus
+          :title => "Configure Aeolus" }
+        Configure Aeolus
 
     %li
       %a{ :href => "first_login.html",
-          :title => "First login" } First login
+          :title => "First login" }
+        First login
+
+    %li
+      %a{ :href => "vsphere_4_1_configuration_aeolus_0_3_0.html",
+          :title => "Configure for VMware vSphere 4.1" }
+        Configure for VMware vSphere 4.1
 
     %li
       %a{ :href => "set_up_ec2.html",
-          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+          :title => "Configure for Amazon EC2" }
+        Configure for Amazon EC2
 
     %li
-      %a{ :href => "make_template.html",
-          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+      %a{ :href => "create_deployable.html",
+          :title => "Create a Deployable" }
+        Create a Deployable
 
     %li
-      %a{ :href => "start_image.html",
-          :title => "Start an Instance of the Image" } Start an Instance of the Image
+      %a{ :href => "start_deployable.html",
+          :title => "Start a Deployable" }
+        Start a Deployable
 
     %li
-      %a{ :href => "stop_image.html",
-          :title => "Stop a running Instance" } Stop a running Instance
+      %a{ :href => "stop_deployable.html",
+          :title => "Stop a running Deployable" }
+        Stop a Deployable
 
     %li
       Cleaning up
 
+      %ol{ :style => "list-style-type: lower-alpha" }
+        %li
+          %a{ :href=> "#unconfigure" }
+            Unconfiguring Aeolus 
+
+        %li
+          %a{ :href=> "#clean-up-amazon" }
+            Remove AMIs and storage left in Amazon
+
+        %li
+          %a{ :href=> "#next-steps" }
+            Next Steps
+
 %br
 
 .section-grouping
-  %h2 Unconfiguring Aeolus
+  %h2(id="unconfigure") a. Unconfiguring Aeolus
 
   %p
     To remove the configuration data from an Aeolus server, run the  
@@ -85,7 +109,7 @@ filter: haml
 %br
 
 .section-grouping
-  %h2 Remove any AMIs left in EC2 and storage left in S3
+  %h2(id="clean-up-amazon") b. Remove AMIs and storage left in Amazon
 
   %p
     Aeolus does not yet de-register AMIs, nor delete their corresponding
@@ -141,7 +165,7 @@ filter: haml
 %br
 
 .section-grouping
-  %h2 Next Steps
+  %h2(id="next-steps") c. Next Steps
 
   %p
     Aeolus has a

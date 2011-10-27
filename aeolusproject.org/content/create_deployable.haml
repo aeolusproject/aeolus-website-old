@@ -1,0 +1,195 @@
+---
+title: Aeolus | Create a Deployable
+breadcrumb_name: Create a Deployable
+extension: html
+filter: haml
+---
+%h1 Create a Deployable
+
+%p
+  Now we'll create a simple Fedora 14 virtual machine image, then transfer it
+  to a configured Provider.
+
+.page-listing
+  %h3 Getting Started Guide
+
+  %ol
+    %li
+      %a{ :href => "configuring_aeolus.html",
+          :title => "Configure Aeolus" }
+        Configure Aeolus
+
+    %li
+      %a{ :href => "first_login.html",
+          :title => "First login" }
+        First login
+
+    %li
+      %a{ :href => "vsphere_4_1_configuration_aeolus_0_3_0.html",
+          :title => "Configure for VMware vSphere 4.1" }
+        Configure for VMware vSphere 4.1
+
+    %li
+      %a{ :href => "set_up_ec2.html",
+          :title => "Configure for Amazon EC2" }
+        Configure for Amazon EC2
+
+    %li
+      Create a Deployable
+
+      %ol{ :style => "list-style-type: lower-alpha" }
+        %li
+          %a{ :href=> "#get-template" }
+            Download an example template 
+
+        %li
+          %a{ :href=> "#build-image" }
+            Build an image using the template
+
+        %li
+          %a{ :href=> "#push-image" }
+            Push to a Provider Account
+
+    %li
+      %a{ :href => "start_deployable.html",
+          :title => "Start a Deployable" }
+        Start a Deployable
+
+    %li
+      %a{ :href => "stop_deployable.html",
+          :title => "Stop a running Deployable" }
+        Stop a Deployable
+
+    %li
+      %a{ :href => "cleaning_up.html",
+          :title => "Cleaning up" }
+        Cleaning up
+
+%br
+
+.section-grouping
+  %h2(id="get-template") a. Download an example template
+
+  %p
+    Retrieve an
+    %a{ :href => "https://github.com/aeolusproject/aeolus-extras/raw/master/templates/fedora_14_x86_64.tpl",
+        :title => "Example Fedora 14 template file" } example Fedora 14 template file
+    (less than 1kb in size) from the Aeolus website: 
+
+  %pre
+    :preserve
+      $ wget https://github.com/aeolusproject/aeolus-extras/raw/master/templates/fedora_14_x86_64.tpl
+
+%br
+
+.section-grouping
+  %h2(id="build-image") b. Build an image using the template
+
+  %p
+    Images are created from templates using the <b>aeolus-image</b>
+    command.
+
+  %h3(id="build-ec2") Building for EC2
+
+  %p
+    The arguments used in the example below instruct it to create a new
+    image, for EC2, from the template file we just downloaded:
+
+  %pre
+    :preserve
+      $ sudo aeolus-image build --target ec2 --template fedora_14_x86_64.tpl
+      Target Image: aeeab323-9992-4fde-b844-1a8b29660608
+      Image: <span style="color: blue">512e4b0c-9f78-48b8-86f4-fd264dc76b53</span>
+      Build: 59109a7a-4026-4129-b161-36a1e93b40d5
+      Status: COMPLETED
+      Percent Complete: 100
+
+  %p
+    EC2 image builds are very quick, as no significant work needs to be done
+    locally.
+
+
+  %h3(id="build-vsphere") Building for vSphere
+
+  %p
+    The arguments used in the example below instruct it to create a new
+    image, for vSphere, from the template file downloaded above:
+
+  %pre
+    :preserve
+      $ sudo aeolus-image build --target vsphere --template fedora_14_x86_64.tpl
+
+      Target Image: 6403c4ca-cac8-4d80-ba7a-53b08b468023
+      Image: <span style="color: blue">cc8abd98-ccff-4641-b386-e5d6ef13ba7e</span>
+      Build: 7901ff4e-5b55-49fd-9207-f92d5dd5cb5c
+      Status: New
+      Percent Complete: <span style="color: red">0</span>
+
+  %p
+    Unlike builds for EC2, vSphere building is done locally.  This can take a
+    significant amount of time.
+
+  %p
+    To avoid tying up a terminal session,
+    %b aeolus-image
+    launches vSphere builds as background processes.
+
+  %p
+    You will need to periodically query the progress of vSphere image
+    builds, until they are complete.
+
+%br
+
+.section-grouping
+  %h2(id="push-image") c. Push to a Provider Account
+
+  %p
+    The <b>aeolus-image</b> command is also used for pushing images to any
+    configured Provider Account. 
+
+
+  %h3(id="push-ec2") Pushing to EC2
+
+  %b Push the image to Amazon EC2
+
+
+  %h3(id="push-vsphere") Pushing to vSphere
+
+  %b Push the image to the vSphere installation
+
+  %pre
+    :preserve
+      $ sudo aeolus-image push --provider vsphere --id FOO
+
+
+%br
+
+-# May or may not still be relevant.  Should become apparent soon.
+-#.section-grouping
+-#  %h2(id="verify-cloud") c. Verify on the Amazon Cloud side
+-#
+-#  %p
+-#    If you load Amazon's AWS Management Console in your web browser, you will
+-#    see this image in your list of registered AMI's:
+-#
+-#  %p
+-#    &nbsp;&nbsp;&nbsp;
+-#    %img{ :src => "images/getting_started/new_ami_in_ami_list.png",
+-#          :title => "New registered AMI",
+-#          :alt => "New registered AMI" }
+-#
+-#  %p
+-#    Changing to the Amazon S3 tab, you will see a new bucket has been
+-#    created to hold the AMI:
+-#
+-#  %p
+-#    &nbsp;&nbsp;&nbsp;
+-#    %img{ :src => "images/getting_started/new_s3_bucket_holding_ami.png",
+-#          :title => "New S3 bucket",
+-#          :alt => "New S3 bucket" }
+-#
+-#%br
+
+%a.button{ :href => "start_deployable.html", :title => "Start a Deployable" }
+  Start a Deployable
+  %img{:src => "images/button-right.png", :alt => "→"}

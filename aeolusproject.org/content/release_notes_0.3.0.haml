@@ -12,27 +12,28 @@ filter: haml
   %ol
     %li
       %a{ :href => "#newplatforms",
-          :title => "New virtualization platforms" } New virtualization platforms
+          :title => "New virtualization platforms" }
+        New virtualization platforms
 
     %li
       %a{ :href => "#newfeaturesummary",
-          :title => "New features (summary)" } New features (summary)
-
-    %li
-      %a{ :href => "#issues",
-          :title => "Issues resolved (summary)" } Issues resolved (summary)
+          :title => "New features" }
+        New features
 
     %li
       %a{ :href => "#knownissues",
-          :title => "Known issues still remaining" } Known issues still remaining
+          :title => "Known issues still remaining" }
+        Known issues still remaining
 
     %li
-      %a{ :href => "#newfeaturesredmine",
-          :title => "New features (Redmine issue list)" } New features (Redmine issue list)
+      %a{ :href => "#redmine",
+          :title => "Redmine items completed" }
+        Redmine items completed
 
     %li
       %a{ :href => "#issuesresolvedbz",
-          :title => "Issues resolved (Bugzilla issue list)" } Issues resolved (Bugzilla issue list)
+          :title => "Issues resolved (Bugzilla issue list)" }
+        Issues resolved (Bugzilla issue list)
 
 .section-grouping
   This is a
@@ -42,7 +43,8 @@ filter: haml
   %p
     It is our first to use the
     <b>new, user friendly, web interface</b>,
-    designed by Ken Keiter and Jonell Lay.
+    designed by <a href="aeolus_team.html#tigger">Ken Keiter</a> and
+    <a href="aeolus_team.html#jlay">Jonell Lay</a>.
 
   %p
     Additionally, this release brings
@@ -60,12 +62,6 @@ filter: haml
     %a{ :href => "http://www.aeolusproject.org/get_it.html",
         :title => "Get Aeolus" }
       http://www.aeolusproject.org/get_it.html
-
-  %p
-    Upgrading from a previous version also works, following the
-    instructions on the
-    %a(href="upgrading.html" title="Instructions for upgrading Aeolus") upgrading Aeolus
-    page.
 
   %p
     Packages are available for Fedora 14 x86_64, and RHEL 6.1 x86_64.
@@ -92,18 +88,18 @@ filter: haml
     %li
       %b VMware vSphere 4.1
       %br
-      Initial setup instructions are
-      <a href="https://www.aeolusproject.org/redmine/projects/aeolus/wiki/VSphere_Setup" title="VMware vSphere setup instructions">here</a>.
-      These instructions are in initial working form, with more user friendly
-      ones presently being created.
+      Setup instructions are
+      -#<a href="vsphere_4_1_configuration_aeolus_0_3_0.html" title="VMware vSphere v4.1 configuration instructions">here</a>.
+      presently being created.  Use this recent development snapshot of them
+      <a href="http://justinclift.fedorapeople.org/aeolus/vsphere_4_1_configuration_aeolus_0_3_0.html" title="VMware vSphere v4.1 configuration instructions">for now</a>.
       %br
       %br
+
     %li
       %b Red Hat Enterprise Virtualization 2.x
       %br
-      This is very early stage support, and still pretty fragile.  It's
-      receiving a lot of development effort though, so should be pretty decent
-      in the next major Aeolus release (0.4.0).
+      This is very early stage support, and still fragile.  This should start
+      to shape up from the next major Aeolus release (0.4.0).
       %br
       %br 
       Initial setup instructions are
@@ -113,28 +109,63 @@ filter: haml
 %br
 
 .section-grouping
-  %h2(id="newfeaturesummary") New features (summary)
+  %h2(id="newfeaturesummary") New features
 
-  %p
-    %b Creation in progress
+  %ul
+    %li
+      %b Completely new, user friendly, web interface
+      %br
+      Screenshots
+      <a href="screenshots.html" title="Aeolus 0.3.0 screenshots">here</a>.
+      %br
+      %br
+
+    %li
+      %b Secure HTTP (https) for browser sessions
+      %br
+      The new web interface is now configured by default to use https, for
+      improved security.
+      %br
+      %br
+
+    %li
+      %b New command line tool for managing images
+      %br
+      %b aeolus-image
+      is a powerful, new command line tool, for managing Aeolus images.
+      %br
+      This should allow many image management tasks to now become automated.
+      %br
+      %br
+
+    %li
+      %b Logging improvements for command line configuration tools
+      %br
+      Both aeolus-configure and aeolus-cleanup now support run time
+      configurable verbosity level, though a new -v/--verbose command line
+      argument.
 
 %br
 
 .section-grouping
-  %h2(id="issues") Issues resolved (summary)
-
-  %p
-    %b Creation in progress
-
-%br
-
-.section-grouping
-  %h2(id="knownissues") Known issues
+  %h2(id="knownissues") Known issues still remaining
 
   %p
     These are known problems due to be resolved in a subsequent release:
 
   %ul
+    %li
+      %b
+        The Aeolus "Getting Started Guide" needs updating for version 0.3.0.
+    %ul
+      %li
+        Some parts of the Getting Started Guide, which were correct for the
+        0.2.0 release, no longer work with the 0.3.0 release.
+      %li
+        The updated version of the Getting Started Guide, for this release,
+        will be ready soon.
+      %br
+
     %li
       %b
         BZ
@@ -213,15 +244,25 @@ filter: haml
           Users should limit the number of instances running within RHEV-M.
       %br
 
-    -# This sounds more like a problem with the testing gear
+    %li
+      %b
+        BZ
+        %a(id="725672" href="https://bugzilla.redhat.com/show_bug.cgi?id=725672") 725672
+        \- RHEV instances do not report IP after being launched
+      %ul
+        %li
+          Due to a limitation of the RHEV 2.2 API, the IP displayed for
+          instances never progresses past "pending".
+      %br
+
     %li
       %b
         BZ
         %a(id="723894" href="https://bugzilla.redhat.com/show_bug.cgi?id=723894") 723894
-        \- VMware deployments to low spec NFS datastores error out
+        \- VMware deployments to low performance datastores error out
       %ul
         %li
-          Low spec NFS datastores are not recommend due to poor performance.
+          Low performance datastores are not recommend due to poor performance.
       %br
 
     %li
@@ -278,41 +319,11 @@ filter: haml
       %ul
         %li
           Due to be created soon, with examples.
-      %br
 
-    %li
-      %b
-        BZ
-        %a(id="719486" href="https://bugzilla.redhat.com/show_bug.cgi?id=719486") 719486
-        \- Hardware virtualization support required
-      %ul
-        %li
-          Virtualization support needs to be enabled in hardware bios running
-          Aeolus.
-        %li
-          One way to check for this is to see the hvm support when running
-          '<b>virsh capabilities</b>' command line tool:
-          %pre
-            :preserve
-              [root@localhost ~]# virsh capabilities | grep hvm
-                <os_type>hvm</os_type>
-                <os_type>hvm</os_type>
-              [root@localhost ~]# 
-      %br
-
-    %li
-      %b
-        BZ
-        %a(id="717657" href="https://bugzilla.redhat.com/show_bug.cgi?id=717657") 717657
-        \- Requirement for port 443 inbound to be open
-      %ul
-        %li
-          Documentation needs updating to show inbound port 443 (https) needs
-          to be open.
 %br
 
 .section-grouping
-  %h2(id="newfeaturesredmine") New features (Redmine issue list)
+  %h2(id="redmine") Redmine items completed
 
   %ul
     -#%li
@@ -355,7 +366,7 @@ filter: haml
       %b
         Redmine
         %a(id="1844" href="https://www.aeolusproject.org/redmine/issues/1844") 1844
-      \- As a sefl service user, I would like permission to launch deployables
+      \- As a self service user, I would like permission to launch deployables
       in all pools by default
     %li
       %b
@@ -396,11 +407,6 @@ filter: haml
         Redmine
         %a(id="1761" href="https://www.aeolusproject.org/redmine/issues/1761") 1761
       \- Fix JS method for selecting Provider in New ProviderAccount view
-    %li
-      %b
-        Redmine
-        %a(id="1740" href="https://www.aeolusproject.org/redmine/issues/1740") 1740
-      \- Review
     %li
       %b
         Redmine

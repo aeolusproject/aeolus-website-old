@@ -21,7 +21,7 @@ filter: haml
   %li
     %a(href="#oz") Oz
   %li
-    %a(href="#factory") Image Factory
+    %a(href="#factory") ImageFactory
   %li
     %a(href="#iwhd") Image Warehouse
   %li
@@ -161,7 +161,7 @@ filter: haml
 %br
 
 .section-grouping
-  %h3(id="factory") Build Image Factory
+  %h3(id="factory") Build ImageFactory
 
   %h4 1. Install the required development packages:
 
@@ -170,7 +170,7 @@ filter: haml
       :preserve
         $ sudo yum install git
 
-  %h4 2. Clone the Image Factory git repository
+  %h4 2. Clone the ImageFactory git repository
 
   %p
     %pre
@@ -186,7 +186,7 @@ filter: haml
         $ python setup.py bdist_rpm
 
   %p
-    The Image Factory RPMs will be placed into a new directory called
+    The ImageFactory RPMs will be placed into a new directory called
     %b dist
     in the current directory:
 
@@ -417,7 +417,7 @@ filter: haml
   %p
     %pre
       :preserve
-        $ wget https://github.com/justinclift/aeolus-extra/raw/master/condor/make_condor_package_7.x.sh --no-check-certificate
+        $ wget https://github.com/aeolusproject/aeolus-extras/raw/master/condor/make_condor_package_7.x.sh --no-check-certificate
         $ chmod 755 make_condor_package_7.x.sh
 
   %p
@@ -472,7 +472,7 @@ filter: haml
     %pre
       :preserve
         $ pushd ~/rpmbuild/SOURCES
-        $ wget https://github.com/justinclift/aeolus-extra/raw/master/condor/man-current.tar.gz --no-check-certificate
+        $ wget https://github.com/aeolusproject/aeolus-extras/raw/master/condor/man-current.tar.gz --no-check-certificate
         $ popd
 
   %h4 6. Build the RPMs

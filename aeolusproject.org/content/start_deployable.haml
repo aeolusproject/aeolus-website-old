@@ -1,10 +1,10 @@
 ---
-title: Aeolus | Start an Instance of the Image
-breadcrumb_name: Start Image
+title: Aeolus | Start a Deployable
+breadcrumb_name: Start a Deployable
 extension: html
 filter: haml
 ---
-%h1 Start an Instance of the Image
+%h1 Start a Deployable
 
 .warning
   %b NOTE -
@@ -32,35 +32,63 @@ filter: haml
   %ol
     %li
       %a{ :href => "configuring_aeolus.html",
-          :title => "Configuring Aeolus" } Configuring Aeolus
+          :title => "Configure Aeolus" }
+        Configure Aeolus
 
     %li
       %a{ :href => "first_login.html",
-          :title => "First login" } First login
+          :title => "First login" }
+        First login
+
+    %li
+      %a{ :href => "vsphere_4_1_configuration_aeolus_0_3_0.html",
+          :title => "Configure for VMware vSphere 4.1" }
+        Configure for VMware vSphere 4.1
 
     %li
       %a{ :href => "set_up_ec2.html",
-          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+          :title => "Configure for Amazon EC2" }
+        Configure for Amazon EC2
 
     %li
-      %a{ :href => "make_template.html",
-          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+      %a{ :href => "create_deployable.html",
+          :title => "Create a Deployable" }
+        Create a Deployable
 
     %li
-      Start an Instance of the Image
+      Start a Deployable
+
+      %ol{ :style => "list-style-type: lower-alpha" }
+        %li
+          %a{ :href=> "#start-instance" }
+            Start an instance 
+
+        %li
+          %a{ :href=> "#configure-ec2-ssh" }
+            Configure EC2 for SSH connections
+
+        %li
+          %a{ :href=> "#get-ssh-key" }
+            Retrieve the Private SSH Key
+
+        %li
+          %a{ :href=> "#connect" }
+            Connect to the instance
 
     %li
-      %a{ :href => "stop_image.html",
-          :title => "Stop a running Instance" } Stop a running Instance
+      %a{ :href => "stop_deployable.html",
+          :title => "Stop a running Deployable" }
+        Stop a Deployable
 
     %li
       %a{ :href => "cleaning_up.html",
-          :title => "Cleaning up" } Cleaning up
+          :title => "Cleaning up" }
+        Cleaning up
 
 %br
 
 .section-grouping
-  %h2 1. Start an instance
+  %h2(id="start-instance") a. Start an instance
 
   %p
     Before anything else, we need to get an instance up and running:
@@ -148,7 +176,7 @@ filter: haml
 %br
 
 .section-grouping
-  %h2 2. Configure EC2 for SSH connections
+  %h2(id="configure-ec2-ssh") b. Configure EC2 for SSH connections
 
   %p
     By default, Amazon EC2 does not allow any incoming connections to
@@ -212,7 +240,7 @@ filter: haml
 %br
 
 .section-grouping
-  %h2 3. Retrieve the Private SSH Key
+  %h2(id="get-ssh-key") c. Retrieve the Private SSH Key
 
   %p
     To connect to the new running instance using SSH, you need the private
@@ -270,7 +298,7 @@ filter: haml
 %br
 
 .section-grouping
-  %h2 4. Connect to the instance
+  %h2(id="connect") d. Connect to the instance
 
   %p
     Now we connect to the new running instance using SSH:
@@ -330,6 +358,6 @@ filter: haml
 
 %br
 
-%a.button{ :href => "stop_image.html", :title => "Stop an Instance of an Image" }
-  Stop Image
+%a.button{ :href => "stop_deployable.html", :title => "Stop a running Deployable" }
+  Stop a Deployable
   %img{:src => "images/button-right.png", :alt => "→"}

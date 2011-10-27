@@ -1,65 +1,76 @@
 ---
-title: Aeolus | Configuration Documentation
-breadcrumb_name: Configuration Documentation
+title: Aeolus | Configure Aeolus
+breadcrumb_name: Configure Aeolus
 extension: html
 filter: haml
 ---
-%h1 Configuring Aeolus
-
-.warning
-  %b NOTE -
-  This guide was initially written for the previous Aeolus release, version
-  0.2.0, and still needs updating for version 0.3.0.
-  %br
-  %b (in progress)
-  
-  %p
-    The template creation process and all Aeolus screenshots are now
-    substantially different.
+%h1 Configure Aeolus
 
 %p
-  These next pages get you up and running with Aeolus using our
+  These pages get you up and running quickly with our
   <b>Getting Started Guide</b>.
+  %em (written for Aeolus 0.3.x)
 
 %p
-  They take you through initial configuration, connecting with Amazon EC2,
-  then doing very simple instance management with it.
+  They take you through initial configuration, connecting with VMware vSphere
+  and Amazon EC2 (both optional), then doing very simple instance management.
 
 .page-listing
   %h3 Getting Started Guide
 
   %ol
     %li
-      Configuring Aeolus
+      Configure Aeolus
+
+      %ol{ :style => "list-style-type: lower-alpha" }
+        %li
+          %a{ :href => "#aeolus-configure" } Run aeolus-configure
+
+        %li
+          %a{ :href => "#selinux-enforcing" } Turn off SELinux Enforcing mode
+
+        %li
+          %a{ :href => "#update-firewall" } Update the firewall
 
     %li
       %a{ :href => "first_login.html",
-          :title => "First login" } First login
+          :title => "First login" }
+        First login
+
+    %li
+      %a{ :href => "vsphere_4_1_configuration_aeolus_0_3_0.html",
+          :title => "Configure for VMware vSphere 4.1" }
+        Configure for VMware vSphere 4.1
 
     %li
       %a{ :href => "set_up_ec2.html",
-          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+          :title => "Configure for Amazon EC2" }
+        Configure for Amazon EC2
 
     %li
-      %a{ :href => "make_template.html",
-          :title => "Create a Fedora 14 Template" } Create a Fedora 14 Template
+      %a{ :href => "create_deployable.html",
+          :title => "Create a Deployable" }
+        Create a Deployable
 
     %li
-      %a{ :href => "start_image.html",
-          :title => "Start an Instance of the Image" } Start an Instance of the Image
+      %a{ :href => "start_deployable.html",
+          :title => "Start a Deployable" }
+        Start a Deployable
 
     %li
-      %a{ :href => "stop_image.html",
-          :title => "Stop a running Instance" } Stop a running Instance
+      %a{ :href => "stop_deployable.html",
+          :title => "Stop a running Deployable" }
+        Stop a Deployable
 
     %li
       %a{ :href => "cleaning_up.html",
-          :title => "Cleaning up" } Cleaning up
+          :title => "Cleaning up" }
+        Cleaning up
 
 %br
 
 .section-grouping
-  %h2 Initial configuration
+  %h2(id="initial-config") Initial configuration
 
   %p
     Most configuration for Aeolus is done through its web interface.
@@ -67,7 +78,7 @@ filter: haml
   %p
     To turn on this web interface, we take a few simple steps:
 
-  %ol
+  %ol{ :style => "list-style-type: lower-alpha" }
     %li
       %a{ :href => "#aeolus-configure" } Run aeolus-configure
 
@@ -80,7 +91,7 @@ filter: haml
 %br
 
 .section-grouping
-  %h3(id="aeolus-configure") 1. Run aeolus-configure
+  %h2(id="aeolus-configure") a. Run aeolus-configure
 
   %p
     The very first step is to run the
@@ -107,11 +118,11 @@ filter: haml
 %br
 
 .section-grouping
-  %h3(id="selinux-enforcing") 2. Turn off SELinux Enforcing mode
+  %h2(id="selinux-enforcing") b. Turn off SELinux Enforcing mode
 
   %p
-    Aeolus needs the server it is installed on, to not be running in
-    SELinux "<em>Enforcing</em>" mode.
+    Aeolus needs the server it is installed on, to not be running SELinux in
+    "<em>Enforcing</em>" mode.
 
   %p
     To make sure this is the case, check the configuration file here:
@@ -146,16 +157,17 @@ filter: haml
   %p
     This change will take effect with the next reboot.
 
-  %p
-    %b NOTE:
-    This is just a temporary requirement at this stage of Aeolus development.
-    By the time Aeolus is ready for general usage, it will work properly with
-    SELinux in enforcing mode.
+  .note
+    %p
+      %b NOTE:
+      This is just a temporary requirement at this stage of Aeolus development.
+      By the time Aeolus is ready for general usage, it will work properly with
+      SELinux in enforcing mode.
 
 %br
 
 .section-grouping
-  %h3(id="update-firewall") 3. Update the firewall
+  %h2(id="update-firewall") c. Update the firewall
 
   %p
     Because Aeolus uses an encrypted web interface, the server running it

@@ -104,6 +104,26 @@ filter: haml
     &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus along with its
     dependencies on the RHEL 6.1 x86_64 system.
 
+  %h3 4. Disable the deltacloud-core init.d script
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    There is a small bug in this release of Aeolus, in that it doesn't
+    disable the "<b>deltacloud-core</b>" init script when it's installed.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    For now, you need to do this manually for the "mock" (test) driver to
+    work:
+
+  %p
+    %pre
+      $ sudo chkconfig deltacloud-core off
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    This will be fixed in the next release of Aeolus.
+
   %p
     &nbsp;&nbsp;&nbsp;&nbsp;
     %a.button{ :href => "configuring_aeolus.html" }
@@ -133,6 +153,26 @@ filter: haml
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus along with its
     dependencies on the Fedora 14 system.
+
+  %h3 3. Disable the deltacloud-core init.d script
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    There is a small bug in this release of Aeolus, in that it doesn't
+    disable the "<b>deltacloud-core</b>" init script when it's installed.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    For now, you need to do this manually for the "mock" (test) driver to
+    work:
+
+  %p
+    %pre
+      $ sudo chkconfig deltacloud-core off
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    This will be fixed in the next release of Aeolus.
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -210,6 +250,26 @@ filter: haml
     &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
     packages, along with their dependencies, on the RHEL 6.1 x86_64 system.
 
+  %h3 4. Disable the deltacloud-core init.d script
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    There is a small bug in this release of Aeolus, in that it doesn't
+    disable the "<b>deltacloud-core</b>" init script when it's installed.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    For now, you need to do this manually for the "mock" (test) driver to
+    work:
+
+  %p
+    %pre
+      $ sudo chkconfig deltacloud-core off
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    This will be fixed in the next release of Aeolus.
+
   %p
     &nbsp;&nbsp;&nbsp;&nbsp;
     %a.button{ :href => "configuring_aeolus.html" }
@@ -239,6 +299,26 @@ filter: haml
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
     packages, along with their dependencies, on the Fedora 14 system.
+
+  %h3 3. Disable the deltacloud-core init.d script
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    There is a small bug in this release of Aeolus, in that it doesn't
+    disable the "<b>deltacloud-core</b>" init script when it's installed.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    For now, you need to do this manually for the "mock" (test) driver to
+    work:
+
+  %p
+    %pre
+      $ sudo chkconfig deltacloud-core off
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    This will be fixed in the next release of Aeolus.
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp;

@@ -23,7 +23,7 @@ filter: haml
       %a{ :href => "#connector" } Connector
 
     %li
-      %a{ :href => "#factory" } Image Factory
+      %a{ :href => "#factory" } ImageFactory
 
     %li
       %a{ :href => "#iwhd" } Image Warehouse
@@ -180,11 +180,11 @@ filter: haml
 %br
 
 .section-grouping
-  %h2(id="connector") Connector &rarr; Image Factory Connector
+  %h2(id="connector") Connector &rarr; ImageFactory Connector
 
   %p
-    Provides a REST web interface for Image Factory.  Aeolus uses this for
-    internal communication with Image Factory.
+    Provides a REST web interface for ImageFactory.  Aeolus uses this for
+    internal communication with ImageFactory.
 
   %p
     By default, the log file for it is here: 
@@ -206,17 +206,17 @@ filter: haml
 
 
 .section-grouping
-  %h2(id="factory") Image Factory
+  %h2(id="factory") ImageFactory
 
   %p
     Imagefactory is a high level daemon, responsible for creating virtual
     machine images for each Cloud provider.
   %p
     It uses Oz for some parts of the image creation process, capturing Oz's
-    logging in the Image Factory log file for convenience.
+    logging in the ImageFactory log file for convenience.
 
   %p
-    By default, the Image Factory log file is located at:
+    By default, the ImageFactory log file is located at:
 
   %p
     %pre
