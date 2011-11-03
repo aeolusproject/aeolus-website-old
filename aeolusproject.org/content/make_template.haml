@@ -43,7 +43,8 @@ filter: haml
   %h2 1. Create the template
 
   %p
-    Create an xml file with the following content in it, the file name and extension doesn't matter.
+    Create an XML file with the following content in it; the file name and extension doesn't matter.
+    Be sure to change the "rootpw" element.
 
   %p
     %pre
@@ -57,6 +58,7 @@ filter: haml
             <install type='url'>
               <url>http://download.fedoraproject.org/pub/fedora/linux/releases/15/Fedora/x86_64/os/</url>
             </install>
+            <rootpw>p@ssw0rd</rootpw>
           </os>
           <description>A Fedora 15 Image Factory Template</description>
         </template>
@@ -64,7 +66,7 @@ filter: haml
 %br
 
 .section-grouping
-  %h2 2. Build the image, transfer the image
+  %h2 2. Build and transfer the image
 
   %p
     Now use the aeolus-image command-line tool to build the image described in the XML.
@@ -86,21 +88,25 @@ filter: haml
     virtualization support is required.
 
   %p
-    Take note of the line beginning "Image:" -- this UUID (cb7acabd-59c3-41a7-894a-f3e1b072638c)
-    is important and we will use it in the step below.
+    Take note of the Image, Build, and Target Image lines -- these UUIDs will be
+    used in the next step below.
 
   %p
     It is possible to build for more than one target by separating them with commas, e.g., with --target ec2,mock.
 
   %p
     Once an image is built, you will want to push the built image to one or
-    more providers. You must specify the image ID, which is the Image UUID obtained
-    in the step above. In this step, instead of specifying --target, we will
-    specify the name of the Provider in Conductor.  %pre
+    more providers. You must specify the image, build, and target image UUIDs
+    from the command above. In this step, instead of specifying --target, we will
+    specify the name of the Provider as is configured in Conductor and also the name of the
+    appropriate Provider Account.
 
     %pre
       :preserve
-        $ aeolus-image push --provider ec2-us-east-1 --id cb7acabd-59c3-41a7-894a-f3e1b072638c
+        $ aeolus-image push --provider ec2-us-east-1 --account my_ec2 \
+           --image 663ad46e-709f-4ea1-89f0-e73b8bb2205a \
+           --build 3b5624b1-c9a5-48e2-b6cb-2abecd232eb9 \
+           --targetimage 663ad46e-709f-4ea1-89f0-e73b8bb2205a
 
         Provider Image: 06479253-5f01-42b4-8d55-0e7ae8619700
         Image: cb7acabd-59c3-41a7-894a-f3e1b072638c
@@ -111,17 +117,13 @@ filter: haml
   %p
     Building and pushing can take some time.
     %br
-    To monitor the build process
-    %em tail
-    the image factory log:
+    To monitor the build process, tail the Image Factory log:
     %pre
       :preserve
         $ tail -20f /var/log/imagefactory.log
         [verbose progress information appears here]
 
-    To monitor the push process
-    %em tail
-    the image factory and image warehouse logs:
+    To monitor the push process, tail the Image Factory and Image Warehouse logs:
     %pre
       :preserve
         $ tail -20f /var/log/imagefactory.log /var/log/iwhd.log
@@ -134,8 +136,9 @@ filter: haml
   %p
     %pre
       :preserve
-        2011-05-03 06:31:12,216 DEBUG imagefactory.qmfagent.BuildAdaptor.BuildAdaptor pid(1734) Message: Raising event
-        with agent handler (&lt;ImageFactoryAgent(Thread-1, initial)&gtl), changed status from PUSHING to COMPLETED
+        2011-11-03 10:08:49,375 DEBUG imgfac.ImageWarehouse.ImageWarehouse pid(5424) Message: Setting metadata ({'latest_unpushed': None})
+        for http://localhost:9090/images/663ad46e-709f-4ea1-89f0-e73b8bb2205a
+
 
 %br
 
