@@ -39,9 +39,33 @@ filter: haml
 .section-grouping
   %h4
     Project:
+    %a{ :href => "" } Aeolus-cli
+
+  %p
+    Michael Orazi (mgr), Martyn Taylor (lead), Petr Blaho, Jay Guiditta,
+    Mo Morsi, Jan Provaznik, Richard Su, Francesco Vollero, Matt Wager,
+    Maros Zatko
+
+%br
+
+.section-grouping
+  %h4
+    Project:
+    %a{ :href => "" } Aeolus-image-rubygem
+
+  %p
+    Michael Orazi (mgr), Martyn Taylor (lead), Petr Blaho, Jay Guiditta,
+    Mo Morsi, Jan Provaznik, Richard Su, Francesco Vollero, Matt Wager,
+    Maros Zatko
+
+%br
+
+.section-grouping
+  %h4
+    Project:
     %a{ :href => "audrey.html" } Audrey
 
-  %p John Dunning (mgr), Greg Blomquist (lead), Joe Vlcek
+  %p John Dunning (mgr), Greg Blomquist (lead), Dan Radez, Joe Vlcek
 
 %br
 
@@ -51,8 +75,8 @@ filter: haml
     %a{ :href => "configure.html" } Configure
 
   %p
-    Hugh Brock (mgr), Mo Morsi (lead), Michael Orazi (lead), Richard Su,
-    Martyn Taylor, Francesco Vollero
+    Michael Orazi (mgr), Mo Morsi (lead), Richard Su, Martyn Taylor,
+    Francesco Vollero
 
 %br
 
@@ -97,10 +121,10 @@ filter: haml
     %a{ :href => "conductor.html" } Conductor
 
   %p
-    Hugh Brock (mgr), Jay Guiditta, Wes Hayutin, Tomáš Hrčka, Ken Keiter,
-    Steven Linabery, Ian Main, Mark McLoughlin, Mo Morsi, Mike Orazi,
-    Jan Provaznik, Scott Seago, Tomas Sedovic, Richard Su, Martyn Taylor,
-    Angus Thomas, Jiri Tomasek, Matt Wagner, Maros Zatko, Jozef Zigmund
+    Angus Thomas (mgr), Scott Seago (lead), Jay Guiditta, Wes Hayutin,
+    Tomáš Hrčka, Ken Keiter, Steven Linabery, Ian Main, Mark McLoughlin,
+    Mo Morsi, Mike Orazi, Jan Provaznik, Tomas Sedovic, Richard Su,
+    Martyn Taylor, Jiri Tomasek, Matt Wagner, Maros Zatko, Jozef Zigmund
 
 %br
 
@@ -131,6 +155,18 @@ filter: haml
       %td Puppet, Python, Ruby, Java
       %td gblomqui AT red hat DOT com
       %td Greg
+      %td &nbsp;
+      %td &nbsp;
+    %tr(id="pblaho")
+      %td Petr Blaho
+      %td pblaho
+      %td
+        Aeolus-cli,
+        %br
+        Aeolus-image-rubygem
+      %td Ruby on Rails (RoR)
+      %td pblaho AT red hat DOT com
+      %td Petr
       %td &nbsp;
       %td &nbsp;
     %tr(id="hewbrocca")
@@ -266,20 +302,14 @@ filter: haml
       %td
         %a{ :href => "http://clalance.blogspot.com" } Link
       %td &nbsp;
-    %tr(id="jlay")
-      %td Jonell Lay
-      %td jlay
-      %td Conductor
-      %td UX Design
-      %td jlay AT red hat DOT com
-      %td Jonell
-      %td &nbsp;
-      %td &nbsp;
     %tr(id="eggs")
       %td Steven Linabery
       %td eggs
       %td Conductor
-      %td Breaking things, Monitoring
+      %td
+        Breaking Things, Packaging,
+        %br
+        Release Wrangling
       %td slinaber AT red hat DOT com
       %td Steve
       %td &nbsp;
@@ -374,10 +404,10 @@ filter: haml
       %td Michael Orazi
       %td morazi
       %td
-        Conductor, Conductor
+        Aeolus-cli,
         %br
-        configuration
-      %td Agile process, Scrum, Puppet
+        Aeolus-image-rubygem
+      %td Engineering Manager
       %td morazi AT red hat DOT com
       %td Mike
       %td &nbsp;
@@ -389,6 +419,15 @@ filter: haml
       %td Ruby Development
       %td jprovazn AT red hat DOT com
       %td Jan
+      %td &nbsp;
+      %td &nbsp;
+    %tr(id="radez")
+      %td Dan Radez
+      %td radez
+      %td Audrey
+      %td Python and Ruby
+      %td radez AT red hat DOT com
+      %td Dan
       %td &nbsp;
       %td &nbsp;
     %tr(id="sseago")
@@ -450,14 +489,8 @@ filter: haml
     %tr(id="athomas")
       %td Angus Thomas
       %td athomas
-      %td
-        Conductor packaging,
-        %br
-        dependency management
-      %td
-        Linux packaging, Agile
-        %br
-        process, Scrum
+      %td Conductor
+      %td Engineering Manager
       %td athomas AT red hat DOT com
       %td Angus
       %td &nbsp;
@@ -530,17 +563,14 @@ filter: haml
     %tr(id="mattydubs")
       %td Matt Wagner
       %td matty_dubs
-      %td
-        Conductor, Hudson,
-        %br
-        Continuous Integration
+      %td Conductor (mainly)
       %td
         Ruby on Rails (RoR)
         %br
         Development, Rails
         %br
         architecture, testing
-      %td mawagner AT red hat DOT com
+      %td matt DOT wagner AT red hat DOT com
       %td Matt
       %td
         %a{ :href => "http://matty.tumblr.com" } Link
