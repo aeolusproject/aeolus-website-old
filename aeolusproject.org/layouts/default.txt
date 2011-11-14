@@ -164,7 +164,7 @@ filter: haml
               %a{ :href => "patches.html", :title => "Guide to submitting patches" }
                 Submitting patches
             %dd
-              %a{ :href => "https://bugzilla.redhat.com/buglist.cgi?classification=Red%20Hat&query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=MODIFIED&product=Cloud%20Engine", :title => "List of open bugs" }
+              %a{ :href => "https://bugzilla.redhat.com/buglist.cgi?classification=Red%20Hat&query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=MODIFIED&product=CloudForms%20Cloud%20Engine", :title => "List of open bugs" }
                 Open bugs
             %dd
               %a{ :href => "redmine", :title => "Project Planning in Redmine" }
