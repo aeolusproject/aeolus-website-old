@@ -4,7 +4,7 @@ breadcrumb_name: Aeolus 0.6.0 Milestone -Release Notes
 extension: html
 filter: haml
 ---
-%h1 Aeolus 0.6.0 Milestone - Release Notes (still in development)
+%h1 Aeolus 0.6.0 Milestone - Release Notes <span style="color:red">(still in development)</span>
 
 .page-listing
   %h3 Table of Contents
@@ -27,30 +27,144 @@ filter: haml
 
       %ul
         %li
-          %a{ :href => "#rdscen",
-              :title => "Scenarios" }
-            Scenarios
+          %a{ :href => "#rdaud",
+              :title => "Audrey" }
+            Audrey
+
+          %ul
+            %li
+              %a{ :href => "#rdaudscen",
+                  :title => "Scenarios" }
+                Scenarios
+
+            %li
+              %a{ :href => "#rdaudfeat",
+                  :title => "Features" }
+                Features
+
+            %li
+              %a{ :href => "#rdaudsupp",
+                  :title => "Support" }
+                Support
+
+            %li
+              %a{ :href => "#rdaudbugs",
+                  :title => "Bugs" }
+                Bugs
+
+            %li
+              %a{ :href => "#rdaudtask",
+                  :title => "Tasks" }
+                Tasks
 
         %li
-          %a{ :href => "#rdfeat",
-              :title => "Features" }
-            Features
+          %a{ :href => "#rdcond",
+              :title => "Conductor" }
+            Conductor
+
+          %ul
+            %li
+              %a{ :href => "#rdcondscen",
+                  :title => "Scenarios" }
+                Scenarios
+
+            %li
+              %a{ :href => "#rdcondfeat",
+                  :title => "Features" }
+                Features
+
+            %li
+              %a{ :href => "#rdcondsupp",
+                  :title => "Support" }
+                Support
+
+            %li
+              %a{ :href => "#rdcondbugs",
+                  :title => "Bugs" }
+                Bugs
+
+            %li
+              %a{ :href => "#rdcondtask",
+                  :title => "Tasks" }
+                Tasks
 
         %li
-          %a{ :href => "#rdsupp",
-              :title => "Support" }
-            Support
+          %a{ :href => "#rdifact",
+              :title => "Image Factory" }
+            Image Factory
+
+          %ul
+            %li
+              %a{ :href => "#rdifactfeat",
+                  :title => "Features" }
+                Features
+
+            %li
+              %a{ :href => "#rdifacttask",
+                  :title => "Tasks" }
+                Tasks
 
         %li
-          %a{ :href => "#rdbugs",
-              :title => "Bugs" }
-            Bugs
+          %a{ :href => "#rdiwhd",
+              :title => "Image Warehouse" }
+            Image Warehouse
+
+          %ul
+            %li
+              %a{ :href => "#rdiwhdscen",
+                  :title => "Scenarios" }
+                Scenarios
+
+            %li
+              %a{ :href => "#rdiwhdfeat",
+                  :title => "Features" }
+                Features
+
+            %li
+              %a{ :href => "#rdiwhdsupp",
+                  :title => "Support" }
+                Support
+
+            %li
+              %a{ :href => "#rdiwhdbugs",
+                  :title => "Bugs" }
+                Bugs
+
+            %li
+              %a{ :href => "#rdiwhdtask",
+                  :title => "Tasks" }
+                Tasks
 
         %li
-          %a{ :href => "#rdtask",
-              :title => "Tasks" }
-            Tasks
+          %a{ :href => "#rdoz",
+              :title => "Oz" }
+            Oz
 
+          %ul
+            %li
+              %a{ :href => "#rdozscen",
+                  :title => "Scenarios" }
+                Scenarios
+
+            %li
+              %a{ :href => "#rdozfeat",
+                  :title => "Features" }
+                Features
+
+            %li
+              %a{ :href => "#rdozsupp",
+                  :title => "Support" }
+                Support
+
+            %li
+              %a{ :href => "#rdozbugs",
+                  :title => "Bugs" }
+                Bugs
+
+            %li
+              %a{ :href => "#rdoztask",
+                  :title => "Tasks" }
+                Tasks
 
     %li
       %a{ :href => "#issuesresolvedbz",
@@ -93,9 +207,30 @@ filter: haml
 
   %ul
     %li
-      %b TBD
+      %b Filter table <span style="color: magenta">&lArr; needs a more verbose title</span>
       %br
-      TBD
+      %i(style="color:magenta") proper description goes here
+      %br
+      %br
+
+    %li
+      %b Reboot UI <span style="color: magenta">&lArr; needs a more verbose title</span>
+      %br
+      %i(style="color:magenta") proper description goes here
+      %br
+      %br
+
+    %li
+      %b Aeolus-cli multi provider build/push <span style="color: magenta">&lArr; needs a more verbose title</span>
+      %br
+      %i(style="color:magenta") proper description goes here
+      %br
+      %br
+
+    %li
+      %b Aeolus-cli error messaging <span style="color: magenta">&lArr; needs a more verbose title</span>
+      %br
+      %i(style="color:magenta") proper description goes here
       %br
       %br
 
@@ -285,9 +420,66 @@ filter: haml
 %br
 
 .section-grouping
-  %h2(id="redmine") Redmine items completed
+  %h2(id="redmine")
+    Redmine items completed <span style="color: magenta">(still being actively modified)</span>
 
-  %h3(id="rdscen") Scenarios
+  %h3(id="rdaud" style="color:red; text-height: 2em") Audrey
+
+  %h4(id="rdaudscen") Scenarios
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdaudfeat") Features
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdaudsupp") Support
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdaudbugs") Bugs
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdaudtask") Tasks
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+%br
+
+.section-grouping
+  %h3(id="rdcond" style="color:red; text-height: 2em") Conductor
+
+  %h4(id="rdcondscen") Scenarios
 
   %ul
     %li
@@ -333,7 +525,7 @@ filter: haml
       \- Update aeolus-image to utilize Conductor Error codes
 
 
-  %h3(id="rdfeat") Features
+  %h3(id="rdcondfeat") Features
 
   %ul
     %li
@@ -343,7 +535,7 @@ filter: haml
       \- As a Pacemaker Cloud admin, I want to register a Pacemaker Cloud server to Conductor via a webhooks API
 
 
-  %h3(id="rdsupp") Support
+  %h3(id="rdcondsupp") Support
 
   %ul
     %li
@@ -353,7 +545,7 @@ filter: haml
       \- Update configure and rpms deps to set up rsyslog/relp
 
 
-  %h3(id="rdbugs") Bugs
+  %h3(id="rdcondbugs") Bugs
 
   %ul
     %li
@@ -387,7 +579,7 @@ filter: haml
       \- As a user, I want to launch instances on a wider range of EC2 geographic regions
 
 
-  %h3(id="rdtask") Tasks
+  %h3(id="rdcondtask") Tasks
 
   %ul
     %li
@@ -593,6 +785,173 @@ filter: haml
         Redmine
         %a(id="2792" href="https://www.aeolusproject.org/redmine/issues/2792") 2792
       \- reviewing #2775
+
+%br
+
+.section-grouping
+  %h3(id="rdifact" style="color:red; text-height: 2em") Image Factory
+
+  %h4(id="rdifactfeat") Features
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="2166" href="https://www.aeolusproject.org/redmine/issues/2166") 2166
+      \- <b>New</b> Support qcow as an image format for RHEV-M (US1188)
+
+    %li
+      %b
+        Redmine
+        %a(id="2626" href="https://www.aeolusproject.org/redmine/issues/2626") 2626
+      \- <b>New</b> Ability to eat our own dog food
+
+    %li
+      %b
+        Redmine
+        %a(id="2798" href="https://www.aeolusproject.org/redmine/issues/2798") 2798
+      \- <b>New</b> Add the ability to snapshot EBS images to EBS images - Make this the default at least for RHEL
+
+  %h4(id="rdifacttask") Tasks
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="2627" href="https://www.aeolusproject.org/redmine/issues/2627") 2627
+      \- <b>New</b> Scope what it takes to make a template to describe the windows proxy
+
+    %li
+      %b
+        Redmine
+        %a(id="2725" href="https://www.aeolusproject.org/redmine/issues/2725") 2725
+      \- <b>In Progress</b> Write unit tests for REST interface
+
+    %li
+      %b
+        Redmine
+        %a(id="2726" href="https://www.aeolusproject.org/redmine/issues/2726") 2726
+      \- <b>In Progress</b> Write unit tests for OAuth access to REST
+
+    %li
+      %b
+        Redmine
+        %a(id="2727" href="https://www.aeolusproject.org/redmine/issues/2727") 2727
+      \- <b>New</b> Write unit tests for SSL config and access to REST
+
+    %li
+      %b
+        Redmine
+        %a(id="2773" href="https://www.aeolusproject.org/redmine/issues/2773") 2773
+      \- <b>New</b> Documentation - add the case when proxy it's a local VM
+
+%br
+
+.section-grouping
+  %h3(id="rdiwhd" style="color:red; text-height: 2em") Image Warehouse
+
+  %h4(id="rdiwhdscen") Scenarios
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdiwhdfeat") Features
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdiwhdsupp") Support
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdiwhdbugs") Bugs
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdiwhdtask") Tasks
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+%br
+
+.section-grouping
+  %h3(id="rdoz" style="color:red; text-height: 2em") Oz
+
+  %h4(id="rdozscen") Scenarios
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdozfeat") Features
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdozsupp") Support
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdozbugs") Bugs
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
+
+
+  %h3(id="rdoztask") Tasks
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="tbd" href="https://www.aeolusproject.org/redmine/issues/tbd") tbd
+      \- tbd
 
 %br
 
