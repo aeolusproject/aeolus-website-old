@@ -13,9 +13,9 @@
    height="460"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.1 r9760"
-   sodipodi:docname="aeolus-overview.svg"
-   inkscape:export-filename="/home/hbons/Desktop/aeolus-overview.png"
+   inkscape:version="0.48+devel r9968"
+   sodipodi:docname="aeolus-overview-v2.svg"
+   inkscape:export-filename="/Users/user/Documents/Aptana Studio 3 Workspace/aeolus-website/aeolusproject.org/content/images/concept_aeolus_high_level.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -78,15 +78,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="331.48894"
+     inkscape:cx="388.64122"
      inkscape:cy="210.81676"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1305"
-     inkscape:window-height="871"
-     inkscape:window-x="242"
-     inkscape:window-y="183"
+     inkscape:window-width="1069"
+     inkscape:window-height="986"
+     inkscape:window-x="857"
+     inkscape:window-y="195"
      inkscape:window-maximized="0"
      inkscape:snap-global="true"
      showborder="false">
@@ -127,19 +127,19 @@
     <rect
        ry="17.325012"
        rx="17.325012"
-       y="665.23389"
+       y="673.23389"
        x="470.33548"
        height="97.247993"
        width="185"
        id="rect4406"
-       style="fill:none;stroke:#ebf4f8;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+       style="fill:none;stroke:#ebf4f8;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
     <rect
-       style="fill:none;stroke:#ebf4f8;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:none;stroke:#ebf4f8;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect4282"
        width="185"
        height="97.247993"
        x="175.33549"
-       y="665.23389"
+       y="673.23389"
        rx="17.325012"
        ry="17.325012" />
     <rect
@@ -167,14 +167,14 @@
          style="font-size:29.64067268px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Overpass;-inkscape-font-specification:Overpass Bold">High level Aeolus overview</flowPara></flowRoot>    <rect
        ry="7.3250122"
        rx="7.3250122"
-       y="478.48184"
+       y="494.48184"
        x="65.335487"
        height="259"
        width="220"
        id="rect4307"
        style="fill:#ebf4f8;fill-opacity:1;stroke:none" />
     <flowRoot
-       transform="matrix(0.43836118,0,0,0.43836118,51.273414,245.63502)"
+       transform="matrix(0.43836118,0,0,0.43836118,51.273414,261.63502)"
        style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Overpass;-inkscape-font-specification:Overpass"
        id="flowRoot3851"
        xml:space="preserve"><flowRegion
@@ -213,7 +213,7 @@
        rx="7.3250122"
        ry="7.3250122" />
     <flowRoot
-       transform="matrix(0.43836118,0,0,0.43836118,351.36475,432.99036)"
+       transform="matrix(0.43836118,0,0,0.43836118,369.36475,408.99036)"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#757a7c;fill-opacity:1;stroke:none;font-family:Overpass;-inkscape-font-specification:Overpass"
        id="flowRoot3926"
        xml:space="preserve"><flowRegion
@@ -230,7 +230,7 @@
          id="flowPara3961">Fedora 14</flowPara><flowPara
          style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#757a7c;fill-opacity:1;font-family:Overpass;-inkscape-font-specification:Overpass"
          id="flowPara3963">Win2K8 R2</flowPara></flowRoot>    <flowRoot
-       transform="matrix(0.43836118,0,0,0.43836118,335.49826,383.01117)"
+       transform="matrix(0.43836118,0,0,0.43836118,337.49826,363.01117)"
        style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Overpass;-inkscape-font-specification:Overpass"
        id="flowRoot3951"
        xml:space="preserve"><flowRegion
@@ -242,12 +242,12 @@
            width="626"
            id="rect3955" /></flowRegion><flowPara
          style="font-size:41.06203079px;text-align:start;text-anchor:start;opacity:0.5;fill:#000000;fill-opacity:1"
-         id="flowPara4276">virtual machine images</flowPara><flowPara
+         id="flowPara4276">VM images</flowPara><flowPara
          id="flowPara3959"
          style="font-size:27.37468719px;text-align:start;text-anchor:start;opacity:0.25;fill:#000000;fill-opacity:1">(not running) based upon:</flowPara></flowRoot>    <rect
        ry="7.3250122"
        rx="7.3250122"
-       y="478.48184"
+       y="494.48184"
        x="545.33545"
        height="259"
        width="220"
@@ -274,7 +274,7 @@
        xml:space="preserve"
        id="flowRoot4002"
        style="font-size:40px;font-style:normal;font-weight:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Overpass;-inkscape-font-specification:Overpass"
-       transform="matrix(0.43836118,0,0,0.43836118,362.53896,320.63502)"><flowRegion
+       transform="matrix(0.43836118,0,0,0.43836118,362.53896,300.63502)"><flowRegion
          id="flowRegion4004"><rect
            id="rect4006"
            width="626"
@@ -290,21 +290,21 @@
     <flowRoot
        xml:space="preserve"
        id="flowRoot4114"
-       style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Overpass;-inkscape-font-specification:Overpass"
-       transform="matrix(0.43836118,0,0,0.43836118,143.84373,588.69568)"><flowRegion
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;opacity:0.7;fill:#000000;fill-opacity:1;stroke:none;font-family:Overpass;-inkscape-font-specification:Overpass"
+       transform="matrix(0.43836118,0,0,0.43836118,143.50975,576.69568)"><flowRegion
          id="flowRegion4116"><rect
            id="rect4118"
            width="626"
            height="285"
            x="-30"
            y="427.36218"
-           style="text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;font-family:Overpass;-inkscape-font-specification:Overpass" /></flowRegion><flowPara
-         style="font-size:27.37468718999999950px;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1"
-         id="flowPara4122">images are transfered as needed</flowPara></flowRoot>    <flowRoot
+           style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Overpass;-inkscape-font-specification:Overpass" /></flowRegion><flowPara
+         style="font-size:27.37468719px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1"
+         id="flowPara4122">images</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot4150"
        style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Overpass;-inkscape-font-specification:Overpass"
-       transform="matrix(0.43836118,0,0,0.43836118,530.91892,253.63502)"><flowRegion
+       transform="matrix(0.43836118,0,0,0.43836118,530.91892,269.63502)"><flowRegion
          id="flowRegion4152"><rect
            id="rect4154"
            width="626"
@@ -317,11 +317,12 @@
          style="font-size:27.37468719px;text-align:center;text-anchor:middle"
          id="flowPara4158" /></flowRoot>    <path
        style="fill:none;stroke:#dedede;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 306.33549,552.48185 218,0"
-       id="path4264" />
+       d="m 306.33549,524.48185 218,0"
+       id="path4264"
+       inkscape:connector-curvature="0" />
     <g
        id="g4380"
-       transform="translate(30.335489,10.119674)">
+       transform="translate(30.335489,20.119674)">
       <rect
          ry="0"
          rx="0"
@@ -335,7 +336,8 @@
          sodipodi:nodetypes="cccc"
          id="rect4290"
          d="m 144.99998,701.36218 14.00002,16 -28,0 13.99998,-16 z"
-         style="fill:#025d8c;fill-opacity:1;stroke:none" />
+         style="fill:#025d8c;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0" />
     </g>
     <flowRoot
        xml:space="preserve"
@@ -354,7 +356,9 @@
          style="font-size:41.06203079px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;writing-mode:lr-tb;text-anchor:start;opacity:0.5;fill:#000000;fill-opacity:1;font-family:Overpass;-inkscape-font-specification:Overpass"
          id="flowPara3916">Eucalyptus</flowPara><flowPara
          style="font-size:41.06203079px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;writing-mode:lr-tb;text-anchor:start;opacity:0.5;fill:#000000;fill-opacity:1;font-family:Overpass;-inkscape-font-specification:Overpass"
-         id="flowPara3918">VMware vSphere</flowPara></flowRoot>    <g
+         id="flowPara3918">VMware vSphere</flowPara><flowPara
+         style="font-size:41.06203079px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;writing-mode:lr-tb;text-anchor:start;opacity:0.5;fill:#000000;fill-opacity:1;font-family:Overpass;-inkscape-font-specification:Overpass"
+         id="flowPara3221">OpenStack</flowPara></flowRoot>    <g
        transform="matrix(0.64868581,0,0,0.69020851,563.75102,-193.7594)"
        id="g4356"
        inkscape:label="Layer 1"
@@ -399,7 +403,7 @@
          style="color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.4000001;marker:none;visibility:visible;display:inline;overflow:visible" />
     </g>
     <g
-       transform="translate(510.33549,10.119674)"
+       transform="translate(510.33549,20.119674)"
        id="g4384">
       <rect
          style="fill:#025d8c;fill-opacity:1;stroke:none"
@@ -414,7 +418,8 @@
          style="fill:#025d8c;fill-opacity:1;stroke:none"
          d="m 144.99998,701.36218 14.00002,16 -28,0 13.99998,-16 z"
          id="path4388"
-         sodipodi:nodetypes="cccc" />
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0" />
     </g>
     <g
        transform="translate(215.33549,10.119674)"
@@ -452,33 +457,20 @@
          d="m 144.99998,701.36218 14.00002,16 -28,0 13.99998,-16 z"
          style="fill:#025d8c;fill-opacity:1;stroke:none" />
     </g>
-    <flowRoot
-       transform="matrix(0.43836118,0,0,0.43836118,438.84373,588.69568)"
-       style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Overpass;-inkscape-font-specification:Overpass"
-       id="flowRoot4418"
-       xml:space="preserve"><flowRegion
-         id="flowRegion4420"><rect
-           style="text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;font-family:Overpass;-inkscape-font-specification:Overpass"
-           y="427.36218"
-           x="-30"
-           height="285"
-           width="626"
-           id="rect4422" /></flowRegion><flowPara
-         id="flowPara4424"
-         style="font-size:27.37468718999999950px;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1">images are transfered as needed</flowPara></flowRoot>    <rect
+    <rect
        style="opacity:0.98000004;fill:#bcc3c6;fill-opacity:1;stroke:none"
        id="rect4426"
        width="3.9999998"
        height="4.0000005"
-       x="325.33548"
-       y="627.48187"
+       x="343.33548"
+       y="603.48187"
        rx="7.3250122"
        ry="7.3250122" />
     <rect
        ry="7.3250122"
        rx="7.3250122"
-       y="652.48187"
-       x="325.33548"
+       y="628.48187"
+       x="343.33548"
        height="4.0000005"
        width="3.9999998"
        id="rect4428"
@@ -488,9 +480,27 @@
        id="rect4430"
        width="3.9999998"
        height="4.0000005"
-       x="325.33548"
-       y="677.48187"
+       x="343.33548"
+       y="653.48187"
        rx="7.3250122"
        ry="7.3250122" />
-  </g>
+    <path
+       inkscape:connector-curvature="0"
+       style="opacity:0.2;fill:#000000;fill-opacity:1;stroke:none"
+       d="m 96.80361,585.36215 c -1.108,0 -2,0.892 -2,2 l 0,12 c 0,1.108 0.892,2 2,2 l 9,0 c 1.108,0 2,-0.892 2,-2 l 0,-12 c 0,-1.108 -0.892,-2 -2,-2 l -9,0 z m 1,3 7,0 0,2 -7,0 0,-2 z m 5,3 2,0 0,2 -2,0 0,-2 z"
+       id="path4364-9" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4114-2"
+       style="font-size:40px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;opacity:0.7;fill:#000000;fill-opacity:1;stroke:none;font-family:Overpass;-inkscape-font-specification:Overpass"
+       transform="matrix(0.43836118,0,0,0.43836118,438.50974,577.3671)"><flowRegion
+         id="flowRegion4116-8"><rect
+           id="rect4118-3"
+           width="626"
+           height="285"
+           x="-30"
+           y="427.36218"
+           style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;font-family:Overpass;-inkscape-font-specification:Overpass" /></flowRegion><flowPara
+         style="font-size:27.37468719px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1"
+         id="flowPara4122-0">images</flowPara></flowRoot>  </g>
 </svg>
