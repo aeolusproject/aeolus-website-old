@@ -209,6 +209,9 @@ filter: haml
               %a{ :href => "news.html", :title => "Recent Aeolus news" }
                 News
             %dd
+              %a{ :href => "events.html", :title => "Aeolus at upcoming events" }
+                Events
+            %dd
               %a{ :href => "http://twitter.com/#!/aeolusproject", :title => "Follow us on Twitter" }
                 Twitter
             %dd
