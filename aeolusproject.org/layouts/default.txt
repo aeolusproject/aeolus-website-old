@@ -66,8 +66,8 @@ filter: haml
             Projects
           %a{ :href => "redmine/projects/aeolus/wiki/" }
             Wiki
-          %a{ :href => "news.html" }
-            News
+          %a{ :href => "social.html" }
+            Social
           %a{ :href => "contact.html" }
             Contact Us
 
@@ -200,10 +200,14 @@ filter: haml
         .grid_4
           %dl
             %dt
-              %a{ :href => "news.html", :title => "Recent Aeolus news and happenings" }
+              %a{ :href => "social.html", :title => "Recent Aeolus news and happenings" }
+                Social
+            %dd
+              %a{ :href => "news.html", :title => "Recent Aeolus news" }
                 News
             %dd
-              &nbsp;
+              %a{ :href => "http://twitter.com/#!/aeolusproject", :title => "Follow us on Twitter" }
+                Twitter
 
         #copyright.grid_24
           .line1
