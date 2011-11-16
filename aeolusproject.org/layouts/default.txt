@@ -100,6 +100,9 @@ filter: haml
               %a{ :href => "screenshots.html", :title => "Screenshots of Aeolus in use" }
                 Screenshots
             %dd
+              %a{ :href => "http://www.youtube.com/user/aeolusproject", :title => "Video of Aeolus in use" }
+                Videos
+            %dd
               %a{ :href => "features.html", :title => "Benefits and features of Aeolus" }
                 Features
             %dd
@@ -208,6 +211,9 @@ filter: haml
             %dd
               %a{ :href => "http://twitter.com/#!/aeolusproject", :title => "Follow us on Twitter" }
                 Twitter
+            %dd
+              %a{ :href => "", :title => "The official Aeolus Project Blog" }
+                Blog
 
         #copyright.grid_24
           .line1
