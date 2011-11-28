@@ -479,3 +479,8 @@ hr.shade
   border-bottom-right-radius: 10px
   border-bottom-left-radius: 10px
   border-bottom: 1px solid #dadada
+
+.whitehref
+  color: white
+  text-decoration: none
+  border-bottom: 1px dotted
