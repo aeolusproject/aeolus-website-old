@@ -54,6 +54,9 @@ File Structure
 aeolusproject.org/
     - the Aeolus Project website
 
+aeolusproject.org/redmine
+    - static redmine content (themes, javascripts, etc)
+
 aeolusproject.org/content/
     - the pages that are displayed on the website
 
