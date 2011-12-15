@@ -1,0 +1,197 @@
+---
+title: Aeolus | Aeolus 0.7.0 - Release Notes
+breadcrumb_name: Aeolus 0.7.0 -Release Notes
+extension: html
+filter: haml
+---
+%h1 Aeolus 0.7.0 - Release Notes
+
+.page-listing
+  %h3 Table of Contents
+
+  %ol
+    %li
+      %a{ :href => "#releasehighlights",
+          :title => "Release Highlights" }
+        Release Highlights
+
+    %li
+      %a{ :href => "#knownissues",
+          :title => "Known issues still remaining" }
+        Known issues still remaining
+
+    %li
+      %a{ :href => "#issuesresolved",
+          :title => "Issues Resolved" }
+        Issues Resolved
+
+.section-grouping
+  %p
+    Aeolus community release 0.7.0 is now available from the latest release repos.
+    These notes contain a summary of the high points of the last development sprint 
+    and point out significant issues that were not deemed worthy of stopping the release.
+
+  %p
+    Installation is very straightforward, with instructions on the website:
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %a{ :href => "http://www.aeolusproject.org/get_it.html",
+        :title => "Get Aeolus" }
+      http://www.aeolusproject.org/get_it.html
+
+  %p
+    Packages are available for Fedora 15 x86_64, Fedora 16 x86_64 and RHEL 6.x x86_64.
+
+  %p
+    All testing and bug reports are hugely appreciated, directly
+    contributing towards the quality of Aeolus releases and future growth.
+
+  .note
+    %p
+      %b NOTE -
+      Although Aeolus is still some way from production quality, it is suitable
+      for testing.
+      %br
+      %b Please don't use it with live data yet.
+
+%br
+
+.section-grouping
+  %h2(id="release-highlights") Release Highlights
+
+  %ul
+    %li(id="highlight-asl")
+      Aeolus now licensed under Apache Software License (ASL).
+
+    %li(id="highlight-eventapi")
+      Added Conductor support for the Event API. This API provides Conductor with a means for tracking system messages, such as instance changes.
+
+    %li(id="highlight-i18n")
+      Improved i18n in API error codes and messages.
+
+    %li(id="highlight-status")
+      Aeolus now checks the status on image builds and pushes from ImageFactory. This helps Conductor track image building, pushing or readiness for deployment use.
+
+    %li(id="highlight-securityfix")
+      Security fix removes logging of sensitive SQL occurring with RPM installation of Conductor.
+
+    %li(id="highlight-deleteproviderimage")
+      Aeolus now indicates the remaining provider content after deleting a single provider image.
+
+    %li(id="highlight-imageimport")
+      Conductor now supports image imports with the web interface. This provides users with the ability to import an image from a provider via Conductor.
+
+%br
+
+.section-grouping
+  %h2(id="knownissues") Known issues still remaining
+
+  %p
+    A complete list of open issues can be viewed in Red Hat Bugzilla. The following are known problems due for resolution in a subsequent release:
+
+  %ul
+    %li
+      %b
+        BZ
+        %a(id="761086" href="https://bugzilla.redhat.com/show_bug.cgi?id=761086") 761086
+        \- RHEL 6.2 is not available in EC2
+
+    %li
+      %b
+        BZ
+        %a(id="766791" href="https://bugzilla.redhat.com/show_bug.cgi?id=766791") 766791
+        \- RHEL 6.2 with Config Server on RHEVM hangs at boot
+
+    %li
+      %b
+        BZ
+        %a(id="766697" href="https://bugzilla.redhat.com/show_bug.cgi?id=766697") 766697
+        \- aeolus-configure EC2 configure error (non-fatal)
+
+    %li
+      %b
+        BZ
+        %a(id="766414" href="https://bugzilla.redhat.com/show_bug.cgi?id=766414") 766414
+        \- Launching RHEL 5.7 build with ImageFactory on vSphere will kernel panic at boot
+
+    %li
+      %b
+        BZ
+        %a(id="761282" href="https://bugzilla.redhat.com/show_bug.cgi?id=761282") 761282
+        \ and BZ
+        %a(id="766139" href="https://bugzilla.redhat.com/show_bug.cgi?id=766139") 766139
+        \- Image imports fail with descriptions
+
+    %li
+      %b
+        BZ
+        %a(id="766866" href="https://bugzilla.redhat.com/show_bug.cgi?id=766866") 766866
+        \- Deploying from monitor tab and catalog entry
+
+    %li
+      %b
+        BZ
+        %a(id="761079" href="https://bugzilla.redhat.com/show_bug.cgi?id=761079") 761079
+        \ and BZ
+        %a(id="761502" href="https://bugzilla.redhat.com/show_bug.cgi?id=761502") 761502
+        \- Filtering on Monitor grid view does not work
+
+    %li
+      %b
+        BZ
+        %a(id="766473" href="https://bugzilla.redhat.com/show_bug.cgi?id=766473") 766473
+        \- Granting access to catalog entries fails
+
+    %li
+      %b
+        BZ
+        %a(id="765714" href="https://bugzilla.redhat.com/show_bug.cgi?id=765714") 765714
+        \- Image import reports success for invalid entries
+
+    %li
+      %b
+        BZ
+        %a(id="761392" href="https://bugzilla.redhat.com/show_bug.cgi?id=761392") 761392
+        \- Quota reporting is off
+
+    %li
+      %b
+        BZ
+        %a(id="761200" href="https://bugzilla.redhat.com/show_bug.cgi?id=761200") 761200
+        \- Image build results in an internal server error due to missing &lt;rootpw&gt; element
+
+    %li
+      %b
+        BZ
+        %a(id="766983" href="https://bugzilla.redhat.com/show_bug.cgi?id=766983") 766983
+        \- Oz ignores &lt;persisted&gt;No&lt;/persisted&gt; syntax in system templates
+
+  %p
+    Full lists of relevant issues in Bugzilla:
+
+  %ul
+    %li
+      %a{ :href=>"https://bugzilla.redhat.com/showdependencytree.cgi?id=ce-sprint&hide_resolved=1" }
+        https://bugzilla.redhat.com/showdependencytree.cgi?id=ce-sprint&hide_resolved=1
+    %li
+      %a{ :href=>"https://bugzilla.redhat.com/showdependencytree.cgi?id=ce-sprint-next&hide_resolved=1"}
+        https://bugzilla.redhat.com/showdependencytree.cgi?id=ce-sprint-next&hide_resolved=1
+
+%br
+
+.section-grouping
+  %h2(id="issuesresolved") Issues Resolved
+
+  %p
+    The following section contains links to closed issues.
+
+  %h3(id="redmine") Redmine
+
+  %p
+    View the full list of completed Redmine issues for this version here:
+
+  %p
+    %a{ :href => "https://www.aeolusproject.org/redmine/projects/aeolus/issues?query_id=86",
+        :title => "Resolved Redmine Issues" }
+      https://www.aeolusproject.org/redmine/projects/aeolus/issues?query_id=86
