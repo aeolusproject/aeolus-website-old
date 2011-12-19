@@ -69,11 +69,11 @@ filter: haml
   %h2 2. Build and transfer the image
 
   %p
-    Now use the aeolus-image command-line tool to build the image described in the XML.
+    Now use the aeolus-cli command-line tool to build the image described in the XML.
 
     %pre
       :preserve
-        $ aeolus-image build --target ec2 --template template.xml
+        $ aeolus-cli build --target ec2 --template template.xml
 
         Target Image: 663ad46e-709f-4ea1-89f0-e73b8bb2205a
         Image: cb7acabd-59c3-41a7-894a-f3e1b072638c
@@ -103,7 +103,7 @@ filter: haml
 
     %pre
       :preserve
-        $ aeolus-image push --provider ec2-us-east-1 --account my_ec2 \
+        $ aeolus-cli push --provider ec2-us-east-1 --account my_ec2 \
            --image 663ad46e-709f-4ea1-89f0-e73b8bb2205a \
            --build 3b5624b1-c9a5-48e2-b6cb-2abecd232eb9 \
            --targetimage 663ad46e-709f-4ea1-89f0-e73b8bb2205a
