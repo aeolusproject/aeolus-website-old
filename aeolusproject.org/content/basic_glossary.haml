@@ -1,25 +1,28 @@
 ---
-title: Aeolus | Simple Glossary
-breadcrumb_name: Simple Glossary
+title: Aeolus | Basic Glossary
+breadcrumb_name: Basic Glossary
 extension: html
 filter: haml
 ---
 %h1 Basic Glossary
 
 %p
-  On this page, you will log into Aeolus, be introduced to the main parts of
-  the web based interface, and change the administrator password.
+  Before we get started with the initial configuration, here are some terms and definitions that will be useful to know.
 
 .page-listing
   %h3 Getting Started Guide
 
   %ol
     %li
+      Basic glossary
+
+    %li
       %a{ :href => "configuring_aeolus.html",
           :title => "Configuring Aeolus" } Configuring Aeolus
 
     %li
-      First login
+      %a{ :href => "first_login.html",
+          :title => "First login" } First login
 
     %li
       %a{ :href => "set_up_ec2.html",
@@ -42,145 +45,64 @@ filter: haml
           :title => "Cleaning up" } Cleaning up
 
 %br
+
+.section-grouping
+  %h2(id="welcome") 1. Provider Type and Provider
+
+  %p
+    Cloud provider types include Amazon EC2, RHEV-M, Rackspace, etc.  A provider is simply an instance of a provider type - for example, an EC2 region such as us-east-1.  Users may have one or multiple accounts associated with a provider.
+  
+  %p
+    This guide will configure Aeolus for EC2, as well as a "Mock" provider for those without an available EC2 account.
+
+%br
   
 .section-grouping
-  %h2(id="first-login") 1. Web based interface
+  %h2(id="first-login") 2. Instance
 
   %p
-    After Aeolus has been initialized, with any SELinux and firewall updates
-    done, you are ready to use the web interface.
-
-  %p
-    Open the following address in your web browser (any modern one), using the
-    name of your Aeolus server instead of "<b>server_name</b>":
-
-  %p
-    %pre
-      :preserve
-        https://server_name/conductor
-
-  %p
-    %b USEFUL INFO:
-    Aeolus is really several pieces of software that work together.
-    "Conductor" is the web based user interface piece.  
-
-  %p
-    If everything is working properly, the initial login screen will appear:
-
-  %p
-    %center
-      %a{ :href => "images/getting_started/initial_login_screen.png",
-          :target => "_blank" }
-        %img.thumbnail{ :src => "images/getting_started/thumbnails/initial_login_screen_thumb.png",
-              :title => "Initial login screen - click to view at full size in a new window",
-              :alt => "Initial login screen - click to view at full size in a new window" }
-
-  %p
-    Login now, using the default administrator details set by
-    <b>aeolus-configure</b>:
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    %b Username:
-    admin
-    %br
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    %b Password:
-    password
-
-  %p
-    We'll change that password in a few moments, after introducing you to
-    the major parts of the Aeolus interface.
+    An instance is a single virtual machine running on a provider.
 
 %br
 
 .section-grouping
-  %h2(id="welcome") 2. Welcome screen
+  %h2(id="welcome") 3. Image
 
   %p
-    Once you've logged in, the main Aeolus web interface appears:
+    A Conductor image contains provider-independent metadata that Aeolus can use to generate disk images on supported providers.
 
   %p
-    %center
-      %a{ :href => "images/getting_started/initial_welcome_screen.png",
-          :target => "_blank" }
-        %img.thumbnail{ :src => "images/getting_started/thumbnails/initial_welcome_screen_thumb.png",
-              :title => "Initial welcome screen - click to view at full size in a new window",
-              :alt => "Initial welcome screen - click to view at full size in a new window" }
-
-  %p
-    The most important parts of the web interface are:
-  
-  %p
-    %dl
-      %dt Primary navigation line
-      %dd
-        This is the horizontal area under the header, containing
-        "<b>MONITOR</b>" and "<b>ADMINISTRATION</b>"
-        %br
-        %br
-
-      %dt Main area
-      %dd
-        This is the area in the middle of the screen.  In this screenshot it
-        contains items such as the "Login successful" message, various
-        buttons including "Start", "Stop" and "Delete", along with an empty
-        list starting with "DEPLOYMENT NAME".
-        %br
-        %br
-
-      %dt Details view
-      %dd
-        Not shown in the above screenshot.  This appears when items are
-        selected in the Main area, often presenting additional information
-        and options.
+    This guide will create an image for Fedora 15.
 
 %br
 
 .section-grouping
-  %h2(id="change-passwd") 3. Change the administrator password
+  %h2(id="first-login") 4. Deployable and Deployment
 
   %p
-    In the top right corner of the interface, click on the silhouette between
-    "<b>aeolus user</b>" and the search box.
+    A deployable references one or more images, along with the appropriate hardware profiles for those images.  A deployable is launched as a deployment.
 
   %p
-    %center
-      %img.thumbnail{ :src => "images/getting_started/account_shortcut.png",
-              :title => "User details shortcut",
-              :alt => "User details shortcut" }
+    A deployable is lauched as a deployment.  A deployment consists of one or more instances controlled as a group, such as a database server, an application server, and multiple front-end web servers.
 
-  %p
-    In the drop down menu this opens click "My Account".
-
-  %p
-    %center
-      %img.thumbnail{ :src => "images/getting_started/edit_user_screen.png",
-              :title => "Edit user details screen",
-              :alt => "Edit user details screen" }
-
-  %p
-    Then the "Edit" button on the user's business card.
-
-  %p
-    %center
-      %a{ :href => "images/getting_started/change_password_screen.png",
-          :target => "_blank" }
-        %img.thumbnail{ :src => "images/getting_started/thumbnails/change_password_screen_thumb.png",
-              :title => "Update user details screen - click to view at full size in a new window",
-              :alt => "Update user details screen - click to view at full size in a new window" }
-
-  %p
-    Change the password now, using the "<b>Change password</b>" and
-    "<b>Confirm password</b>" fields.
-    %br
-    %br
-    If you want, also change the First name, Last name, and E-mail fields.
-  
-  %p
-    Click the "<b>Save User</b>" button when you're done.
 %br
 
-%a.button{ :href => "set_up_ec2.html", :title => "Set Up Amazon EC2" }
-  Set Up EC2
+.section-grouping
+  %h2(id="welcome") 5. Pool
+
+  %p
+    A grouping of instances and deployables.  Aeolus provides tools for managing pools, allowing the user to easily manage functions such as administrative rights, permissions, and quotas.
+
+%br
+
+.section-grouping
+  %h2(id="welcome") 6. Catalog
+
+  %p
+    A catalog contains one or more deployables.  Each catalog is associated with a single pool.
+
+%br
+
+%a.button{ :href => "configuring_aeolus.html", :title => "Configuring Aeolus" }
+  Configuring Aeolus
   %img{:src => "images/button-right.png", :alt => "→"}
