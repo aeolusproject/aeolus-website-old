@@ -7,12 +7,12 @@ filter: haml
 %h1 Start an Instance of the Image
 
 %p
-  With the image as an AMI in the Amazon Cloud, you can start instances
+  With the image as an AMI in your provider account, you can start instances
   when desired.
 
 %p
   We'll take you through starting an instance of the image using Aeolus's
-  web interface, then show you how to connect to that image remotely using
+  web interface.  Then, if you're using Amazon EC2, we'll show you how to connect to that image remotely using
   SSH.
 
 .page-listing
@@ -53,10 +53,10 @@ filter: haml
 %br
 
 .section-grouping
-  %h2 1. Launch a deployable
+  %h2 1. Create a Catalog and Deployable
 
   %p
-    On your Aeolus server create a file accessible in your web root with the following content.
+    Create a deployable XML file with the following content.  Use the image id generated when you pushed the built image in the previous step.
 
     %pre
       :escaped
@@ -73,7 +73,18 @@ filter: haml
     %ol
       %li
         In the Aeolus web interface, go to the
-        %b MONITOR
+        %b Administer
+        &rArr; <b>Content</b>.
+
+      %li
+        Click the "New Catalog" button. Give your catalog a name, associate it with the Default pool, and save it.
+
+      %li
+        Click on the name of your new catalog.  Click on the "New Catalog Entry" button.  Give your entry a name, description, and upload the deployable XML file you created.  Save your new catalog entry.
+
+      %li
+        In the Aeolus web interface, go to the
+        %b Monitor
         tab.
         %br
         Under "Your Pools" is the default pool. On the right side
@@ -90,56 +101,21 @@ filter: haml
         %br
 
       %li
-        Give your deployment a name and enter the url to the deployable xml file you
-        just created.
-
-        %br
-        %center
-          %a{ :href => "images/getting_started/new_deployment_details.png",
-              :target => "_blank" }
-            %img.thumbnail{ :src => "images/getting_started/thumbnails/new_deployment_details_thumb.png",
-                  :title => "New Deployment - click to view at full size in a new window",
-                  :alt => "New Deployment - click to view at full size in a new window" }
-        %br
-
-      %li
+        Give your deployment a name and select the deployable you just created.
         Click the
         %b Next
         button.
 
       %li
-        To launch the deployment click the "Launch this deployment" button.
-
-        %br
-        %center
-          %a{ :href => "images/getting_started/launch_deployment.png",
-              :target => "_blank" }
-            %img.thumbnail{ :src => "images/getting_started/thumbnails/launch_deployment_thumb.png",
-                  :title => "Launch Deployment - click to view at full size in a new window",
-                  :alt => "Launch  Deployment - click to view at full size in a new window" }
-        %br 
-  
+        To launch the deployment click the "Launch" button.
   %p
     Aeolus will then launch an instance of the template, using the AMI
-    created on the previous page.
-  %p
-    The main view will list your instances, with the message
-    "<em>Deployment launched.</em>" near the top: 
-
-  %p
-    &nbsp;&nbsp;&nbsp;
-    %center
-      %a{ :href => "images/getting_started/instance_added.png",
-          :target => "_blank" }
-        %img.thumbnail{ :src => "images/getting_started/thumbnails/instance_added_thumb.png",
-              :title => "Instance 1 added",
-              :alt => "Instance 1 added" }
-
-  %p
-    Within a minute or two, the
+    created on the previous page.  Within a minute or two, the
     %b State
     field for the instance should change to "<em>running</em>".
 
+  %p
+    If you are using Amazon EC2, follow the next steps to complete your configuration.
 %br
 
 .section-grouping
