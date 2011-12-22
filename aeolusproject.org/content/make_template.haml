@@ -23,8 +23,8 @@ filter: haml
           :title => "First login" } First login
 
     %li
-      %a{ :href => "set_up_ec2.html",
-          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+      %a{ :href => "configure_provider.html",
+          :title => "Configure your Provider" } Configure your Provider
 
     %li
       Create a Fedora 15 Template
@@ -77,7 +77,12 @@ filter: haml
 
     %pre
       :preserve
-        $ aeolus-cli build --target ec2 --template template.xml
+        $ aeolus-cli build --target ec2,mock --template template.xml
+
+        Target Image                             Target     Status        Image                                    Build                                    
+        ------------------------------------     ------     ---------     ------------------------------------     ------------------------------------     
+        1306b29e-a30e-4efd-a1fb-09753863d77c     ec2        COMPLETED     6214d1b6-7292-436f-9c62-f0852e469f70     995535c8-ee70-407c-9413-12d274bbdd1d     
+        b33236d7-81b9-41b0-96f9-d039acd60537     mock       COMPLETED     6214d1b6-7292-436f-9c62-f0852e469f70     995535c8-ee70-407c-9413-12d274bbdd1d  
 
         Target Image: 663ad46e-709f-4ea1-89f0-e73b8bb2205a
         Image: cb7acabd-59c3-41a7-894a-f3e1b072638c
@@ -96,21 +101,22 @@ filter: haml
     used in the next step below.
 
   %p
-    It is possible to build for more than one target by separating them with commas, e.g., with --target ec2,mock.
+    Note that it is possible to build for more than one target by separating them with commas, e.g., with --target ec2,mock.
 
   %p
     Once an image is built, you will want to push the built image to one or
     more providers. You must specify the image, build, and target image UUIDs
     from the command above. In this step, instead of specifying --target, we will
     specify the name of the Provider as is configured in Conductor and also the name of the
-    appropriate Provider Account.
+    appropriate Provider Account.  To push to the mock provider account, simply use "mock" as
+    both the provider and account name.
 
     %pre
       :preserve
         $ aeolus-cli push --provider ec2-us-east-1 --account my_ec2 \
-           --image 663ad46e-709f-4ea1-89f0-e73b8bb2205a \
-           --build 3b5624b1-c9a5-48e2-b6cb-2abecd232eb9 \
-           --targetimage 663ad46e-709f-4ea1-89f0-e73b8bb2205a
+           --image 6214d1b6-7292-436f-9c62-f0852e469f70 \
+           --build 995535c8-ee70-407c-9413-12d274bbdd1d \
+           --targetimage 1306b29e-a30e-4efd-a1fb-09753863d77c
 
         Provider Image: 06479253-5f01-42b4-8d55-0e7ae8619700
         Image: cb7acabd-59c3-41a7-894a-f3e1b072638c
@@ -150,8 +156,9 @@ filter: haml
   %h2 3. Verifying on the Amazon Cloud side
 
   %p
-    If you load Amazon's AWS Management Console in your web browser, you will
-    see this image in your list of registered AMI's:
+    If you pushed the template to your Amazon EC2 account,
+    load Amazon's AWS Management Console in your web browser.
+    You will see this image in your list of registered AMI's:
 
   %p
     &nbsp;&nbsp;&nbsp;

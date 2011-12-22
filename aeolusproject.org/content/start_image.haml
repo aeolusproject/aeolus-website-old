@@ -32,8 +32,8 @@ filter: haml
           :title => "First login" } First login
 
     %li
-      %a{ :href => "set_up_ec2.html",
-          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+      %a{ :href => "configure_provider.html",
+          :title => "Configure your Provider" } Configure your Provider
 
     %li
       %a{ :href => "make_template.html",
@@ -63,12 +63,12 @@ filter: haml
           <deployable name="My Deployable">
             <description>This is an example deployment</description>
             <assemblies>
-             <assembly name="samplehost" hwp="hwp1">
-              <image id="cb7acabd-59c3-41a7-894a-f3e1b072638c">
-              </image>
-             </assembly>
+              <assembly name="samplehost" hwp="hwp1">
+                <image id="cb7acabd-59c3-41a7-894a-f3e1b072638c">
+                </image>
+              </assembly>
             </assemblies>
-           </deployable>
+          </deployable>
   %p
     %ol
       %li

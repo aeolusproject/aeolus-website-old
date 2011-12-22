@@ -30,8 +30,8 @@ filter: haml
           :title => "First login" } First login
 
     %li
-      %a{ :href => "set_up_ec2.html",
-          :title => "Configuring for Amazon EC2" } Configuring for Amazon EC2
+      %a{ :href => "configure_provider.html",
+          :title => "Configure your Provider" } Configure your Provider
 
     %li
       %a{ :href => "make_template.html",
@@ -82,10 +82,10 @@ filter: haml
   %p
     %pre
       :preserve
-        $ sudo /usr/sbin/aeolus-configure -p ec2
+        $ sudo /usr/sbin/aeolus-configure -p ec2,mock
 
   %p
-    This performs an initial configuration of Aeolus with default settings.
+    This performs an initial configuration of Aeolus with default settings, along with pre-configured provider information for Amazon EC2 and the mock provider.
 
   %p
     It is fully automatic, and doesn't require any input.  It will take a
