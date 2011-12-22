@@ -224,6 +224,36 @@ filter: haml
       %li
         An account name "mock" should already exist.
 
+  %p
+    If the account doesn't exist, you can create it by following these steps:
+  %p
+    %ol
+      %li
+        %em In the Aeolus web interface go to
+        %b Administer
+        &rArr; <b>Cloud Providers</b>.
+
+      %li
+        Choose the mock provider in the upper right hand corner.
+
+      %li
+        Click "Accounts" just below the choose provider selector.
+
+      %li
+        Click the "New Account" button.
+
+      %li
+        For
+        %b Account name
+        use
+        "<em>mock</em>". For
+        %b Username
+        use
+        "<em>mockuser</em>". For
+        %b Password
+        use
+        "<em>mockpassword</em>".
+
 %br
 
 %a.button{ :href => "make_template.html", :title => "Create A Fedora 15 Template" }
