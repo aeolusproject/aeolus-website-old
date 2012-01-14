@@ -7,6 +7,74 @@ filter: haml
 %h1 News
 
 .grid_24
+  %h2(id="201109" style="color: black") January 2012
+
+  .section-grouping
+    %h2(id="2012011201")
+      12th Januray 2012: Oz version 0.8.0 now available
+
+    %p
+      Oz version 0.8.0 has been released.  Release 0.8.0 is a bugfix and
+      feature release for Oz.
+
+    %p
+      Highlighted improvements of Oz 0.8.0 are:
+
+    %p
+      %ul
+        %li
+          Optional virtualenv make target
+        %li
+          Conversion of unittests to py.test
+        %li
+          Replace mkisofs with genisoimage
+        %li
+          Debian package
+        %li
+          Ability to change the root password for Debian installs
+        %li
+          Add unittests for ozutil
+        %li
+          Add some unittests for the Guest object
+        %li
+          SSH tunnel (with SSL vhost) support for local repositories
+          (mostly useful for imagefactory)
+        %li
+          Add a new manpage for oz-examples
+        %li
+          Make the output filename configurable with a command-line
+          option to oz-install
+        %li
+          Monitor both network and disk activity when looking for guest activity
+        %li
+          Support for installing Ubuntu 11.10
+        %li
+          Support for SSL certificates for repositories
+        %li
+          Support for an optional version in the TDL
+        %li
+          Support for installling Mandrake 9.1, 9.2, 10.0, 10.1, 10.2
+        %li
+          Support for installing Mandriva 2006.0, 2007.0, 2008.0
+        %li
+          Support for Ubuntu customization
+        %li
+          Support for installing RHEL 6.2
+
+    %p
+      More documentation on Oz (including links on how to obtain it) is
+      available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "oz.html",
+          :title => "Oz Main Page" } http://www.aeolusproject.org/oz.html
+
+    %p
+      For this release, Fedora 15 packages are available.
+
+  %br
+
   %h2(id="201112" style="color: black") December 2011
 
   .section-grouping

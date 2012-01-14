@@ -17,6 +17,8 @@ module OzSupportHelper
      { :name => "Red Hat Linux 7 - 9", :install => true, :customize => false },
      { :name => "RHEL 2.x, 3.x, 4.x <br /><em>(4.9 installs via repo not cdrom/ISO)</em>", :install => true, :customize => false, :icicle => false },
      { :name => "Ubuntu 6.06 - 11.04", :install => true, :customize => false, :icicle => false },
+     { :name => "Mandrake 9.1, 9.2, 10.0, 10.1, 10.2", :install => true, :customize => false, :icicle => false },
+     { :name => "Mandriva 2006.0, 2007.0, 2008.0", :install => true, :customize => false, :icicle => false },
      # Had to be moved out of this array, and into the content page itself, so it could be visually styled correctly
      #{ :name => "Windows 2000, XP, 2003, 7, 2008", :install => true, :customize => false, :icicle => false },
     ]
