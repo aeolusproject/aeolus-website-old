@@ -1,0 +1,690 @@
+---
+title: Aeolus | Aeolus 0.8.0 - Release Notes
+breadcrumb_name: Aeolus 0.8.0 -Release Notes
+extension: html
+filter: haml
+---
+%h1 Aeolus 0.8.0 - Release Notes
+
+.page-listing
+  %h3 Table of Contents
+
+  %ol
+    %li
+      %a{ :href => "#releasehighlights",
+          :title => "Release Highlights" }
+        Release Highlights
+
+    %li
+      %a{ :href => "#critical-configuration",
+          :title => "Critical changes to configuration" }
+        Critical changes to configuration
+
+    %li
+      %a{ :href => "#knownissues",
+          :title => "Known issues still remaining" }
+        Known issues still remaining
+
+    %li
+      %a{ :href => "#issuesresolved",
+          :title => "Issues Resolved" }
+        Issues Resolved
+
+.section-grouping
+  %p
+    Aeolus community release 0.8.0 is now available from the latest release repos.
+    These notes contain a summary of the high points of the last development sprint 
+    and point out significant issues that were not deemed worthy of stopping the release.
+
+  %p
+    Installation instructions are available on the Aeolus Project website:
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %a{ :href => "http://www.aeolusproject.org/get_it.html",
+        :title => "Get Aeolus" }
+      http://www.aeolusproject.org/get_it.html
+
+  %p
+    Packages are available for Fedora 15 x86_64, Fedora 16 x86_64 and RHEL 6.x x86_64.
+
+  %p
+    We appreciate all testing and bug reports, which directly
+    contribute towards the quality of Aeolus releases and future growth.
+
+  .note
+    %p
+      %b NOTE -
+      Although Aeolus is still some way from production quality, it is suitable
+      for testing.
+      %br
+      %b Please don't use it with live data yet.
+
+%br
+
+.section-grouping
+  %h2(id="release-highlights") Release Highlights
+
+  %ul
+    %li(id="highlight-01")
+      Addition of Images tab to the Pool Family details page.
+
+    %li(id="highlight-02")
+      Addition of New Image button to the images list.
+
+    %li(id="highlight-03")
+      Addition of New Deployable from Image button.
+
+    %li(id="highlight-04")
+      Ability to view template XML on the Image Details page.
+
+    %li(id="highlight-04")
+      Improvements to the the user interface for adding provider accounts to pools.
+
+    %li(id="highlight-05")
+      Verification of image's existence before importing from provider.
+
+    %li(id="highlight-06")
+      Addition of Creating deployables from imported images.
+
+    %li(id="highlight-07")
+      Catalog Entries are now called Deployables.
+
+    %li(id="highlight-08")
+      Each deployable contains a details page with:
+
+      %ul
+        %li(id="highlight-08a")
+          Status on deployable images availability;
+
+        %li(id="highlight-08b")
+          Functions to build and push images missing from a deployable;
+
+        %li(id="highlight-08c")
+          Options to add a deployable to multiple catalogs;
+
+        %li(id="highlight-08d")
+          Deployable permissions for users.
+
+    %li(id="highlight-09")
+      Added support to handle deployables without catalog.
+
+    %li(id="highlight-10")
+      Support for multiple accounts per RHEVM and VMWare providers.
+
+    %li(id="highlight-11")
+      Ability to set provider account priority
+
+    %li(id="highlight-12")
+      Added template validation when creating an image.
+
+    %li(id="highlight-13")
+      Sanitization of assembly name to prevent launch errors.
+
+    %li(id="highlight-14")
+      Addition of realm selection to Deployment Overview.
+
+    %li(id="highlight-15")
+      Ability to reboot multiple instances.
+
+    %li(id="highlight-16")
+      Change permissions tab label from Users to Role Assignments.
+
+    %li(id="highlight-17")
+      Security fix to restrict access of database.yml.
+
+    %li(id="highlight-18")
+      New icons and styling for Administer navigation, Build and Push user interface, and Deployable details.
+
+%br
+
+.section-grouping
+  %h2(id="critical-configuration") Critical changes to configuration
+
+  %p The following changes relate to RHEVM configuration (/etc/aeolus-configure/nodes/rhevm_configure):
+
+  %ul
+    %li
+      "rhevm_deltacloud_provider:" changed to "rhevm_deltacloud_api:"
+    %li
+      Added "rhevm_deltacloud_data_center:"
+    %li
+      BZ
+      %a(href="https://bugzilla.redhat.com/show_bug.cgi?id=773347") 773347
+      \- Configuration requires UUIDs not visible in RHEVM Web UI.
+
+%br
+
+.section-grouping
+  %h2(id="knownissues") Known issues still remaining
+
+  %p
+    A complete list of open issues can be viewed in Red Hat Bugzilla. The following are known problems due for resolution in a subsequent release:
+
+  %ul
+    %li
+      %b
+        BZ
+        %a(id="747895" href="https://bugzilla.redhat.com/show_bug.cgi?id=747895") 747895
+        \- "error reading information on service cgconfig" while installing aeolus on f16
+
+    %li
+      %b
+        BZ
+        %a(id="767844" href="https://bugzilla.redhat.com/show_bug.cgi?id=767844") 767844
+        \- aeolus conductor misrenders pages in ie8
+
+    %li
+      %b
+        BZ
+        %a(id="769526" href="https://bugzilla.redhat.com/show_bug.cgi?id=769526") 769526
+        \- aeolus-configure interactive  :Syntax error at ':'; expected '}' at /usr/share/aeolus-configure/modules/aeolus/manifests/profiles/custom.pp
+
+    %li
+      %b
+        BZ
+        %a(id="723327" href="https://bugzilla.redhat.com/show_bug.cgi?id=723327") 723327
+        \- aeolus-push fails to push images to the correct provider when two diff sets of credentials are used
+
+    %li
+      %b
+        BZ
+        %a(id="771344" href="https://bugzilla.redhat.com/show_bug.cgi?id=771344") 771344
+        \- "Error Downloading Packages:   rubygem-webmock-1.6.4-1.fc15.noarch: failure:" in install aeolus on f15Build failed with long Name tag in tdl template for RHEVM
+
+    %li
+      %b
+        BZ
+        %a(id="744011" href="https://bugzilla.redhat.com/show_bug.cgi?id=744011") 744011
+        \- building RHEVM templates w/ rhev agent requires updated packages
+
+    %li
+      %b
+        BZ
+        %a(id="773002" href="https://bugzilla.redhat.com/show_bug.cgi?id=773002") 773002
+        \- catalog/1/deployables/$num is not updating build status in recent builds
+
+    %li
+      %b
+        BZ
+        %a(id="772285" href="https://bugzilla.redhat.com/show_bug.cgi?id=772285") 772285
+        \- conductor needs to reflect a failed push in the webui.
+
+    %li
+      %b
+        BZ
+        %a(id="641130" href="https://bugzilla.redhat.com/show_bug.cgi?id=641130") 641130
+        \- Deltacloud server via REST doesn't report all images of an ec2 cloud
+
+    %li
+      %b
+        BZ
+        %a(id="772996" href="https://bugzilla.redhat.com/show_bug.cgi?id=772996") 772996
+        \- disable "launch" button if no images are built/pushed
+
+    %li
+      %b
+        BZ
+        %a(id="769916" href="https://bugzilla.redhat.com/show_bug.cgi?id=769916") 769916
+        \- ec2 running instances shows "Pending" state
+
+    %li
+      %b
+        BZ
+        %a(id="765611" href="https://bugzilla.redhat.com/show_bug.cgi?id=765611") 765611
+        \- Error connecting to framework: Address family not supported by protocol - socket(2)
+
+    %li
+      %b
+        BZ
+        %a(id="734471" href="https://bugzilla.redhat.com/show_bug.cgi?id=734471") 734471
+        \- Error while launching instance for ec2 in conductor UI ( The instance gets launched)
+
+    %li
+      %b
+        BZ
+        %a(id="757684" href="https://bugzilla.redhat.com/show_bug.cgi?id=757684") 757684
+        \- Failed to Push Images to RHEV NFS Export Disk
+
+    %li
+      %b
+        BZ
+        %a(id="769938" href="https://bugzilla.redhat.com/show_bug.cgi?id=769938") 769938
+        \- Imagefactory building for vsphere,condorcloud and rhevm FAILED
+
+    %li
+      %b
+        BZ
+        %a(id="747048" href="https://bugzilla.redhat.com/show_bug.cgi?id=747048") 747048
+        \- import f16 ami fails w/ malformed format string error
+
+    %li
+      %b
+        BZ
+        %a(id="717987" href="https://bugzilla.redhat.com/show_bug.cgi?id=717987") 717987
+        \- Instance fails to launch with message "The requested Availability Zone is no longer supported..."
+
+    %li
+      %b
+        BZ
+        %a(id="733764" href="https://bugzilla.redhat.com/show_bug.cgi?id=733764") 733764
+        \- Instances: download link for ec2 cert disappears after a few seconds
+
+    %li
+      %b
+        BZ
+        %a(id="745181" href="https://bugzilla.redhat.com/show_bug.cgi?id=745181") 745181
+        \- iwhd needs filesystem space check
+
+    %li
+      %b
+        BZ
+        %a(id="770555" href="https://bugzilla.redhat.com/show_bug.cgi?id=770555") 770555
+        \- Not able to delete stopped Instances
+
+    %li
+      %b
+        BZ
+        %a(id="748487" href="https://bugzilla.redhat.com/show_bug.cgi?id=748487") 748487
+        \- RHEV Instance requires attached iso_domain
+
+    %li
+      %b
+        BZ
+        %a(id="743395" href="https://bugzilla.redhat.com/show_bug.cgi?id=743395") 743395
+        \- stopping rhevm deployment causes 6+ days added to total uptime
+
+    %li
+      %b
+        BZ
+        %a(id="730105" href="https://bugzilla.redhat.com/show_bug.cgi?id=730105") 730105
+        \- Stopping the imagefactory leaves resources in use
+
+    %li
+      %b
+        BZ
+        %a(id="765854" href="https://bugzilla.redhat.com/show_bug.cgi?id=765854") 765854
+        \- Race condition with network service start and audrey invocation
+
+    %li
+      %b
+        BZ
+        %a(id="770445" href="https://bugzilla.redhat.com/show_bug.cgi?id=770445") 770445
+        \- "undefined method `name' for nil:NilClass " : When created a catalog entry with wrong hwp
+
+    %li
+      %b
+        BZ
+        %a(id="772708" href="https://bugzilla.redhat.com/show_bug.cgi?id=772708") 772708
+        \- /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.10/lib/action_view/helpers/url_helper.rb:317: [BUG] rb_gc_mark(): unknown data type
+
+    %li
+      %b
+        BZ
+        %a(id="771305" href="https://bugzilla.redhat.com/show_bug.cgi?id=771305") 771305
+        \- aeolus-configure interactive : Error found in /etc/aeolus-configure/nodes/custom_configure
+
+    %li
+      %b
+        BZ
+        %a(id="772249" href="https://bugzilla.redhat.com/show_bug.cgi?id=772249") 772249
+        \- After built images from UI, I see 'Images are not Built', but 'Images Ready' in deployable#show
+
+    %li
+      %b
+        BZ
+        %a(id="770574" href="https://bugzilla.redhat.com/show_bug.cgi?id=770574") 770574
+        \- Build should be allowed only for that provider for which deployable is created .
+
+    %li
+      %b
+        BZ
+        %a(id="773277" href="https://bugzilla.redhat.com/show_bug.cgi?id=773277") 773277
+        \- Deployments with stopped instances in it does not get deleted.
+
+    %li
+      %b
+        BZ
+        %a(id="768028" href="https://bugzilla.redhat.com/show_bug.cgi?id=768028") 768028
+        \- F16 doesn't build in Factory
+
+    %li
+      %b
+        BZ
+        %a(id="770532" href="https://bugzilla.redhat.com/show_bug.cgi?id=770532") 770532
+        \- Failed.  Response code = 500.  Response message = Internal Server Error when clicked on build button for mock.
+
+    %li
+      %b
+        BZ
+        %a(id="773580" href="https://bugzilla.redhat.com/show_bug.cgi?id=773580") 773580
+        \- For non-admin user submenu for Administer is rendered when clicked on My Accounts.
+
+    %li
+      %b
+        BZ
+        %a(id="694525" href="https://bugzilla.redhat.com/show_bug.cgi?id=694525") 694525
+        \- IE8 :  undefined method `[]' for nil:NilClass for Hardware profile
+
+    %li
+      %b
+        BZ
+        %a(id="740810" href="https://bugzilla.redhat.com/show_bug.cgi?id=740810") 740810
+        \- IE8 is misrendered in /conductor
+
+    %li
+      %b
+        BZ
+        %a(id="773244" href="https://bugzilla.redhat.com/show_bug.cgi?id=773244") 773244
+        \- Instances created by a user should be automatically stopped and deleted when the user is deleted
+
+    %li
+      %b
+        BZ
+        %a(id="771627" href="https://bugzilla.redhat.com/show_bug.cgi?id=771627") 771627
+        \- launch instance fails for providers added once images are built and pushed.
+
+    %li
+      %b
+        BZ
+        %a(id="773407" href="https://bugzilla.redhat.com/show_bug.cgi?id=773407") 773407
+        \- Launching, w/ a realm w/ multiple providers fails
+
+    %li
+      %b
+        BZ
+        %a(id="770354" href="https://bugzilla.redhat.com/show_bug.cgi?id=770354") 770354
+        \- No validation for Priority field in Add Provider Page
+
+    %li
+      %b
+        BZ
+        %a(id="767570" href="https://bugzilla.redhat.com/show_bug.cgi?id=767570") 767570
+        \- Non admin user able to launch instance even after revoking access of "global Deployable User "
+
+    %li
+      %b
+        BZ
+        %a(id="767933" href="https://bugzilla.redhat.com/show_bug.cgi?id=767933") 767933
+        \- Non user can stop an instance created by admin even when all deployable permissions are revoked.
+
+    %li
+      %b
+        BZ
+        %a(id="772353" href="https://bugzilla.redhat.com/show_bug.cgi?id=772353") 772353
+        \- odd import image workflow can cause: Failed. Response code = 400. Response message = Bad Request.
+
+    %li
+      %b
+        BZ
+        %a(id="773672" href="https://bugzilla.redhat.com/show_bug.cgi?id=773672") 773672
+        \- Ouptut of Push should show Provider Image not ID
+
+    %li
+      %b
+        BZ
+        %a(id="773410" href="https://bugzilla.redhat.com/show_bug.cgi?id=773410") 773410
+        \- provider priority is not taken into account when launching instances w/ Realm w/ multiple realms(datastores)
+
+    %li
+      %b
+        BZ
+        %a(id="772644" href="https://bugzilla.redhat.com/show_bug.cgi?id=772644") 772644
+        \- Realm.scan_for_new fetches realms only from first account
+
+    %li
+      %b
+        BZ
+        %a(id="770087" href="https://bugzilla.redhat.com/show_bug.cgi?id=770087") 770087
+        \- Search fails for realms.
+
+    %li
+      %b
+        BZ
+        %a(id="765908" href="https://bugzilla.redhat.com/show_bug.cgi?id=765908") 765908
+        \- Status stays pending on instance that failed to launch at RHEV
+
+    %li
+      %b
+        BZ
+        %a(id="773466" href="https://bugzilla.redhat.com/show_bug.cgi?id=773466") 773466
+        \- template xml validation results in mis-rendered page
+
+    %li
+      %b
+        BZ
+        %a(id="743677" href="https://bugzilla.redhat.com/show_bug.cgi?id=743677") 743677
+        \- turn providers off fail to stop instances
+
+    %li
+      %b
+        BZ
+        %a(id="772784" href="https://bugzilla.redhat.com/show_bug.cgi?id=772784") 772784
+        \- unable to navigate to user "my account, logout" in ie8
+
+    %li
+      %b
+        BZ
+        %a(id="773198" href="https://bugzilla.redhat.com/show_bug.cgi?id=773198") 773198
+        \- Uptime is displayed twice for instances
+
+    %li
+      %b
+        BZ
+        %a(id="770377" href="https://bugzilla.redhat.com/show_bug.cgi?id=770377") 770377
+        \- Wrong error message displayed when launching image for a provider for which images are not pushed
+
+    %li
+      %b
+        BZ
+        %a(id="751209" href="https://bugzilla.redhat.com/show_bug.cgi?id=751209") 751209
+        \- concurrent builds causes some builds to fail
+
+    %li
+      %b
+        BZ
+        %a(id="741592" href="https://bugzilla.redhat.com/show_bug.cgi?id=741592") 741592
+        \- Disclaimer,Terms of Use and Support links not directed to correct page.
+
+    %li
+      %b
+        BZ
+        %a(id="773034" href="https://bugzilla.redhat.com/show_bug.cgi?id=773034") 773034
+        \- image details page needs ajax updates of image status
+
+    %li
+      %b
+        BZ
+        %a(id="754943" href="https://bugzilla.redhat.com/show_bug.cgi?id=754943") 754943
+        \- Image push to vSphere fails if all virtual networks are Distributed Virtual Switches
+
+    %li
+      %b
+        BZ
+        %a(id="772781" href="https://bugzilla.redhat.com/show_bug.cgi?id=772781") 772781
+        \- imagefactory does not detect local jeos image, cached modified media builds  as running
+
+    %li
+      %b
+        BZ
+        %a(id="741748" href="https://bugzilla.redhat.com/show_bug.cgi?id=741748") 741748
+        \- pushing vsphere/rhevm images displays console passwd in plain txt
+
+    %li
+      %b
+        BZ
+        %a(id="750504" href="https://bugzilla.redhat.com/show_bug.cgi?id=750504") 750504
+        \- Unable to update default hardware Profile(backend).
+
+
+  %p
+    Full lists of relevant issues in Bugzilla:
+
+  %ul
+    %li
+      %a{ :href=>"https://bugzilla.redhat.com/showdependencytree.cgi?id=ce-sprint&hide_resolved=1" }
+        https://bugzilla.redhat.com/showdependencytree.cgi?id=ce-sprint&hide_resolved=1
+    %li
+      %a{ :href=>"https://bugzilla.redhat.com/showdependencytree.cgi?id=ce-sprint-next&hide_resolved=1"}
+        https://bugzilla.redhat.com/showdependencytree.cgi?id=ce-sprint-next&hide_resolved=1
+
+%br
+
+.section-grouping
+  %h2(id="issuesresolved") Issues Resolved
+
+  %p
+    The following section contains links to closed issues.
+
+  %h3(id="redmine") Redmine
+  
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="2864" href="https://bugzilla.redhat.com/show_bug.cgi?id=2864") 2864
+        \- Create a VM based test harness for Snap
+
+    %li
+      %b
+        Redmine
+        %a(id="2865" href="https://bugzilla.redhat.com/show_bug.cgi?id=2865") 2865
+        \- Snap: Replace all 'subprocess' / 'tempfile' calls w/ a 'capture_output' helper method
+
+    %li
+      %b
+        Redmine
+        %a(id="2867" href="https://bugzilla.redhat.com/show_bug.cgi?id=2867") 2867
+        \- Add icons to launch gsnap from menus
+
+    %li
+      %b
+        Redmine
+        %a(id="2868" href="https://bugzilla.redhat.com/show_bug.cgi?id=2868") 2868
+        \- Snap: Indentation fixes
+
+    %li
+      %b
+        Redmine
+        %a(id="2869" href="https://bugzilla.redhat.com/show_bug.cgi?id=2869") 2869
+        \- Snap: Make sure deb post-install command line tools don't run in Snap
+
+    %li
+      %b
+        Redmine
+        %a(id="2872" href="https://bugzilla.redhat.com/show_bug.cgi?id=2872") 2872
+        \- Snap: Add more and better documentation
+
+    %li
+      %b
+        Redmine
+        %a(id="2919" href="https://bugzilla.redhat.com/show_bug.cgi?id=2919") 2919
+        \- "touch: missing file operand" displayed while restarting aeolus-conductor
+
+    %li
+      %b
+        Redmine
+        %a(id="2890" href="https://bugzilla.redhat.com/show_bug.cgi?id=2890") 2890
+        \- aeolus-cli build/push lists out target image hash but does not associate which provider
+
+    %li
+      %b
+        Redmine
+        %a(id="2891" href="https://bugzilla.redhat.com/show_bug.cgi?id=2891") 2891
+        \- need error message for image import with incorrect parms
+
+    %li
+      %b
+        Redmine
+        %a(id="2892" href="https://bugzilla.redhat.com/show_bug.cgi?id=2892") 2892
+        \- trim whitespaces in /etc/aeolus-configure/nodes configs
+
+    %li
+      %b
+        Redmine
+        %a(id="2909" href="https://bugzilla.redhat.com/show_bug.cgi?id=2909") 2909
+        \- new script to read in config files and ensure it is properly formatted
+
+    %li
+      %b
+        Redmine
+        %a(id="2893" href="https://bugzilla.redhat.com/show_bug.cgi?id=2893") 2893
+        \- aeolus-cleanup cleans up everything, should be more selective
+
+    %li
+      %b
+        Redmine
+        %a(id="2894" href="https://bugzilla.redhat.com/show_bug.cgi?id=2894") 2894
+        \- unmount rhevm nfs failure error; device is busy
+
+    %li
+      %b
+        Redmine
+        %a(id="2895" href="https://bugzilla.redhat.com/show_bug.cgi?id=2895") 2895
+        \- aeolus-configure-image returns /usr/bin/ruby: No such file or directory -- /usr/lib/ruby/gems/1.8/gems/aeolus-image-0.1.0/bin/aeolus-image (LoadError).
+
+    %li
+      %b
+        Redmine
+        %a(id="2898" href="https://bugzilla.redhat.com/show_bug.cgi?id=2898") 2898
+        \- aeolus-configure-2.0.1-1.el6.fc14.noarch fails http 404 on https://localhost/conductor/providers
+
+    %li
+      %b
+        Redmine
+        %a(id="2901" href="https://bugzilla.redhat.com/show_bug.cgi?id=2901") 2901
+        \- "Error Downloading Packages: rubygem-webmock-1.6.4-1.fc15.noarch: failure:" in install aeolus on f15
+
+    %li
+      %b
+        Redmine
+        %a(id="2902" href="https://bugzilla.redhat.com/show_bug.cgi?id=2902") 2902
+        \- 'Failed to find root/Administrator password in TDL" error in aeolus-image build
+
+    %li
+      %b
+        Redmine
+        %a(id="2912" href="https://bugzilla.redhat.com/show_bug.cgi?id=2912") 2912
+        \- As a user of the cli, I want a stable api structure
+
+    %li
+      %b
+        Redmine
+        %a(id="2913" href="https://bugzilla.redhat.com/show_bug.cgi?id=2913") 2913
+        \- Propose change, if needed, get buy-in from group
+
+    %li
+      %b
+        Redmine
+        %a(id="2914" href="https://bugzilla.redhat.com/show_bug.cgi?id=2914") 2914
+        \- Implement change based on design change to cli
+
+    %li
+      %b
+        Redmine
+        %a(id="2916" href="https://bugzilla.redhat.com/show_bug.cgi?id=2916") 2916
+        \- Configure should not write /root/.aeolus-cli
+
+    %li
+      %b
+        Redmine
+        %a(id="2918" href="https://bugzilla.redhat.com/show_bug.cgi?id=2918") 2918
+        \- Configure should set owner of pg_hba.conf to postgres
+
+    %li
+      %b
+        Redmine
+        %a(id="2920" href="https://bugzilla.redhat.com/show_bug.cgi?id=2920") 2920
+        \- aeolus-cli rename to aeolus
+
+    %li
+      %b
+        Redmine
+        %a(id="2767" href="https://bugzilla.redhat.com/show_bug.cgi?id=2767") 2767
+        \- Provisioning F16 and exploring Openstack feature
+
+  %h3(id="bugzilla") Bugzilla
+  %ul
+    %li
+      %a(id="bz-link" href="https://bugzilla.redhat.com/buglist.cgi?bug_status=VERIFIED&classification=Red%20Hat&product=CloudForms%20Cloud%20Engine&query_format=advanced&order=changeddate%20DESC") Click here to view the full list of recently VERIFIED bugs.
+        
