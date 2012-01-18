@@ -7,6 +7,313 @@ filter: haml
 %h1 News
 
 .grid_24
+  %h2(id="201112" style="color: black") December 2011
+
+  .section-grouping
+    %h2(id="2011120601")
+      6st December 2011: Image Warehouse 1.2 stable release
+
+    %h3 New feature
+
+    %ul
+      %li
+        %b
+          Automatic qcow2 format detection has been added to the dc-rhev-image
+          helper utility
+        %br
+        This change allows you to use both raw and qcow2 images when creating
+        templates in a RHEV-M environment.
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-December/001044.html",
+          :title => "Image Warehouse 1.2 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-December/001044.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+  .section-grouping
+    %h2(id="2011120101")
+      1st December 2011: Image Warehouse 1.1 stable release
+
+    %h3 Bug fix
+
+    %ul
+      %li
+        %b Fix for query response bug
+        %br
+        For a query like this:
+        %pre
+          $ curl -H 'Accept: */json' http://H:9090/b/o/_attrs
+        The response now includes an "object_body" URL of
+        "http://H:9090/b/o/", which matches the XML-formatted one, rather
+        than "http://H:9090/b/o/body". That same line now ends with a comma,
+        too.
+        %br
+        [bug introduced in 0.91]
+
+    %h3 Changes in behaviour
+
+    %ul
+      %li
+        %b
+          iwhd now rejects a --userlist file when its group or other
+          permissions are set as readable or writable
+        %br
+        %br
+
+      %li
+        %b
+          Request logging is reorganized
+        %br
+        Now, 2 messages are logged for every request. They report the method,
+        path, requested and actual size, and the HTTP result code.
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-December/001019.html",
+          :title => "Image Warehouse 1.1 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-December/001019.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+%br
+
+.grid_24
+  %h2(id="201110" style="color: black") October 2011
+
+  .section-grouping
+    %h2(id="2011103101")
+      31st October 2011: Image Warehouse 1.0 stable release
+
+    %p
+      This is almost a mere relabeling of iwhd-0.991.
+
+    %h3 Improvements (both minor)
+
+    %ul
+      %li
+        %b Log messages showing when iwhd is started and stopped
+        %br
+        %br
+
+      %li
+        %b An improvement in a regression test script
+
+    %h3 Known Issues (existing in previous releases too)
+
+    %ul
+      %li
+        %b iwhd is not very useful without mongod
+        %br
+        Ideally, iwhd would communicate its inability to do useful work
+        when mongod isn't running, and when mongod becomes usable again iwhd
+        would, too.  However, currently, attempting to do things like create
+        an object or an attribute in iwhd makes iwhd dereference NULL whenever
+        mongod is unreachable.
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000980.html",
+          :title => "Image Warehouse 1.0 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000980.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+  .section-grouping
+    %h2(id="2011102001")
+      20th October 2011: Image Warehouse 0.991 stable release
+
+    %h3 New features
+
+    %ul
+      %li
+        %b
+          Add -u flag that specifies a file with a list of authorized users
+        %br
+        This way, ps does not show the password, and several users may be on
+        the list. The -U flag is now deprecated.
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        %b Adjust oauth hash to account for the "oauth_body_hash" header
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000969.html",
+          :title => "Image Warehouse 0.991 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000969.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+  .section-grouping
+    %h2(id="2011101301")
+      13th October 2011: Image Warehouse 0.990 stable release
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        %b Remove the (unauthenticated) QUIT method
+
+    %h3 Infrastructure
+
+    %ul
+      %li
+        %b Correct the spec file
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000953.html",
+          :title => "Image Warehouse 0.990 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000953.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+  .section-grouping
+    %h2(id="2011101001")
+      10th October 2011: Image Warehouse 0.99 stable release
+
+    %h3 New features
+
+    %ul
+      %li
+        %b
+          Preliminary support is added for authorization with two-legged OAuth
+        %br
+        See the -o flag.
+        %br
+        %br
+
+      %li
+        %b
+          The RHEV-M import timeout interval is now configurable
+        %br
+        You can set it via the optional new "timeout" key in /etc/iwhd/conf.js.
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        %b
+          iwhd now continues to work properly when mongo dies and is
+          restarted
+        %br
+        Prior to this release, it would dump core due to an unhandled
+        SocketException.
+        %br
+        %br
+
+      %li
+        %b
+          iwhd's /etc/init.d startup script now reports failure reliably
+        %br
+        For example, when failing to start because no MongoDB server is
+        running.  Prior to this release, it would print [FAILED], but
+        mistakenly exit with status 0 (success). Now it exits with status 1
+        to properly indicate an error.
+        %br
+        %br
+
+      %li
+        %b
+          Improved handling of RHEV-M 2.x template imports  
+        %br
+        Adapt to a slight variation in the status report of a template import
+        action in RHEV-M 2.x.
+        %br
+        %br
+
+      %li
+        %b
+          Time limits on RHEV-M imports have been relaxed
+        %br 
+        dc-rhev-image now allows a RHEV-M import to take 10 minutes.
+        Previously, it would timeout after just 1 minute, which was often
+        inadequate.
+        %br
+        %br
+
+      %li
+        %b
+          Objection deletion now copes with missing backend file
+        %br
+        Deleting objects now succeeds when the file system backed file has
+        been removed external to iwhd.  Previously, this didn't work properly.
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000937.html",
+          :title => "Image Warehouse 0.99 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000937.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+%br
+
+.grid_24
   %h2(id="201109" style="color: black") September 2011
 
   .section-grouping
