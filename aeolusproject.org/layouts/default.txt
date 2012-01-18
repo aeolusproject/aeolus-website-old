@@ -207,7 +207,7 @@ filter: haml
 
         #copyright.grid_24
           .line1
-            Copyright &copy; 2010-2011 Red Hat, Inc.
+            Copyright &copy; 2010-2012 Red Hat, Inc.
           .line2
             This website (not the Aeolus code) is released under a
             %a{ :href => "http://creativecommons.org/licenses/by-sa/3.0/", :rel => "license" } Creative Commons Attribution-ShareAlike 3.0 Unported License
