@@ -27,35 +27,41 @@ filter: haml
 
 #front-page-main-lower.container_24.clearfix
   .grid_8
-    %h1
-      %a{ :href => "about.html",
-          :style => "color: #007EB5; text-decoration: none" } What is Aeolus?
+    #what
+      %h1
+        %a{ :href => "about.html",
+            :style => "color: #007EB5; text-decoration: none" } What is Aeolus?
 
-    %p
-      Aeolus is software for running virtual machines both internally on your
-      own equipment, and in Clouds from several leading vendors.  All at the
-      same time.
+      %p
+        Aeolus is software for running virtual machines both internally on your
+        own equipment, and in Clouds from several leading vendors.  All at the
+        same time.
 
-    %p
-      REDUCE YOUR RISK of being caught out whenever your preferred Cloud
-      vendor has issues.
+      %p
+        REDUCE YOUR RISK of being caught out whenever your preferred Cloud
+        vendor has issues.
 
-  .grid_8
-    %h1
-      %a{ :href => "developers.html",
-          :style => "color: #007EB5; text-decoration: none" } Developer Info
+      %a.button.small{ :href => "about.html" }
+        More
+      %br
+      %br
 
-    %h3 Aeolus:
+    #developer_info
+      %h1
+        %a{ :href => "developers.html",
+            :style => "color: #007EB5; text-decoration: none" } Developer Info
 
-    %ul
-      %li Is Open Source
-      %li Is written in Ruby <em>(well, most of it)</em>
-      %li
-        Runs on Linux
-        %br
-        <em>(some parts also work on OSX)</em>
-      %li Has a growing Community
-      %li Is sponsored by Red Hat, Inc.
+      %h3 Aeolus:
+
+      %ul
+        %li Is Open Source
+        %li Is written in Ruby <em>(well, most of it)</em>
+        %li
+          Runs on Linux
+          %br
+          <em>(some parts also work on OSX)</em>
+        %li Has a growing Community
+        %li Is sponsored by Red Hat, Inc.
 
   .grid_8.news
     %h1
@@ -74,29 +80,66 @@ filter: haml
     %p
       %a{ :href => "news.html#2012011201",
           :title => "News item: Oz version 0.8.0 now available" }
-        %strong 12th January 2012 - Oz version 0.8.0 now available
+        %strong 12th January 2012 - Oz version 0.8.0 available
 
     %p(style="margin-bottom: 2em")
-      Oz version 0.8.0 has been released.  Release 0.8.0 is a bugfix and
-      feature release for Oz.
+      Oz 0.8.0 has been released.  This is a bug fix and feature release for
+      Oz.
 
     %p
       %a{ :href => "news.html#2011120601",
           :title => "News item: Image Warehouse 1.2 stable release" }
-        %strong 6th December 2011 - Image Warehouse 1.2 stable release
+        %strong 6th December 2011 - Image Warehouse 1.2 released
 
       %p(style="margin-bottom: 2em")
-        Image Warehouse 1.2 has been released.
+        Image Warehouse 1.2, a stable release, is available.
+
+    %p
+      %a{ :href => "news.html#2011120101",
+          :title => "News item: Image Warehouse 1.1 stable release" }
+        %strong 1st December 2011 - Image Warehouse 1.1 released
+
+      %p(style="margin-bottom: 2em")
+        Image Warehouse 1.1, a stable release, is available.
+
+  .grid_8
+    %script{:src => "http://widgets.twimg.com/j/2/widget.js"}
+    :javascript
+      new TWTR.Widget({
+        version: 2,
+        type: 'profile',
+        rpp: 4,
+        interval: 30000,
+        width: 'auto',
+        height: 300,
+        theme: {
+          shell: {
+            background: '#47aaed',
+            color: '#ffffff'
+          },
+          tweets: {
+            background: '#47aaed',
+            color: '#000000',
+            links: '#f5f5f5'
+          }
+        },
+        features: {
+          scrollbar: false,
+          loop: false,
+          live: true,
+          behavior: 'default'
+        }
+      }).render().setUser('aeolusproject').start();
 
   .grid_24
     .grid_8.alpha
-      %a.button.small{ :href => "about.html" }
-        More
-
-    .grid_8
       %a.button.small{ :href => "developers.html" }
         More
 
-    .grid_8.omega
+    .grid_8
       %a.button.small{ :href => "news.html" }
+        More
+
+    .grid_8.omega
+      %a.button.small{ :href => "http://twitter.com/aeolusproject" }
         More
