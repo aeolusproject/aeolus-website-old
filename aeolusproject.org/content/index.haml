@@ -103,15 +103,16 @@ filter: haml
         Image Warehouse 1.1, a stable release, is available.
 
   .grid_8
+    %br
     %script{:src => "http://widgets.twimg.com/j/2/widget.js"}
     :javascript
       new TWTR.Widget({
         version: 2,
         type: 'profile',
-        rpp: 4,
+        rpp: 5,
         interval: 30000,
         width: 'auto',
-        height: 300,
+        height: 'auto',
         theme: {
           shell: {
             background: '#47aaed',
@@ -126,8 +127,8 @@ filter: haml
         features: {
           scrollbar: false,
           loop: false,
-          live: true,
-          behavior: 'default'
+          live: false,
+          behavior: 'all'
         }
       }).render().setUser('aeolusproject').start();
 
