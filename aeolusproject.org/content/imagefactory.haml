@@ -8,10 +8,10 @@ filter:
 :markdown
     #Image Factory#
     *Your infrastructure in a sky full of clouds.*
-    
+
     Image Factory enables appliance creation and deployment to multiple virtualization
     and Cloud providers.
-    
+
     ![](http://aeolusproject.github.com/imagefactory/images/IF-highlevel.png)
 
 
@@ -24,13 +24,15 @@ filter:
         *   Image Factory supports "build and upload" or snapshotting of existing images.
         *   RESTful API makes integrating Image Factory into existing workflows simple.
 
+%br
+
 .section-grouping
     :markdown
         ##Using Image Factory##
         Building an image begins with a template describing what to build. See an example
         of such a template below. See the [schema documentation for TDL](http://aeolusproject.github.com/imagefactory/tdl/)
         for more detail on creating a template. Note that a template is **not** tied to a specific cloud.
-        
+
             <template>
                 <name>f12jeos</name>
                 <os>
@@ -42,20 +44,22 @@ filter:
                     </install>
                 </os>
             </template>
-        
+
         Next, use the imagefactory command and specify the template to use and for which
         clouds to build an image. The above template example was saved to a file name f12_64.tdl.
-        
+
             $ sudo imagefactory --template f12_64.tdl --target ec2
-        
+
         Once the image has been built, use the imagefactory command again, this time to
         push the image into the cloud.
-        
+
             $ sudo imagefactory --provider ec2-us-west-1 --credentials ec2_credentials.xml
-        
+
         That's it!  You can now launch an instance of this image using either the cloud
-        provider's management console or a cloud management tool such as 
+        provider's management console or a cloud management tool such as
         **[Aeolus](http://www.aeolusproject.org/)**.
+
+%br
 
 .section-grouping
     :markdown
@@ -64,11 +68,11 @@ filter:
         add the Aeolus repository for either RHEL or Fedora as described on the
         [Aeolus | Get It](http://www.aeolusproject.org/get_it.html#stable) page.  Once
         configured, yum can be used to install Image Factory with:
-        
+
             $ sudo yum install imagefactory
-        
+
         Other, unsupported, systems can install Image Factory using setuptools:
-        
+
             $ git clone git://github.com/aeolusproject/imagefactory.git
             ...
             $ cd imagefactory
