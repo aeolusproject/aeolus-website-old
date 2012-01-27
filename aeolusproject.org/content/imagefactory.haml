@@ -5,29 +5,71 @@ extension: html
 filter:
   - haml
 ---
-%h1 ImageFactory
+:markdown
+    #Image Factory#
+    *Your infrastructure in a sky full of clouds.*
+    
+    Image Factory enables appliance creation and deployment to multiple virtualization
+    and Cloud providers.
+    
+    ![](http://aeolusproject.github.com/imagefactory/images/IF-highlevel.png)
 
-%ul
-  - imagefactory_pages.each do |doc|
-    - if doc[:description]
-      %li
-        %a{ :href => doc[:href] }
-          = doc[:description]
 
-%h2 Summary
-%p
-  The ImageFactory is an external service that allows the Conductor to build
-  images for multiple cloud providers from a single image descriptor. The
-  builder exposes its services as a QMF agent and uses XML for the descriptor
-  format.  The nuts and bolts of building an image are handled by the Oz
-  component.
+.section-grouping
+    :markdown
+        ##Features##
+        *   Build guest images for a growing list of operating system and cloud combinations.
+            * Current guest OS support: Fedora 7-16, RHEL 5.x and 6.x
+            * Current cloud support: Red Hat Enterprise Virtualization, VMware vSphere, Amazon EC2, Rackspace
+        *   Image Factory supports "build and upload" or snapshotting of existing images.
+        *   RESTful API makes integrating Image Factory into existing workflows simple.
 
-  The resulting images are transferred to the Image Warehouse that pushes the
-  resulting images out to the appropriate cloud provider.
+.section-grouping
+    :markdown
+        ##Using Image Factory##
+        Building an image begins with a template describing what to build. See an example
+        of such a template below. See the [schema documentation for TDL](http://aeolusproject.github.com/imagefactory/tdl/)
+        for more detail on creating a template. Note that a template is **not** tied to a specific cloud.
+        
+            <template>
+                <name>f12jeos</name>
+                <os>
+                    <name>Fedora</name>
+                    <version>12</version>
+                    <arch>x86_64</arch>
+                    <install type='iso'>
+                        <iso>http://download.fedoraproject.org/pub/fedora/linux/releases/12/Fedora/x86_64/os/</iso>
+                    </install>
+                </os>
+            </template>
+        
+        Next, use the imagefactory command and specify the template to use and for which
+        clouds to build an image. The above template example was saved to a file name f12_64.tdl.
+        
+            $ sudo imagefactory --template f12_64.tdl --target ec2
+        
+        Once the image has been built, use the imagefactory command again, this time to
+        push the image into the cloud.
+        
+            $ sudo imagefactory --provider ec2-us-west-1 --credentials ec2_credentials.xml
+        
+        That's it!  You can now launch an instance of this image using either the cloud
+        provider's management console or a cloud management tool such as 
+        **[Aeolus](http://www.aeolusproject.org/)**.
 
-%h2 Status
-%p
-  The image factory is being actively developed. This is a very early
-  version, and it should in no way be considered either stable or
-  production-ready. At present it supports Fedora, RHEL, and Windows based
-  distributions.
+.section-grouping
+    :markdown
+        ##Installing Image Factory##
+        Installing Image Factory is quick and easy.  Fedora 15-16 and RHEL 5-6 users can
+        add the Aeolus repository for either RHEL or Fedora as described on the
+        [Aeolus | Get It](http://www.aeolusproject.org/get_it.html#stable) page.  Once
+        configured, yum can be used to install Image Factory with:
+        
+            $ sudo yum install imagefactory
+        
+        Other, unsupported, systems can install Image Factory using setuptools:
+        
+            $ git clone git://github.com/aeolusproject/imagefactory.git
+            ...
+            $ cd imagefactory
+            $ sudo setup.py install
