@@ -30,6 +30,22 @@ filter: haml
     %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"}
     %script{:type => "text/javascript", :src => "js/aeolus.js"}
 
+    -# Piwik Tracking Code
+    %script(type="text/javascript")
+      var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.salasaga.org/aeolus/piwik/" : "http://stats.salasaga.org/aeolus/piwik/");
+      document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    %script(type="text/javascript")
+      try {
+      var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+      piwikTracker.trackPageView();
+      piwikTracker.enableLinkTracking();
+      } catch( err ) {}
+    %noscript
+      %p
+        %img{ :src => "http://stats.salasaga.org/aeolus/piwik/piwik.php?idsite=1",
+              :style => "border:0",
+              :alt => ""}
+
   %body
     #header
       .container_24.clearfix
