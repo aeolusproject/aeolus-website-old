@@ -1,0 +1,9 @@
+.static_content_item{
+  clear: both;
+  min-height: 20px;
+}
+
+.static_content_item_title, .static_content_item_actions {
+  width: 20%;
+  float: left;
+}

@@ -1,0 +1,145 @@
+---
+title: Aeolus
+---
+#front-page-main-upper
+  %hr.shade
+  .container_24
+    .grid_8
+      %img.logo{:src => "images/logo-frontpage.png", :alt => "AEOLUS"}
+    .grid_16
+      %h1
+        Aeolus
+        %sup TM
+      %h2
+        Meet the world's best cloud management software,
+        %br
+        %strong and it's free.
+
+      .frontpagebuttons
+        %a.button{ :href => "about.html" }
+          Learn More
+          %img{:src => "images/button-right.png", :alt => "→"}
+        %a.button{ :href => "get_it.html" }
+          Get Aeolus
+          %img{:src => "images/button-down.png", :alt => "v"}
+
+#front-page-main-lower.container_24.clearfix
+  .grid_8
+    #what
+      %h1
+        %a{ :href => "about.html",
+            :style => "color: #007EB5; text-decoration: none" } What is Aeolus?
+
+      %p
+        Aeolus is software for running virtual machines both internally on your
+        own equipment, and in Clouds from several leading vendors.  All at the
+        same time.
+
+      %p
+        REDUCE YOUR RISK of being caught out whenever your preferred Cloud
+        vendor has issues.
+
+      %a.button.small{ :href => "about.html" }
+        More
+      %br
+      %br
+
+    #developer_info
+      %h1
+        %a{ :href => "developers.html",
+            :style => "color: #007EB5; text-decoration: none" } Developer Info
+
+      %h3 Aeolus:
+
+      %ul
+        %li Is Open Source
+        %li Is written in Ruby <em>(well, most of it)</em>
+        %li
+          Runs on Linux
+          %br
+          <em>(some parts also work on OSX)</em>
+        %li Has a growing Community
+        %li Is sponsored by Red Hat, Inc.
+
+  .grid_8.news
+    %h1
+      %a{ :href => "news.html",
+          :style => "color: #007EB5" } Recent News
+
+    %p
+      %a{ :href => "news.html#2012012101",
+          :title => "News item: Aeolus 0.8.0 released!" }
+        %strong 21st January 2012 - Aeolus 0.8.0 released!
+
+    %p(style="margin-bottom: 2em")
+      Newest release of Aeolus is out, with (64-bit) packages for Fedora
+      15/16 and RHEL 6.1+.
+
+    %p
+      %a{ :href => "news.html#2012011201",
+          :title => "News item: Oz version 0.8.0 now available" }
+        %strong 12th January 2012 - Oz version 0.8.0 available
+
+    %p(style="margin-bottom: 2em")
+      Oz 0.8.0 has been released.  This is a bug fix and feature release for
+      Oz.
+
+    %p
+      %a{ :href => "news.html#2011120601",
+          :title => "News item: Image Warehouse 1.2 stable release" }
+        %strong 6th December 2011 - Image Warehouse 1.2 released
+
+      %p(style="margin-bottom: 2em")
+        Image Warehouse 1.2, a stable release, is available.
+
+    %p
+      %a{ :href => "news.html#2011120101",
+          :title => "News item: Image Warehouse 1.1 stable release" }
+        %strong 1st December 2011 - Image Warehouse 1.1 released
+
+      %p(style="margin-bottom: 2em")
+        Image Warehouse 1.1, a stable release, is available.
+
+  .grid_8
+    %br
+    %script{:src => "http://widgets.twimg.com/j/2/widget.js"}
+    :javascript
+      new TWTR.Widget({
+        version: 2,
+        type: 'profile',
+        rpp: 5,
+        interval: 30000,
+        width: 'auto',
+        height: 'auto',
+        theme: {
+          shell: {
+            background: '#47aaed',
+            color: '#ffffff'
+          },
+          tweets: {
+            background: '#47aaed',
+            color: '#000000',
+            links: '#f5f5f5'
+          }
+        },
+        features: {
+          scrollbar: false,
+          loop: false,
+          live: false,
+          behavior: 'all'
+        }
+      }).render().setUser('aeolusproject').start();
+    %br
+
+  .grid_24
+    .grid_8.alpha
+      %a.button.small{ :href => "developers.html" }
+        More
+
+    .grid_8
+      %a.button.small{ :href => "news.html" }
+        More
+
+    .grid_8.omega
+      %a.button.small{ :href => "http://twitter.com/aeolusproject" }
+        More

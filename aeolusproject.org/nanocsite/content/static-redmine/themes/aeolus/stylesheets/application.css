@@ -1,0 +1,25 @@
+/* load the default Redmine stylesheet */
+@import url(../../../stylesheets/application.css);
+
+/* add a logo in the header */
+#header {
+    background: #6498c5 url(../images/topbar-bg.png) no-repeat center;
+    width: 100%;
+    height: 76px;
+}
+
+#header h1 {
+  padding-top: 15px;
+}
+
+#main{
+   background: #DCE9E7;
+}
+
+#content{
+   background: #DCE9E7;
+}
+
+.box{
+   background: #DCE9E7;
+}
