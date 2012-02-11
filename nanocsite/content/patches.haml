@@ -1,0 +1,100 @@
+---
+title: Aeolus | Submitting patches
+breadcrumb_name: Submitting patches
+extension: html
+filter: haml
+---
+%h1 Submitting patches
+
+%p 
+  Patches to improve Aeolus are very welcome, and encouraged.
+
+.section-grouping
+  %h2 Preparing patches
+
+  %p
+    Patches should be generated with
+    %a(href="http://kernel.org/pub/software/scm/git/docs/git-format-patch.html")
+      %code git format-patch
+    and sent to the appropriate mailing list using
+    <a href="http://kernel.org/pub/software/scm/git/docs/git-send-email.html"><code>git send-email</code></a>.
+
+  %p
+    %ul
+      %li
+        %b DO
+        include a short summary in your patch as a description, followed by
+        all information that would be useful to a reviewer and/or someone
+        looking back at git history to see what you did.
+        %br
+        %br
+        For example:
+        %pre
+          :preserve
+              Fix adding account to pool functionality
+
+              We had an issue with blah where we were checking foo instead of
+              bar, this resulted in xyz, and required that we abc to get it
+              correct again.
+        %br
+
+      %li
+        %b DON'T
+        put all that above info in the first line of your patch.  It makes
+        things like
+        %code "git log --oneline"
+        unreadable.
+        %br
+        %br
+
+      %li
+        %b DO
+        use the --compose flag to add a summary explaining your patchset, if
+        you think it may be unclear to a reviewer why this is a set vs a
+        single patch.  Also use it to add any over-arching details that may
+        be missed by reading just the individual commit messages.
+
+%br
+
+.section-grouping
+  %h2 Where to email them
+
+  %p
+    For all parts of Aeolus except Image Warehouse, they should be emailed to
+    the
+    %a{ :href => "https://fedorahosted.org/mailman/listinfo/aeolus-devel" } aeolus-devel
+    mailing list.
+    %br
+    %br
+    Patches for Image Warehouse should be emailed to the
+    %a{ :href => "https://fedorahosted.org/mailman/listinfo/iwhd-devel" } iwhd-devel
+    mailing list.
+
+%br
+
+.section-grouping
+  %h2 The Review process
+
+  %p
+    We use a Submit &rArr; ACK &rArr; Push approach for all patches.
+    %br
+    %br
+    When a patch is submitted, someone familiar with that area of the Aeolus
+    code manually reviews it.
+    %br
+    %br
+    When they've finished their review, appropriate feedback is emailed to the
+    public mailing list for potential discussion, including either an
+    %b ACK
+    indicating approval, or 
+    %b NACK
+    indicating it was rejected.
+    %br
+    %br
+    If the patch was approved, someone with write access to the appropriate git
+    repository will then apply the patch.
+    %br
+    %br
+    This approach works well for us, letting us benefit from each others
+    knowledge and strengths.  Plus it's a good way for people of all skill
+    levels to hone their technique (or teach others).

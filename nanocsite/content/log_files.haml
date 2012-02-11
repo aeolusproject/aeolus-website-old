@@ -1,0 +1,457 @@
+---
+title: Aeolus | Log file locations
+breadcrumb_name: Log file locations
+extension: html
+filter: haml
+---
+%h1 Log file locations
+
+%p Default log file locations of all Aeolus components:
+
+%p
+  %ul
+    %li
+      %a{ :href => "#audrey" } Audrey
+
+    %li
+      %a{ :href => "#conductor" } Conductor
+
+    %li
+      %a{ :href => "#configure" } Configure
+
+    %li
+      %a{ :href => "#connector" } Connector
+
+    %li
+      %a{ :href => "#factory" } Image Factory
+
+    %li
+      %a{ :href => "#iwhd" } Image Warehouse
+
+%p
+  Default log file locations for major Aeolus dependencies:
+
+%p
+  %ul
+    %li
+      %a{ :href => "#httpd" } Apache HTTP Server
+
+    %li
+      %a{ :href => "#qpid" } Apache Qpid
+
+    %li
+      %a{ :href => "#condor" } Condor
+
+    %li
+      %a{ :href => "#deltacloud" } Deltacloud
+
+    %li
+      %a{ :href => "#gofer" } Gofer
+
+    %li
+      %a{ :href => "#libvirt" } Libvirt
+
+    %li
+      %a{ :href => "#mongodb" } MongoDB
+
+    %li
+      %a{ :href => "#pulp" } Pulp
+
+    %li
+      %a{ :href => "#puppet" } Puppet
+
+
+.section-grouping
+  %h2(id="audrey") Audrey &rarr; Aeolus Configuration Server
+
+  %p
+    Aeolus-configserver is a service for storing and retrieving VM
+    configurations.
+
+  %p
+    By default, all log files for it are in the directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-configserver
+
+  %h3(id="conductor-thin") Thin
+
+  %p
+    Thin is the ruby web server Audrey Config Server uses to run the web
+    application.
+
+  %p
+    The Thin log file for aeolus-configserver is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-configserver/thin.log
+
+%br
+
+.section-grouping
+  %h2(id="conductor") Conductor
+
+  %p
+    Conductor is Aeolus' web based user interface, written using Ruby on Rails.
+
+  %p By default, all log files for Conductor are in the directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-conductor/
+
+  %h3(id="conductor-dbomatic") DBomatic
+
+  %p
+    DBomatic watches Condor's EventLog, updating the Conductor database based
+    on what happens in Condor.
+
+  %p
+    The DBomatic log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-conductor/dbomatic.log
+
+  %h3(id="conductor-rails") Rails
+
+  %p
+    Rails is the ruby based web application framework used by Conductor. 
+
+  %p
+    The Rails log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-conductor/rails.log
+
+  %h3(id="conductor-thin") Thin
+
+  %p
+    Thin is the ruby based web server used by Conductor for its web interface.
+
+  %p
+    The Thin log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-conductor/thin.log
+
+%br
+
+.section-grouping
+  %h2(id="configure") Configure
+
+  %p By default, all log files for Configure are in the directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-configure/
+
+  %h3(id="configure-configure") aeolus-configure
+
+  %p
+    The log file for aeolus-configure is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-configure/aeolus-configure.log
+
+  %h3(id="configure-cleanup") aeolus-cleanup
+
+  %p
+    The log file for aeolus-cleanup is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-configure/aeolus-cleanup.log
+
+%br
+
+.section-grouping
+  %h2(id="connector") Connector &rarr; Image Factory Connector
+
+  %p
+    Provides a REST web interface for Image Factory.  Aeolus uses this for
+    internal communication with Image Factory.
+
+  %p
+    By default, the log file for it is here: 
+
+  %p
+    %pre
+      :preserve
+        /var/log/aeolus-connector.log
+
+  %p
+    You can run a tail on this log, to watch progress:
+
+  %p
+    %pre
+      :preserve
+        $ tail -f /var/log/aeolus-connector.log
+
+%br
+
+
+.section-grouping
+  %h2(id="factory") Image Factory
+
+  %p
+    Imagefactory is a high level daemon, responsible for creating virtual
+    machine images for each Cloud provider.
+  %p
+    It uses Oz for some parts of the image creation process, capturing Oz's
+    logging in the Image Factory log file for convenience.
+
+  %p
+    By default, the Image Factory log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/imagefactory.log
+
+  %p
+    You can run a tail on this log, to watch progress of image building:
+
+  %p
+    %pre
+      :preserve
+        $ tail -f /var/log/imagefactory.log
+
+%br
+
+.section-grouping
+  %h2(id="iwhd") Image Warehouse
+
+  %p
+    Image Warehouse stores cloud images, upload them to cloud providers based
+    on a set of rules.
+
+  %p
+    By default, the its log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/iwhd.log
+
+%br
+
+%h2 Logs files for Aeolus dependencies
+
+.section-grouping
+  %h2(id="httpd") Apache HTTP Server&trade;
+
+  %p
+    Web site:
+    %a{ :href => "http://httpd.apache.org", :title => "Apache HTTP Server home page" } http://httpd.apache.org
+
+  %p
+    By default, the Apache HTTP Server log files go into this directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/httpd/
+
+  %p
+    %pre
+      :preserve
+        /var/log/httpd/access_log
+        /var/log/httpd/error_log
+        /var/log/httpd/ssl_access_log
+        /var/log/httpd/ssl_error_log
+        /var/log/httpd/ssl_request_log
+
+  #trademark
+    Apache and Apache HTTP Server are trademarks of The Apache Software Foundation.
+
+%br
+
+.section-grouping
+  %h2(id="qpid") Apache Qpid&trade;
+
+  %p
+    Web site:
+    %a{ :href => "http://qpid.apache.org", :title => "Apache Qpid home page" } http://qpid.apache.org
+
+  %p
+    Qpid is a cross-platform Enterprise Messaging system implementing AMQP.
+
+  %p
+    By default, it uses the standard logging facilities provided by the OS.
+
+  %p
+    %pre
+      :preserve
+        /var/log/messages
+
+  #trademark
+    Apache, Qpid, and Apache Qpid are trademarks of The Apache Software Foundation.
+
+%br
+
+.section-grouping
+  %h2(id="condor") Condor
+
+  %p
+    Web site:
+    %a{ :href => "http://www.cs.wisc.edu/condor/", :title => "Condor home page" } http://www.cs.wisc.edu/condor/
+
+  %p
+    By default, all log files for Condor go into this directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/condor/
+
+  %p
+    %pre
+      :preserve
+        /var/log/condor/CollectorLog
+        /var/log/condor/MasterLog
+        /var/log/condor/MatchLog
+        /var/log/condor/NegotiatorLog
+        /var/log/condor/SchedLog
+
+%br
+
+.section-grouping
+  %h2(id="deltacloud") Deltacloud
+
+  %p
+    Web site:
+    %a{ :href => "http://www.deltacloud.org", :title => "Deltacloud home page" } http://www.deltacloud.org
+
+  %p
+    Deltacloud provides the communication layer between Aeolus and each of
+    the Cloud Providers.
+
+  %h3(id="configure-ec2-east") EC2 East
+
+  %p
+    %pre
+      :preserve
+        /var/log/deltacloud-ec2-us-east-1/ec2.log
+
+  %h3(id="configure-ec2-west") EC2 West
+
+  %p
+    %pre
+      :preserve
+        /var/log/deltacloud-ec2-us-west-1/ec2.log
+
+  %h3(id="configure-mock") Mock
+
+  %p
+    %pre
+      :preserve
+        /var/log/deltacloud-mock/mock.log
+
+%br
+
+.section-grouping
+  %h2(id="gofer") Gofer
+
+  %p
+    Web site:
+    %a{ :href => "https://fedorahosted.org/gofer/", :title => "Gofer home page" } https://fedorahosted.org/gofer/
+
+  %p
+    By default, the Gofer log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/gofer/agent.log
+
+%br
+
+.section-grouping
+  %h2(id="libvirt") Libvirt
+
+  %p
+    Web site:
+    %a{ :href => "http://www.libvirt.org", :title => "Libvirt home page" } http://www.libvirt.org
+
+  %p
+    By default, all Libvirt log files go into:
+
+  %p
+    %pre
+      :preserve
+        /var/log/libvirt/
+
+%br
+
+.section-grouping
+  %h2(id="mongodb") MongoDB
+
+  %p
+    Web site:
+    %a{ :href => "http://www.mongodb.org", :title => "MongoDB home page" } http://www.mongodb.org
+
+  %p
+    By default, the MongoDB log file is located at:
+
+  %p
+    %pre
+      :preserve
+        /var/log/mongodb/mongodb.log
+
+%br
+
+.section-grouping
+  %h2(id="pulp") Pulp
+
+  %p
+    Web site:
+    %a{ :href => "http://www.pulpproject.org", :title => "Pulp home page" } http://www.pulpproject.org
+
+  %p
+    By default, all log files for Pulp go into this directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/pulp/
+
+  %p
+    %pre
+      :preserve
+        /var/log/pulp/client.log
+        /var/log/pulp/events.log
+        /var/log/pulp/grinder.log
+        /var/log/pulp/pulp.log
+
+%br
+
+.section-grouping
+  %h2(id="puppet") Puppet
+
+  %p
+    Web site:
+    %a{ :href => "http://www.puppetlabs.com", :title => "Puppet home page" } http://www.puppetlabs.com
+
+  %p
+    By default, all log files for Pupppet go into this directory:
+
+  %p
+    %pre
+      :preserve
+        /var/log/puppet/
+

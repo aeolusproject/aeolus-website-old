@@ -1,0 +1,149 @@
+---
+title: Aeolus | Contact Us
+breadcrumb_name: Contact Us
+extension: html
+filter: haml
+---
+%h1 Contact Us
+
+%ul
+  %li
+    %a(href="#business") Business and non-technical contacts
+  %li
+    %a(href="#release") Release notification
+  %li
+    %a(href="#developer") Developer and technical communication
+  %li
+    %a(href="#irc") Internet Relay Chat (IRC)
+  %li
+    %a(href="#security") Security related
+
+
+.section-grouping
+  %h2(id="business") Business and non-technical contacts
+
+  %p
+    For business or non-technical communication, please either email
+    %b Justin Clift
+    &lt;jclift AT redhat DOT com&gt; directly, or use the web form below.
+
+  %form{ :action => "contact_form.php", :method => "POST" }
+    %b Name
+    %br
+    %input{ :type => "text", :name => "name", :size => "50" }
+    %br
+    %b Email address
+    %br
+    %input{ :type => "text", :name => "email", :size => "50" }
+    %br
+    %b Message
+    %br
+    %textarea{ :name => "message", :rows => "8", :cols => "90" }
+    %br
+    %input{ :type => "submit", :value => "Send Message" }
+
+  %br
+
+  %p
+    %b NOTE -
+    Communication via this web form goes to Aeolus staff privately, and is not
+    archived publicly anywhere.
+    %br
+    As such it
+    %b is
+    suitable for discussion of a private nature.
+
+%br
+%br
+
+.section-grouping
+  %h2(id="release") Release notification
+
+  -# This might not be the best place to put this
+
+  %h3
+    Automatic notification of new releases
+
+  %p
+    If you'd like to be emailed about new releases of Aeolus, please add
+    yourself to the
+    %a{ :href => "https://fedorahosted.org/mailman/listinfo/aeolus-announce" } aeolus-announce
+    mailing list.
+    (<a href="https://fedorahosted.org/pipermail/aeolus-announce/">archives here</a>)
+    %br
+    This is a low volume mailing list, with restricted posting, purely for
+    announcements of new Aeolus releases.
+
+%br
+%br
+
+.section-grouping
+  %h2(id="developer") Developer and technical communication
+
+  %h3 Mailing lists
+
+  %p
+    Communication between Aeolus developers generally takes place using one of
+    the two project mailing lists, and IRC (for real-time communication).
+
+  %p
+    %a{ :href => "https://fedorahosted.org/mailman/listinfo/aeolus-devel" } aeolus-devel
+    (<a href="https://fedorahosted.org/pipermail/aeolus-devel/">archives here</a>)
+    %br
+    The main mailing list, used for everything except Image Warehouse.
+    %br
+    This mailing list has a moderate volume of traffic, and includes both
+    patches proposed for inclusion, and general discussion.
+
+  %p
+    %a{ :href => "https://fedorahosted.org/mailman/listinfo/iwhd-devel" } iwhd-devel
+    (<a href="https://fedorahosted.org/pipermail/iwhd-devel/">archives here</a>)
+    %br
+    This is a mailing list specifically for Image Warehouse development, and has
+    a low to moderate amount of traffic.
+
+  %p
+    %b WARNING -
+    All communication sent to these mailing lists is both public and archived,
+    so don't use them for anything confidential.  For confidential matters,
+    use the web form or direct email at the top of this page.
+
+%br
+
+.section-grouping
+  %h3(id="irc") Internet Relay Chat (IRC)
+
+  %p We use IRC for real time collaboration and support between developers.
+
+  %p
+    %code
+      %b Network:
+      Freenode
+    (<a href="irc://irc.freenode.net/aeolus">irc.freenode.net/aeolus</a>)
+    %br
+    %code
+      %b
+        Channel:
+      \#aeolus 
+
+%br
+%br
+
+.section-grouping
+  %h2(id="security") Security related
+
+  %p
+    If you'd like to report or discuss a security vulnerability in Aeolus, please
+    email aeolus-security AT fedorahosted DOT org.  Emails to this address are
+    forwarded directly to senior project members, with the contents considered
+    confidential (non-public) unless specifically mentioned.
+
+  %p
+    For additional security, you can optionally use GPG encryption for emails
+    to this address.  The public key is available
+    <a href="keys/aeolus-security-public-gpg-key.asc" title="Aeolus-security public GPG key">here</a>.
+
+  %p
+    Someone
+    %b WILL
+    get back to you, though it could be 24 - 48 hours (that's unusual).

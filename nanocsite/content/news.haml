@@ -1,0 +1,1155 @@
+---
+title: Aeolus | News
+breadcrumb_name: News
+extension: html
+filter: haml
+---
+%h1 News
+
+.grid_24
+  %h2(id="201201" style="color: black") January 2012
+
+  .section-grouping
+    %h2(id="2012012101")
+      21st January 2012: Aeolus 0.8.0 now available
+
+    %p
+      We're very proud to present version 0.8.0 of Aeolus, the multi-cloud
+      deployment solution, sponsored by Red Hat.
+
+    %p
+      This release is mostly UI improvements, along with many important bug
+      fixes.
+
+    %p
+      Installation of Aeolus is very straight forward, using the instructions
+      on the website:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/get_it.html",
+          :title => "Get Aeolus" }
+        http://www.aeolusproject.org/get_it.html
+
+    %p
+      64-bit packages are available for Fedora 15, 16, and RHEL 6.1+.
+
+    %p
+      All testing and bug reports are greatly appreciated.  They directly
+      contribute to improving the quality of future releases.
+
+    %p
+      %b NOTE -
+      Although Aeolus is still some way from production quality, it is
+      suitable for testing.
+      %br
+      %b Please don't use it with live data yet.
+
+    %p
+      For more in depth details, please check the release notes here:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/release_notes_0.8.0.html",
+          :title => "Aeolus 0.8.0 release notes" }
+        http://www.aeolusproject.org/release_notes_0.8.0.html
+
+  %br
+
+  .section-grouping
+    %h2(id="2012011201")
+      12th January 2012: Oz version 0.8.0 now available
+
+    %p
+      Oz version 0.8.0 has been released.  Release 0.8.0 is a bugfix and
+      feature release for Oz.
+
+    %p
+      Highlighted improvements of Oz 0.8.0 are:
+
+    %p
+      %ul
+        %li
+          Optional virtualenv make target
+        %li
+          Conversion of unittests to py.test
+        %li
+          Replace mkisofs with genisoimage
+        %li
+          Debian package
+        %li
+          Ability to change the root password for Debian installs
+        %li
+          Add unittests for ozutil
+        %li
+          Add some unittests for the Guest object
+        %li
+          SSH tunnel (with SSL vhost) support for local repositories
+          (mostly useful for imagefactory)
+        %li
+          Add a new manpage for oz-examples
+        %li
+          Make the output filename configurable with a command-line
+          option to oz-install
+        %li
+          Monitor both network and disk activity when looking for guest activity
+        %li
+          Support for installing Ubuntu 11.10
+        %li
+          Support for SSL certificates for repositories
+        %li
+          Support for an optional version in the TDL
+        %li
+          Support for installling Mandrake 9.1, 9.2, 10.0, 10.1, 10.2
+        %li
+          Support for installing Mandriva 2006.0, 2007.0, 2008.0
+        %li
+          Support for Ubuntu customization
+        %li
+          Support for installing RHEL 6.2
+
+    %p
+      More documentation on Oz (including links on how to obtain it) is
+      available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "oz.html",
+          :title => "Oz Main Page" } http://www.aeolusproject.org/oz.html
+
+    %p
+      For this release, Fedora 15 packages are available.
+
+  %br
+
+  %h2(id="201112" style="color: black") December 2011
+
+  .section-grouping
+    %h2(id="2011120601")
+      6st December 2011: Image Warehouse 1.2 stable release
+
+    %h3 New feature
+
+    %ul
+      %li
+        %b
+          Automatic qcow2 format detection has been added to the dc-rhev-image
+          helper utility
+        %br
+        This change allows you to use both raw and qcow2 images when creating
+        templates in a RHEV-M environment.
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-December/001044.html",
+          :title => "Image Warehouse 1.2 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-December/001044.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+  .section-grouping
+    %h2(id="2011120101")
+      1st December 2011: Image Warehouse 1.1 stable release
+
+    %h3 Bug fix
+
+    %ul
+      %li
+        %b Fix for query response bug
+        %br
+        For a query like this:
+        %pre
+          $ curl -H 'Accept: */json' http://H:9090/b/o/_attrs
+        The response now includes an "object_body" URL of
+        "http://H:9090/b/o/", which matches the XML-formatted one, rather
+        than "http://H:9090/b/o/body". That same line now ends with a comma,
+        too.
+        %br
+        [bug introduced in 0.91]
+
+    %h3 Changes in behaviour
+
+    %ul
+      %li
+        %b
+          iwhd now rejects a --userlist file when its group or other
+          permissions are set as readable or writable
+        %br
+        %br
+
+      %li
+        %b
+          Request logging is reorganized
+        %br
+        Now, 2 messages are logged for every request. They report the method,
+        path, requested and actual size, and the HTTP result code.
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-December/001019.html",
+          :title => "Image Warehouse 1.1 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-December/001019.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+%br
+
+.grid_24
+  %h2(id="201110" style="color: black") October 2011
+
+  .section-grouping
+    %h2(id="2011103101")
+      31st October 2011: Image Warehouse 1.0 stable release
+
+    %p
+      This is almost a mere relabeling of iwhd-0.991.
+
+    %h3 Improvements (both minor)
+
+    %ul
+      %li
+        %b Log messages showing when iwhd is started and stopped
+        %br
+        %br
+
+      %li
+        %b An improvement in a regression test script
+
+    %h3 Known Issues (existing in previous releases too)
+
+    %ul
+      %li
+        %b iwhd is not very useful without mongod
+        %br
+        Ideally, iwhd would communicate its inability to do useful work
+        when mongod isn't running, and when mongod becomes usable again iwhd
+        would, too.  However, currently, attempting to do things like create
+        an object or an attribute in iwhd makes iwhd dereference NULL whenever
+        mongod is unreachable.
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000980.html",
+          :title => "Image Warehouse 1.0 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000980.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+  .section-grouping
+    %h2(id="2011102001")
+      20th October 2011: Image Warehouse 0.991 stable release
+
+    %h3 New features
+
+    %ul
+      %li
+        %b
+          Add -u flag that specifies a file with a list of authorized users
+        %br
+        This way, ps does not show the password, and several users may be on
+        the list. The -U flag is now deprecated.
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        %b Adjust oauth hash to account for the "oauth_body_hash" header
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000969.html",
+          :title => "Image Warehouse 0.991 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000969.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+  .section-grouping
+    %h2(id="2011101301")
+      13th October 2011: Image Warehouse 0.990 stable release
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        %b Remove the (unauthenticated) QUIT method
+
+    %h3 Infrastructure
+
+    %ul
+      %li
+        %b Correct the spec file
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000953.html",
+          :title => "Image Warehouse 0.990 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000953.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+  .section-grouping
+    %h2(id="2011101001")
+      10th October 2011: Image Warehouse 0.99 stable release
+
+    %h3 New features
+
+    %ul
+      %li
+        %b
+          Preliminary support is added for authorization with two-legged OAuth
+        %br
+        See the -o flag.
+        %br
+        %br
+
+      %li
+        %b
+          The RHEV-M import timeout interval is now configurable
+        %br
+        You can set it via the optional new "timeout" key in /etc/iwhd/conf.js.
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        %b
+          iwhd now continues to work properly when mongo dies and is
+          restarted
+        %br
+        Prior to this release, it would dump core due to an unhandled
+        SocketException.
+        %br
+        %br
+
+      %li
+        %b
+          iwhd's /etc/init.d startup script now reports failure reliably
+        %br
+        For example, when failing to start because no MongoDB server is
+        running.  Prior to this release, it would print [FAILED], but
+        mistakenly exit with status 0 (success). Now it exits with status 1
+        to properly indicate an error.
+        %br
+        %br
+
+      %li
+        %b
+          Improved handling of RHEV-M 2.x template imports  
+        %br
+        Adapt to a slight variation in the status report of a template import
+        action in RHEV-M 2.x.
+        %br
+        %br
+
+      %li
+        %b
+          Time limits on RHEV-M imports have been relaxed
+        %br 
+        dc-rhev-image now allows a RHEV-M import to take 10 minutes.
+        Previously, it would timeout after just 1 minute, which was often
+        inadequate.
+        %br
+        %br
+
+      %li
+        %b
+          Objection deletion now copes with missing backend file
+        %br
+        Deleting objects now succeeds when the file system backed file has
+        been removed external to iwhd.  Previously, this didn't work properly.
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000937.html",
+          :title => "Image Warehouse 0.99 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2011-October/000937.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+
+%br
+
+.grid_24
+  %h2(id="201109" style="color: black") September 2011
+
+  .section-grouping
+    %h2(id="2011092601")
+      26th September 2011: Aeolus Project on Social Media
+
+    %p
+      The Aeolus Project is now using Twitter, identi.ca, and Youtube
+      to help share information about the project. Follow us today!
+      %ul
+        %li
+          %a{ :href => "http://identi.ca/aeolusproject",
+              :title => "Aeolus Project on Identi.ca" } aeolusproject on Identi.ca
+        %li
+          %a{ :href => "http://twitter.com/aeolusproject",
+              :title => "Aeolus Project on Twitter" } @aeolusproject on Twitter
+        %li
+          %a{ :href => "http://www.youtube.com/user/aeolusproject",
+              :title => "Aeolus Project on Youtube" } Aeolus Project screencasts on Youtube
+
+  %br
+
+  .section-grouping
+    %h2(id="2011092401")
+      24th September 2011: David Lutterkort's Puppetconf Presentation
+
+    %p
+      The slides that David Lutterkort presented at
+      %a{ :href => "http://puppetconf.com/",
+          :title => "Puppetconf 2011" } PuppetConf 2011
+      are now available:
+      %a{ :href=> "https://www.aeolusproject.org/redmine/attachments/179/2011-09-puppetconf.odp",
+          :title => "The Aeolus Project: Clouds flying in assembly" } The Aeolus Project: Clouds flying in assembly
+      (ODP format).
+
+  %br
+
+  .section-grouping
+    %h2(id="2011091501")
+      15th September 2011: Oz version 0.7.0 now available
+
+    %p
+      Oz version 0.7.0 has been released.  Release 0.7.0 is a bugfix and
+      feature release for Oz.
+
+    %p
+      Highlighted improvements of Oz 0.7.0 are:
+
+    %p
+      %ul
+        %li
+          Ability to use the "direct initrd injection" method to install
+          Fedora/RHEL guests.  This is an internal implementation detail, but
+          can significantly speed up installs for Fedora or RHEL guests.
+          (thanks for the tip from Kashyap Chamarthy)
+        %li
+          Support for Fedora-16 (thanks to Steve Dake for help in making this
+          work)
+        %li
+          Use the serial port to announce guest boot, rather than a network
+          port.  This makes it so we no longer have to manipulate iptables, and
+          gets us one step closer to having Oz run as non-root
+        %li
+          (for developers) Re-written unittests in python for speedier execution
+        %li
+          (for developers) Additional methods in the TDL class to merge in
+          external package lists (thanks to Ian McLeod)
+
+    %p
+      More documentation on Oz (including links on how to obtain it) is
+      available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "oz.html",
+          :title => "Oz Main Page" } http://www.aeolusproject.org/oz.html
+
+    %p
+      For this release, Fedora 14, Fedora 15, and RHEL-6.1 packages are available.
+
+  %br
+
+  %h2(id="201108" style="color: black") August 2011
+
+  .section-grouping
+    %h2(id="2011082201")
+      22nd August 2011: Oz version 0.6.0 now available
+
+    %p
+      Oz version 0.6.0 has been released.  Release 0.6.0 is a bugfix and
+      feature release for Oz.
+
+    %p
+      Highlighted improvements of Oz 0.6.0 are:
+
+    %p
+      %ul
+        %li
+          The ability to specify the destination for the ICICLE output
+          from oz-install and oz-generate-icicle
+        %li
+          pydoc class documentation for all internal Oz classes
+        %li
+          Automatic detection of KVM or QEMU at runtime (this allows oz to be
+          used within virtual machines, although with a large performance hit)
+        %li
+          Less scary warning messages in the debug output
+        %li
+          Printing of the screenshot path when a build fails
+        %li
+          Ability to run multiple Oz installs of the same OS at the same time
+        %li
+          Support for OEL and ScientificLinux
+        %li
+          Support for RHEL-5.7
+        %li
+          Support for CentOS 6
+        %li
+          Support for OpenSUSE arbitrary file injection and command execution
+        %li
+          Ability to make the TDL (template) parsing enforce a root password
+        %li
+          Rejection of localhost URLs for repositories (since they must be
+          reachable from the guest operating system, localhost URLs make no
+          sense)
+
+    %p
+      More documentation on Oz (including links on how to obtain it) is
+      available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "oz.html",
+          :title => "Oz Main Page" }
+        http://www.aeolusproject.org/oz.html
+
+    %p
+      For this release, Fedora 14, Fedora 15, and RHEL-6.1 packages are available.
+
+  %br
+
+  .section-grouping
+    %h2(id="2011081101") 11th August 2011: Aeolus 0.3.0 Milestone release
+
+    %p
+      This is a
+      %b signficant
+      new release of Aeolus.
+
+    %p
+      It is our first to use the
+      %a{ :href => "screenshots.html",
+          :title => "Aeolus Screenshots" } new, user friendly, web interface
+      designed by <a href="aeolus_team.html#tigger">Ken Keiter</a> and
+      <a href="aeolus_team.html#jlay">Jonell Lay</a>.
+
+    %p
+      Additionally, this release brings
+      %b initial support
+      for
+      <b>VMware vSphere 4.1</b>,
+      and tentative support for
+      <b>Red Hat Enterprise Virtualization</b> (RHEV).
+
+    %p
+      Installation is very straightforward, with instructions on the website:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "get_it.html",
+          :title => "Get Aeolus" }
+        http://www.aeolusproject.org/get_it.html
+
+    %p
+      Packages are available for Fedora 14 x86_64, and RHEL 6.1 x86_64.
+
+    %p
+      All testing and bug reports are hugely appreciated, directly
+      contributing towards the quality of Aeolus releases and future growth.
+
+    %p
+      %b NOTE -
+      Although Aeolus is still some way from production quality, it is
+      suitable for testing.
+      %b Please don't use it with live data yet.
+
+    %p
+      %b Full details are in the release notes here:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "release_notes_0.3.0.html",
+          :title => "Aeolus 0.3.0 release announcement" }
+        http://www.aeolusproject.org/release_notes_0.3.0.html
+
+  %br
+
+  .section-grouping
+    %h2(id="2011081001")
+      10th August 2011: Image Warehouse 0.98 stable release
+
+    %h3 New features
+
+    %ul
+      %li
+        The log output may be rotated now (parameter "-l" has to be set).
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        Make sure the Garbage Collection library keeps track of my_state
+        and provider name, and does not free them from under us, leading to
+        crashes.
+
+  %br
+
+.grid_24
+  %h2(id="201107" style="color: black") July 2011
+
+  .section-grouping
+    %h2(id="2011071201")
+      12th July 2011: Image Warehouse 0.97 stable release
+
+    %h3 New features
+
+    %ul
+      %li
+        %b
+          A registration to RHEV-M now returns the ID and diagnostic messages
+          in the body of reply to POST request
+        %br
+        This permits registration of the same image several times, which
+        helps when triaging problems. The old "ami-id" attribute is retained
+        and remains the same across registration back-end types.
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        %b
+          On Fedora systems, /etc/iwhd/conf.js is not overwritten anymore when
+          upgrading the package
+        %br
+        Added %config(noreplace) to the rpm .spec file
+        %br
+        %br
+
+      %li
+        %b
+          Adapted to jansson-1.2's new, incompatible, changed API
+        %br
+        We can now build both with it and the older API
+        %br
+        %br
+
+      %li
+        %b
+          Do not leave a value of "pending xxxx" remaining in "ami-id"
+          attribute in case of an error in registration process.
+        %br
+        When we did, no application or human administrator could tell if
+        there was an error or a hung  registration.
+
+    %p Full release announcement with download information:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/aeolus-devel/2011-July/003029.html",
+          :title => "Image Warehouse 0.97 release announcement" }
+        https://fedorahosted.org/pipermail/aeolus-devel/2011-July/003029.html
+
+    %p Fedora 15 Source RPM:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://people.redhat.com/meyering/iwhd/iwhd-0.97-1.fc15.src.rpm",
+          :title => "Fedora 15 Source RPM for Image Warehouse 0.97" }
+        http://people.redhat.com/meyering/iwhd/iwhd-0.97-1.fc15.src.rpm
+
+  %br
+
+.grid_24
+  %h2(id="201106" style="color: black") June 2011
+
+  .section-grouping
+    %h2(id="2011063001")
+      30th June 2011: Oz version 0.5.0 now available
+
+    %p
+      Oz version 0.5.0 has been released.  Release 0.5.0 is a bugfix and
+      feature release for Oz.
+
+    %p
+      Highlighted improvements of Oz 0.5.0 are:
+
+    %p
+      %ul
+        %li
+          Replace icicle-nc binary with a shell script to try various methods.
+          Besides being more portable, this also allows us to convert Oz to a
+          noarch RPM (thanks to Padraig Brady)
+        %li
+          Support for Ubuntu 6.06
+        %li
+          Support for md5sum/sha1sum/sha256sum checking of ISOs after download
+        %li
+          New -x flag for oz-install to write the libvirt XML file to a
+          user-specified location (thanks to Steve Dake)
+        %li
+          Support for OpenSUSE customization
+        %li
+          Support for F-15 customization (thanks to Steve Dake)
+        %li
+          Support for running commands at the end of package installation
+          (thanks to Steve Dake)
+
+    %p
+      More documentation on Oz (including links on how to obtain it) is
+      available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/oz.html",
+          :title => "Oz Main Page" } http://www.aeolusproject.org/oz.html
+
+    %p
+      For this release, Fedora 14 and RHEL-6.1 packages are available.
+
+  %br
+
+  .section-grouping
+    %h2(id="2011062101")
+      21st June 2011: Image Factory 0.2.2 now available
+
+    %p
+      The Image Factory team is pleased to announce the release of Image
+      Factory version 0.2.2.  Version 0.2.2 adds features and bugfixes needed
+      to support the next step in the evolution of Aeolus.
+
+    %p
+      %ul
+        %li
+          VMware vSphere support has been added.
+        %li
+          Support for snapshots of EC2 images on EBS has been added.
+        %li
+          Importing images from providers has been added to both the command
+          line and QMF interfaces.
+        %li
+          Explicit support for rebuilding images without having to respecify
+          the template.
+        %li
+          Building and pushing images now supports multiple targets or
+          providers in a single call rather than requiring one to repeat the
+          call multiple times. (added in 0.2.0)
+        %li
+          Source has been cleaned up and DRYed out.  This is an ongoing,
+          iterative process.
+
+    %p
+      Download packages from:
+      %br
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://repos.fedorapeople.org/repos/aeolus/image-factory/",
+          :title => "Image Factory repository"} Image Factory repository
+
+    %p
+      More documentation will be published at the Image Factory project page of
+      the Aeolus site.
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/imagefactory.html",
+          :title => "Image Factory project page"} Image Factory project page
+    %p
+      Until then, please refer to the README and documentation
+      included with the Image Factory source for more information.
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://github.com/aeolusproject/image_factory/blob/master/README.markdown",
+          :title => "Image Factory README"} Image Factory README
+      %br
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://github.com/aeolusproject/image_factory/tree/master/Documentation",
+          :title => "Image Factory documentation"} Image Factory documentation
+
+  %br
+
+  .section-grouping
+    %h2(id="2011061501")
+      15th June 2011: Image Warehouse 0.96 stable release
+
+    %h3 New features
+
+    %ul
+      %li
+        %b Added VMware vSphere registration back-end
+        %br
+        Type is "fs-vmw".
+        %br
+        %br
+      %li
+        %b
+          The RHEV-M registration back-end can now import a just-uploaded
+          template into a master storage domain
+        %br
+        See new POST parameter "cluster".
+
+    %h3 Bug fixes
+
+    %ul
+      %li
+        %b
+          iwhd will segfault or hang less often during garbage collection
+        %br
+        [bug introduced in 0.91, partially fixed in 0.94]
+        %br
+        %br
+      %li
+        %b
+          iwhd init system start script more reliable
+        %br
+        Prior to this release, the system init script for iwhd would
+        mistakenly succeed even if mongod failed to start in time.
+        %br
+        Now, when mongod fails to start, the iwhd init script also fails.
+        %br
+        %br
+      %li
+        %b
+          It is now possible to use Windows.Domain\Administrator as a user
+          name in a cloud with Windows credentials
+        %br
+        The backslash was causing an internal error due to improper JSON
+        escaping.
+
+    %p Full release announcement with download information:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/aeolus-devel/2011-June/002416.html",
+          :title => "Image Warehouse 0.96 release announcement" }
+        https://fedorahosted.org/pipermail/aeolus-devel/2011-June/002416.html
+
+    %p Fedora 15 Source RPM (omitted from announcement email):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://people.redhat.com/meyering/iwhd/iwhd-0.96.1.9e86-1.fc15.src.rpm",
+          :title => "Fedora 15 Source RPM for Image Warehouse 0.96" }
+        http://people.redhat.com/meyering/iwhd/iwhd-0.96.1.9e86-1.fc15.src.rpm
+
+  %br
+
+  .section-grouping
+    %h2(id="2011060801")
+      8th June 2011: Oz version 0.4.0 now available
+
+    %p
+      Oz version 0.4.0 has been released.  Release 0.4.0 is a bugfix and
+      feature release for Oz.
+
+    %p
+      Highlighted improvements of Oz 0.4.0 are:
+
+    %p
+      %ul
+        %li
+          Automatic detection/use of cached JEOS images (the previous method
+          required the user of the Oz libraries to detect whether the image
+          was cached or not)
+        %li
+          Fixes to make Debian installs work for both x86_64 and i386
+        %li
+          Honor user-provided automatic installation files better, by not doing
+          modifications
+        %li
+          Use pyparted to generate partitions on newly created disks (if
+          necessary)
+        %li
+          Add support for Fedora 15
+        %li
+          Add the ability to supply an initial root/Administrator password to
+          the diskimage
+        %li
+          Abort installs after 5 minutes of disk inactivity
+        %li
+          Use M2Crypto to generate SSH keys (if necessary)
+        %li
+          Some pydoc documentation (more of this to come in the future)
+        %li
+          Support for Ubuntu 11.04
+        %li
+          Support for RHEL-6.1
+
+    %p
+      More documentation on Oz (including links on how to obtain it) is
+      available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/oz.html",
+          :title => "Oz Main Page" } http://www.aeolusproject.org/oz.html
+
+    %p
+      For this release, Fedora 14 and RHEL-6.1 packages are available.
+      Fedora 13 packages are no longer available, as that distribution is
+      (or will soon be) out of support.
+
+
+  %h2(id="201105" style="color: black") May 2011
+
+  .section-grouping
+    %h2(id="2011051801")
+      18th May 2011: Testing repositories and packages now available
+
+    %p
+      For everyone wanting the newest Aeolus features,
+      %b Development Testing
+      packages are now available.
+
+    %p
+      Incorporating fixes and features for the next Aeolus releases, they are
+      sometimes unstable, or not yet feature complete, so use with caution.
+
+    %p
+      Installation instructions are available:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/get_it.html#dev",
+          :title => "Instructions for the Aeolus Development Testing repository" }
+        http://www.aeolusproject.org/get_it.html#dev
+
+    %p
+      Packages are available for Fedora 14 x86_64, and RHEL 6.1 x86_64
+      (Release Candidate or later).
+
+    %p
+      Upgrading from previous releases can be done using the standard yum
+      tools.
+
+  %br
+
+  .section-grouping
+    %h2(id="2011051702")
+      17th May 2011: Image Warehouse 0.95 released
+
+    %p
+      This new release of Image Warehouse adds supports for registration
+      in Red Hat Enterprise Virtualisation Manager (RHEV-M) 2.2.
+
+    %p Full release announcement with download information:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/aeolus-devel/2011-May/001534.html",
+          :title => "Image Warehouse 0.95 release announcement" }
+        https://fedorahosted.org/pipermail/aeolus-devel/2011-May/001534.html
+
+  %br
+
+  .section-grouping
+    %h2(id="20110507")
+      7th May 2011: Aeolus 0.2.0 released
+
+    %p
+      The Aeolus team are pleased to announce a significant new release of
+      Aeolus, the multi-cloud deployment solution, sponsored by Red Hat.
+
+    %p
+      This release, version 0.2.0, marks the introduction of several
+      important enhancements:
+
+    %p
+      %ul
+        %li
+          Added capability to import Amazon AMIs through web UI
+        %li
+          Self-service users can now create templates and launch instances
+        %li
+          Streamlined configuration data to provide immediately usable
+          installation
+        %li
+          Now uses the 2nd incarnation of Image Factory to build images
+        %li
+          Added ability to upload existing images to newly added Cloud
+          Providers
+        %li
+          Added ability to create pools
+        %li
+          Added ability to map Cloud Provider Realms to Cloud Engine Realms
+
+
+    %p
+      And several minor fixes or functionality improvements:
+
+    %p
+      %ul
+        %li
+          Image Warehouse is now the canonical store for image-related data
+        %li
+          Improved stability and error reporting of QMF communication with
+          Image Factory
+        %li
+          Web interface verified to work end-to-end with the testing driver
+          (mock)
+        %li
+          Added ability to search on Instance owner
+        %li
+          Added end-to-end testing framework for Aeolus scripts
+        %li
+          Bugfix: <a href="https://bugzilla.redhat.com/show_bug.cgi?id=690467"
+          title="Bug 690467">BZ #690467</a> - Realm: Deleting mapping of realm w/o selecting anything throws
+          error
+
+    %p
+      Aeolus is still some way from feature complete, so is suitable for
+      testing with.  But please don't use it with live data at this stage.
+
+    %p
+      Installation is very straightforward, with instructions on the website:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://www.aeolusproject.org/get_it.html",
+          :title => "Get Aeolus" }
+        http://www.aeolusproject.org/get_it.html
+
+    %p
+      Packages are available for Fedora 14 x86_64, and RHEL 6.1 x86_64
+      (Release Candidate or later).
+      %br
+      Support for Fedora 13 has been discontinued with this release.
+
+    %p
+      Upgrading from previous releases can be done using yum.
+      %br
+      Due to a recent reorganisation of the yum repositories, you need to
+      point to a new repo first, as shown in the above instructions.
+
+    %p
+      All testing and bug reports are hugely appreciated, directly
+      contributing towards the quality of Aeolus releases and future growth.
+
+  %br
+
+  .section-grouping
+    %h2(id="20110506")
+      6th May 2011: Image Warehouse 0.94 released
+
+    %p
+      The next release of Image Warehouse is out.
+
+    %p
+      Primarily a bug fix release, it includes these fixes:
+
+    %p
+      %ul
+        %li
+          %b iwhd no longer segfaults during garbage-collection
+          %br
+          [bug introduced in 0.91]
+          %br
+          %br
+
+        %li
+          %b iwhd now emits syntactically valid JSON output for the root query
+          %br
+          Before, it omitted the "providers": tag before the list of provider
+          descriptions.
+          %br
+          [bug introduced in the beginning]
+
+    %p Full release announcement with download information:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/aeolus-devel/2011-May/001376.html",
+          :title => "Image Warehouse 0.94 release announcement" }
+        https://fedorahosted.org/pipermail/aeolus-devel/2011-May/001376.html
+
+  %br
+
+  .section-grouping
+    %h2(id="20110504")
+      4th May 2011: New website!
+
+    %p
+      The Aeolus Community have launched the second version of our main website.
+
+    %p
+      Designed by Kyle Baker from the Red Hat User Experience (UX) Team, this
+      one is visually appealing, has a
+      %b much
+      cleaner look, and is very easy to locate information in.
+
+    %p
+      Importantly, this website begins addressing the needs of business and
+      non-technical Aeolus users.  A marked improvement over the developer only
+      focus of the previous website.
+
+    %p
+      It is expected this will be a key piece for Aeolus growing into the
+      worlds best cloud deployment software.
+
+    %p
+      %b UPDATE:
+      Although we mentioned Kyle Baker's UX Design work for the new site,
+      we unintentionally forgot to mention
+      %a{ :href => "http://jimmac.musichall.cz/",
+          :title => "Jakub Steiner's website" } Jakub Steiner's
+      significant work.  Jakub created the new Aeolus logo, did the majority
+      of the heavy lifting for the site's CSS, plus much more.  Due to his
+      effort, the site works well in all major browsers, resizes and scales
+      properly, loads quickly, and generally behaves as it should.  Thanks
+      Jakub!
+
+    %p
+      %a{ :href => "contact.html#business",
+          :title => "Let us know what you think" } Let us know
+      what you think. :)

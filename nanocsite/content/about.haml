@@ -1,0 +1,208 @@
+---
+title: Aeolus | Overview
+breadcrumb_name: Overview
+extension: html
+filter: haml
+---
+%h1 About Aeolus
+
+.section-grouping
+  %h2 Aeolus mission
+
+  %p
+    To free users from cloud lock-in by making the choice of cloud provider
+    \-- private, public, or hybrid -- a simple launch-time option.
+
+  %img.graph{ :src => "images/concept_aeolus_high_level.png", :style => "width: 767px; height: 460px;" }
+
+%br
+
+.section-grouping
+  %h2 What is Aeolus?
+
+  %p
+    Aeolus is a single, consistent set of tools to build and manage
+    organized groups of virtual machines across clouds.
+
+  %p
+    So, what does Aeolus need to provide a user to accomplish its mission?
+
+  %p
+    %ul
+      %li
+        %b Aeolus Conductor:
+        A way to provide cloud resources to users, manage users' access to
+        and use of those resources, and control users' instances in clouds.
+        This lets users make intelligent choices about which cloud to use.
+
+      %li
+        %b Aeolus Composer:
+        A way to build cloud-specific images from generic templates, so that
+        users can choose clouds freely using compatible images.
+
+      %li
+        %b Aeolus Orchestrator:
+        A way to manage clumps of instances in an organized way. Users should
+        be able to automatically bring up a set of different instances on a
+        single cloud or spanning multiple clouds, configure them, and tell
+        them about each other.
+
+      %li
+        %b Aeolus HA Manager:
+        A way to make instances or clumps of instances in the cloud highly
+        available.
+
+  %p
+    All these things are possible because of the
+    %a(href="http://www.deltacloud.org" title="Deltacloud web site") Deltacloud
+    cross-cloud abstraction library.  Deltacloud itself is a separate
+    project.
+
+%br
+
+.section-grouping
+  %h2 What does each Aeolus component do, specifically?
+
+  %h3 Aeolus Conductor
+
+  %ul
+    %li
+      lets a user launch a VM on a cloud, track it through its lifecycle, and
+      clean it up when it is no longer needed.
+
+    %li
+      lets a user easily check how much cloud time she has burned up, set
+      thresholds for alerting her when interesting things happen (a VM
+      crashed, she's about to go over n hours of usage this month). If an
+      admin has defined a per-hour cost for the cloud providers the user is
+      using, the user can check how much actual money has been used and set
+      an alert on it.
+
+    %li
+      lets an administrator group cloud resources for other users, so that
+      they can track and control which resources are used and at what level. 
+
+    %li
+      lets a user share access to his VMs with others.
+
+    %li
+      lets a user make an informed choice of which of the available clouds to
+      use, based on cost and QOS data and other useful metrics. Or, lets the
+      user delegate that choice to Conductor itself.
+
+    %li
+      lets the user monitor software and services on the guest, and the
+      health of the guest.
+
+    %li
+      has a truly superior GUI for doing all this.
+
+
+  %h3 Aeolus Composer
+
+  %p
+    %ul
+      %li
+        lets users create a template that defines an image, which we can
+        build for each cloud they are interested in
+
+      %li
+        lets users, as part of building the image, specify arguments to
+        pass into the build process to configure software installation,
+        and also to specify values that will be passed back into the image
+        metadata to be used later
+
+      %li
+        lets users build images for multiple operating systems, including
+        Windows and various Linux flavors
+
+      %li
+        lets users rebuild images from the original template if needed, to
+        update packages for feature enhacements, bug fixes, or security
+        issues
+
+
+  %h3 Aeolus Orchestrator
+  
+  %p
+    %ul
+      %li
+        lets users specify a clump of images to launch and configure
+        simultaneously. We want the user's specification to be human
+        readable and portable
+
+      %li
+        lets users specify values to collect at launch-time. The values
+        will influence how the instances configure themselves, either by
+        being interpolated into config snippets in the clump
+        specification, or by being passed directly to the instance
+        post-boot. Launch-time values mean the instances in a clump can be
+        configured differently each time they are launched. (For example,
+        suppose the user wants to specify in advance the timezone the app
+        should run in. They would set that parameter in a form presented
+        at launch-time, and it would be passed through to the instance and
+        applied to the system configuration at boot time.)
+
+      %li
+        lets users provide configuration parameters and tooling for each
+        instance, to be injected and run at launch time. User-provided
+        configuration tooling can do anything including install software
+        packages, set config values, or start and stop services. Config
+        tooling can be in any form that the user's image supports --
+        puppet manifest, bash script, powershell script are all fine.
+
+  %h3 Aeolus HA Manager
+
+  %p
+    %ul
+      %li
+        lets users include instances or clumps of instances in an HA
+        infrastructure which provides isolation, recovery, and
+        notification of failed applications or instances
+
+      %li
+        lets users specify policy for maintaining or relaunching services
+        within an HA infrastructure
+
+%br
+
+.section-grouping
+  %h2 What Aeolus is NOT
+
+  %p
+    To provide further clarity, it's useful to know what Aeolus <b>isn't</b>.
+
+  %p
+    Aeolus is not:
+
+  %p
+    %ul
+      %li
+        %b A part of Linux
+        %br
+        Although our packaging efforts currently focus on Linux, Aeolus is
+        not explicitly tied into Linux. It is a suite of applications that
+        run on Linux and related operated systems.
+        %br
+        %br
+
+      %li
+        %b Owned by Red Hat
+        %br
+        Although the majority of Aeolus developers are currently sponsored by
+        Red Hat, the project is an independent community effort.
+        %br
+        %br
+
+      %li
+        %b Not a cloud
+        %br
+        Aeolus is a project for managing existing clouds (public and
+        private), not an attempt at creating yet another one.
+
+%br
+
+&nbsp; 
+%a.button{ :href => "screenshots.html" }
+  Screenshots
+  %img{:src => "images/button-right.png", :alt => "→"}

@@ -1,0 +1,901 @@
+---
+title: Aeolus | Aeolus 0.6.0 - Release Notes
+breadcrumb_name: Aeolus 0.6.0 -Release Notes
+extension: html
+filter: haml
+---
+%h1 Aeolus 0.6.0 - Release Notes
+
+.page-listing
+  %h3 Table of Contents
+
+  %ol
+    %li
+      %a{ :href => "#newfeaturesummary",
+          :title => "New features" }
+        New features
+
+    %li
+      %a{ :href => "#knownissues",
+          :title => "Known issues still remaining" }
+        Known issues still remaining
+
+    %li
+      %a{ :href => "#redmine",
+          :title => "Redmine items completed" }
+        Redmine items completed
+
+      %ul
+        %li
+          %a{ :href => "#rdcond",
+              :title => "Conductor" }
+            Conductor
+
+          %ul
+            %li
+              %a{ :href => "#rdcondscen",
+                  :title => "Scenarios" }
+                Scenarios
+
+            %li
+              %a{ :href => "#rdcondfeat",
+                  :title => "Features" }
+                Features
+
+            %li
+              %a{ :href => "#rdcondsupp",
+                  :title => "Support" }
+                Support
+
+            %li
+              %a{ :href => "#rdcondbugs",
+                  :title => "Bugs" }
+                Bugs
+
+            %li
+              %a{ :href => "#rdcondtask",
+                  :title => "Tasks" }
+                Tasks
+
+        %li
+          %a{ :href => "#rdifact",
+              :title => "Image Factory" }
+            Image Factory
+
+          %ul
+            %li
+              %a{ :href => "#rdifactfeat",
+                  :title => "Features" }
+                Features
+
+        %li
+          %a{ :href => "#rdiwhd",
+              :title => "Image Warehouse" }
+            Image Warehouse
+
+          %ul
+            %li
+              %a{ :href => "#rdiwhdbugs",
+                  :title => "Bugs" }
+                Bugs
+
+    %li
+      %a{ :href => "#issuesclosedbz",
+          :title => "Issues closed (Bugzilla issue list)" }
+        Issues closed (Bugzilla issue list)
+
+.section-grouping
+  This is a
+  %b signficant
+  new release of Aeolus.
+
+  %p
+    Installation is very straightforward, with instructions on the website:
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %a{ :href => "http://www.aeolusproject.org/get_it.html",
+        :title => "Get Aeolus" }
+      http://www.aeolusproject.org/get_it.html
+
+  %p
+    Packages are available for Fedora 15 x86_64, and RHEL 6.1 x86_64.
+
+  %p
+    All testing and bug reports are hugely appreciated, directly
+    contributing towards the quality of Aeolus releases and future growth.
+
+  .note
+    %p
+      %b NOTE -
+      Although Aeolus is still some way from production quality, it is suitable
+      for testing.
+      %br
+      %b Please don't use it with live data yet.
+
+%br
+
+.section-grouping
+  %h2(id="newfeaturesummary") New features
+
+  %ul
+    %li(id="newfeature-multipush")
+      %b Aeolus-cli can now push to multiple providers simultaneously
+      %br
+      Prior to this release, aeolus-cli could only push images to one
+      provider at a time.
+      %br
+      %br
+      Now, it can handle simultaneous pushes, increasing efficiency.
+      %br
+      %br
+
+    %li(id="newfeature-condapimsgs")
+      %b The Conductor API now communicates error messages clearly
+      %br
+      Clients now receive an error code, with a brief message to aid in
+      resolving the problem.
+      %br
+      %br
+      This allows clients to customize error information
+      for their users.
+      %br
+      %br
+      More information on the Conductor API, with the full listing of error
+      codes, is available here:
+      %br
+      %br
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://www.aeolusproject.org/redmine/projects/aeolus/wiki/Conductor_API",
+          :title => "Conductor API documentation" }
+        https://www.aeolusproject.org/redmine/projects/aeolus/wiki/Conductor_API
+
+      %br
+      %br
+
+    %li(id="newfeature-aclimsgs")
+      %b Aeolus-cli now has human friendly error messages
+      %br
+      Error handling in aeolus-cli has been updated for the new Conductor API,
+      making them simple to read, and helpful.
+
+%br
+
+.section-grouping
+  %h2(id="knownissues") Known issues still remaining
+
+  %p
+    These are known problems due to be resolved in a subsequent release:
+
+  %ul
+    %li
+      %b
+        BZ
+        %a(id="721097" href="https://bugzilla.redhat.com/show_bug.cgi?id=721097") 721097
+      \- Failure to push images built with multiple targets.
+
+    %li
+      %b
+        BZ
+        %a(id="740902" href="https://bugzilla.redhat.com/show_bug.cgi?id=740902") 740902
+      \- Aeolus-image: catch errors more broadly
+
+    %li
+      %b
+        BZ
+        %a(id="740907" href="https://bugzilla.redhat.com/show_bug.cgi?id=740907") 740907
+      \- Deployment is created even if deployable validation fails
+
+    %li
+      %b
+        BZ
+        %a(id="745149" href="https://bugzilla.redhat.com/show_bug.cgi?id=745149") 745149
+      \- Configserver requires selinux in disable/permissive mode
+
+    %li
+      %b
+        BZ
+        %a(id="747762" href="https://bugzilla.redhat.com/show_bug.cgi?id=747762") 747762
+      \- Update services and aeolus-restart-services for f16
+
+    %li
+      %b
+        BZ
+        %a(id="748064" href="https://bugzilla.redhat.com/show_bug.cgi?id=748064") 748064
+      \- Must change default value to launch deployable
+
+    %li
+      %b
+        BZ
+        %a(id="749622" href="https://bugzilla.redhat.com/show_bug.cgi?id=749622") 749622
+      \- OzException: Unsupported RHEL-6 update 2
+
+    %li
+      %b
+        BZ
+        %a(id="749681" href="https://bugzilla.redhat.com/show_bug.cgi?id=749681") 749681
+      \- Unable to determine values for push command
+
+    %li
+      %b
+        BZ
+        %a(id="750824" href="https://bugzilla.redhat.com/show_bug.cgi?id=750824") 750824
+      \- Selecting ADMINISTER | Users & Groups | Users spins 
+
+    %li
+      %b
+        BZ
+        %a(id="750957" href="https://bugzilla.redhat.com/show_bug.cgi?id=750957") 750957
+      \- [Design Check] As pool created, switched to pool view, I wanted to create multiple pools not switch
+
+    %li
+      %b
+        BZ
+        %a(id="752494" href="https://bugzilla.redhat.com/show_bug.cgi?id=752494") 752494
+      \- Image import fails
+
+    %li
+      %b
+        BZ
+        %a(id="754250" href="https://bugzilla.redhat.com/show_bug.cgi?id=754250") 754250
+      \- Instance w/ audrey bits fails to launch, stuck in "New" state
+
+    %li
+      %b
+        BZ
+        %a(id="754255" href="https://bugzilla.redhat.com/show_bug.cgi?id=754255") 754255
+      \- Building a template from a katello export is unable to authenticate CA cert 
+
+    %li
+      %b
+        BZ
+        %a(id="754744" href="https://bugzilla.redhat.com/show_bug.cgi?id=754744") 754744
+      \- Launching audrey enabled rhevm instance returns nil:NilClass error 
+
+    %li
+      %b
+        BZ
+        %a(id="754769" href="https://bugzilla.redhat.com/show_bug.cgi?id=754769") 754769
+      \- ConfigServer config not deployed to vsphere guests
+
+    %li
+      %b
+        BZ
+        %a(id="754810" href="https://bugzilla.redhat.com/show_bug.cgi?id=754810") 754810
+      \- Error in deploying rhevm instance w/ audrey bits
+
+    %li
+      %b
+        BZ
+        %a(id="755683" href="https://bugzilla.redhat.com/show_bug.cgi?id=755683") 755683
+      \- Facter rpm dependency error for RHEL image building
+
+%br
+
+.section-grouping
+  %h2(id="redmine") Redmine items completed
+
+  %h3(id="rdcond" style="color:red; text-height: 2em") Conductor
+
+  %h4(id="rdcondscen") Scenarios
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="2661" href="https://www.aeolusproject.org/redmine/issues/2661") 2661
+      \- As a a user of aeolus-image, I should be able to push to multiple providers
+
+    %li
+      %b
+        Redmine
+        %a(id="2662" href="https://www.aeolusproject.org/redmine/issues/2662") 2662
+      \- As a a user of aeolus-image, I should be able initiate builds for multiple providers
+
+    %li
+      %b
+        Redmine
+        %a(id="2663" href="https://www.aeolusproject.org/redmine/issues/2663") 2663
+      \- iwhd users.js needs to be added to configure
+
+    %li
+      %b
+        Redmine
+        %a(id="2679" href="https://www.aeolusproject.org/redmine/issues/2679") 2679
+      \- As an end user, I would like aeolus conductor and ALL components to run with selinux enabled
+
+    %li
+      %b
+        Redmine
+        %a(id="2706" href="https://www.aeolusproject.org/redmine/issues/2706") 2706
+      \- As the product owner, I can see the results of the last sprint running on a RHEL box in the lab
+
+    %li
+      %b
+        Redmine
+        %a(id="2780" href="https://www.aeolusproject.org/redmine/issues/2780") 2780
+      \- Update Conductor API Error reporting
+
+    %li
+      %b
+        Redmine
+        %a(id="2781" href="https://www.aeolusproject.org/redmine/issues/2781") 2781
+      \- Update aeolus-image to utilize Conductor Error codes
+
+
+  %h4(id="rdcondfeat") Features
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="2499" href="https://www.aeolusproject.org/redmine/issues/2499") 2499
+      \- Initial implementation of Event API
+
+    %li
+      %b
+        Redmine
+        %a(id="2685" href="https://www.aeolusproject.org/redmine/issues/2685") 2685
+      \- Engineering expo presentation and preparation
+
+    %li
+      %b
+        Redmine
+        %a(id="2686" href="https://www.aeolusproject.org/redmine/issues/2686") 2686
+      \- External communications about engineering expo
+
+    %li
+      %b
+        Redmine
+        %a(id="2692" href="https://www.aeolusproject.org/redmine/issues/2692") 2692
+      \- As a Pacemaker Cloud admin, I want to register a Pacemaker Cloud server to Conductor via a webhooks API
+
+    %li
+      %b
+        Redmine
+        %a(id="2700" href="https://www.aeolusproject.org/redmine/issues/2700") 2700
+      \- Aeolus-image rename
+
+
+  %h4(id="rdcondsupp") Support
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="2676" href="https://www.aeolusproject.org/redmine/issues/2676") 2676
+      \- Update configure and rpms deps to set up rsyslog/relp
+
+
+  %h4(id="rdcondbugs") Bugs
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="2655" href="https://www.aeolusproject.org/redmine/issues/2655") 2655
+      \- Bugzillas
+
+    %li
+      %b
+        Redmine
+        %a(id="2665" href="https://www.aeolusproject.org/redmine/issues/2665") 2665
+      \- Identify any other components that need systemd upates and notify their owners
+
+    %li
+      %b
+        Redmine
+        %a(id="2667" href="https://www.aeolusproject.org/redmine/issues/2667") 2667
+      \- Settings.yml in conductor rpm needs to be marked as %config in the spec so that reinstalling doesn't overwrite
+
+    %li
+      %b
+        Redmine
+        %a(id="2669" href="https://www.aeolusproject.org/redmine/issues/2669") 2669
+      \- aeolus-configure no longer needs to write a custom conf.js for rhevm providers
+
+    %li
+      %b
+        Redmine
+        %a(id="2719" href="https://www.aeolusproject.org/redmine/issues/2719") 2719
+      \- Remove Red Hat trademarked logos
+
+    %li
+      %b
+        Redmine
+        %a(id="2736" href="https://www.aeolusproject.org/redmine/issues/2736") 2736
+      \- Remove the global search text input box from the UI
+
+    %li
+      %b
+        Redmine
+        %a(id="2763" href="https://www.aeolusproject.org/redmine/issues/2763") 2763
+      \- As a user, I want to launch instances on a wider range of EC2 geographic regions
+
+
+  %h4(id="rdcondtask") Tasks
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="2488" href="https://www.aeolusproject.org/redmine/issues/2488") 2488
+      \- Create tests for aeolus-image-rubygem
+
+    %li
+      %b
+        Redmine
+        %a(id="2492" href="https://www.aeolusproject.org/redmine/issues/2492") 2492
+      \- Rename aeolus-image gems and repos
+
+    %li
+      %b
+        Redmine
+        %a(id="2510" href="https://www.aeolusproject.org/redmine/issues/2510") 2510
+      \- Determine requirements for first pass at api
+
+    %li
+      %b
+        Redmine
+        %a(id="2511" href="https://www.aeolusproject.org/redmine/issues/2511") 2511
+      \- Write tests based on requirements from previous task
+
+    %li
+      %b
+        Redmine
+        %a(id="2512" href="https://www.aeolusproject.org/redmine/issues/2512") 2512
+      \- Implement subset of api
+
+    %li
+      %b
+        Redmine
+        %a(id="2513" href="https://www.aeolusproject.org/redmine/issues/2513") 2513
+      \- Configure additions for log location and output
+
+    %li
+      %b
+        Redmine
+        %a(id="2520" href="https://www.aeolusproject.org/redmine/issues/2520") 2520
+      \- Fix https://bugzilla.redhat.com/show_bug.cgi?id=744192
+
+    %li
+      %b
+        Redmine
+        %a(id="2569" href="https://www.aeolusproject.org/redmine/issues/2569") 2569
+      \- UI for pool family provider accounts
+
+    %li
+      %b
+        Redmine
+        %a(id="2570" href="https://www.aeolusproject.org/redmine/issues/2570") 2570
+      \- Enforce provider account pool family association in taskomatic provider matching
+
+    %li
+      %b
+        Redmine
+        %a(id="2677" href="https://www.aeolusproject.org/redmine/issues/2677") 2677
+      \- Update approriate spec with rsyslog dependencies
+
+    %li
+      %b
+        Redmine
+        %a(id="2680" href="https://www.aeolusproject.org/redmine/issues/2680") 2680
+      \- aeolus-configure should not force selinux changes
+
+    %li
+      %b
+        Redmine
+        %a(id="2681" href="https://www.aeolusproject.org/redmine/issues/2681") 2681
+      \- Modify aeolus-configure puppet recipe to not modify the selinux settings
+
+    %li
+      %b
+        Redmine
+        %a(id="2693" href="https://www.aeolusproject.org/redmine/issues/2693") 2693
+      \- Fix the Pacemaker Cloud registration part of the API spec
+
+    %li
+      %b
+        Redmine
+        %a(id="2694" href="https://www.aeolusproject.org/redmine/issues/2694") 2694
+      \- Implement the registration portion of the Notification APi
+
+    %li
+      %b
+        Redmine
+        %a(id="2695" href="https://www.aeolusproject.org/redmine/issues/2695") 2695
+      \- Update Conductor API to infer targetimages from builds, images
+
+    %li
+      %b
+        Redmine
+        %a(id="2696" href="https://www.aeolusproject.org/redmine/issues/2696") 2696
+      \- Update aeolus-image to use the new Conductor Push syntax
+
+    %li
+      %b
+        Redmine
+        %a(id="2697" href="https://www.aeolusproject.org/redmine/issues/2697") 2697
+      \- Update aeolus-image documentation to reflect new push syntax changes
+
+    %li
+      %b
+        Redmine
+        %a(id="2699" href="https://www.aeolusproject.org/redmine/issues/2699") 2699
+      \- Confirm aeolus-image can initiate builds for multiple providers.  Add a test
+
+    %li
+      %b
+        Redmine
+        %a(id="2701" href="https://www.aeolusproject.org/redmine/issues/2701") 2701
+      \- BZ #750218: aeolus-images usage needs to be updated
+
+    %li
+      %b
+        Redmine
+        %a(id="2702" href="https://www.aeolusproject.org/redmine/issues/2702") 2702
+      \- BZ #749681: unable to determine values for push command 
+
+    %li
+      %b
+        Redmine
+        %a(id="2705" href="https://www.aeolusproject.org/redmine/issues/2705") 2705
+      \- Bug 749254 - running configure for multiple providers causes oauth issues
+
+    %li
+      %b
+        Redmine
+        %a(id="2707" href="https://www.aeolusproject.org/redmine/issues/2707") 2707
+      \- Create repo definition files pointing to stable and testing at top level
+
+    %li
+      %b
+        Redmine
+        %a(id="2709" href="https://www.aeolusproject.org/redmine/issues/2709") 2709
+      \- Figure out an approach to handle the SELinux policies for RHEL 6.1
+
+    %li
+      %b
+        Redmine
+        %a(id="2713" href="https://www.aeolusproject.org/redmine/issues/2713") 2713
+      \- Define the options to present in a drop down for specific instances of tables within the app
+
+    %li
+      %b
+        Redmine
+        %a(id="2720" href="https://www.aeolusproject.org/redmine/issues/2720") 2720
+      \- Implement dropdown filter into filter_table helper and present it in users table
+
+    %li
+      %b
+        Redmine
+        %a(id="2731" href="https://www.aeolusproject.org/redmine/issues/2731") 2731
+      \- Implement the design in /buildpush_r8/02 Images.png
+
+    %li
+      %b
+        Redmine
+        %a(id="2732" href="https://www.aeolusproject.org/redmine/issues/2732") 2732
+      \- Decide what info t present in the table depicted in /buildpush_r8/02 Images.png
+
+    %li
+      %b
+        Redmine
+        %a(id="2752" href="https://www.aeolusproject.org/redmine/issues/2752") 2752
+      \- Implement the design in /buildpush_r8/02 Image Detail.png
+
+    %li
+      %b
+        Redmine
+        %a(id="2753" href="https://www.aeolusproject.org/redmine/issues/2753") 2753
+      \- Add support for rebooting running instances on EC2
+
+    %li
+      %b
+        Redmine
+        %a(id="2754" href="https://www.aeolusproject.org/redmine/issues/2754") 2754
+      \- Add support for rebooting running instances on vsphere
+
+    %li
+      %b
+        Redmine
+        %a(id="2756" href="https://www.aeolusproject.org/redmine/issues/2756") 2756
+      \- Implement /buildpush_r8/03 New Template (Upload).png
+
+    %li
+      %b
+        Redmine
+        %a(id="2757" href="https://www.aeolusproject.org/redmine/issues/2757") 2757
+      \- Implement /buildpush_r8/05 New Template (URL) Copy1.png
+
+    %li
+      %b
+        Redmine
+        %a(id="2758" href="https://www.aeolusproject.org/redmine/issues/2758") 2758
+      \- Implement /buildpush_r8/07 Edit Template.png
+
+    %li
+      %b
+        Redmine
+        %a(id="2759" href="https://www.aeolusproject.org/redmine/issues/2759") 2759
+      \- Implement /buildpush_r8/08 Finish template.png
+
+    %li
+      %b
+        Redmine
+        %a(id="2760" href="https://www.aeolusproject.org/redmine/issues/2760") 2760
+      \- Save templates by making a build call to iwhd without a specified target
+
+    %li
+      %b
+        Redmine
+        %a(id="2764" href="https://www.aeolusproject.org/redmine/issues/2764") 2764
+      \- Investigate sending build & push requests to imagefactory for other ec2 regions
+
+    %li
+      %b
+        Redmine
+        %a(id="2765" href="https://www.aeolusproject.org/redmine/issues/2765") 2765
+      \- Investigate launching instances in ec2-japan via conductor & vertify that dc-api calls work as in us-east etc.
+
+    %li
+      %b
+        Redmine
+        %a(id="2766" href="https://www.aeolusproject.org/redmine/issues/2766") 2766
+      \- Based on results, add additional ec2 regions to the providers set up by aeolus-configure
+
+    %li
+      %b
+        Redmine
+        %a(id="2771" href="https://www.aeolusproject.org/redmine/issues/2771") 2771
+      \- BZ #748030 - mongodb fails to stop w/ aeolus-cleanup
+
+    %li
+      %b
+        Redmine
+        %a(id="2772" href="https://www.aeolusproject.org/redmine/issues/2772") 2772
+      \- BZ #747768 - aeolus-configure should exit w/ non 0 exit code if there is a failure
+
+    %li
+      %b
+        Redmine
+        %a(id="2774" href="https://www.aeolusproject.org/redmine/issues/2774") 2774
+      \- Bug 749349 - better error messaging bad input/flags/etc
+
+    %li
+      %b
+        Redmine
+        %a(id="2775" href="https://www.aeolusproject.org/redmine/issues/2775") 2775
+      \- Implement preset filters for catalogs
+
+    %li
+      %b
+        Redmine
+        %a(id="2776" href="https://www.aeolusproject.org/redmine/issues/2776") 2776
+      \- Change list_for_user method to work as a scope to enable chainablity
+
+    %li
+      %b
+        Redmine
+        %a(id="2778" href="https://www.aeolusproject.org/redmine/issues/2778") 2778
+      \- Remove global search input box
+
+    %li
+      %b
+        Redmine
+        %a(id="2782" href="https://www.aeolusproject.org/redmine/issues/2782") 2782
+      \- BZ #749349 - Better error messaging bad input/flags/etc
+
+    %li
+      %b
+        Redmine
+        %a(id="2783" href="https://www.aeolusproject.org/redmine/issues/2783") 2783
+      \- BZ #747719 - Need error message for image import with incorrect parms
+
+    %li
+      %b
+        Redmine
+        %a(id="2784" href="https://www.aeolusproject.org/redmine/issues/2784") 2784
+      \- BZ #740902 - Aeolus-image: catch errors more broadly
+
+    %li
+      %b
+        Redmine
+        %a(id="2785" href="https://www.aeolusproject.org/redmine/issues/2785") 2785
+      \- BZ #723885 - Aeolus image should return an error for unsupported provider types while building
+
+    %li
+      %b
+        Redmine
+        %a(id="2791" href="https://www.aeolusproject.org/redmine/issues/2791") 2791
+      \- Implement Tables Search
+
+    %li
+      %b
+        Redmine
+        %a(id="2792" href="https://www.aeolusproject.org/redmine/issues/2792") 2792
+      \- Reviewing #2775
+
+    %li
+      %b
+        Redmine
+        %a(id="2799" href="https://www.aeolusproject.org/redmine/issues/2799") 2799
+      \- Review #2756
+
+%br
+
+.section-grouping
+  %h3(id="rdifact" style="color:red; text-height: 2em") Image Factory
+
+  %h4(id="rdifactfeat") Features
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="2798" href="https://www.aeolusproject.org/redmine/issues/2798") 2798
+      \- Add the ability to snapshot EBS images to EBS images - Make this the default at least for RHEL
+
+%br
+
+.section-grouping
+  %h3(id="rdiwhd" style="color:red; text-height: 2em") Image Warehouse
+
+  %h4(id="rdiwhdbugs") Bugs
+
+  %ul
+    %li
+      %b
+        Redmine
+        %a(id="2371" href="https://www.aeolusproject.org/redmine/issues/2371") 2371
+      \- Add OAuth
+
+    %li
+      %b
+        Redmine
+        %a(id="2399" href="https://www.aeolusproject.org/redmine/issues/2399") 2399
+      \- Parse &lt;reason&gt; and &lt;detail&gt; for FAILED import status
+
+    %li
+      %b
+        Redmine
+        %a(id="2414" href="https://www.aeolusproject.org/redmine/issues/2414") 2414
+      \- Waiting for template import in RHEV-M
+
+    %li
+      %b
+        Redmine
+        %a(id="2593" href="https://www.aeolusproject.org/redmine/issues/2593") 2593
+      \- -U user:pw is insecure, use -u /file
+
+    %li
+      %b
+        Redmine
+        %a(id="2599" href="https://www.aeolusproject.org/redmine/issues/2599") 2599
+      \- OAuth fails with POST and body
+
+    %li
+      %b
+        Redmine
+        %a(id="2628" href="https://www.aeolusproject.org/redmine/issues/2628") 2628
+      \- t/mongo-restart fails spuriously
+
+%br
+
+.section-grouping
+  %h2(id="issuesclosedbz") Issues closed (Bugzilla issue list)
+
+  %ul
+    %li
+      %b
+        BZ
+        %a(id="722805" href="https://bugzilla.redhat.com/show_bug.cgi?id=722805") 722805
+      \- Unable to build rhevm,vmware at the same time w/ aeolus-image
+
+    %li
+      %b
+        BZ
+        %a(id="742578" href="https://bugzilla.redhat.com/show_bug.cgi?id=742578") 742578
+      \- Aeolus-configure: can not specify more than one profile at a time
+
+    %li
+      %b
+        BZ
+        %a(id="749349" href="https://bugzilla.redhat.com/show_bug.cgi?id=749349") 749349
+      \- Better error messaging bad input/flags/etc
+
+    %li
+      %b
+        BZ
+        %a(id="749579" href="https://bugzilla.redhat.com/show_bug.cgi?id=749579") 749579
+      \- Default permissions for regular user cannot deploy image
+
+    %li
+      %b
+        BZ
+        %a(id="749716" href="https://bugzilla.redhat.com/show_bug.cgi?id=749716") 749716
+      \- Deltacloud on RHEL fails to start after aeolus-restart-services
+
+    %li
+      %b
+        BZ
+        %a(id="750189" href="https://bugzilla.redhat.com/show_bug.cgi?id=750189") 750189
+      \- Unhandled exception or status code (Unhandled exception or status code (undefined method `hostFolder' for nil:NilClass)) while launching vsphere deployment from catalog list
+
+    %li
+      %b
+        BZ
+        %a(id="750218" href="https://bugzilla.redhat.com/show_bug.cgi?id=750218") 750218
+      \- Aeolus-images usage needs to be updated. 
+
+    %li
+      %b
+        BZ
+        %a(id="750920" href="https://bugzilla.redhat.com/show_bug.cgi?id=750920") 750920
+      \- 2nd provider always fails for deployment
+
+    %li
+      %b
+        BZ
+        %a(id="750958" href="https://bugzilla.redhat.com/show_bug.cgi?id=750958") 750958
+      \- Provider account add/edit: remove combo box to choose provider
+
+    %li
+      %b
+        BZ
+        %a(id="750959" href="https://bugzilla.redhat.com/show_bug.cgi?id=750959") 750959
+      \- Conductor build error 
+
+    %li
+      %b
+        BZ
+        %a(id="751118" href="https://bugzilla.redhat.com/show_bug.cgi?id=751118") 751118
+      \- Audrey config server, rpm dep errors installing on RHEL6.1
+
+    %li
+      %b
+        BZ
+        %a(id="751200" href="https://bugzilla.redhat.com/show_bug.cgi?id=751200") 751200
+      \- Unable to deploy instances w/ audrey to vsphere/rhevm
+
+    %li
+      %b
+        BZ
+        %a(id="751987" href="https://bugzilla.redhat.com/show_bug.cgi?id=751987") 751987
+      \- Mock deployments fail to launch due to mock hwp, hwp_memory has invalid value
+
+    %li
+      %b
+        BZ
+        %a(id="752520" href="https://bugzilla.redhat.com/show_bug.cgi?id=752520") 752520
+      \- Aeolus-image push problems,Internal Error: can't convert nil into String
+
+    %li
+      %b
+        BZ
+        %a(id="752975" href="https://bugzilla.redhat.com/show_bug.cgi?id=752975") 752975
+      \- Multiple executions of aeolus-cleanup/configure not working as expected
+
+    %li
+      %b
+        BZ
+        %a(id="753250" href="https://bugzilla.redhat.com/show_bug.cgi?id=753250") 753250
+      \- Aeolus-configure fails No such file or directory - /etc/rsyslog.d/aeolus.conf.puppettmp_6890
+
+    %li
+      %b
+        BZ
+        %a(id="753258" href="https://bugzilla.redhat.com/show_bug.cgi?id=753258") 753258
+      \- Aeolus-configure overwrites contents in /etc/imagefactory/imagefactory.conf every time its executed
+
+    %li
+      %b
+        BZ
+        %a(id="753273" href="https://bugzilla.redhat.com/show_bug.cgi?id=753273") 753273
+      \- Rsyslog configuration causes messages log to grow rapidly
+
+    %li
+      %b
+        BZ
+        %a(id="753886" href="https://bugzilla.redhat.com/show_bug.cgi?id=753886") 753886
+      \- Aeolus-cli list --images should populate columns

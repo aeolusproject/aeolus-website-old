@@ -1,0 +1,122 @@
+---
+title: Aeolus | How to report a bug
+breadcrumb_name: How to report a bug
+extension: html
+filter: haml
+---
+%h1 How to report a bug
+
+%p
+  If you've discovered a bug with Aeolus, please let us know, so we can fix
+  it.
+
+.section-grouping
+  %h2 Security related bugs
+
+  %p
+    If your bug is security related, and you don't want the details publicly
+    viewable, please email our security team directly, using the
+    %b Security related
+    details on the
+    %a{ :href => "contact.html" } Contact
+    page.
+
+%br
+
+.section-grouping
+  %h2 Bugs not related to security
+
+  %p
+    We use Red Hat's Bugzilla system for bug reports. You'll need to create an
+    account on it if you don't have one.
+
+  %p
+    It's easy, and doesn't cost anything.
+
+
+  %br
+
+  %h3 Step 1 - Create a new Bugzilla account
+
+  %p
+    Follow
+    %a{ :href => "https://bugzilla.redhat.com/createaccount.cgi" } this link
+    to create a new Bugzilla account.  You only need to do this if you don't
+    already have a Red Hat Bugzilla account.
+    %br
+    %br
+    Then move on to the next step.
+
+  %br
+
+  %h3 Step 2 - Create a new bug report
+
+  %p
+    Follow
+    %a{ :href => "https://bugzilla.redhat.com/enter_bug.cgi?classification=Red%20Hat&product=CloudForms%20Cloud%20Engine" } this link
+    to create the new bug report.
+
+  %p
+    In the bug report form, only the
+    %b Component
+    and
+    %b Summary
+    fields are required.  The rest are optional, but please fill out the
+    %b Description
+    field as well if possible.
+    %br
+    %br
+    If you're not sure which
+    %b Component
+    to choose, pick the
+    %i Distribution
+    component.
+
+  %br
+
+  %h3 Things we like
+
+  %p
+    It depends upon the bug, but if possible, screenshots and/or screencasts are
+    good.
+    %br
+    %br
+    You can attach these to a bug report as an attachment, and they can be
+    very helpful.
+
+  %br
+
+  %h3 Step 3 - What happens next
+
+  %p
+    When you create a bug report, the details for it are emailed to assigned
+    Aeolus staff members.
+  %p
+    Whenever the bug report is updated, you will be automatically emailed.
+    For example, with details of subsequent investigation, a fix being
+    developed, and so on.
+    %br
+    %br
+    Your Bugzilla account has a
+    %a{ :href => "https://bugzilla.redhat.com/userprefs.cgi" } preferences section
+    too, in case you want to change when emails occur.  (can be useful)
+
+%br
+
+.section-grouping
+  %h2 Listing the existing bugs
+
+  %p This page lists all open Aeolus / Cloud Engine bugs:
+
+  %p
+    %a{ :href => "https://bugzilla.redhat.com/buglist.cgi?classification=Red%20Hat&query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=MODIFIED&product=CloudForms%20Cloud%20Engine" } Open bugs
+
+
+  %p
+    This page lists
+    %b all
+    the Aeolus / Cloud Engine bugs, including ones that have been closed:
+
+  %p
+    %a{ :href => "https://bugzilla.redhat.com/buglist.cgi?classification=Red%20Hat&query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=MODIFIED&bug_status=ON_DEV&bug_status=ON_QA&bug_status=VERIFIED&bug_status=RELEASE_PENDING&bug_status=POST&bug_status=CLOSED&product=CloudForms%20Cloud%20Engine" } All bugs
+

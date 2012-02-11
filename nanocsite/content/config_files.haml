@@ -1,0 +1,455 @@
+---
+title: Aeolus | Configuration files
+breadcrumb_name: Configuration files
+extension: html
+filter: haml
+---
+%h1 Aeolus configuration files
+
+%p Each component of Aeolus has its own configuration files, as listed below:
+
+%p
+  %ul
+    %li
+      %a{ :href => "#audrey" } Audrey
+
+    %li
+      %a{ :href => "#conductor" } Conductor
+
+    %li
+      %a{ :href => "#configure" } Configure
+
+    %li
+      %a{ :href => "#connector" } Connector
+
+    %li
+      %a{ :href => "#factory" } Image Factory
+
+    %li
+      %a{ :href => "#iwhd" } Image Warehouse
+
+    %li
+      %a{ :href => "#oz" } Oz
+
+    %li
+      %a{ :href => "#spherical" } Spherical
+
+%p
+  Configuration files for major Aeolus dependencies:
+
+%p
+  %ul
+    %li
+      %a{ :href => "#httpd" } Apache HTTP Server
+
+    %li
+      %a{ :href => "#qpid" } Apache Qpid
+
+    %li
+      %a{ :href => "#condor" } Condor
+
+    %li
+      %a{ :href => "#deltacloud" } Deltacloud
+
+    %li
+      %a{ :href => "#gofer" } Gofer
+
+    %li
+      %a{ :href => "#libvirt" } Libvirt
+
+    %li
+      %a{ :href => "#mongodb" } MongoDB
+
+    %li
+      %a{ :href => "#pulp" } Pulp
+
+    %li
+      %a{ :href => "#puppet" } Puppet
+
+
+.section-grouping
+  %h2(id="audrey" style="color: #107fc9") Audrey &rarr; Aeolus Configuration Server
+
+  %p
+    Aeolus-configserver is a service for storing and retrieving VM
+    configurations.
+
+  %h3 Location
+
+  %p
+    On RHEL/Fedora, its configuration file is located at:
+
+  %p
+    %pre
+      :preserve
+        /etc/sysconfig/aeolus-configserver
+
+  %br
+
+  %h3 Contents
+
+  %p
+    %pre
+      :preserve
+        # Settings overrides for /etc/init.d/aeolus-configserver
+        # Defaults shown for each config option
+        
+        # Environment setting for rack (sinatra)
+        #RACK_ENV="${RACK_ENV:-production}"
+        
+        # root directory of the Aeolus Config Server sinatra application
+        #CONFIG_SERVER_DIR="/usr/share/aeolus-configserver"
+        
+        # location of rackup file to configure rack for Aeolus Config Server
+        # relative to the $CONFIG_SERVER_DIR
+        #CONFIG_SERVER_RACKUP="config.ru"
+        
+        # thin server port
+        #CONFIG_SERVER_PORT="4567"
+        
+        # thin log file for Aeolus Config Server
+        #THIN_LOG="/var/log/aeolus-configserver/thin.log"
+        
+        # thin pid file for Aeolus Config Server
+        #THIN_PID="/var/run/aeolus-configserver/thin.pid"
+        
+        # thin lock file for Aeolus Config Server
+        #THIN_LOCKFILE="/var/lock/subsys/aeolus-configserver"
+        
+        # thin server IP address
+        #THIN_IP="127.0.0.1"
+        
+        # user and group under which Aeolus Config Server sinatra application runs
+        #AEOLUS_USER="aeolus"
+        #AEOLUS_GROUP="aeolus"
+        
+        # thin server prefix (i.e., application context) for Aeolus Config Server
+        # sinatra application
+        #PREFIX="/"
+        
+        # Directory where aeolus-configserver stores the instance configrations
+        #STORAGE_DIR="/var/lib/aeolus-configserver/configs"
+        
+        # Location of Relax NG schema file for instance-config
+        # This can be a local file location or a URL (http://here.org/file.rng)
+        #INSTANCE_CONFIG_RNG="/var/lib/aeolus-configserver/schema/instance-config.rng"
+
+  %br
+
+  %h3 Configuration settings
+
+  %h4 RACK_ENV
+
+  %p
+    The Config Server is a ruby application based on the Sinatra simple web
+    framework.  Sinatra is an extension to the ruby rack framework.  The
+    %b RACK_ENV
+    variable controls which environment rack thinks it is running in.  This
+    essentially controls where the instance configuration data is stored by
+    the Config Server (see
+    <a href="audrey.html#instance-config-storage">Instance configuration storage</a>
+    on the Audrey page). The default value is "<b>production</b>".
+
+  %h4 CONFIG_SERVER_DIR
+
+  %p Info goes here
+
+  %h4 CONFIG_SERVER_RACKUP
+
+  %p Info goes here
+
+  %h4 CONFIG_SERVER_PORT
+
+  %p Info goes here
+
+  %h4 THIN_LOG
+
+  %p Info goes here
+
+  %h4 THIN_PID
+
+  %p Info goes here
+
+  %h4 THIN_LOCKFILE
+
+  %p Info goes here
+
+  %h4 THIN_IP
+
+  %p Info goes here
+
+  %h4 AEOLUS_USER
+
+  %p Info goes here
+
+  %h4 AEOLUS_GROUP
+
+  %p Info goes here
+
+  %h4 PREFIX
+
+  %p Info goes here
+
+  %h4 STORAGE_DIR
+
+  %p Info goes here
+
+  %h4 INSTANCE_CONFIG_RNG
+
+  %p Info goes here
+
+
+%br
+
+.section-grouping
+  %h2(id="conductor" style="color: #107fc9") Conductor
+
+  %p
+    Conductor is Aeolus' web based user interface, written using Ruby on Rails.
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+.section-grouping
+  %h2(id="configure" style="color: #107fc9") Configure
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+.section-grouping
+  %h2(id="connector" style="color: #107fc9") Connector &rarr; Image Factory Connector
+
+  %p
+    Provides a REST web interface for Image Factory.  Aeolus uses this for
+    internal communication with Image Factory.
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+
+.section-grouping
+  %h2(id="factory" style="color: #107fc9") Image Factory
+
+  %p
+    Imagefactory is a high level daemon, responsible for creating virtual
+    machine images for each Cloud provider.
+  %p
+    It uses Oz for some parts of the image creation process.
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+.section-grouping
+  %h2(id="iwhd" style="color: #107fc9") Image Warehouse
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+.section-grouping
+  %h2(id="oz" style="color: #107fc9") Oz
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+.section-grouping
+  %h2(id="spherical" style="color: #107fc9") Spherical
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+
+%h2 Configuration files for Aeolus dependencies
+
+.section-grouping
+  %h2(id="httpd" style="color: #107fc9") Apache HTTP Server&trade;
+
+  %p
+    Web site:
+    %a{ :href => "http://httpd.apache.org", :title => "Apache HTTP Server home page" } http://httpd.apache.org
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+  #trademark
+    Apache and Apache HTTP Server are trademarks of The Apache Software Foundation.
+
+%br
+
+.section-grouping
+  %h2(id="qpid" style="color: #107fc9") Apache Qpid&trade;
+
+  %p
+    Web site:
+    %a{ :href => "http://qpid.apache.org", :title => "Apache Qpid home page" } http://qpid.apache.org
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+  #trademark
+    Apache, Qpid, and Apache Qpid are trademarks of The Apache Software Foundation.
+
+%br
+
+.section-grouping
+  %h2(id="condor" style="color: #107fc9") Condor
+
+  %p
+    Web site:
+    %a{ :href => "http://www.cs.wisc.edu/condor/", :title => "Condor home page" } http://www.cs.wisc.edu/condor/
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+.section-grouping
+  %h2(id="deltacloud" style="color: #107fc9") Deltacloud
+
+  %p
+    Web site:
+    %a{ :href => "http://www.deltacloud.org", :title => "Deltacloud home page" } http://www.deltacloud.org
+
+  %p
+    Deltacloud provides the communication layer between Aeolus and each of
+    the Cloud Providers.
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+.section-grouping
+  %h2(id="gofer" style="color: #107fc9") Gofer
+
+  %p
+    Web site:
+    %a{ :href => "https://fedorahosted.org/gofer/", :title => "Gofer home page" } https://fedorahosted.org/gofer/
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+.section-grouping
+  %h2(id="libvirt" style="color: #107fc9") Libvirt
+
+  %p
+    Web site:
+    %a{ :href => "http://www.libvirt.org", :title => "Libvirt home page" } http://www.libvirt.org
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+.section-grouping
+  %h2(id="mongodb" style="color: #107fc9") MongoDB
+
+  %p
+    Web site:
+    %a{ :href => "http://www.mongodb.org", :title => "MongoDB home page" } http://www.mongodb.org
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+.section-grouping
+  %h2(id="pulp" style="color: #107fc9") Pulp
+
+  %p
+    Web site:
+    %a{ :href => "http://www.pulpproject.org", :title => "Pulp home page" } http://www.pulpproject.org
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here
+
+%br
+
+.section-grouping
+  %h2(id="puppet" style="color: #107fc9") Puppet
+
+  %p
+    Web site:
+    %a{ :href => "http://www.puppetlabs.com", :title => "Puppet home page" } http://www.puppetlabs.com
+
+  %p Stuff goes here
+
+  %p
+    %pre
+      :preserve
+        Stuff goes here

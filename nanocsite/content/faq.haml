@@ -1,0 +1,82 @@
+---
+title: Aeolus | Frequently Asked Questions (FAQ)
+breadcrumb_name: Frequently Asked Questions
+extension: html
+filter: haml
+---
+%h1 Frequently Asked Questions (FAQ)
+
+%p
+  List of both non-technical, and technical, frequently asked questions with
+  their answers.
+
+-#%ol
+  %li
+    %a(href="#serv-temp-unav")
+      When loading the Aeolus Web Interface, "Service Temporarily
+      Unavailable" is displayed
+  -#%li
+    %a(href="#dbomatic-failures")
+      dbomatic failures
+
+  -#%li
+    %a(href="#proxy-failure")
+      Random proxy failures
+
+.section-grouping
+  %h3(id="serv-temp-unav")
+    When loading the Aeolus Web Interface, "Service Temporarily Unavailable"
+    is displayed.
+
+  %p
+    This can be caused by SELinux running in Enforcing mode.  The solution
+    is to change SELinux to permissive mode, by editing the
+    %b /etc/selinux/config
+    configuration file.
+  
+  %p
+    The line to change is:
+
+  %p
+    %pre
+      :preserve
+        SELINUX=enforcing
+
+  %p
+    to:
+
+  %p
+    %pre
+      :preserve
+        SELINUX=permissive
+
+  %p
+    This change becomes effective with the next reboot.
+
+  %p
+    %b IMPORTANT NOTE
+    \- Needing SELinux to not be in Enforcing mode is purely a temporary
+    measure.
+    %br
+    %br
+    When Aeolus reaches Production quality, it will operate normally in
+    Enforcing mode.
+
+%br
+
+-#.section-grouping
+  %h3(id="dbomatic-failures")
+    dbomatic failures
+
+  %p
+    Need to ask Wes, as I don't remember the details.
+
+-#.section-grouping
+  %h3(id="proxy-failure")
+    Random proxy failures
+
+  %p
+    Probably need to extract details from here:
+    %br
+    %br 
+    https://bugzilla.redhat.com/show_bug.cgi?id=651562

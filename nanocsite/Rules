@@ -38,9 +38,14 @@ route '*' do
   elsif item[:extension] == 'scss'
     # Write out scss files with a 'css' extension
     item.identifier.chop + '.' + 'css'
-  else
-    # Write item with identifier /foo/ to /foo/index.html
-    item.identifier + 'index.html'
+  elsif item[:extension] == 'haml'
+    # The base index.html needs special handling, else nanoc barfs
+    if item.identifier == '/'
+      item.identifier + 'index.html'
+    else
+      # Write out haml files with a flat dir structure
+      item.identifier.chop + '.' + 'html'
+    end
   end
 end
 
