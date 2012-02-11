@@ -85,7 +85,7 @@
     -# When the template is used to generate the front page, we have to not include the "main" content div.
     -# This is because that div has a white 20 pixel margin that breaks the front page graphics.  We just
     -# include the front page contents directly instead.
-    - if @item[:title] == "Aeolus"
+    - if item.identifier == '/'
       ~ @content
     - else
       #main.container_24.clearfix
