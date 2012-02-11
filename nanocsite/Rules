@@ -21,6 +21,9 @@ compile '*' do
   if item.binary?
     # don’t filter binary items
   elsif item[:extension] == 'scss'
+    # scss files are sass
+    # (don't use nanoc with haml 3.0.x series gem - known to be broken!)
+    # (yes, this means the gem webby needs in order to work. :( )
     filter :sass
   else
     filter :haml
@@ -28,15 +31,12 @@ compile '*' do
   end
 end
 
-route '/stylesheet/' do
-  '/style.css'
-end
-
 route '*' do
   if item.binary?
     # Write item with identifier /foo/ to /foo.ext
     item.identifier.chop + '.' + item[:extension]
   elsif item[:extension] == 'scss'
+    # Write out scss files with a 'css' extension
     item.identifier.chop + '.' + 'css'
   else
     # Write item with identifier /foo/ to /foo/index.html
