@@ -20,8 +20,9 @@ end
 compile '*' do
   if item.binary?
     # don’t filter binary items
+  elsif item[:extension] == 'scss'
+    filter :sass
   else
-    #filter :erb
     filter :haml
     layout 'default'
   end
