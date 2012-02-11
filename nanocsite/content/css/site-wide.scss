@@ -1,9 +1,3 @@
----
-extension: css
-filter:    sass
-layout:    nil   # no layout
----
-
 $screenfont: "Liberation Sans", Helvetica, Sans-serif
 $headlinefont: Overpass, Sans-serif
 
@@ -57,7 +51,7 @@ input[type='text'], input[type='search'], textarea
   margin: 0 0 .5em 0
   @include border-radius(3px)
   background: -moz-linear-gradient(top, lighten($aegrey, 10%), #fff 10px, #fff)
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lighten($aegrey,10%)), to(#fff), color-stop(.2,#fff))  
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lighten($aegrey,10%)), to(#fff), color-stop(.2,#fff))
   padding: 4px
   &:focus
     outline: none
@@ -65,7 +59,7 @@ input[type='text'], input[type='search'], textarea
     padding: 3px
     background: -moz-linear-gradient(top, lighten($aeblue4,20%), #fff 10px, #fff)
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lighten($aeblue4,20%)), to(#fff), color-stop(.2,#fff))
-  
+
 img.graph
   display: block
   width: 767px
@@ -85,7 +79,7 @@ table
 hr.shade
   position: absolute
   display: block
-  top: 0 
+  top: 0
   left: 0
   right: 0
   height: 4px
@@ -93,7 +87,7 @@ hr.shade
   margin: 0
   padding: 0
   border: 0
-  
+
 #header
   background: #f3f8fb url(../images/header-bg.jpg) no-repeat top center
   border-bottom: 2px solid $aegrey
@@ -151,7 +145,7 @@ hr.shade
 
 #navigation
   background: #bfdbe8 url(../images/splash-bg.jpg) no-repeat center -20px
-  background-size: cover  
+  background-size: cover
   min-height: 38px
   clear: both
 
@@ -177,7 +171,7 @@ hr.shade
   color: #fff
   height: 277px
   border-bottom: 4px solid lighten($aegrey, 10%)
-  
+
   h1
     margin: 40px 0 0
     font-size: 300%
@@ -200,26 +194,26 @@ hr.shade
   a
     text-decoration: none
 
-  .logo 
+  .logo
     width: 260px
     height: 260px
     margin-top: 28px
 
   .frontpagebuttons
     text-align: right
-    
+
     .button
       margin-left: 10px
-    
+
 #front-page-main-lower
   clear: both
   padding-bottom: 2em
-  
+
   h1
     color: $aeblue6
     font-weight: normal
     text-transform: none
-    
+
     b
       color: black
 
@@ -259,7 +253,7 @@ hr.shade
     @include gradient-bg-linear(darken($aeblue2,10%),lighten($aeblue2,10%))
     @include no-box-shadow()
     @include text-shadow(0,0,0,rgba(0,0,0,0))
-  
+
   img
     display: inline-block
     vertical-align: middle
@@ -274,7 +268,7 @@ hr.shade
   p
     img
       max-width: 100%
-  
+
 #footer
   position: relative
   background: #e0eef4 url(../images/footer-bg.jpg) no-repeat top center
@@ -282,14 +276,14 @@ hr.shade
   min-height: 300px
   font-size: 95%
   padding: 4em 0 2em 0
- 
+
   a.logo
     display: block
     position: absolute
     right: 0
     bottom: 0
     z-index: 2
-    
+
   #navigationbg
     position: absolute
     background: rgba(255,255,255, 0.3)
@@ -302,7 +296,7 @@ hr.shade
     top: 56px
     left: 50%
     margin-left: -500px
-    
+
   .navigation
     position: relative
     z-index: 2
@@ -370,7 +364,7 @@ hr.shade
     border-top-right-radius: 10px
     border-top-left-radius: 10px
     border-top: 1px solid #eaeaea
-  
+
   tbody td
     text-align: center
     font: normal 12px Verdana, Arial, Helvetica
@@ -413,7 +407,7 @@ hr.shade
   border-top: 1px solid #eaeaea
   border-bottom: 1px solid #dadada
   @include border-radius(10px)
-  
+
   pre
     background: #666
     color: #fff
@@ -440,7 +434,7 @@ hr.shade
   @include box-shadow(0,2px, 2px, rgba(0,0,0,0.4))
   margin-left: 2em
   @include border-radius(10px)
-  
+
 #trademark
   font: 11px Arial, sans-serif
 
