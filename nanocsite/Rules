@@ -35,8 +35,11 @@ route '*' do
     # Write out scss files with a 'css' extension
     item.identifier.chop + '.' + 'css'
   elsif item[:extension] == 'haml'
-    # The base index.html needs special handling, else nanoc barfs
-    if item.identifier == '/'
+    # Debugging code
+    #puts 'Item filename: ' + item[:filename] + '  Item identifier: ' + item.identifier
+
+    # The index.html files need special handling, else nanoc barfs
+    if item[:filename] =~ /index.haml$/
       item.identifier + 'index.html'
     else
       # Write out haml files with a flat dir structure
