@@ -21,9 +21,11 @@ compile '*' do
     # (don't use nanoc with haml 3.0.x series gem - known to be broken!)
     # (yes, this means the gem webby needs in order to work. :( )
     filter :sass
+    filter :relativize_paths, :type => :css
   else
     filter :haml
     layout 'default'
+    filter :relativize_paths, :type => :html
   end
 end
 
