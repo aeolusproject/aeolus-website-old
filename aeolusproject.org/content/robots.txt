@@ -1,4 +1,0 @@
-User-Agent: *
-Crawl-Delay:   1800
-Disallow: /redmine/issues/
-Disallow: /redmine/rb/master_backlogs/
