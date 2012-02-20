@@ -53,11 +53,11 @@ File Structure
 nanocsite/
     - the Aeolus Project website
 
-nanocsite/static-redmine
-    - static redmine content (themes, javascripts, etc)
-
 nanocsite/content/
     - the pages that are displayed on the website
+
+nanocsite/content/static-redmine
+    - static redmine content (themes, javascripts, etc)
 
 nanocsite/layouts/
     - the Aeolus Project website template
