@@ -16,6 +16,10 @@
 compile '*' do
   if item.binary?
     # don’t filter binary items
+  elsif item[:extension] == 'md'
+    filter :kramdown
+    layout 'default'
+    filter :relativize_paths, :type => :html
   elsif item[:extension] == 'scss'
     # scss files are sass
     # (don't use nanoc with haml 3.0.x series gem - known to be broken!)
@@ -36,7 +40,7 @@ route '*' do
   elsif item[:extension] == 'scss'
     # Write out scss files with a 'css' extension
     item.identifier.chop + '.' + 'css'
-  elsif item[:extension] == 'haml'
+  else
     # Debugging code
     #puts 'Item filename: ' + item[:filename] + '  Item identifier: ' + item.identifier
 

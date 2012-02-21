@@ -1,34 +1,33 @@
 ---
 title: Aeolus - Audrey
 ---
-:markdown
-  #Audrey#
+#Audrey#
 
-  * [Audrey Agent](#audrey_agent)
-  * [Configuration Server](#config_server)
-  * [Examples](#examples)
-  * [Get the source](#source)
+* [Audrey Agent](#audrey_agent)
+* [Configuration Server](#config_server)
+* [Examples](#examples)
+* [Get the source](#source)
 
-  Audrey is a system to aid in bootstrapping cloud guests with configuration data.
+Audrey is a system to aid in bootstrapping cloud guests with configuration data.
 
-  Audrey comprises two parts:
+Audrey comprises two parts:
 
-  * Audrey Agent
-  * Configuration Server
+* Audrey Agent
+* Configuration Server
 
-  The Audrey Agent is installed in the image of a cloud guest and serves as the bootstrap processor.  The Configuration Server runs stand-alone and contains all of the configuration information required by each launching cloud guest.  The Audrey Agent on the cloud guest contacts the Configuration Server to learn what configurations should be implemented on the guest.
+The Audrey Agent is installed in the image of a cloud guest and serves as the bootstrap processor.  The Configuration Server runs stand-alone and contains all of the configuration information required by each launching cloud guest.  The Audrey Agent on the cloud guest contacts the Configuration Server to learn what configurations should be implemented on the guest.
 
 .section-grouping
-  :markdown
-    #Audrey Agent<a id="audrey_agent"></a>#
 
-    The Audrey Agent runs as soon as the cloud guest finishes booting.  The Agent picks up bootstrapping information from user-supplied data (for example, [user data in EC2](http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html#instancedata-user-data-retrieval)) and connects to the Configuration Server to retrieve configuration information.
+#Audrey Agent<a id="audrey_agent"></a>#
 
-    ##Audrey-enabled Images<a id="audrey_enabled_images"></a>##
+The Audrey Agent runs as soon as the cloud guest finishes booting.  The Agent picks up bootstrapping information from user-supplied data (for example, [user data in EC2](http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html#instancedata-user-data-retrieval)) and connects to the Configuration Server to retrieve configuration information.
 
-    Use [Image Factory](/imagefactory.html) to build an Audrey-enabled image.  Image Factory supports two methods of speficying packages to be installed in images:
+##Audrey-enabled Images<a id="audrey_enabled_images"></a>##
 
-    ###Image Factory Target Content<a id="image_factory_target_content"></a>###
+Use [Image Factory](/imagefactory.html) to build an Audrey-enabled image.  Image Factory supports two methods of speficying packages to be installed in images:
+
+###Image Factory Target Content<a id="image_factory_target_content"></a>###
 
     If you want to make sure that all images built by Image Factory contain the Audrey Agent, include the following XML in Image Factory's target content configuration file:
 
@@ -46,7 +45,7 @@ title: Aeolus - Audrey
           </include>
         </template_includes>
 
-    ###Image Factory Build Template<a id="image_factory_build_template"></a>###
+###Image Factory Build Template<a id="image_factory_build_template"></a>###
 
     If you want to build a single image through Image Factory with the Audrey Agent, use a template like the following:
 
@@ -78,12 +77,12 @@ title: Aeolus - Audrey
 %br
 
 .section-grouping
-  :markdown
-    #Configuration Server<a id="config_server"></a>#
+
+#Configuration Server<a id="config_server"></a>#
 
     The Configuration Server provides two services: it delivers configuration files and paramters to Audrey-enabled guests, and it can share configuration information between launching guests.
 
-    ##Setup<a id="setup_config_server"></a>##
+##Setup<a id="setup_config_server"></a>##
 
     When deploying a Configuration Server, you have to take a couple of items into consideration:
 
@@ -185,7 +184,7 @@ title: Aeolus - Audrey
 %br
 
 .section-grouping
-  :markdown
-    #Source Code<a id="source"></a>#
 
-    Our source code repo is hosted on [github](https://github.com/aeolusproject/audrey/).
+#Source Code<a id="source"></a>#
+
+Our source code repo is hosted on [github](https://github.com/aeolusproject/audrey/).
