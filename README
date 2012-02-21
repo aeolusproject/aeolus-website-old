@@ -9,7 +9,7 @@ You need to have Ruby installed, along with the following gems:
 * nanoc (3.3.1 is known to work)
 * haml (3.1.4 is known to work)
 * sass (matching the haml version)
-* rdiscount (1.6.8 is known to work)
+* kramdown (0.13.4 is known to work)
 
 Depending on your operating system, you may need to add the directory
 with the "nanoc" executable to your $PATH.
@@ -66,4 +66,11 @@ nanocsite/layouts/
 nanocsite/output/
     - the final version of the site -- this is what you want to view in a
       web browser
+
+
+File Types
+----------
+
+* HAML files must have the extension .haml
+* Kramdown files must have the extension .md
 
