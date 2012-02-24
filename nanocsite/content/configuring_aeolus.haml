@@ -95,60 +95,7 @@ title: Aeolus | Configuration Documentation
 %br
 
 .section-grouping
-  %h3(id="selinux-enforcing") 2. Turn off SELinux Enforcing mode
-
-  %p
-    Aeolus needs the server it is installed on, to not be running in
-    SELinux "<em>Enforcing</em>" mode.
-
-  %p
-    To make sure this is the case, check the configuration file here:
-
-  %p
-    %pre
-      :preserve
-        /etc/selinux/config
-
-  %p
-    Look for the line starting with '<b>SELINUX=</b>'.  If it is set to
-    "<em>enforcing</em>" then you
-    %b must
-    change it to "<i>permissive</i>" or "<i>disabled</i>" (either one is ok).
-
-  %p
-    For example, from this:
-
-  %p
-    %pre
-      :preserve
-        SELINUX=enforcing
-
-  %p
-    to this:
-
-  %p
-    %pre
-      :preserve
-        SELINUX=permissive
-
-  %p
-    This change will take effect with the next reboot. To apply in immediately run:
-
-  %p
-    %pre
-      :preserve
-        setenforce 0
-
-  %p
-    %b NOTE:
-    This is just a temporary requirement at this stage of Aeolus development.
-    By the time Aeolus is ready for general usage, it will work properly with
-    SELinux in enforcing mode.
-
-%br
-
-.section-grouping
-  %h3(id="update-firewall") 3. Update the firewall
+  %h3(id="update-firewall") 2. Update the firewall
 
   %p
     Because Aeolus uses an encrypted web interface, the server running it
