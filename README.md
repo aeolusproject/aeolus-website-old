@@ -27,16 +27,17 @@ directly posted to a webserver or displayed in a browser.
 
 To do this, go to the "nanocsite" directory and run "nanoc compile":
 
-  $ cd nanocsite
-  $ nanoc compile
+    $ cd nanocsite
+    $ nanoc compile
 
 The website will be generated into the "nanocsite/output/" directory.
 
 To view the output, start nanoc's built in web server, then point your
 browser to http://localhost:3000.
 
-  $ nanoc view
-  $ firefox http://localhost:3000
+    $ nanoc view
+    $ firefox http://localhost:3000
+
 
 
 Nanoc Help
@@ -45,27 +46,28 @@ Nanoc Help
 Nanoc has many more commands and options available.  You can find out more
 about them by running:
 
-  $ nanoc help
+    $ nanoc help
+
 
 
 File Structure
 --------------
 
-nanocsite/
-    - the Aeolus Project website
+* nanocsite/
+ * the Aeolus Project website
 
-nanocsite/content/
-    - the pages that are displayed on the website
+* nanocsite/content/
+ * the pages that are displayed on the website
 
-nanocsite/content/static-redmine
-    - static redmine content (themes, javascripts, etc)
+* nanocsite/content/static-redmine
+ * static redmine content (themes, javascripts, etc)
 
-nanocsite/layouts/
-    - the Aeolus Project website template
+* nanocsite/layouts/
+ * the Aeolus Project website template
 
-nanocsite/output/
-    - the final version of the site -- this is what you want to view in a
-      web browser
+* nanocsite/output/
+ * the final version of the site -- this is what you want to view in a web browser
+
 
 
 File Types
