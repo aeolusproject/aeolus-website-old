@@ -1,8 +1,5 @@
 ---
 title: Aeolus | Start an Instance of the Image
-breadcrumb_name: Start Image
-extension: html
-filter: haml
 ---
 %h1 Start an Instance of the Image
 
@@ -32,12 +29,12 @@ filter: haml
           :title => "First login" } First login
 
     %li
-      %a{ :href => "configure_provider.html",
-          :title => "Configure your Provider" } Configure your Provider
+      %a{ :href => "configure_providers.html",
+          :title => "Configure your Cloud Providers" } Configure your Cloud Providers
 
     %li
       %a{ :href => "configure_cli.html",
-          :title => "Configuring aeolus-cli" } Configure the Aeolus Command Line Tool
+          :title => "Configure the Aeolus Command Line Interface tool" } Configure the Aeolus Command Line Interface tool
 
     %li
       %a{ :href => "make_template.html",
@@ -108,9 +105,9 @@ filter: haml
         %br
 
         %center
-          %a{ :href => "images/getting_started/new_deployment.png",
+          %a{ :href => "images/new_deployment.png",
               :target => "_blank" }
-            %img.thumbnail{ :src => "images/getting_started/thumbnails/new_deployment_thumb.png",
+            %img.thumbnail{ :src => "images/thumbnails/new_deployment_thumb.png",
                   :title => "New Deployment - click to view at full size in a new window",
                   :alt => "New Deployment - click to view at full size in a new window" }
         %br
@@ -124,9 +121,9 @@ filter: haml
 
         %br
         %center
-          %a{ :href => "images/getting_started/new_deployment_details.png",
+          %a{ :href => "images/new_deployment_details.png",
               :target => "_blank" }
-            %img.thumbnail{ :src => "images/getting_started/thumbnails/new_deployment_details_thumb.png",
+            %img.thumbnail{ :src => "images/thumbnails/new_deployment_details_thumb.png",
                   :title => "New Deployment - click to view at full size in a new window",
                   :alt => "New Deployment - click to view at full size in a new window" }
         %br
@@ -142,9 +139,9 @@ filter: haml
 
         %br
         %center
-          %a{ :href => "images/getting_started/launch_deployment.png",
+          %a{ :href => "images/launch_deployment.png",
               :target => "_blank" }
-            %img.thumbnail{ :src => "images/getting_started/thumbnails/launch_deployment_thumb.png",
+            %img.thumbnail{ :src => "images/thumbnails/launch_deployment_thumb.png",
                   :title => "Launch Deployment - click to view at full size in a new window",
                   :alt => "Launch  Deployment - click to view at full size in a new window" }
         %br 
@@ -159,9 +156,9 @@ filter: haml
   %p
     &nbsp;&nbsp;&nbsp;
     %center
-      %a{ :href => "images/getting_started/instance_added.png",
+      %a{ :href => "images/instance_added.png",
           :target => "_blank" }
-        %img.thumbnail{ :src => "images/getting_started/thumbnails/instance_added_thumb.png",
+        %img.thumbnail{ :src => "images/thumbnails/instance_added_thumb.png",
               :title => "Instance 1 added",
               :alt => "Instance 1 added" }
 
@@ -230,7 +227,7 @@ filter: haml
 
   %p
     &nbsp;&nbsp;&nbsp;
-    %img{ :src => "images/getting_started/ec2_ssh_rule_added.png",
+    %img{ :src => "images/ec2_ssh_rule_added.png",
           :title => "SSH rule added to EC2 default security group",
           :alt => "SSH rule added to EC2 default security group" }
 
@@ -268,7 +265,7 @@ filter: haml
         link to bring up a download dialog for the SSH private key file:
         %br
         %br
-        %img{ :src => "images/getting_started/instance_ssh_private_key_download_link.png",
+        %img{ :src => "images/instance_ssh_private_key_download_link.png",
               :title => "Text link to Instance 1 SSH private key",
               :alt => "Text link to Instance 1 SSH private key" }
         %br
@@ -305,7 +302,7 @@ filter: haml
         screen the ssh came from:
         %br
         %br
-        %img{ :src => "images/getting_started/instance_ssh_private_key_download_link.png",
+        %img{ :src => "images/instance_ssh_private_key_download_link.png",
               :title => "Text link to Instance 1 SSH private key",
               :alt => "Text link to Instance 1 SSH private key" }
         %br
@@ -343,4 +340,4 @@ filter: haml
 
 %a.button{ :href => "stop_image.html", :title => "Stop an Instance of an Image" }
   Stop Image
-  %img{:src => "images/button-right.png", :alt => "→"}
+  %img{:src => "/images/button-right.png", :alt => "→"}

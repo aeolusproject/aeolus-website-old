@@ -1,8 +1,5 @@
 ---
 title: Aeolus | Stop a running Instance
-breadcrumb_name: Stop Image
-extension: html
-filter: haml
 ---
 %h1 Stop a running Instance
 
@@ -23,12 +20,12 @@ filter: haml
           :title => "First login" } First login
 
     %li
-      %a{ :href => "configure_provider.html",
-          :title => "Configure your Provider" } Configure your Provider
+      %a{ :href => "configure_providers.html",
+          :title => "Configure your Cloud Providers" } Configure your Cloud Providers
 
     %li
       %a{ :href => "configure_cli.html",
-          :title => "Configuring aeolus-cli" } Configure the Aeolus Command Line Tool
+          :title => "Configure the Aeolus Command Line Interface tool" } Configure the Aeolus Command Line Interface tool
 
     %li
       %a{ :href => "make_template.html",
@@ -56,9 +53,9 @@ filter: haml
   %p
     &nbsp;&nbsp;&nbsp;
     %center
-      %a{ :href => "images/getting_started/aeolus_stop_instance_button.png",
+      %a{ :href => "images/aeolus_stop_instance_button.png",
           :target => "_blank" }
-        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_stop_instance_button_thumb.png",
+        %img.thumbnail{ :src => "images/thumbnails/aeolus_stop_instance_button_thumb.png",
               :title => "Shutting down the instance - click to view at full size in a new window",
               :alt => "Shutting down the instance - click to view at full size in a new window" }
 
@@ -79,9 +76,9 @@ filter: haml
   %p
     &nbsp;&nbsp;&nbsp;
     %center
-      %a{ :href => "images/getting_started/aeolus_instance_stopped.png",
+      %a{ :href => "images/aeolus_instance_stopped.png",
           :target => "_blank" }
-        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_instance_stopped_thumb.png",
+        %img.thumbnail{ :src => "images/thumbnails/aeolus_instance_stopped_thumb.png",
               :title => "Instance has stopped - click to view at full size in a new window",
               :alt => "Instance has stopped - click to view at full size in a new window" }
 
@@ -101,7 +98,7 @@ filter: haml
 
   %p
     &nbsp;&nbsp;&nbsp;
-    %img{ :src => "images/getting_started/ec2_instance_clean_up.png",
+    %img{ :src => "images/ec2_instance_clean_up.png",
           :title => "Check AWS for EC2 instances left running",
           :alt => "Check AWS for EC2 instances left running" }
 
@@ -109,4 +106,4 @@ filter: haml
 
 %a.button{ :href => "cleaning_up.html", :title => "Cleaning up" }
   Cleaning Up
-  %img{:src => "images/button-right.png", :alt => "→"}
+  %img{:src => "/images/button-right.png", :alt => "→"}

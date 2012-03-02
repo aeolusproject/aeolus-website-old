@@ -1,8 +1,5 @@
 ---
 title: Aeolus | Create a Fedora 15 Template
-breadcrumb_name: Make Template
-extension: html
-filter: haml
 ---
 %h1 Create a Fedora 15 Template
 
@@ -23,12 +20,12 @@ filter: haml
           :title => "First login" } First login
 
     %li
-      %a{ :href => "configure_provider.html",
-          :title => "Configure your Provider" } Configure your Provider
+      %a{ :href => "configure_providers.html",
+          :title => "Configure your Cloud Providers" } Configure your Cloud Providers
 
     %li
       %a{ :href => "configure_cli.html",
-          :title => "Configuring aeolus-cli" } Configure the Aeolus Command Line Tool
+          :title => "Configure the Aeolus Command Line Interface tool" } Configure the Aeolus Command Line Interface tool
 
     %li
       Create a Fedora 15 Template
@@ -174,7 +171,7 @@ filter: haml
 
   %p
     &nbsp;&nbsp;&nbsp;
-    %img{ :src => "images/getting_started/new_ami_in_ami_list.png",
+    %img{ :src => "images/new_ami_in_ami_list.png",
           :title => "New registered AMI",
           :alt => "New registered AMI" }
 
@@ -184,7 +181,7 @@ filter: haml
 
   %p
     &nbsp;&nbsp;&nbsp;
-    %img{ :src => "images/getting_started/new_s3_bucket_holding_ami.png",
+    %img{ :src => "images/new_s3_bucket_holding_ami.png",
           :title => "New S3 bucket",
           :alt => "New S3 bucket" }
 
@@ -192,4 +189,4 @@ filter: haml
 
 %a.button{ :href => "start_image.html", :title => "Start An Instance Of An Image" }
   Start Image
-  %img{:src => "images/button-right.png", :alt => "→"}
+  %img{:src => "/images/button-right.png", :alt => "→"}
