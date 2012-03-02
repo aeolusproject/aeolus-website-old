@@ -1,0 +1,287 @@
+---
+title: Aeolus | First login
+breadcrumb_name: First login
+extension: html
+filter: haml
+---
+%h1 First login
+
+%p
+  On this page, you will log into Aeolus, be introduced to the main parts of
+  the web based interface, and change the administrator password.
+
+.page-listing
+  %h3 Getting Started Guide
+
+  %ol
+    %li
+      %a{ :href => "basic_glossary.html",
+          :title => "Basic glossary" } Basic glossary
+
+    %li
+      %a{ :href => "configuring_aeolus.html",
+          :title => "Configuring Aeolus" } Configuring Aeolus
+
+    %li
+      First login
+
+    %li
+      %a{ :href => "configure_provider.html",
+          :title => "Configure your Provider" } Configure your Provider
+
+    %li
+      %a{ :href => "configure_cli.html",
+          :title => "Configuring aeolus-cli" } Configure the Aeolus Command Line Tool
+
+    %li
+      %a{ :href => "make_template.html",
+          :title => "Create a Fedora 15 Template" } Create a Fedora 15 Template
+
+    %li
+      %a{ :href => "start_image.html",
+          :title => "Start an Instance of the Image" } Start an Instance of the Image
+
+    %li
+      %a{ :href => "stop_image.html",
+          :title => "Stop a running Instance" } Stop a running Instance
+
+    %li
+      %a{ :href => "cleaning_up.html",
+          :title => "Cleaning up" } Cleaning up
+
+%br
+  
+.section-grouping
+  %h2(id="first-login") 1. Web based interface
+
+  %p
+    After Aeolus has been initialized, with any firewall updates done, you
+    are ready to use the web interface.
+
+  %p
+    Open the following address in your web browser (any modern one), using the
+    name of your Aeolus server instead of "<b>server_name</b>":
+
+  %p
+    %pre
+      :preserve
+        https://<span style="color:chartreuse">server_name</span>/conductor
+
+  .note
+    %p
+      %b USEFUL INFO:
+      Aeolus is really several pieces of software that work together.
+      "Conductor" is the web based user interface piece.
+
+  %p
+    If everything is working properly, the initial login screen will appear:
+
+  %p
+    %center
+      %a{ :href => "images/getting_started/initial_login_screen.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/initial_login_screen_thumb.png",
+              :title => "Initial login screen - click to view at full size in a new window",
+              :alt => "Initial login screen - click to view at full size in a new window" }
+
+  %p
+    Login now, using the default administrator details set by
+    <b>aeolus-configure</b>:
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    %b Username:
+    admin
+    %br
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    %b Password:
+    password
+
+  %p
+    We'll change that password in a few moments, after introducing you to
+    the major parts of the Aeolus interface.
+
+%br
+
+.section-grouping
+  %h2(id="welcome") 2. Welcome screen
+
+  %p
+    Once you've logged in, the main Aeolus web interface appears:
+
+  %p
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_6_0_initial_welcome_screen.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_6_0_initial_welcome_screen_thumb.png",
+              :title => "Initial welcome screen - click to view at full size in a new window",
+              :alt => "Initial welcome screen - click to view at full size in a new window" }
+
+  %p
+    The important parts are:
+  
+  %p
+    %dl
+      %dt
+        %b Section tabs
+      %dd
+        These are the "<b>MONITOR</b>" and "<b>ADMINISTER</b>" tabs in the
+        screenshot.
+        %ul
+          %li
+            Clicking the
+            %em Monitor
+            tab switches to the Monitoring view.  This is where the
+            status and progress of your virtual machines is shown.
+            %br
+            %br
+            .note
+              %p
+                %b NOTE -
+                This view is the default when you log in.  Clicking on
+                %em Monitor
+                when you're already in this view has no effect.
+            %br
+
+          %li
+            Clicking the
+            %em Administer
+            tab switches the view to general configuration settings.
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_6_0_initial_welcome_screen_section_tabs.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_6_0_initial_welcome_screen_section_tabs_thumb.png",
+              :title => "Section tabs - click to view at full size in a new window",
+              :alt => "Section tabs - click to view at full size in a new window" }
+
+    %dl
+      %dt
+        %b View
+      %dd
+        This is the middle of the screen, from the "<b>Overview</b>" title bar
+        down.
+        %br
+        %br
+        It includes everything down to (but not including) the page footer.
+        %br
+        %br
+        The title, options, and content in this area change as you perform
+        different tasks in Aeolus.
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_6_0_initial_welcome_screen_view.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_6_0_initial_welcome_screen_view_thumb.png",
+              :title => "View - click to view at full size in a new window",
+              :alt => "View - click to view at full size in a new window" }
+
+    %dl
+      %dt
+        %b View options
+      %dd
+        Some views, such as Monitor Overview, let you choose how data
+        is displayed.
+        %br
+        %br
+        <span style="color: magenta">Text goes here describing pretty view vs filter view</span>
+        %br
+        %br
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_6_0_initial_welcome_screen_view_options.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_6_0_initial_welcome_screen_view_options_thumb.png",
+              :title => "View options - click to view at full size in a new window",
+              :alt => "View options - click to view at full size in a new window" }
+
+    %dl
+      %dt
+        %b View commands
+      %dd
+        <span style="color: magenta">Text goes here describing view commands</span> 
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_6_0_initial_welcome_screen_view_commands.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_6_0_initial_welcome_screen_view_commands_thumb.png",
+              :title => "View commands - click to view at full size in a new window",
+              :alt => "View commands - click to view at full size in a new window" }
+
+    %dl
+      %dt
+        %b User options menu
+      %dd
+        <span style="color: magenta">Text goes here describing logged in user options menu</span> 
+        %br
+        %br
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_6_0_initial_welcome_screen_user_options.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_6_0_initial_welcome_screen_user_options_thumb.png",
+              :title => "User options menu - click to view at full size in a new window",
+              :alt => "User options menu - click to view at full size in a new window" }
+
+%br
+
+.section-grouping
+  %h2(id="change-passwd") 3. Change the administrator password
+
+  %p
+    In the top right corner of the interface, click on the silhouette button
+    next to "<b>aeolus user</b>".  The user options menu will appear.
+
+  %p
+    Then click "<b>My Account</b>".  This is a shortcut to your user
+    information view in the 
+    %em Administer
+    sections' "<b>Users and Groups</b>" area. 
+
+  %p
+    %center
+      %img.thumbnail{ :src => "images/getting_started/aeolus_0.6.0_user_account_shortcut.png",
+              :title => "User information shortcut",
+              :alt => "User information shortcut" }
+
+  %p
+    Click the "<b>Edit</b>" button on the user's business card.
+
+  %p
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_6_0_aeolus_user_view.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_6_0_aeolus_user_view_thumb.png",
+              :title => "User information view - click to view at full size in a new window",
+              :alt => "User information view - click to view at full size in a new window" }
+
+  %p
+    This loads the "<b>Edit User</b>" view:
+
+  %p
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_6_0_edit_user_view.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_6_0_edit_user_view_thumb.png",
+              :title => "Edit user view - click to view at full size in a new window",
+              :alt => "Edit user view - click to view at full size in a new window" }
+
+  %p
+    Change the password now, using the "<b>Change password</b>" and
+    "<b>Confirm password</b>" fields.
+    %br
+    %br
+    If you want, also change the First name, Last name, and E-mail fields.
+
+  %p
+    Click the "<b>Save User</b>" button when you're done.  A message
+    confirming the change should appear:
+
+  %p
+    %center
+      %a{ :href => "images/getting_started/aeolus_0_6_0_user_update_successful.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/getting_started/thumbnails/aeolus_0_6_0_user_update_successful_thumb.png",
+              :title => "Message indicating user update was successful - click to view at full size in a new window",
+              :alt => "Message indicating user update was successful - click to view at full size in a new window" }
+
+%br
+
+%a.button{ :href => "configure_provider.html", :title => "Configure your Provider" }
+  Configure your Provider
+  %img{:src => "images/button-right.png", :alt => "→"}
