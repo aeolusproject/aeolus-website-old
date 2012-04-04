@@ -10,7 +10,7 @@ title: Aeolus | First login
 = render 'gsg_navigation', :selected_page => 'first_login.html'
 
 %br
-  
+
 .section-grouping
   %h2(id="first-login") 1. Web based interface
 
@@ -30,7 +30,10 @@ title: Aeolus | First login
   .note
     %p
       %b USEFUL INFO:
-      Aeolus is really several pieces of software that work together.
+      Aeolus is really
+      %a{ :href => "https://www.aeolusproject.org/redmine/projects/aeolus/wiki/Aeolus_Components",
+         :target => "_blank" }
+        several pieces of software that work together.
       "Conductor" is the web based user interface piece.
 
   %p
@@ -79,7 +82,7 @@ title: Aeolus | First login
 
   %p
     The important parts are:
-  
+
   %p
     %dl
       %dt
@@ -118,15 +121,14 @@ title: Aeolus | First login
       %dt
         %b View
       %dd
-        This is the middle of the screen, from the "<b>Overview</b>" title bar
-        down.
-        %br
-        %br
-        It includes everything down to (but not including) the page footer.
-        %br
-        %br
-        The title, options, and content in this area change as you perform
-        different tasks in Aeolus.
+        %p
+          This is the middle of the screen, from the "<b>Overview</b>" title bar
+          down.
+        %p
+          It includes everything down to (but not including) the page footer.
+        %p
+          The title, options, and content in this area change as you perform
+          different tasks in Aeolus.
     %center
       %a{ :href => "images/initial_welcome_screen_view.png",
           :target => "_blank" }
@@ -138,13 +140,17 @@ title: Aeolus | First login
       %dt
         %b View options
       %dd
-        Some views, such as Monitor Overview, let you choose how data
-        is displayed.
-        %br
-        %br
-        <span style="color: magenta">Text goes here describing pretty view vs filter view</span>
-        %br
-        %br
+        %p
+          Some views, such as Monitor Overview, let you choose how data
+          is displayed. Conductor presents two views&mdash;
+          %strong
+            detail view
+          and
+          %strong
+            pretty view.
+          Pretty view is represented by the "eyeball" icon and is the default view. It represents a graphical overview of content.
+          Detail view is represented by the "table" or "grid" icon, and presents a more detailed view of content. In some cases,
+          detail view will present some controls that are not present in pretty view. For now, we will stay in pretty view.
     %center
       %a{ :href => "images/initial_welcome_screen_view_options.png",
           :target => "_blank" }
@@ -156,7 +162,8 @@ title: Aeolus | First login
       %dt
         %b View commands
       %dd
-        <span style="color: magenta">Text goes here describing view commands</span> 
+        View commands represent action buttons based on the objects you are viewing. Depending on the page you are on, these actions
+        may include creating a new pool, deleting a user, launching an instance, etc.
     %center
       %a{ :href => "images/initial_welcome_screen_view_commands.png",
           :target => "_blank" }
@@ -168,9 +175,8 @@ title: Aeolus | First login
       %dt
         %b User options menu
       %dd
-        <span style="color: magenta">Text goes here describing logged in user options menu</span> 
-        %br
-        %br
+        The user menu contains actions for the currently logged-in user, including the ability to edit your account
+        preferences and to log out.
     %center
       %a{ :href => "images/initial_welcome_screen_user_options.png",
           :target => "_blank" }
@@ -189,9 +195,9 @@ title: Aeolus | First login
 
   %p
     Then click "<b>My Account</b>".  This is a shortcut to your user
-    information view in the 
+    information view in the
     %em Administer
-    sections' "<b>Users and Groups</b>" area. 
+    sections' "<b>Users and Groups</b>" area.
 
   %p
     %center
