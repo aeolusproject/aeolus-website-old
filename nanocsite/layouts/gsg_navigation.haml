@@ -1,0 +1,23 @@
+.page-listing
+  %h3 Getting Started Guide
+
+  - pages = [ {:href => "basic_glossary.html", :title => "Basic Glossary" },
+    {:href => "configuring_aeolus.html", :title => "Configuring Aeolus" },
+    { :href => "first_login.html", :title => "First login" },
+    { :href => "configure_providers.html", :title => "Configure your Cloud Providers" },
+    { :href => "configure_cli.html", :title => "Configure the Aeolus Command Line Interface tool" },
+    { :href => "make_template.html", :title => "Create a Fedora 15 Template" },
+    { :href => "start_image.html", :title => "Start an Instance of the Image" },
+    { :href => "stop_image.html", :title => "Stop a running Instance" },
+    { :href => "cleaning_up.html", :title => "Cleaning up" } ]
+
+  %ol
+    - pages.each do |page|
+      - if page[:href] == @selected_page
+        %li= page[:title]
+      - else
+        %li
+          %a{:href => page[:href],
+             :title => page[:title] }
+            = page[:title]
+
