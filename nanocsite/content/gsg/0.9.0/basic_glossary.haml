@@ -1,0 +1,72 @@
+---
+title: Aeolus | Basic Glossary
+---
+%h1 Basic Glossary for Aeolus 0.9.0
+
+%p
+  Before we get started with the initial configuration, here are some terms and definitions that will be useful to know.
+
+= render 'gsg_navigation', :selected_page => 'basic_glossary.html'
+
+%br
+
+.section-grouping
+  %h2(id="welcome") 1. Provider Type and Provider
+
+  %p
+    Cloud provider types include Amazon EC2, RHEV-M, Rackspace, etc.  A provider is simply an instance of a provider type - for example, an EC2 region such as us-east-1.  Users may have one or multiple accounts associated with a provider.
+
+  %p
+    This guide will configure Aeolus for EC2, as well as a "Mock" provider for those without an available EC2 account.  The mock provider is simply a fake provider used for testing.
+
+%br
+
+.section-grouping
+  %h2(id="first-login") 2. Instance
+
+  %p
+    An instance is a single virtual machine running on a provider.
+
+%br
+
+.section-grouping
+  %h2(id="welcome") 3. Image
+
+  %p
+    A Conductor image contains provider-independent metadata that Aeolus can use to generate disk images on supported providers.
+
+  %p
+    This guide will create an image for Fedora 15.
+
+%br
+
+.section-grouping
+  %h2(id="first-login") 4. Deployable and Deployment
+
+  %p
+    A deployable references one or more images, along with the appropriate hardware profiles for those images.  A deployable is launched as a deployment.
+
+  %p
+    A deployable is lauched as a deployment.  A deployment consists of one or more instances controlled as a group, such as a database server, an application server, and multiple front-end web servers.
+
+%br
+
+.section-grouping
+  %h2(id="welcome") 5. Pool
+
+  %p
+    A grouping of instances and deployables.  Aeolus provides tools for managing pools, allowing the user to easily manage functions such as administrative rights, permissions, and quotas.
+
+%br
+
+.section-grouping
+  %h2(id="welcome") 6. Catalog
+
+  %p
+    A catalog contains one or more deployables.  Each catalog is associated with a single pool.
+
+%br
+
+%a.button{ :href => "configuring_aeolus.html", :title => "Configuring Aeolus" }
+  Configuring Aeolus
+  %img{:src => "/images/button-right.png", :alt => "→"}

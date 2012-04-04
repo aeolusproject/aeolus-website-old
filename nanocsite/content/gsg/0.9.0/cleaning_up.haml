@@ -1,0 +1,135 @@
+---
+title: Aeolus | Cleaning up
+---
+%h1 Cleaning up
+
+%p
+  Useful things to know when using development versions of Aeolus.
+
+= render 'gsg_navigation', :selected_page => 'cleaning_up.html'
+
+%br
+
+.section-grouping
+  %h2 Unconfiguring Aeolus
+
+  %p
+    To remove the configuration data from an Aeolus server, run the  
+    %b aeolus-cleanup
+    command as a super-user:
+
+  %p
+    %pre
+      :preserve
+        $ sudo /usr/sbin/aeolus-cleanup
+
+  %p
+    This is useful for removing Aeolus configuration data from an existing
+    server, prior to running <b>aeolus-configure</b>, so is of particular
+    interest to testers and developers.
+
+  %p
+    It only acts on the local Aeolus server, and does not communicate with
+    any configured Cloud providers.  You need to manually remove any
+    information in configured Cloud providers.
+
+  %p
+    %b WARNING:
+    This command drops the PostgreSQL database, and permanently deletes
+    Conductor related data.  Don't use it on a server whose data you want to
+    keep.
+
+  %p
+    If you are using Amazon EC2, follow the next steps to complete the cleanup.
+%br
+
+.section-grouping
+  %h2 Remove any AMIs left in EC2 and storage left in S3
+
+  %p
+    Aeolus does not yet de-register AMIs, nor delete their corresponding
+    storage from S3.  For now, you will need to use the AWS Management
+    Console to de-register AMIs and delete S3 storage yourself.
+
+  %br
+
+  %h3 De-registering an AMI
+
+  %p
+    Load Amazons' AWS Management Console, make sure you are in the
+    %b EC2
+    section, then change to the AMIs page.
+
+  %p
+    %ol
+      %li Tick the checkbox next to the AMIs created by Aeolus.
+      %li
+        Click
+        %b De-register
+        then confirm this is what you want to do.
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %img{ :src => "images/ec2_deregister_ami.png",
+          :title => "Deregister EC2 AMIs",
+          :alt => "Deregister EC2 AMIs" }
+
+  %p
+    This removes the selected AMIs from your AMI list.  Their storage needs
+    to be removed from S3 next.
+
+  %br
+
+  %h3 Removing S3 storage
+
+  %p
+    Load Amazons' AWS Management Console, and make sure you are in the
+    %b S3
+    section.
+
+  %p
+    %ol
+      %li
+        Look for any buckets with "<em>imagefactory</em>" in their name, as
+        these will have been created by Aeolus.
+
+      %li
+        For each of these buckets, delete its contents then delete the bucket
+        itself.
+
+%br
+
+.section-grouping
+  %h2 Next Steps
+
+  %p
+    Aeolus has a
+    %b much richer
+    set of capabilities than what has been shown in this <em>Getting Started
+    Guide</em>.
+
+  %p
+    To find out more, you can:
+    
+    %ul
+      %li Experiment using the Aeolus web interface configured earlier.
+
+      %li
+        Add yourself to the
+        <a href= "contact.html#release"
+        title="Aeolus announcement mailing list">Aeolus announcement mailing list</a>,
+        to receive notification of new Aeolus releases. 
+
+      %li
+        Look into the individual Aeolus component projects, starting with the
+        <a href="/projects.html" title="Aeolus Project Pages">Aeolus Project Pages</a>.
+
+      %li
+        Join us on the
+        <a href="contact.html#developer"
+        title="Aeolus developer mailing lists">Aeolus developer mailing lists</a>,
+        to contribute in Aeolus development.
+
+      -#%li
+        Read through the official Red Hat CloudForms documentation on
+        <a href="https://docs.redhat.com" title="Red Hat Documentation">http://docs.redhat.com</a>.

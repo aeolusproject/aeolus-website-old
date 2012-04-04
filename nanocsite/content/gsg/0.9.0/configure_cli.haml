@@ -1,0 +1,32 @@
+---
+title: Aeolus | Configure the Aeolus Command Line Interface tool
+---
+%h1 Configure the Aeolus Command Line Interface tool
+
+= render 'gsg_navigation', :selected_page => 'configure_cli.html'
+
+%br
+
+.section-grouping
+  %h2 1. Update Aeolus CLI Config
+
+  %p
+    Aeolus CLI is a command line tool for creating and managing aeolus images.  The Aeolus CLI Config file is installed in the user's home directory as .aeolus-cli ('~/.aeolus-cli').
+    %pre
+      :preserve
+        :conductor:
+          :url: https://localhost/conductor/api
+          :username: admin
+          :password: password
+
+  %p
+    You should update the password to the one you created during the
+    <a href="first_login.html">First Login Step</a>.
+
+  %p
+    Also make sure that the conductor url is set to where conductor is running with the "/api" postfix and the username is correct.  Unless you have strayed from the default setup, the default values should be sufficient.
+    
+  .note
+    %p
+      %b NOTE -
+      New users who want to create and manage aeolus images from the command lin, must install the aeolus-cli and update the config with their own credentials
