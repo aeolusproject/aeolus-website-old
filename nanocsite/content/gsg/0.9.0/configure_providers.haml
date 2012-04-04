@@ -56,18 +56,7 @@ title: Aeolus | Configure your Cloud Providers
   %p
     %ol
       %li
-        %em In the Aeolus web interface go to
-        %b Administer
-        &rArr; <b>Cloud Providers</b>.
-
-      %li
-        Choose the mock provider in the upper right hand corner.
-
-      %li
-        Click "Accounts" just below the choose provider selector.
-
-      %li
-        Click the "New Account" button.
+        From the Accounts page, Click the "New Account" button.
 
       %li
         For
@@ -99,7 +88,7 @@ title: Aeolus | Configure your Cloud Providers
     We
     %b ARE NOT
     responsible for any EC2 or other Cloud fees and charges you may incur.
-  
+
   %p
     As a precaution after finishing every Aeolus testing session, you
     %b must
@@ -151,69 +140,15 @@ title: Aeolus | Configure your Cloud Providers
       %li ec2-ap-northeast-1
       %li ec2-ap-southeast-1
 
-  %p
-    %center
-      %a{ :href => "images/cloud_providers_view_overview.png",
-          :target => "_blank" }
-        %img.thumbnail{ :src => "images/thumbnails/cloud_providers_view_overview_thumb.png",
-              :title => "Cloud Providers overview - click to view at full size in a new window",
-              :alt => "Cloud Providers overview - click to view at full size in a new window",
-              :width => "500",
-              :height => "365"}
+  %p At the top of the Cloud Providers page, there is a drop down list listing available providers. You should see the
+  above list of providers, and you can select whichever region you wish to use.
 
-  %p There is a drop down list you can select, for changing between them:
+  %p With a provider selected, press the "Accounts" button, and then choose "New Account."
 
   %p
-    %center
-      %img.thumbnail{ :src => "images/cloud_provider_list.png",
-            :title => "Cloud Providers list",
-            :alt => "Cloud Providers list",
-            :width => "361",
-            :height => "284"}
-
-  %p
-    This view also contains its own sub-section buttons, for changing among
-    settings:
-
-  %p
-    %center
-      %img.thumbnail{ :src => "images/cloud_provider_section_buttons.png",
-            :title => "Cloud Provider view section buttons",
-            :alt => "Cloud Provider view section buttons",
-            :width => "526",
-            :height => "99"}
-
-  %p Click on the "<b>Accounts</b>" button:
-
-
-  %p
-    %center
-      %a{ :href => "images/cloud_providers_click_accounts.png",
-          :target => "_blank" }
-        %img.thumbnail{ :src => "images/thumbnails/cloud_providers_click_accounts_thumb.png",
-              :title => "Click the Accounts button - click to view at full size in a new window",
-              :alt => "Click the Accounts button - click to view at full size in a new window",
-              :width => "500",
-              :height => "365"}
-
-  %p Then click the "<b>New Account</b>" button:
-
-  %p
-    %center
-      %a{ :href => "images/click_new_account_button.png",
-          :target => "_blank" }
-        %img.thumbnail{ :src => "images/thumbnails/click_new_account_button_thumb.png",
-              :title => "Click the New Account button - click to view at full size in a new window",
-              :alt => "Click the New Account button - click to view at full size in a new window",
-              :width => "500",
-              :height => "307"}
-
-  %p Fill in the EC2 account details, with your Amazon AWS account info.
-
-  %p
-    The information you need from Amazon is on their AWS
-    <a href="https://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key"
-    title="Security Credentials">Account &rArr; Security Credentials</a>
+    Fill in the EC2 account details, with your Amazon AWS account info. The information you need from Amazon is on their AWS
+    %a{ :href => "https://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key",
+      :title => "Security Credentials"} Security &rArr; Security Credentials
     page.
 
   %p
@@ -228,22 +163,10 @@ title: Aeolus | Configure your Cloud Providers
 
   %p When you are done, click the "<b>Save</b> button".
 
-  %p A confirmation message should appear:
-
-  %p
-    %center
-      %a{ :href => "images/account_added_confirmation.png",
-          :target => "_blank" }
-        %img.thumbnail{ :src => "images//thumbnails/account_added_confirmation_thumb.png",
-              :title => "Account added confirmation message - click to view at full size in a new window",
-              :alt => "Account added confirmation message - click to view at full size in a new window",
-              :width => "500",
-              :height => "339"}
-
-%br
-
 .section-grouping
   %h2(id="testacct") 2. Verify the account details work
+
+  %p After saving the account above, you can press the "Test Connection" button to test your credentials.
 
   %p
     %center
@@ -254,16 +177,6 @@ title: Aeolus | Configure your Cloud Providers
               :alt => "Account properties view - click to view at full size in a new window",
               :width => "500",
               :height => "269"}
-
-  %p
-    %center
-      %a{ :href => "images//ec2_account_test_successful.png",
-          :target => "_blank" }
-        %img.thumbnail{ :src => "images//thumbnails/ec2_account_test_successful_thumb.png",
-              :title => "Account test successful message - click to view at full size in a new window",
-              :alt => "Account test successful message - click to view at full size in a new window",
-              :width => "500",
-              :height => "287"}
 
 %br
 
