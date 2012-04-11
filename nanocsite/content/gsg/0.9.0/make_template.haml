@@ -44,12 +44,12 @@ title: Aeolus | Create a Fedora 15 Template
 
     %pre
       :preserve
-        $ aeolus-cli build --target ec2,mock --template template.xml
+        $ aeolus-image build --target ec2,mock --template template.xml --environment default
 
-        Target Image                             Target     Status        Image                                    Build                                    
-        ------------------------------------     ------     ---------     ------------------------------------     ------------------------------------     
-        1306b29e-a30e-4efd-a1fb-09753863d77c     ec2        COMPLETED     6214d1b6-7292-436f-9c62-f0852e469f70     995535c8-ee70-407c-9413-12d274bbdd1d     
-        b33236d7-81b9-41b0-96f9-d039acd60537     mock       COMPLETED     6214d1b6-7292-436f-9c62-f0852e469f70     995535c8-ee70-407c-9413-12d274bbdd1d  
+        Target Image                             Target     Status        Image                                    Build
+        ------------------------------------     ------     ---------     ------------------------------------     ------------------------------------
+        1306b29e-a30e-4efd-a1fb-09753863d77c     ec2        COMPLETED     6214d1b6-7292-436f-9c62-f0852e469f70     995535c8-ee70-407c-9413-12d274bbdd1d
+        b33236d7-81b9-41b0-96f9-d039acd60537     mock       COMPLETED     6214d1b6-7292-436f-9c62-f0852e469f70     995535c8-ee70-407c-9413-12d274bbdd1d
 
         Target Image: 663ad46e-709f-4ea1-89f0-e73b8bb2205a
         Image: cb7acabd-59c3-41a7-894a-f3e1b072638c
@@ -65,6 +65,10 @@ title: Aeolus | Create a Fedora 15 Template
       %br
       We use the Target Image value in the next step below, and the Image one
       on the next page.
+
+  %p
+    Environments can be used to group deployments together. Out of the box,
+    aeolus-configure sets up a "default" environment that you may use.
 
   %p
     When building for EC2, this occurs in the form of a "snapshot build" that
@@ -93,7 +97,7 @@ title: Aeolus | Create a Fedora 15 Template
         Provider Image: 19d97c85-3db3-41fa-bf92-63fb6fed738a   Status: New
 
   %p
-    Building and pushing can take some time. You can watch its progress by
+    Building and pushing can take some time, except for the mock provider. You can watch its progress by
     tailing the Image Factory and Image Warehouse logs:
 
     -#%pre
