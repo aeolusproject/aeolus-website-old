@@ -4,7 +4,7 @@ title: Aeolus | Start an Instance of the Image
 %h1 Start an Instance of the Image
 
 %p
-  With the image as an AMI in your provider account, you can start instances
+  With the image pushed to your provider account, you can start instances
   when desired.
 
 %p
@@ -20,7 +20,8 @@ title: Aeolus | Start an Instance of the Image
   %h2 1. Create a Catalog and Deployable
 
   %p
-    Create a deployable XML file with the following content.  Use the image id generated when you pushed the built image.
+    Create a deployable XML file with the following content.  Use the Image ID generated when you pushed the built image.
+    Save it to your local filesystem, for use in a moment.
 
   %p
     %pre
@@ -37,7 +38,7 @@ title: Aeolus | Start an Instance of the Image
   .note
     %p
       %b NOTE -
-      Get the image id value (in light blue), from the aeolus-cli
+      Get the Image ID value (in light blue) from the aeolus-image
       %b build
       command on the previous page.
       %br
@@ -54,7 +55,7 @@ title: Aeolus | Start an Instance of the Image
         Click the "New Catalog" button. Give your catalog a name, associate it with the Default pool, and save it.
 
       %li
-        Click on the name of your new catalog.  Click on the "New Catalog Entry" button.  Give your entry a name, description, and upload the deployable XML file you created.  Save your new catalog entry.
+        Click on the name of your new catalog.  Click on the "New Deployable" button.  Give your entry a name, description, and upload the deployable XML file you created.  Save your new deployable.
 
       %li
         In the Aeolus web interface, go to the
@@ -76,23 +77,7 @@ title: Aeolus | Start an Instance of the Image
         %br
 
       %li
-        Give your deployment a name and select the deployable you just created.
-
-        %pre
-          :preserve
-            https://<span style="color: chartreuse">server_name</span>/f15-deployable.xml
-
-        %br
-        %center
-          %a{ :href => "images/new_deployment_details.png",
-              :target => "_blank" }
-            %img.thumbnail{ :src => "images/thumbnails/new_deployment_details_thumb.png",
-                  :title => "New Deployment - click to view at full size in a new window",
-                  :alt => "New Deployment - click to view at full size in a new window" }
-        %br
-
-      %li
-        Give your deployment a name and select the deployable you just created.
+        Give your deployment a name and upload the deployable you just created.
         Click the
         %b Next
         button.
@@ -107,14 +92,14 @@ title: Aeolus | Start an Instance of the Image
             %img.thumbnail{ :src => "images/thumbnails/launch_deployment_thumb.png",
                   :title => "Launch Deployment - click to view at full size in a new window",
                   :alt => "Launch  Deployment - click to view at full size in a new window" }
-        %br 
-  
+        %br
+
   %p
     Aeolus will then launch an instance of the template, using the AMI
     created on the previous page.
   %p
     The main view will list your instances, with the message
-    "<em>Deployment launched.</em>" near the top: 
+    "<em>Deployment launched.</em>" near the top:
 
   %p
     &nbsp;&nbsp;&nbsp;
@@ -128,7 +113,8 @@ title: Aeolus | Start an Instance of the Image
   %p
     Within a minute or two, the
     %b State
-    field for the instance should change to "<em>running</em>".
+    field for the instance should change to "<em>running</em>". The state will automatically be updated on the page;
+    there is no need to refresh the page.
 
   %p
     If you are using Amazon EC2, follow the next steps to complete your configuration.
@@ -151,17 +137,11 @@ title: Aeolus | Start an Instance of the Image
         go to
         %b EC2
         &rArr; <b>Security Groups</b>.
-        %br
-        %br
-        This displays the list of EC2 security groups.
-        %br
-        %br
 
       %li
         Click on the
         %b default
         security group.
-        %br
         %br
         This displays the details for the default security group, in the
         lower part of the window.
@@ -204,7 +184,7 @@ title: Aeolus | Start an Instance of the Image
 
   %p
     To connect to the new running instance using SSH, you need the private
-    key generated for it: 
+    key generated for it:
 
   %p
     %ol
@@ -217,10 +197,7 @@ title: Aeolus | Start an Instance of the Image
         Click the name of the new running instance.
         %b My First Deployment
         in the above screenshot.
-        %br
-        This will open the Details view, showing the
-        %b Properties
-        tab for the instance.
+
 
       %li
         Click the
@@ -248,7 +225,7 @@ title: Aeolus | Start an Instance of the Image
         %b IMPORTANT:
         %em
           This is because SSH will refuse to use any private key with
-          insecure permissions.    
+          insecure permissions.
 
 %br
 
@@ -259,10 +236,10 @@ title: Aeolus | Start an Instance of the Image
     Now we connect to the new running instance using SSH:
 
   %p
-    %ol       
+    %ol
       %li
         Get the public address of the instance from the instance list on the same
-        screen the ssh came from:
+        screen the ssh key came from:
         %br
         %br
         %img{ :src => "images/instance_ssh_private_key_download_link.png",
