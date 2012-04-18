@@ -1,0 +1,203 @@
+---
+title: Aeolus | Configuration Documentation
+---
+%h1 Configuring Aeolus 0.6.0
+
+%p
+  These next pages get you up and running with Aeolus using our
+  <b>Getting Started Guide</b>.
+
+%p
+  They take you through initial configuration, connecting with Amazon EC2 or the mock provider,
+  then doing very simple instance management with it.
+
+.page-listing
+  %h3 Getting Started Guide
+
+  %ol
+    %li
+      %a{ :href => "basic_glossary.html",
+          :title => "Basic glossary" } Basic glossary
+
+    %li
+      Configuring Aeolus
+
+    %li
+      %a{ :href => "first_login.html",
+          :title => "First login" } First login
+
+    %li
+      %a{ :href => "configure_providers.html",
+          :title => "Configure your Cloud Providers" } Configure your Cloud Providers
+
+    %li
+      %a{ :href => "configure_cli.html",
+          :title => "Configure the Aeolus Command Line Interface tool" } Configure the Aeolus Command Line Interface tool
+
+    %li
+      %a{ :href => "make_template.html",
+          :title => "Create a Fedora 15 Template" } Create a Fedora 15 Template
+
+    %li
+      %a{ :href => "start_image.html",
+          :title => "Start an Instance of the Image" } Start an Instance of the Image
+
+    %li
+      %a{ :href => "stop_image.html",
+          :title => "Stop a running Instance" } Stop a running Instance
+
+    %li
+      %a{ :href => "cleaning_up.html",
+          :title => "Cleaning up" } Cleaning up
+
+%br
+
+.section-grouping
+  %h2 Initial configuration
+
+  %p
+    Most configuration for Aeolus is done through its web interface.
+
+  %p
+    To turn on this web interface, we take a few simple steps:
+
+  %ol
+    %li
+      %a{ :href => "#aeolus-configure" } Run aeolus-configure
+
+    %li
+      <a href="#update-firewall">Update the firewall</a> (if it's on)
+
+%br
+
+.section-grouping
+  %h3(id="aeolus-configure") 1. Run aeolus-configure
+
+  %p
+    The very first step is to run the
+    %em aeolus-configure
+    command
+    %b
+      %u with
+    super-user privileges (via sudo).
+
+  %p
+    %pre
+      :preserve
+        $ sudo /usr/sbin/aeolus-configure -p ec2,mock
+
+  %p
+    This performs an initial configuration of Aeolus with default settings, along with pre-configured provider information for Amazon EC2 and the mock provider.
+
+  %p
+    It is fully automatic, and doesn't require any input.  It will take a
+    while (can be several minutes), generating a fair amount of text.
+
+  %p
+    As part of this automatic configuration each Aeolus component is
+    initialized, a PostgreSQL database is created, and the web interface is
+    activated.
+
+  .note
+    %p
+      %b NOTE -
+      Aeolus-configure can be passed other options, which you may want to
+      investigate at your leisure.  For this introduction though, they're not
+      really needed.
+
+%br
+
+.section-grouping
+  %h3(id="update-firewall") 2. Update the firewall
+
+  %p
+    Because Aeolus uses an encrypted web interface, the server running it
+    must accept connections on TCP port 443.
+
+  %p
+    If a firewall is running on the Aeolus server, it needs updating to allow
+    those connections.
+
+  %p
+    For the standard iptables firewall on Fedora or RHEL, add this line: 
+    %pre
+      :preserve
+        -A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+  %p
+    To both of these files (one is for IPv4, one is for IPv6):
+
+  %p
+    %pre
+      :preserve
+        /etc/sysconfig/iptables
+        /etc/sysconfig/ip6tables
+
+  %p
+    The correct place is in the
+    %b OUTPUT
+    chain, just before the
+    %b REJECT
+    lines start.
+
+  %p
+    For example, this is the default
+    %em /etc/sysconfig/iptables
+    file, with the line added (in blue):
+
+  %p
+    %pre
+      :preserve
+        *filter
+        :INPUT ACCEPT [0:0]
+        :FORWARD ACCEPT [0:0]
+        :OUTPUT ACCEPT [0:0]
+        -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+        -A INPUT -p icmp -j ACCEPT
+        -A INPUT -i lo -j ACCEPT
+        -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+        <span style="color: blue">-A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT</span>
+        -A INPUT -j REJECT --reject-with icmp-host-prohibited
+        -A FORWARD -j REJECT --reject-with icmp-host-prohibited
+        COMMIT
+
+  %p
+    Do the same for the
+    %em ip6tables
+    file as well.
+
+  %p The firewall rules then need to be reloaded:
+  
+  %p
+    %pre
+      :preserve
+        $ sudo service iptables restart
+        iptables: Flushing firewall rules:                         [  <span style="color: chartreuse">OK</span>  ]
+        iptables: Setting chains to policy ACCEPT: nat mangle filte[  <span style="color: chartreuse">OK</span>  ]
+        iptables: Unloading modules:                               [  <span style="color: chartreuse">OK</span>  ]
+        iptables: Applying firewall rules:                         [  <span style="color: chartreuse">OK</span>  ]
+
+  %p
+    %pre
+      :preserve
+        $ sudo service ip6tables restart
+        ip6tables: Flushing firewall rules:                        [  <span style="color: chartreuse">OK</span>  ]
+        ip6tables: Setting chains to policy ACCEPT: filter         [  <span style="color: chartreuse">OK</span>  ]
+        ip6tables: Unloading modules:                              [  <span style="color: chartreuse">OK</span>  ]
+        ip6tables: Applying firewall rules:                        [  <span style="color: chartreuse">OK</span>  ]
+
+  %p
+    The Aeolus server now accepts secure connections from a web browser.
+
+  .note
+    %p
+      %b USEFUL NOTE -
+      You can additionally open TCP port 80, for users to attempt connecting
+      via standard http.
+    
+    %p Aeolus automatically redirects them to the secure port. 
+
+%br
+
+%a.button{ :href => "first_login.html", :title => "First Login" }
+  First Login
+  %img{:src => "/images/button-right.png", :alt => "→"}
