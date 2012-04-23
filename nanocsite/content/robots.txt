@@ -1,0 +1,3 @@
+User-agent: *
+# This is very slow to load, so please don't crawl:
+Disallow: /redmine/projects/aeolus/repository/
