@@ -7,7 +7,40 @@ title: Aeolus - News
   %h2(id="201203" style="color: black") March 2012
 
   .section-grouping
-    %h2(id="2012030205")
+    %h2(id="2012031001")
+      10th March 2012: Image Warehouse 1.5 stable release
+
+    %h3 Bug fix release
+
+    %ul
+      %li
+        %b
+          iwhd now rejects an attempt to add attribute k/v pair to a
+          nonexistent object
+        %br
+        Before, it would add the attribute, which would then make it appear
+        (listing the parent bucket) as if the still-nonexistent object
+        existed.
+
+    %p Full release announcement:
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://fedorahosted.org/pipermail/iwhd-devel/2012-March/001132.html",
+          :title => "Image Warehouse 1.5 release announcement" }
+        https://fedorahosted.org/pipermail/iwhd-devel/2012-March/001132.html
+
+    %p Latest Fedora RPMs (including source RPMs):
+
+    %p
+      &nbsp;&nbsp;&nbsp;
+      %a{ :href => "https://admin.fedoraproject.org/updates/iwhd",
+          :title => "Fedora RPMs for Image Warehouse" }
+        https://admin.fedoraproject.org/updates/iwhd
+
+  %br
+  .section-grouping
+    %h2(id="2012030501")
       5th March 2012: Image Warehouse 1.4 stable release
 
     %p
