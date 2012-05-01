@@ -6,10 +6,12 @@ Requirements
 
 You need to have Ruby installed, along with the following gems:
 
-* nanoc (3.3.1 is known to work)
+* nanoc (3.3.3 is known to work)
 * haml (3.1.4 is known to work)
-* sass (matching the haml version)
-* kramdown (0.13.4 is known to work)
+* sass (3.1.16 is known to work)
+* kramdown (0.13.5 is known to work)
+* nokogiri (1.5.2 is known to work)
+* adsf (1.1.1 is known to work)
 
 Depending on your operating system, you may need to add the directory
 with the "nanoc" executable to your $PATH.
