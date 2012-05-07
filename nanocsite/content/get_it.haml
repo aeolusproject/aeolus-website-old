@@ -4,161 +4,28 @@ title: Aeolus | Get It
 %h1 Get Aeolus
 
 .section-grouping
-  Aeolus has both
-  <b>Stable</b>,
-  and (bleeding edge)
-  %b Development Testing
-  packages.
+  Aeolus has (bleeding edge)
+  %b Testing
+  packages available, for Fedora 15, Fedora 16, and RHEL/CentOS 6.2. 64-bit only.
 
   %p
-    The
-    %b Stable
-    packages have been tested with each other, and are known to work.  Most
-    people should use these.
-
-  %p
-    Only use the
-    %b Development Testing
-    packages when you are doing development, or looking for a specific bug
-    fix.
-
-  %h2 Which packages do you want?
+    %h2 Choose your installation instructions:
 
   %ul
     %li
-      %a(href="#stable" title="Stable Release packages")
-        Stable Release
+      %b Install the
+      <a href="#devrhel61" title="Red Hat Enterprise Linux/CentOS 6.2 packages">Red Hat Enterprise Linux/CentOS 6.2</a>
+      testing packages
+
+      %br
+      %br
+
     %li
-      %a(href="#dev" title="Development Testing packages")
-        Development Testing
+      %b Install the
+      <a href="#devfedora" title="Fedora 15/16 x86_64 packages">Fedora 15/16 x86_64</a>
+      testing packages
 
 %br
-
-%h1(id="stable" style="margin-top:0") Stable Release
-
-%p
-  Stable packages are available for Fedora 15 x86_64 and RHEL/CentOS 6.2.
-
-%ul
-  %li
-    %b Install the
-    <a href="#stablerhel" title="Red Hat Enterprise Linux/CentOS 6.2 packages">Red Hat Enterprise Linux/CentOS 6.2</a>
-    packages
-
-    %br
-    %br
-
-  %li
-    %b Install the
-    <a href="#stablefedora" title="Fedora 15 x86_64 packages">Fedora 15 x86_64</a>
-    packages
-
-.section-grouping
-
-  %h2(id="stablerhel")
-    Install the stable Red Hat Enterprise Linux/CentOS 6.2 x86_64 packages
-
-  %h3
-    1. If the system is using RHN Classic, enable the RHEL 6.2 Optional
-    Channel
-
-  %p.note
-    This step isn't needed if you're using RHN Subscription Management.
-
-  %p
-    %pre
-      $ sudo rhn-channel --add --channel=rhel-x86_64-server-optional-6
-
-  %h3 2. Add the Aeolus RHEL 6.2 Stable yum repository
-
-  %p
-    %pre
-      :preserve
-        $ sudo curl -o /etc/yum.repos.d/rhel-aeolus.repo \
-        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/rhel-aeolus.repo
-
-  %h3 3. Install the Aeolus packages
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    If you are using RHN Classic, use this command to install Aeolus:
-
-  %p
-    %pre
-      $ sudo yum install aeolus-all
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    If you are using RHN Subscription Management (instead of RHN Classic), use
-    this command to install Aeolus:
-
-  %p
-    %pre
-      :preserve
-        $ sudo yum install aeolus-all --enablerepo=rhel-6-server-optional-rpms
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus along with its
-    dependencies on the RHEL/CentOS 6.2 x86_64 system.
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    %a.button{ :href => "/gsg/0.9.0/configuring_aeolus.html" }
-      Configure It
-      %img{:src => "images/button-right.png", :alt => "→"}
-
-%br
-
-.section-grouping
-  %h2(id="stablefedora") Install the stable Fedora 15 x86_64 packages
-
-  %h3 1. Add the Aeolus Fedora 15 Stable yum repository
-
-  %p
-    %pre
-      :preserve
-        $ sudo curl -o /etc/yum.repos.d/fedora-aeolus.repo \
-        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/fedora-aeolus.repo
-
-  %h3 2. Install the Aeolus packages
-
-  %p
-    %pre
-      :preserve
-        $ sudo yum install aeolus-all
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus along with its
-    dependencies on the Fedora 15 system.
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    %a.button{ :href => "/gsg/0.9.0/configuring_aeolus.html" }
-      Configure It
-      %img{:src => "images/button-right.png", :alt => "→"}
-
-%br
-%br
-
-%h1(id="dev" style="margin-top:0") Development Testing
-
-%p
-  Development testing packages are available for Fedora 15, Fedora 16 and
-  RHEL/CentOS 6.2.  64-bit only.
-
-%ul
-  %li
-    %b Install the
-    <a href="#devrhel61" title="Red Hat Enterprise Linux/CentOS 6.2 packages">Red Hat Enterprise Linux/CentOS 6.2</a>
-    packages
-
-    %br
-    %br
-
-  %li
-    %b Install the
-    <a href="#devfedora" title="Fedora 15/16 x86_64 packages">Fedora 15/16 x86_64</a>
-    packages
 
 .section-grouping
 
