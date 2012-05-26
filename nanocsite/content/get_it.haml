@@ -33,17 +33,13 @@ title: Aeolus | Get It
     Install the Red Hat Enterprise Linux/CentOS 6.2 x86_64 testing packages
 
   %h3
-    1. If the system is using RHN Classic, enable the RHEL 6.2 Optional
-    Channel
-
-  %p.note
-    This step isn't needed if you're using RHN Subscription Management.
+    1. Add the EPEL repository for RHEL6/CentOS 6
 
   %p
     %pre
-      $ sudo rhn-channel --add --channel=rhel-x86_64-server-optional-6
+      $ sudo yum install -y http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-6.noarch.rpm
 
-  %h3 2. Add the Aeolus RHEL/CentOS 6.2 Testing yum repository
+  %h3 2. Add the Aeolus Testing repository for RHEL/CentOS 6.2
 
   %p
     %pre
@@ -51,24 +47,11 @@ title: Aeolus | Get It
         $ sudo curl -o /etc/yum.repos.d/rhel-aeolus-testing.repo \
         &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/testing/rhel-aeolus-testing.repo
 
-  %h3 3. Install the Aeolus packages
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    If you are using RHN Classic, use this command to install Aeolus:
+  %h3 3. Install Aeolus
 
   %p
     %pre
       $ sudo yum install aeolus-all
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    If you are using RHN Subscription Management (instead of RHN Classic), use
-    this command to install Aeolus:
-
-  %p
-    %pre
-      $ sudo yum install aeolus-all --enablerepo=rhel-6-server-optional-rpms
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
@@ -94,7 +77,7 @@ title: Aeolus | Get It
         $ sudo curl -o /etc/yum.repos.d/fedora-aeolus-testing.repo \
         &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/testing/fedora-aeolus-testing.repo
 
-  %h3 2. Install the Aeolus packages
+  %h3 2. Install Aeolus
 
   %p
     %pre
