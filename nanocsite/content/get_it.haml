@@ -4,70 +4,24 @@ title: Aeolus | Get It
 %h1 Get Aeolus
 
 .section-grouping
-  Aeolus has (bleeding edge)
-  %b Testing
-  packages available, for Fedora 15, Fedora 16, and RHEL/CentOS 6.2. 64-bit only.
+  Aeolus is available for Fedora 15, 16, and 17 (beta), as well as RHEL/CentOS
+  6.2.  64-bit only in all cases.
 
   %p
-    %h2 Choose your installation instructions:
+    %h2 Choose your installation platform:
 
   %ul
     %li
-      %b Install the
-      <a href="#devrhel61" title="Red Hat Enterprise Linux/CentOS 6.2 packages">Red Hat Enterprise Linux/CentOS 6.2</a>
-      testing packages
-
-      %br
-      %br
-
+      <a href="#fed1516" title="Fedora 15 and 16">Fedora 15 and 16</a>
     %li
-      %b Install the
-      <a href="#devfedora" title="Fedora 15/16 x86_64 packages">Fedora 15/16 x86_64</a>
-      testing packages
+      <a href="#fed17" title="Fedora 17 (beta)">Fedora 17 (beta)</a>
+    %li
+      <a href="#rhel6" title="Red Hat Enterprise Linux/CentOS 6.2">Red Hat Enterprise Linux and CentOS 6.2</a>
 
 %br
 
 .section-grouping
-
-  %h2(id="devrhel61")
-    Install the Red Hat Enterprise Linux/CentOS 6.2 x86_64 testing packages
-
-  %h3
-    1. Add the EPEL repository for RHEL6/CentOS 6
-
-  %p
-    %pre
-      $ sudo yum install -y http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-6.noarch.rpm
-
-  %h3 2. Add the Aeolus Testing repository for RHEL/CentOS 6.2
-
-  %p
-    %pre
-      :preserve
-        $ sudo curl -o /etc/yum.repos.d/rhel-aeolus-testing.repo \
-        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/testing/rhel-aeolus-testing.repo
-
-  %h3 3. Install Aeolus
-
-  %p
-    %pre
-      $ sudo yum install aeolus-all
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
-    packages, along with their dependencies, on the RHEL/CentOS 6.2 x86_64
-    system.
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    %a.button{ :href => "/gsg/0.9.0/configuring_aeolus.html" }
-      Configure It
-      %img{:src => "images/button-right.png", :alt => "→"}
-
-%br
-
-.section-grouping
-  %h2(id="devfedora") Install the Fedora 15/16 x86_64 testing packages
+  %h2(id="fed1516") Installation for Fedora 15 and 16 (64-bit only)
 
   %h3 1. Add the Aeolus Fedora 15/16 Testing yum repository
 
@@ -87,6 +41,77 @@ title: Aeolus | Get It
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
     packages, along with their dependencies, on the Fedora 15/16 system.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    %a.button{ :href => "/gsg/0.9.0/configuring_aeolus.html" }
+      Configure It
+      %img{:src => "images/button-right.png", :alt => "→"}
+
+%br
+
+.section-grouping
+  %h2(id="fed17") Installation for Fedora 17 (beta) (64-bit only)
+
+  %h3 1. Install Aeolus
+
+  %p.note
+    %b NOTE -
+    You need to enable the Fedora Updates Testing repository at present, for
+    all of the Aeolus packages to install correctly.
+
+    %br
+    %br
+
+    This is a temporary measure only, and should be resolved in time for the
+    Fedora 17 release.
+
+  %p
+    %pre
+      :preserve
+        $ sudo yum install aeolus-all -y --enablerepo=updates-testing
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; This will install Aeolus on your system.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    %a.button{ :href => "/gsg/0.9.0/configuring_aeolus.html" }
+      Configure It
+      %img{:src => "images/button-right.png", :alt => "→"}
+
+%br
+
+.section-grouping
+
+  %h2(id="rhel6")
+    Installation for Red Hat Enterprise Linux/CentOS 6.2 (64-bit only)
+
+  %h3
+    1. Add the EPEL repository for RHEL6/CentOS 6.x
+
+  %p
+    %pre
+      $ sudo yum install -y http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-6.noarch.rpm
+
+  %h3 2. Add the Aeolus Testing repository for RHEL/CentOS 6.2
+
+  %p
+    %pre
+      :preserve
+        $ sudo curl -o /etc/yum.repos.d/rhel-aeolus-testing.repo \
+        &nbsp; http://repos.fedorapeople.org/repos/aeolus/conductor/testing/rhel-aeolus-testing.repo
+
+  %h3 3. Install Aeolus
+
+  %p
+    %pre
+      $ sudo yum install aeolus-all -y
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
+    packages, along with their dependencies, on the RHEL/CentOS 6.2 x86_64
+    system.
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp;
