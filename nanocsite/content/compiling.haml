@@ -7,7 +7,7 @@ title: Aeolus | How to compile Aeolus
   Aeolus is made up of several components, each of which need to be compiled
   separately.
 
-%h2 Instructions for Fedora 15
+%h2 Instructions for Fedora and RHEL/CentOS
 
 
 %p Compiling in the following order is known to work
@@ -66,7 +66,7 @@ title: Aeolus | How to compile Aeolus
   %p
     %pre
       :preserve
-        $ sudo yum install classads-devel git rest-devel rpm-build ruby-devel zip
+        $ sudo yum install git make rest-devel rpm-build ruby-devel zip
 
   %h4 2. Clone the Conductor git repository:
 
@@ -88,39 +88,20 @@ title: Aeolus | How to compile Aeolus
         $ make rpms
 
   %p
-    The compiled RPMs are placed in: <b>~/rpmbuild/RPMS</b>.
-    %br
-    %br
-    Two RPMs will be in the
-    %b noarch
-    subdirectory, with the rest being in either
-    %b i386
-    or
-    <b>x86_64</b>, depending upon your architecture:
-
-  %p
-    %pre
-      :preserve
-        $ ls -la ~/rpmbuild/RPMS/x86_64/
-        total 1320
-        drwxr-xr-x. 2 jc jc    4096 Apr 21 19:33 .
-        drwxr-xr-x. 4 jc jc    4096 Apr 21 19:33 ..
-        -rw-r--r--. 1 jc jc    2236 Apr 21 19:33 aeolus-all-0.0.3-0.fc14.20110421093247git318d726.x86_64.rpm
-        -rw-r--r--. 1 jc jc 1195376 Apr 21 19:33 aeolus-conductor-0.0.3-0.fc14.20110421093247git318d726.x86_64.rpm
-        -rw-r--r--. 1 jc jc   16872 Apr 21 19:33 aeolus-conductor-daemons-0.0.3-0.fc14.20110421093247git318d726.x86_64.rpm
-        -rw-r--r--. 1 jc jc   37952 Apr 21 19:33 aeolus-conductor-debuginfo-0.0.3-0.fc14.20110421093247git318d726.x86_64.rpm
-        -rw-r--r--. 1 jc jc   66324 Apr 21 19:33 aeolus-conductor-devel-0.0.3-0.fc14.20110421093247git318d726.x86_64.rpm
-        -rw-r--r--. 1 jc jc   10792 Apr 21 19:33 aeolus-conductor-doc-0.0.3-0.fc14.20110421093247git318d726.x86_64.rpm
+    The compiled RPMs are placed in: <b>~/rpmbuild/RPMS/noarch</b>:
 
   %p
     %pre
       :preserve
         $ ls -la ~/rpmbuild/RPMS/noarch/
-        total 68
-        drwxr-xr-x. 2 jc jc  4096 Apr 21 19:32 .
-        drwxr-xr-x. 4 jc jc  4096 Apr 21 19:33 ..
-        -rw-r--r--. 1 jc jc 30756 Apr 21 19:32 rubygem-image_factory_connector-0.0.2-1.fc14.20110421093247git318d726.noarch.rpm
-        -rw-r--r--. 1 jc jc 28096 Apr 21 19:32 rubygem-image_factory_console-0.2.0-1.fc14.20110421093247git318d726.noarch.rpm
+        total 1732
+        drwxr-xr-x. 2 jc jc    4096 May 28 16:53 .
+        drwxr-xr-x. 3 jc jc    4096 May 28 16:53 ..
+        -rw-rw-r--. 1 jc jc   17149 May 28 16:53 aeolus-all-0.9.0-0.20120528065313gite451adc.fc16.noarch.rpm
+        -rw-rw-r--. 1 jc jc 1587482 May 28 16:53 aeolus-conductor-0.9.0-0.20120528065313gite451adc.fc16.noarch.rpm
+        -rw-rw-r--. 1 jc jc   25986 May 28 16:53 aeolus-conductor-daemons-0.9.0-0.20120528065313gite451adc.fc16.noarch.rpm
+        -rw-rw-r--. 1 jc jc  100546 May 28 16:53 aeolus-conductor-devel-0.9.0-0.20120528065313gite451adc.fc16.noarch.rpm
+        -rw-rw-r--. 1 jc jc   21889 May 28 16:53 aeolus-conductor-doc-0.9.0-0.20120528065313gite451adc.fc16.noarch.rpm
 
 %br
 
