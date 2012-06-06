@@ -1,0 +1,185 @@
+---
+title: Aeolus | Configure your Cloud Providers
+---
+%h1 Configure your Cloud Providers
+
+%p
+  On this page we configure Aeolus for <b>Mock</b>, a <i>pretend</i>
+  Cloud Provider.  It is useful for demonstration and testing purposes.
+
+%p
+  We also (optionally) configure for EC2.  This requires an existing Amazon
+  AWS account.  You can skip this part if you want.
+
+  %h2 Which provider would you like to configure?
+
+  %ul
+    %li
+      %a(href="#mock" title="Mock Provider")
+        Mock Provider
+
+    %li
+      %a(href="#ec2" title="Amazon EC2")
+        Amazon EC2
+
+= render 'gsg_navigation', :selected_page => 'configure_providers.html'
+
+%br
+
+%h1(id="mock" style="margin-top:0") Mock Provider
+
+.section-grouping
+  %h2 1. Confirm the Mock Provider account exists
+
+  %p
+    The mock provider account should already exist.  Follow these steps to confirm.
+
+  %p
+    %ol
+      %li
+        %em In the Aeolus web interface
+        go to
+        %b Administer
+        &rArr; <b>Cloud Providers</b>.
+
+      %li
+        Choose the mock provider in the upper right hand corner.
+
+      %li
+        Click "Accounts" just below the choose provider selector.
+
+      %li
+        An account name "mock" should already exist.
+
+  %p
+    If the account doesn't exist, you can create it by following these steps:
+  %p
+    %ol
+      %li
+        From the Accounts page, Click the "New Account" button.
+
+      %li
+        For
+        %b Account name
+        use
+        "<em>mock</em>". For
+        %b Username
+        use
+        "<em>mockuser</em>". For
+        %b Password
+        use
+        "<em>mockpassword</em>".
+
+%br
+
+%h1(id="ec2" style="margin-top:0") Amazon EC2
+
+.warning
+  %b WARNING:
+  Amazon and other Cloud providers charge fees for using their products and
+  services, including EC2.
+
+  %p
+    Setting up EC2 with Aeolus means your Amazon EC2 account will be billed
+    with their appropriate usage charges as you follow this guide and/or try
+    things out.
+
+  %p
+    We
+    %b ARE NOT
+    responsible for any EC2 or other Cloud fees and charges you may incur.
+
+  %p
+    As a precaution after finishing every Aeolus testing session, you
+    %b must
+    manually check all storage and instances in Amazon have been terminated
+    and removed as you expect.
+
+  %p
+    Development versions of Aeolus have on occasion been known to report
+    instances as stopped when they are in fact still running in EC2, thereby
+    incurring charges from Amazon.
+
+  %p
+    %b BE CAREFUL!
+
+%br
+
+.section-grouping
+  %h2(id="cred") 1. Configure EC2 credentials in Aeolus
+
+  %p Follow these steps to configure Amazon EC2 with Aeolus.
+
+  %p
+    In the
+    %em Administer
+    tab, click the
+    %b Cloud Providers
+    button.  This switches to a view showing the configured Cloud Providers.
+
+  %p
+    %center
+      %a{ :href => "images/click_cloud_providers.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/thumbnails/click_cloud_providers_thumb.png",
+              :title => "Click the Cloud Providers button - click to view at full size in a new window",
+              :alt => "Click the Cloud Providers button - click to view at full size in a new window",
+              :width => "500",
+              :height => "305"}
+
+  %p
+    Amazon EC2 was automatically populated by the
+    %em aeolus-configure
+    command we gave earlier.  It includes:
+
+    %ul
+      %li ec2-us-east-1
+      %li ec2-us-west-1
+      %li ec2-us-west-2
+      %li ec2-eu-west-1
+      %li ec2-ap-northeast-1
+      %li ec2-ap-southeast-1
+
+  %p At the top of the Cloud Providers page, there is a drop down list listing available providers. You should see the
+  above list of providers, and you can select whichever region you wish to use.
+
+  %p With a provider selected, press the "Accounts" button, and then choose "New Account."
+
+  %p
+    Fill in the EC2 account details, with your Amazon AWS account info. The information you need from Amazon is on their AWS
+    %a{ :href => "https://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key",
+      :title => "Security Credentials"} Security &rArr; Security Credentials
+    page.
+
+  %p
+    %center
+      %a{ :href => "images/fill_in_ec2_account_details.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images/thumbnails/fill_in_ec2_account_details_thumb.png",
+              :title => "Fill in AWS account details - click to view at full size in a new window",
+              :alt => "Fill in AWS account details - click to view at full size in a new window",
+              :width => "500",
+              :height => "408"}
+
+  %p When you are done, click the "<b>Save</b> button".
+
+.section-grouping
+  %h2(id="testacct") 2. Verify the account details work
+
+  %p After saving the account above, you can press the "Test Connection" button to test your credentials.
+
+  %p
+    %center
+      %a{ :href => "images//ec2_account_testing.png",
+          :target => "_blank" }
+        %img.thumbnail{ :src => "images//thumbnails/ec2_account_testing_thumb.png",
+              :title => "Account properties view - click to view at full size in a new window",
+              :alt => "Account properties view - click to view at full size in a new window",
+              :width => "500",
+              :height => "269"}
+
+%br
+
+%a.button{ :href => "make_template.html", :title => "Create A Fedora 15 Template" }
+  Make Image
+  %img{:src => "/images/button-right.png", :alt => "→"}
