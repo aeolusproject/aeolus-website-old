@@ -66,7 +66,8 @@ title: Aeolus | How to compile Aeolus
   %p
     %pre
       :preserve
-        $ sudo yum install git make rest-devel rpm-build ruby-devel zip
+        $ sudo yum install git make rest-devel rpm-build ruby-devel zip rubygem-sass \
+          rubygem-compass rubygem-compass-960-plugin
 
   %h4 2. Clone the Conductor git repository:
 
@@ -79,12 +80,20 @@ title: Aeolus | How to compile Aeolus
     Look up the <em>branch_name</em> to use
     <a href="https://www.aeolusproject.org/redmine/projects/aeolus/wiki/GitHub_Branches_and_Tags" "Our Git Branches and Tags">here</a>.
 
-  %h4 3. Build the Conductor RPMs:
+  %h4 3. Initialise any needed git submodules
 
   %p
     %pre
       :preserve
         $ cd conductor
+        $ git submodule init
+        $ git submodule update
+
+  %h4 4. Build the Conductor RPMs:
+
+  %p
+    %pre
+      :preserve
         $ make rpms
 
   %p
