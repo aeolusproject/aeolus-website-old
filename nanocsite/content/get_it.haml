@@ -32,7 +32,7 @@ title: Aeolus | Get It
   Stable Release - 0.9.0
 
 %p
-  Aeolus is available for Fedora 15 and 16, as well as RHEL/CentOS 6.2.
+  Aeolus is available for Fedora 15, 16 and 17, as well as RHEL/CentOS 6.2.
   64-bit only in all cases.
 
   %p
@@ -40,9 +40,38 @@ title: Aeolus | Get It
 
   %ul
     %li
+      <a href='#stabfed17" title="Fedora 17"'>Fedora 17</a>
+    %li
       <a href="#stabfed1516" title="Fedora 15 and 16">Fedora 15 and 16</a>
     %li
       <a href="#stabrhel6" title="Red Hat Enterprise Linux/CentOS 6.2">Red Hat Enterprise Linux and CentOS 6.2</a>
+
+%br
+
+.section-grouping
+  %h2(id="stabfed17") Installation for Fedora 17 (64-bit only)
+
+  %h3 1. Install Aeolus
+
+  %p.note
+    Please note that some things are not fully finished on Fedora 17 yet.
+    If you experience any problems please try to resolve it using
+    testing repository below.
+
+  %p
+    %pre
+      :preserve
+        $ sudo yum install aeolus-all
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus stable
+    packages, along with their dependencies, on the system.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    %a.button{ :href => "/gsg/0.9.0/configuring_aeolus.html" }
+      Configure It
+      %img{:src => "images/button-right.png", :alt => "→"}
 
 %br
 
@@ -126,9 +155,44 @@ title: Aeolus | Get It
 
   %ul
     %li
+      <a href='#devfed17" title="Fedora 17"'>Fedora 17</a>
+    %li
       <a href="#devfed1516" title="Fedora 15 and 16">Fedora 15 and 16</a>
     %li
       <a href="#devrhel6" title="Red Hat Enterprise Linux/CentOS 6.2">Red Hat Enterprise Linux and CentOS 6.2</a>
+
+%br
+
+.section-grouping
+  %h2(id="devfed17") Installation for Fedora 17 (64-bit only)
+
+  %h3 1. Install Aeolus
+
+  -#%p.note
+    %b NOTE -
+    You need to enable the Fedora Updates Testing repository at present, for
+    all of the Aeolus packages to install correctly.
+
+    %br
+    %br
+
+    This is a temporary measure only, and should be resolved in time for the
+    Fedora 17 release.
+
+  %p
+    %pre
+      :preserve
+        $ sudo yum install aeolus-all --enablerepo=updates-testing
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
+    packages, along with their dependencies, on the system.
+
+  %p
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    %a.button{ :href => "/gsg/0.10.0/configuring_aeolus.html" }
+      Configure It
+      %img{:src => "images/button-right.png", :alt => "→"}
 
 %br
 
@@ -149,39 +213,6 @@ title: Aeolus | Get It
     %pre
       :preserve
         $ sudo yum install aeolus-all
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
-    packages, along with their dependencies, on the system.
-
-  %p
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    %a.button{ :href => "/gsg/0.10.0/configuring_aeolus.html" }
-      Configure It
-      %img{:src => "images/button-right.png", :alt => "→"}
-
--#%br
-
--#.section-grouping
-  %h2(id="devfed17") Installation for Fedora 17 (beta) (64-bit only)
-
-  %h3 1. Install Aeolus
-
-  %p.note
-    %b NOTE -
-    You need to enable the Fedora Updates Testing repository at present, for
-    all of the Aeolus packages to install correctly.
-
-    %br
-    %br
-
-    This is a temporary measure only, and should be resolved in time for the
-    Fedora 17 release.
-
-  %p
-    %pre
-      :preserve
-        $ sudo yum install aeolus-all --enablerepo=updates-testing
 
   %p
     &nbsp;&nbsp;&nbsp;&nbsp; This will install the latest Aeolus testing
