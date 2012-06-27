@@ -1,0 +1,185 @@
+---
+title: Aeolus | Aeolus 0.10.0 - Release Notes
+---
+%h1 Aeolus 0.10.0 series - Release Notes
+
+.page-listing
+  %h3 Table of Contents
+
+  %ol
+    %li
+      %a{ :href => "#knownissue",
+          :title => "Known issue" }
+        Known issue
+
+    %li
+      %a{ :href => "#gitchangelog",
+          :title => "Git Change Log for this release" }
+        Git Change Log for this release
+
+.section-grouping
+  %b New Aeolus stable release 0.10.0 is now available.
+
+  %p
+    A new stable Aeolus release is available, 0.10.0.
+
+  %p
+    The team has been working on this for a while, getting things into solid
+    shape.  As always, we really appreciate the bug reports, pointers, and
+    general assistance from all over.  Please keep it coming. :) 
+
+  %p
+    Packages are available for Fedora 16 (64-bit) for this release.
+
+  %ul
+    %li
+      Fedora 17 packages are being worked on, but are not ready yet.
+
+    %li
+      RHEL/CentOS 6 packages are <b>not</b> planned for this release.  This
+      is a temporary thing only.  They will be available for future releases.
+
+  %p
+    Instructions to get and install Aeolus are on the website:
+
+  %p
+    &nbsp;&nbsp;&nbsp;
+    %a{ :href => "http://www.aeolusproject.org/get_it.html",
+        :title => "Get Aeolus" }
+      http://www.aeolusproject.org/get_it.html
+
+%br
+
+.section-grouping
+  %h2(id="knownissue") Known issue
+
+  %p
+    The following is a known problem due for resolution in a subsequent
+    release:
+
+  %ul
+    %li
+      %b
+        BZ
+        %a(id="831156" href="https://bugzilla.redhat.com/show_bug.cgi?id=831156") 747895
+        \- Launching instances in VMware fails if the instance name contains spaces
+
+%br
+
+.section-grouping
+  %h2(id="gitchangelog") Git Change Log for this release
+
+  %ul
+    %li 3bb7de0 Fix filter_table for Ruby 1.9
+    %li 91a1e06 BZ831577 - Fixed regression introduced by 796528
+    %li a552589 Set aeolus user home directory to /usr/share/aeolus-conductor
+    %li 47f5639 Fix the filter view toggle after converge-ui layout changes
+    %li 5c150ad Create homedir for aeolus user
+    %li 81f10a6 Refactor SessionEntity model to work properly with API
+    %li 1945d37 Fixed deployment rollback
+    %li 187756e Fix the new Provider Account form error
+    %li 274fb0b rm3343: credential: make attributes accessible/protected
+    %li a66fd19 RM 3246: fix smaller issues in instance model
+    %li b3dc87c RM3244: fix minor issues
+    %li 04450b5 sanitize the use of details_tab param
+    %li f1cbeea Add BuildRequires for rubygem-compass and rubygem-compass-960-plugin
+    %li b388935 rpmbuild changes: added converge-ui files, compass Require dependency, converge-ui symlinks creation and scss compilation using compass into spec file
+    %li 2836e75 Removed old favicon and added new into public/images to be compatible with converge-ui layout
+    %li 9f019b6 Removed Sass::Plugin scss compilation from development enviromnent config because Compass watcher takes care of scss compilation
+    %li 1cc41e8 Moved compass config file to proper place, removed unnecessary compass.scss file
+    %li dfdfb0d Finishing touches in converge-ui integration
+    %li 86c6978 Added symlink for fonts, removed fonts conductor stylesheet, removed conductor fonts folder content
+    %li 36a7d9d updated converge-ui to latest version
+    %li d49ce9f converge-ui meeting updates
+    %li 7500a18 Adding compass gem dependancy and symbolic link for converge-ui template.
+    %li bd736c7 Unified UI (converge-ui) changes to header, footer using the converge-ui git submodule.
+    %li 5674223 Revert "Revert "Merge branch 'gelato'""
+    %li e3cd48d RM3311 fix for date range to be inclusive of times
+    %li 3a4be6f RM3311 added date select, ordering options, and csv export to log history
+    %li bf0595d Redmine #3345: Initial user groups implementation
+    %li 5b34b65 BZ 827562 - Upgrade from CloudForms 1.0 to CloudForms 1.0.1 requires additional data definition not provided by rails migration
+    %li 537b86f Moving the service parameter type attr off the parameter tag onto the value tag because the type only applys when we collect a value.
+    %li e8f5b1e If an assambly doesn't define any configserver params, config for this assembly is not sent to configserver.
+    %li 65c7767 Bug 807745 add 'use provider accounts' to global image admin role
+    %li c8e2f50 bug 808031: allow Global Provider user to view Provider Accounts
+    %li 18ae85c Fix files declaration for daemons subpkg
+    %li 05a2632 Fix images#show when there's no existing build
+    %li 3a146ec BZ815784 added Pool Family Quota Used column to Pool Families table
+    %li 8ebf737 Fix spec
+    %li 049958c Unifiy the way we store error messages for model attributes
+    %li 333a884 BZ808393: Fix invalid name error message
+    %li 759dbbe BZ808338: fix ajax caching for IE
+    %li dec27f2 BZ 806846 Disabled submit_tag in images#new views when no provider are enabled
+    %li 144afb2 BZ 806846 ImageController: removed duplicate code, fixed flash displaying
+    %li bdc6f3e Fix mustache template handler to work with Rails 3.1 and above
+    %li 799bd3a RM #3269: Figure out what is wrong with deps (ruby/bundler mode)
+    %li 4b03851 BZ#801971 - Scalability: Catalog Images tab, /conductor/pools/1?details_tab=images&only_tab=true, is slow
+    %li ccfd67e Styling for pool catalog images tab
+    %li bf85e5f BZ815357: api: tests for template xml in CDATA
+    %li b3c4ecd BZ815357: api: handle template xml in CDATA in images controller
+    %li 290dde4 BZ804543: template relaxng: make rootpw mandatory
+    %li fe8d4ed Corrected removed obsolette load_tab_captions_and_details_tab method from pool_families controller, replaced provider_account header with helper method
+    %li 445665b Revert "removed obsolette load_tab_captions_and_details_tab method from pool_families controller, replaced provider_account header with helper method"
+    %li 5c54d1d BZ810919 mustach-ify pretty-view pool header so that instance/deployment counts are automatically updated
+    %li f454171 removed obsolette load_tab_captions_and_details_tab method from pool_families controller, replaced provider_account header with helper method
+    %li b602b93 pool_families partials cleanup
+    %li 4cfd406 Fixed typo - renamed 'stopable' to 'stoppable'
+    %li eb0dc37 3322 - Added deployment's history tab
+    %li 1df022a Added basic events for deployment state changes
+    %li f96aa8f 3321 - Added partial launch support
+    %li 7bfb7e2 3320 - Added deployment rollback
+    %li 1a46ebb BZ806001 - aeolus-configure will always create an admin user, need to key of a uuid not name
+    %li dbdc389 Fix line limit violations in images_controller for mustache patchset
+    %li 2f3471e Fix line limit violations in some views for mustache patchset
+    %li dbb9bcf Fix line limit violations in deployables_controller for mustache patchset
+    %li e374dd1 Delete jquery-template js lib
+    %li 1c2932b Mustachifying images/show
+    %li 0138aae Mustachifying pools/_deployments
+    %li aaf99e9 Mustachifying deployables/show
+    %li 8c8be91 Redmine #3319: Set up conductor to use new Bundler extension point.
+    %li 57bdcf7 Redmine #3318: Add small extension library to bundler to load system gems
+    %li 1b77242 Add BuildRequires: systemd-units for daemons subpackage
+    %li da4472b Remove jquery-svg entries from rpm spec
+    %li 89dcc58 Delete jquery-svg
+    %li f7c7dfa application.js: Removed unused code
+    %li 42af2a1 Removed unused JS libraries - yetii, trimpath-template
+    %li 1332d3d RM 3144 specify default order for associated events
+    %li 65a472e RM 3144 don't set unscoped as default, as this messes up uptime calculations
+    %li 40100c2 Fix migration after paranoid gem changed the default scope
+    %li 0c8f597 RM 3144 added soft_delete tests
+    %li 1f1ac5b RM 3144 updated models to include acts_as_paranoid
+    %li 01be2df RM 3144 add deleted_at column for soft delete
+    %li 3486b97 RM 3144 added paranoia gem
+    %li 5905bb8 adding service dependancy support for audrey
+    %li a1fde11 Temporary Bugfix for adding providers.
+    %li 708a82d added app/views/logs
+    %li c406ca3 Revert "Merge branch 'gelato'"
+    %li da432dd Removed useless @deployment_properties variable
+    %li 65d9d8d Cleanup of deployments create action
+    %li e6fcb93 Merge branch 'gelato'
+    %li e142db5 RM 3145 touched up code to obey 80-character line limit
+    %li 570795c RM 3145 updates reflecting new state attribute for deployments
+    %li c64fe05 RM 3145 added css section for hover links
+    %li 7f6c191 RM 3145 added cucumber tests
+    %li e119c68 RM 3145 added logs section
+    %li 3b50091 RM 3145 added logs page
+    %li cc0e066 RM 3145 added logs controller
+    %li 54e749d RM 3145 added logs route
+    %li 8d778df Fix typo in UpdateStateForExistingDeployments migration
+    %li 8e7559c Redmine3153 partials cleanup and fixes part1
+    %li e3616e8 BZ 809722 - missing template for json response
+    %li 482437a performance fixes for Redmine feature #3149
+    %li f5010a6 Redmine #3158: Use denormalized model for permission checks
+    %li 30473d7 redmine task #3157: UI to show inherited permissions
+    %li f6b80e3 permissions denormalization: redmine #3155 and #3156
+    %li 0cd0270 RM 3181 - delayed_job support - revised
+    %li 03b6b45 Redmine #3233: Consolidate duplicated steps
+    %li 4a49749 Redmine #3211: Switch step defs for login to use DMA
+    %li 273833b Fixed setting of deployment state for existing deployments
+    %li 73ccace bump version to 0.10.0
+    %li 4594b35 import converge-ui stylesheet as partial to layout.scss
+    %li 1e601d3 removed converge-ui files from lib
+    %li e40e4eb changed simlinks, layout_helper is now unmodified, disabled most of the converge-ui stylesheets for now, reverted to conductor layout to prepare for incremental converge
+    %li be1ebc7 added converge-ui repo as git submodule co vendor/converge-ui
+    %li 622f629 Basic implementation of converge-ui code
+    %li 003582a Copies converge-ui into lib/        
