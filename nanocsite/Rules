@@ -40,6 +40,9 @@ route '*' do
   elsif item[:extension] == 'scss'
     # Write out scss files with a 'css' extension
     item.identifier.chop + '.' + 'css'
+  elsif item[:filename] =~ /contact_form.haml$/
+    # The contact_form.haml file needs a .php extension so it executes on the webserver
+    item.identifier.chop + '.' + 'php'
   else
     # Debugging code
     #puts 'Item filename: ' + item[:filename] + '  Item identifier: ' + item.identifier
