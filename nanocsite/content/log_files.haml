@@ -34,12 +34,6 @@ title: Aeolus | Log file locations
       %a{ :href => "#httpd" } Apache HTTP Server
 
     %li
-      %a{ :href => "#qpid" } Apache Qpid
-
-    %li
-      %a{ :href => "#condor" } Condor
-
-    %li
       %a{ :href => "#deltacloud" } Deltacloud
 
     %li
@@ -105,8 +99,8 @@ title: Aeolus | Log file locations
   %h3(id="conductor-dbomatic") DBomatic
 
   %p
-    DBomatic watches Condor's EventLog, updating the Conductor database based
-    on what happens in Condor.
+    DBomatic updates the Conductor database based on what happens in the
+    configured Cloud Providers.
 
   %p
     The DBomatic log file is located at:
@@ -275,55 +269,6 @@ title: Aeolus | Log file locations
 
   #trademark
     Apache and Apache HTTP Server are trademarks of The Apache Software Foundation.
-
-%br
-
-.section-grouping
-  %h2(id="qpid") Apache Qpid&trade;
-
-  %p
-    Web site:
-    %a{ :href => "http://qpid.apache.org", :title => "Apache Qpid home page" } http://qpid.apache.org
-
-  %p
-    Qpid is a cross-platform Enterprise Messaging system implementing AMQP.
-
-  %p
-    By default, it uses the standard logging facilities provided by the OS.
-
-  %p
-    %pre
-      :preserve
-        /var/log/messages
-
-  #trademark
-    Apache, Qpid, and Apache Qpid are trademarks of The Apache Software Foundation.
-
-%br
-
-.section-grouping
-  %h2(id="condor") Condor
-
-  %p
-    Web site:
-    %a{ :href => "http://www.cs.wisc.edu/condor/", :title => "Condor home page" } http://www.cs.wisc.edu/condor/
-
-  %p
-    By default, all log files for Condor go into this directory:
-
-  %p
-    %pre
-      :preserve
-        /var/log/condor/
-
-  %p
-    %pre
-      :preserve
-        /var/log/condor/CollectorLog
-        /var/log/condor/MasterLog
-        /var/log/condor/MatchLog
-        /var/log/condor/NegotiatorLog
-        /var/log/condor/SchedLog
 
 %br
 
