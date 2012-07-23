@@ -22,15 +22,7 @@ title: Aeolus | Conductor
 
 .note
   %p
-    %b NOTE 1:
-    The current installation process calls for SELinux to be in permissive
-    mode.  This is not recommended on a mission-critical machine.
-
-%br
-
-.note
-  %p
-    %b NOTE 2:
+    %b NOTE:
     The current installation works on 64-bit Linux only.  32-bit support is
     planned, but does not work at this time.
 
@@ -65,12 +57,6 @@ title: Aeolus | Conductor
       %br
 
     %li
-      Set SELinux to permissive mode:
-      %p
-        %pre
-          $ sudo setenforce 0
-
-    %li
       Ensure that the time is set correctly.  Failure to do so causes
       connectivity issues with Amazon Elastic Cloud Compute (EC2).
       %br
@@ -93,7 +79,7 @@ title: Aeolus | Conductor
       Configure Aeolus Conductor:
       %p
         %pre
-          $ sudo /usr/sbin/aeolus-configure
+          $ sudo /usr/sbin/aeolus-configure -p mock
 
 %br
 
