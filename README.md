@@ -13,6 +13,8 @@ You need to have Ruby installed, along with the following gems:
 * nokogiri (1.5.2 is known to work)
 * adsf (1.1.1 is known to work)
 
+You can type `bundle install` and it will take care of the dependencies.
+
 Depending on your operating system, you may need to add the directory
 with the "nanoc" executable to your $PATH.
 

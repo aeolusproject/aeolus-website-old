@@ -2,3 +2,5 @@ output/
 *.swp
 .project
 .DS_Store
+.bundle/
+bundler/
