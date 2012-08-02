@@ -52,7 +52,7 @@ title: Aeolus | Create a Fedora 15 Template
         b33236d7-81b9-41b0-96f9-d039acd60537     mock       COMPLETED     6214d1b6-7292-436f-9c62-f0852e469f70     995535c8-ee70-407c-9413-12d274bbdd1d
 
         Target Image: 663ad46e-709f-4ea1-89f0-e73b8bb2205a
-        Image: cb7acabd-59c3-41a7-894a-f3e1b072638c
+        Image: 6214d1b6-7292-436f-9c62-f0852e469f70
         Build: 3b5624b1-c9a5-48e2-b6cb-2abecd232eb9
         Status: COMPLETED
         Percent Complete: 100
@@ -60,12 +60,14 @@ title: Aeolus | Create a Fedora 15 Template
   .note
     %p
       %b NOTE -
-      The Image and Target Image values are important.
+      The Image value is important.
       %br
       %br
-      We use the Target Image value in the next step below, and the Image one
-      on the next page.
+      We use it in a few steps below. If you lose it, you can always find it by typing:
 
+      %pre
+        :preserve
+          aeolus-image list --images
   %p
     Environments can be used to group deployments together. Out of the box,
     aeolus-configure sets up a "default" environment that you may use.
@@ -86,13 +88,13 @@ title: Aeolus | Create a Fedora 15 Template
     using the account configured earlier.
 
   %p
-    aeolus-image just needs the Provider Account name
-    (ec2_east) and the Target Image UUID given by the last command
-    (2814a4e5-67a1-4dc3-b8be-8977bca61e8b).  To push to the mock provider account, simply use "mock" as the account name.
+    aeolus-image just needs the Provider Account name (ec2_east) and the Image
+    UUID given by the last command (6214d1b6-7292-436f-9c62-f0852e469f70).  To
+    push to the mock provider account, simply use "mock" as the account name.
 
     %pre
       :preserve
-        $ aeolus-image push -A ec2_east -t <span style="color: lightblue">2814a4e5-67a1-4dc3-b8be-8977bca61e8b</span>
+        $ aeolus-image push -A ec2_east -I <span style="color: lightblue">6214d1b6-7292-436f-9c62-f0852e469f70</span>
         Target Image: 2814a4e5-67a1-4dc3-b8be-8977bca61e8b
         Provider Image: 19d97c85-3db3-41fa-bf92-63fb6fed738a   Status: New
 
